@@ -1,7 +1,7 @@
 
 body {
   margin: 0;
-  background: url("/img/hero.png") no-repeat fixed center 0;
+  background: url("/img/hero.jpg") no-repeat fixed center 0;
   background-size: cover;
   -webkit-background-size: cover;
   -o-background-size: cover;
@@ -28,4 +28,14 @@ body {
 
 .myContainer h1{
   font-size: 50px;
+}
+
+.myBook{
+  margin-right: 3%;
+}
+
+.myBook img{
+  max-width: 100%;
+  height: auto;
+  width: 450px;
 }
