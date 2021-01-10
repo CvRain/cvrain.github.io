@@ -1,0 +1,31 @@
+
+body {
+  margin: 0;
+  background: url("/img/hero.png") no-repeat fixed center 0;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+}
+
+.myMenu{
+  color:white;
+  font-size: 16px;
+  text-shadow:3px 2px 4px #d7d7d7 ;
+}
+
+.myContainer{
+  width: 270px;
+  height: 250px;
+  background-color:rgba(0,0,0,0);
+  box-shadow: none;
+  border:none;
+  margin-top: 130px;
+  font-size: 20px;
+  text-shadow:none;
+}
+
+.myContainer h1{
+  font-size: 50px;
+}
