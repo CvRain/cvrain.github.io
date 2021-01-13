@@ -1,5 +1,5 @@
 
-body {
+.myMainbody{
   margin: 0;
   background: url("/img/hero-day.jpg") no-repeat fixed center 0;
   background-size: cover;
@@ -9,10 +9,19 @@ body {
   -ms-background-size: cover;
 }
 
+.myCommonBody{
+  margin: 0;
+  background-image: url(../img/hero.jpg);
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+}
+
 a:link { text-decoration: none;color: white}
 a:active { text-decoration:none}
-a:hover { text-decoration:underline;color: floralwhite}
 a:visited { text-decoration: none;color: white}
+a:hover { text-decoration:underline;color: floralwhite}
 
 .myMenu{
   color:white;
@@ -63,4 +72,84 @@ a:visited { text-decoration: none;color: white}
   font-size: 6px;
   padding-top: 10px;
   padding-right: 15px;
+}
+
+.myItemList{
+  margin: 0 10px 0 10px;
+  width:max-content;
+  height: min-content;
+  border-radius: 10px;
+  border: 2px solid rgba(120,16,255,0.9);
+  text-shadow:3px 2px 4px #d7d7d7;
+  box-shadow:2px 3px 2px gray;
+  background-color: rgba(120,16,255,0.6);
+}
+
+.page-title {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  display: block;
+  background-size: cover;
+  background-position: center top;
+}
+
+.page-title .container {
+  height: 600px;
+}
+
+.page-title .entry-meta li,
+.page-title .entry-meta li a {
+  color: #fff;
+  font-size: 16px;
+}
+
+.page-title .entry-meta li:hover,
+.page-title .entry-meta li a:hover {
+  color: #fff;
+}
+
+.title-holder {
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.title-text {
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.title-text h1 {
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 50px;
+  font-weight: normal;
+}
+
+.title-text .subheading {
+  font-size: 22px;
+}
+
+.breadcrumb {
+  width: auto;
+  background-color: transparent;
+  padding: 0;
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+.page-title .breadcrumb a,
+.page-title .breadcrumb > .active {
+  color: #fff;
+}
+
+.page-title .breadcrumb > li + li:before {
+  color: #fff;
+  opacity: 0.5;
+  padding: 0 1px 0 5px;
 }
