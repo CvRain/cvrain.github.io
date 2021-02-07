@@ -84,6 +84,23 @@ a:hover { text-decoration:underline;color: floralwhite}
   box-shadow:2px 3px 2px #808080;
   background-color: rgba(255,252,232,0.4);
 }
+#showPwd {
+  animation: showPwd 3s infinite ease-in;
+  -moz-animation:showPwd 3s; /* Firefox */
+  -webkit-animation:showPwd 3s; /* Safari and Chrome */
+  -o-animation:showPwd 3s; /* Opera */
+}
+
+#showPwd:hover{
+  animation: showPwd 3s;
+}
+
+@keyframes showPwd {
+  0%   {background: red;}
+  25%  {background: yellow;}
+  50%  {background: blue;}
+  100% {background: green;}
+}
 
 .myItemList:hover{
   background-color: rgba(255,252,232,0.6);
