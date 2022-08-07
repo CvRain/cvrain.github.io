@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>ModernC++/C++语言参考 · CvRaindays</title><meta name="description" content="前言赘叙本系列文档是对于微软文档《Modern C++ vs2022》进行翻译并插入一定的个人见解。个人之力翻译可能并不标准，还望海涵，也请多多指点。敝人也尝试通过这次机会向大家分享，也希望个人也能在代码造诣上得到提高。为了能够帮助理解，本人也创建了一个仓库，会在接下来使用代码的地方进行插入，当然也"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 6.2.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">CvRaindays</a></h3></div></div><ul class="social-links"></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a target="_blank" rel="noopener" href="https://www.caicai.me"> CaiCai </a><span>&</span><a target="_blank" rel="noopener" href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>ModernC++/C++语言参考</a></h3></div><div class="post-content"><p><strong>前言赘叙</strong><br>本系列文档是对于微软文档《Modern C++ vs2022》进行翻译并插入一定的个人见解。个人之力翻译可能并不标准，还望海涵，也请多多指点。敝人也尝试通过这次机会向大家分享，也希望个人也能在代码造诣上得到提高。为了能够帮助理解，本人也创建了一个仓库，会在接下来使用代码的地方进行插入，当然也欢迎直接阅读示例demo</p>
+<p>点击此处可浏览仓库 <a target="_blank" rel="noopener" href="https://github.com/CvRain/oh-modern-cpp">CvRain&#x2F;oh-modern-cpp</a><br>点击此处可浏览原文 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/cpp-language-reference?view=msvc-170">C++ Language Reference | Microsoft Docs</a></p>
+<hr>
+<h1 id="C-语言参考"><a href="#C-语言参考" class="headerlink" title="C++语言参考"></a>C++语言参考</h1><p><em>C++ Language Reference</em></p>
+<p>本参考说明了在 Microsoft C++ 编译器中实现的 C++ 编程语言。该组织基于 Margaret Ellis 和 Bjarne Stroustrup 的 The Annotated C++ Reference Manual 以及 ANSI&#x2F;ISO C++ 国际标准 (ISO&#x2F;IEC FDIS 14882)。包括 Microsoft 特定的 <a href="%E5%9B%A0%E4%B8%BA%E7%94%B1%E5%BE%AE%E8%BD%AF%E5%AE%9E%E7%8E%B0%EF%BC%8C%E6%89%80%E4%BB%A5%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E6%9C%89%E7%9D%80%E5%85%B6%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%8B%AC%E5%8D%A0%E6%80%A7%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E7%90%86%E8%A7%A3%E4%B8%BA%E9%83%A8%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E6%80%A7%E9%80%9A%E8%BF%87msvc%E4%BC%9A%E8%8E%B7%E5%BE%97%E4%B8%8D%E5%90%8C%E7%9A%84%E6%95%88%E6%9E%9C">^1</a>C++ 语言功能实现。<br>有关现代 C++ 编程实践的概述，请参阅《<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/welcome-back-to-cpp-modern-cpp?view=msvc-170">Welcome Back to C++</a>》<br>请参阅下表以快速找到关键字或运算符：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/keywords-cpp?view=msvc-170">C++ Keywords</a> （C++关键字）</li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/cpp-built-in-operators-precedence-and-associativity?view=msvc-170">C++ Operators</a>（C++操作符）</li>
+</ul>
+<h1 id="在这个部分"><a href="#在这个部分" class="headerlink" title="在这个部分"></a>在这个部分</h1><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/lexical-conventions?view=msvc-170">Lexical Conventions</a>  词汇约定<br>C++程序的基本词法元素：预定义字符（标记）、注释、操作符、关键字、标点符号、字符串。此外还有：文件转译（文件操作）、运算符优先级&#x2F;关联性。</p>
+<blockquote>
+<p>Fundamental lexical elements of a C++ program: tokens, comments, operators, keywords, punctuators, literals. Also, file translation, operator precedence&#x2F;associativity.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/basic-concepts-cpp?view=msvc-170">Basic Concepts</a>  基本概念<br>范围、链接、程序的启动和终止、存储类和类型。</p>
+<blockquote>
+<p>Scope, linkage, program startup and termination, storage classes, and types.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/fundamental-types-cpp?view=msvc-170">Built-in types</a> 内置类型<br>C++编译器中内置的基本类型及其取值范围。</p>
+<blockquote>
+<p>The fundamental types that are built into the C++ compiler and their value ranges.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/standard-conversions?view=msvc-170">Standard Conversions</a>  标准转换<br>内置类型之间的类型转换。此外，指针、引用和指向成员的类型之间的算术转换和转换。</p>
+<blockquote>
+<p>Type conversions between built-in types. Also, arithmetic conversions and conversions among pointer, reference, and pointer-to-member types.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/declarations-and-definitions-cpp?view=msvc-170">Declarations and definitions</a> 声明和定义<br>声明和定义变量、类型和函数。</p>
+<blockquote>
+<p>Declaring and defining variables, types and functions.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/cpp-built-in-operators-precedence-and-associativity?view=msvc-170">Operators, Precedence and Associativity</a><br>运算符、优先级和关联性<br>C++中的运算符。</p>
+<blockquote>
+<p>The operators in C++.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/expressions-cpp?view=msvc-170">Expressions</a>  表达式<br>表达式的类型、表达式的语义、运算符的参考主题、强制转换和强制转换运算符、运行时类型信息。</p>
+<blockquote>
+<p>Types of expressions, semantics of expressions, reference topics on operators, casting and casting operators, run-time type information.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=msvc-170">Lambda Expressions</a>  Lambda表达式<br>一种隐式定义函数对象类并构造该类类型的函数对象的编程技术。</p>
+<blockquote>
+<p>A programming technique that implicitly defines a function object class and constructs a function object of that class type.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/statements-cpp?view=msvc-170">Statements</a>  语句<br>表达式、null空值、复合语句、选择、迭代、跳转和声明语句。</p>
+<blockquote>
+<p>Expression, null, compound, selection, iteration, jump, and declaration statements.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/classes-and-structs-cpp?view=msvc-170">Classes and structs</a>  类和结构体<br>对于类、结构体和共用体的介绍。此外也有，成员函数、特殊成员函数、数据成员、位字段、this指针，嵌套类。</p>
+<blockquote>
+<p>Introduction to classes, structures, and unions. Also, member functions, special member functions, data members, bit fields, <strong><code>this</code></strong> pointer, nested classes.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/unions?view=msvc-170">Unions</a>  联合体<br>用户定义类型，其中所有成员共享同一内存位置。</p>
+<blockquote>
+<p>User-defined types in which all members share the same memory location.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/inheritance-cpp?view=msvc-170">Derived Classes</a>  派生类<br>单个和多个继承、虚函数、多继承、抽象类、范围规则。 此外，还有__super和__interface关键字。</p>
+<blockquote>
+<p>Single and multiple inheritance, <strong><code>virtual</code></strong> functions, multiple base classes, <strong>abstract</strong> classes, scope rules. Also, the <strong><code>__super</code></strong> and <strong><code>__interface</code></strong> keywords.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/member-access-control-cpp?view=msvc-170">Member-Access Control</a>  成员访问控制<br>控制对类成员的访问： public、 private关键字和 protected 关键字。 友元函数和友元类。</p>
+<blockquote>
+<p>Controlling access to class members: <strong><code>public</code></strong>, <strong><code>private</code></strong>, and <strong><code>protected</code></strong> keywords. Friend functions and classes.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/operator-overloading?view=msvc-170">Overloading</a>  重载<br>重载运算符，对运算符重载的规则。</p>
+<blockquote>
+<p>Overloaded operators, rules for operator overloading.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/exception-handling-in-visual-cpp?view=msvc-170">Exception Handling</a>  异常处理<br>C++ 异常处理、结构化异常处理 (SEH)、用于编写异常处理语句的关键字。</p>
+<blockquote>
+<p>C++ exception handling, structured exception handling (SEH), keywords used in writing exception handling statements.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/assertion-and-user-supplied-messages-cpp?view=msvc-170">Assertion and User-Supplied Messages</a>  断言和User-Supplied消息<br>#error 指令， static_assert 关键字， assert 宏。</p>
+<blockquote>
+<p><code>#error</code> directive, the <strong><code>static_assert</code></strong> keyword, the <code>assert</code> macro.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/templates-cpp?view=msvc-170">Templates</a>  模板<br>模板规范、函数模板、类模板、typename 关键字、模板对比于宏定义、模板和智能指针。</p>
+<blockquote>
+<p>Template specifications, function templates, class templates, <strong><code>typename</code></strong> keyword, templates vs. macros, templates and smart pointers.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/event-handling?view=msvc-170">Event Handling</a>  事件处理<br>定义事件和事件处理程序</p>
+<blockquote>
+<p>Declaring events and event handlers.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/microsoft-specific-modifiers?view=msvc-170">Microsoft-Specific Modifiers</a>  独属于微软(msvc)的修饰符<br>Microsoft C++ 专用修饰符。 内存寻址、调用约定、naked函数、扩展存储类属性 (__declspec) 。 __w64</p>
+<blockquote>
+<p>Modifiers specific to Microsoft C++. Memory addressing, calling conventions, <strong><code>naked</code></strong> functions, extended storage-class attributes (<strong><code>__declspec</code></strong>), <strong><code>__w64</code></strong>.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/assembler/inline/inline-assembler?view=msvc-170">Inline Assembler</a>  内联汇编程序<br>在__asm块中使用汇编语言和C++。</p>
+<blockquote>
+<p>Using assembly language and C++ in <strong><code>__asm</code></strong> blocks.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/compiler-com-support?view=msvc-170">Compiler COM Support</a>  编译器对COM的支持[^2]<br>有关用于支持 COM 类型的 Microsoft 专用类和全局函数的参考。</p>
+<blockquote>
+<p>A reference to Microsoft-specific classes and global functions used to support COM types.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/microsoft-extensions?view=msvc-170">Microsoft Extensions</a>  Microsoft的拓展[^3]<br>Microsoft微软对C++进行的扩展</p>
+<blockquote>
+<p>Microsoft extensions to C++.</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/nonstandard-behavior?view=msvc-170">Nonstandard Behavior</a>  非标准行为<br>有关Microsoft C++编译器的非标准行为的信息。<br>Information about nonstandard behavior of the Microsoft C++ compiler.</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/welcome-back-to-cpp-modern-cpp?view=msvc-170">Welcome Back to C++</a>  欢迎回到C++<br>一篇现代C + +编程实践概述，指引编写安全、正确、高效的程序。</p>
+<blockquote>
+<p>An overview of modern C++ programming practices for writing safe, correct and efficient programs.</p>
+</blockquote>
+<hr>
+<p> [^2]: Microsoft C++ 编译器可以直接读取组件对象模型 (COM) 类型库，并将内容转换为可包含在编译中的 C++ 源代码。 语言扩展可用于促进桌面应用的客户端上的 COM 编程。<br> [^3]: 微软对C++制定了许多扩展以及好用的库和框架例如，WIN_API, MFC, Win32等</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-08-07</span><i class="fa fa-tag"></i><a class="tag" href="/tags/C-Modern-C/" title="C++, Modern_C++">C++, Modern_C++ </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,http://example.com/2022/08/07/C++ Language Reference/,CvRaindays,ModernC++/C++语言参考,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/2022/08/07/another-gossip/" title="另一篇闲言碎语">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
