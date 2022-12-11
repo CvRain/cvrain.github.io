@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>Tips-mingw · CvRaindays</title><meta name="description" content="MSYS2和CMake搭建C&amp;#x2F;C++环境 参考指南准备材料
+MSYS2 msys2.org
+CMake cmake.org
+
+
+如何下载
+点击即可下载，之后莽点下一步即可安装
+
+
+
+根据系统架构选择对应的版本下载，之后双击安装即可
+
+
+正式开始
+打开安装的MSYS2 MSYS， 更换软件源"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 6.2.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">CvRaindays</a></h3></div></div><ul class="social-links"></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a target="_blank" rel="noopener" href="https://www.caicai.me"> CaiCai </a><span>&</span><a target="_blank" rel="noopener" href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Tips-mingw</a></h3></div><div class="post-content"><h1 id="MSYS2和CMake搭建C-x2F-C-环境-参考指南"><a href="#MSYS2和CMake搭建C-x2F-C-环境-参考指南" class="headerlink" title="MSYS2和CMake搭建C&#x2F;C++环境 参考指南"></a>MSYS2和CMake搭建C&#x2F;C++环境 参考指南</h1><h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a><strong>准备材料</strong></h2><ul>
+<li>MSYS2 <a target="_blank" rel="noopener" href="https://www.msys2.org/">msys2.org</a></li>
+<li>CMake <a target="_blank" rel="noopener" href="https://cmake.org/download/">cmake.org</a></li>
+</ul>
+<hr>
+<h2 id="如何下载"><a href="#如何下载" class="headerlink" title="如何下载"></a>如何下载</h2><p><img src="/img/Tips-mingw/1.png" alt="1.png"></p>
+<center><small>点击即可下载，之后莽点下一步即可安装</small></center>
+
+
+<p><img src="/img/Tips-mingw/2.png" alt="2.png"></p>
+<center><small>根据系统架构选择对应的版本下载，之后双击安装即可</small></center>
+
+<hr>
+<h2 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h2><ol>
+<li>打开安装的MSYS2 MSYS， 更换软件源 (选择任意即可)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tuna mirror 清华软件源</span></span><br><span class="line">sed -i <span class="string">&quot;s#mirror.msys2.org/#mirrors.tuna.tsinghua.edu.cn/msys2/#g&quot;</span> /etc/pacman.d/mirrorlist*</span><br><span class="line"></span><br><span class="line"><span class="comment"># ustc mirror 中科大软件源</span></span><br><span class="line">sed -i <span class="string">&quot;s#mirror.msys2.org/#mirrors.ustc.edu.cn/msys2/#g&quot;</span> /etc/pacman.d/mirrorlist*</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="/img/Tips-mingw/3.png" alt="3.png"></p>
+<p><img src="/img/Tips-mingw/4.png" alt="4.png"></p>
+<ol start="2">
+<li>更新一下软件包<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syyu</span><br></pre></td></tr></table></figure>
+遇到 :: Proceed with installation? [Y&#x2F;n] 的类似问题时输入y即可</li>
+</ol>
+<p><img src="/img/Tips-mingw/5.png" alt="5.png"></p>
+<ol start="3">
+<li>安装mingw<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S base-devel </span><br><span class="line">pacman -S mingw-w64-x86_64-toolchain</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+Enter a selection (default&#x3D;all): 输入回车即可<br><img src="/img/Tips-mingw/6.png" alt="6.png"></li>
+</ol>
+<p><strong>4. 配置系统环境</strong></p>
+<p>找到安装目录的mingw64路径<br><img src="/img/Tips-mingw/7.png" alt="7.png"></p>
+<p>计算机右键属性 -&gt; 高级系统设置 -&gt; 环境变量 -&gt; 系统变量 -&gt; path -&gt; 你的路径<br><img src="/img/Tips-mingw/8.png" alt="8.png"><br><img src="/img/Tips-mingw/9.png" alt="9.png"><br><img src="/img/Tips-mingw/10.png" alt="10.png"><br><img src="/img/Tips-mingw/11.png" alt="11.png"></p>
+<h2 id="最后验证"><a href="#最后验证" class="headerlink" title="最后验证"></a>最后验证</h2><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmake --version</span><br><span class="line">gcc -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/Tips-mingw/12.png" alt="12.png"></p>
+<h2 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h2><p>MSYS2 是什么？<br><strong>MSYS2</strong> is a collection of tools and libraries providing you with an easy-to-use environment for building, installing and running native Windows software.</p>
+<p>It consists of a command line terminal called <a target="_blank" rel="noopener" href="https://mintty.github.io/">mintty</a>, bash, version control systems like git and subversion, tools like tar and awk and even build systems like autotools, all based on a modified version of <a target="_blank" rel="noopener" href="https://cygwin.com/">Cygwin</a>. Despite some of these central parts being based on Cygwin, the main focus of MSYS2 is to provide a build environment for native Windows software and the Cygwin-using parts are kept at a minimum. MSYS2 provides up-to-date native builds for GCC, mingw-w64, CPython, CMake, Meson, OpenSSL, FFmpeg, Rust, Ruby, just to name a few.</p>
+<p>To provide easy installation of packages and a way to keep them updated it features a package management system called <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/pacman">Pacman</a>, which should be familiar to Arch Linux users. It brings many powerful features such as dependency resolution and simple complete system upgrades, as well as straight-forward and reproducible package building. Our package repository contains <a target="_blank" rel="noopener" href="https://packages.msys2.org/base">more than 2600 pre-built packages</a> ready to install.</p>
+<p>For more details see <a target="_blank" rel="noopener" href="https://www.msys2.org/docs/what-is-msys2/">‘What is MSYS2?’</a> which also compares MSYS2 to other software distributions and development environments like <a target="_blank" rel="noopener" href="https://cygwin.com/">Cygwin</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux">WSL</a>, <a target="_blank" rel="noopener" href="https://chocolatey.org/">Chocolatey</a>, <a target="_blank" rel="noopener" href="https://scoop.sh/">Scoop</a>, … and <a target="_blank" rel="noopener" href="https://www.msys2.org/docs/who-is-using-msys2/">‘Who Is Using MSYS2?’</a> to see which projects are using MSYS2 and what for.</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">MSYSY2 MSYS</td>
+<td align="left">用来管理和安装包的</td>
+</tr>
+<tr>
+<td align="left">MSYSY2 MinGW 32-bit</td>
+<td align="left">编译32位程序，库链接到msvcrt上</td>
+</tr>
+<tr>
+<td align="left">MSYSY2 MinGW 64-bit</td>
+<td align="left">编译64位程序，库链接到msvcrt上</td>
+</tr>
+<tr>
+<td align="left">MSYSY2 MSYS UCRT 64-bit</td>
+<td align="left">编译64位程序，库链接到ucrt上</td>
+</tr>
+</tbody></table>
+<p>CMake is an open-source, cross-platform family of tools designed to build, test and package software. CMake is used to control the software compilation process using simple platform and compiler independent configuration files, and generate native makefiles and workspaces that can be used in the compiler environment of your choice. The suite of CMake tools were created by Kitware in response to the need for a powerful, cross-platform build environment for open-source projects such as ITK and VTK.</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-12-11</span><i class="fa fa-tag"></i><a class="tag" href="/tags/C-tips/" title="C++, tips">C++, tips </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,http://example.com/2022/12/11/Tips-mingw/,CvRaindays,Tips-mingw,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/2022/08/10/Tokens%20and%20character%20sets/" title="ModernC++/标记和字符集">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
