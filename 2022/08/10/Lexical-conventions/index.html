@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-cn" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="ModernC++&#x2F;词法约定">
 <meta property="og:url" content="http://example.com/2022/08/10/Lexical-conventions/index.html">
-<meta property="og:site_name" content="CvRaindays">
+<meta property="og:site_name" content="cvrain-以空间追逐时间">
 <meta property="og:description" content="词法约定Lexical conventions 本篇章介绍了C++程序中的基本元素。您会使用到称作“词法元素”或者说“标记”的元素构造完整程序的语句、定义和声明等。 本节将讨论以下词法元素：  标记和字符集 注释 标识符 关键字 标点符号 数值、布尔和指针文本 字符串和字符文本 用户定义的文本  有关如何分析 C++ 源文件的详细信息，请参阅 转换阶段。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-10T02:54:46.000Z">
@@ -31,7 +31,7 @@
   
   
   
-  <title>ModernC++/词法约定 - CvRaindays</title>
+  <title>ModernC++/词法约定 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -95,7 +95,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>ClaudeRainer</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -115,7 +115,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Главная</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Архивы</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -139,7 +139,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Категории</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -151,7 +151,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Теги</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -163,7 +163,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>О</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          161 слов
+          161 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          2 минут
+          2 分钟
         
       </span>
     
@@ -316,26 +316,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Автор</div>
+          <div>作者</div>
           <div>CvRaindays,cvraindays@outlook.com</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Опубликовано на</div>
+          <div>发布于</div>
           <div>2022年8月10日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -358,7 +358,7 @@
                       <a href="/2022/08/10/Tokens%20and%20character%20sets/" title="ModernC++/标记和字符集">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">ModernC++/标记和字符集</span>
-                        <span class="visible-mobile">Предыдущий</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -367,7 +367,7 @@
                     
                       <a href="/2022/08/08/Welcome%20back%20to%20C++/" title="ModernC++/欢迎回到C++ 现代C++">
                         <span class="hidden-mobile">ModernC++/欢迎回到C++ 现代C++</span>
-                        <span class="visible-mobile">Следующий</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -388,7 +388,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Оглавление</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -444,7 +444,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Поиск</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -452,7 +452,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Ключевое слово</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -631,7 +631,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Блог лучше всего работает с включенным JavaScript</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

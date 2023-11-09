@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-cn" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="ModernC++&#x2F;标记和字符集">
 <meta property="og:url" content="http://example.com/2022/08/10/Tokens%20and%20character%20sets/index.html">
-<meta property="og:site_name" content="CvRaindays">
+<meta property="og:site_name" content="cvrain-以空间追逐时间">
 <meta property="og:description" content="标记和字符集Tokens and character sets C++程序文本由Tokens(标记)和空格组成。标记是对编译器有用的 C++ 程序的最小元素。 C++ 分析器可识别以下类型的Token：  Keywords （关键字） Identifiers（标识符） Numeric, Boolean and Pointer Literals（数字，布尔值，指针文本） String and Cha">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-10T04:14:20.000Z">
@@ -31,7 +31,7 @@
   
   
   
-  <title>ModernC++/标记和字符集 - CvRaindays</title>
+  <title>ModernC++/标记和字符集 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -95,7 +95,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>ClaudeRainer</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -115,7 +115,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Главная</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Архивы</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -139,7 +139,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Категории</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -151,7 +151,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Теги</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -163,7 +163,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>О</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k слов
+          1.9k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          16 минут
+          16 分钟
         
       </span>
     
@@ -304,7 +304,7 @@
 <hr>
 <h2 id="通用字符名称"><a href="#通用字符名称" class="headerlink" title="通用字符名称"></a>通用字符名称</h2><p>由于C++程序可以使用比基础字符集更多的字符，您可以使用通用字符名称以可移植的方式指定这些字符。通用字符名称由表示 Unicode 码位的字符序列组成。可以使用两种类型进行表述，使用<code>UNNNNNNNN</code>来代表为 U+NNNNNNNN的unicode位码字符，NNNNNNNN 是八位的十六进制码位数字。使用四位的 <code>\uNNNN</code> 表示形式为 U+0000NNNN 的 Unicode 码位。<br>通用字符名称可用于标识符以及字符串和字符文字。通用字符名称不能被用于表示0xD800-0xDFFF之间之内的代理项码位，编译器会自动生成任何所需的代理项。其他限制适用于可在标识符中使用的通用字符名称。详细信息请参阅 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/identifiers-cpp?view=msvc-170">Identifiers</a> 和 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/string-and-character-literals-cpp?view=msvc-170">String and Character Literals</a>。</p>
 <p><strong>特用于Microsoft的内容</strong><br>Microsoft C++ 编译器可互换地处理通用字符名称形式和文字形式的字符。例如，您可以使用通用字符名称形式声明标识符，并以文字形式使用它：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> \u30AD = <span class="number">42</span>; <span class="comment">// \u30AD is &#x27;キ&#x27;</span></span><br><span class="line"><span class="keyword">if</span> (キ == <span class="number">42</span>) <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// \u30AD and キ are the same to the compiler</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">auto</span> \u30AD = <span class="hljs-number">42</span>; <span class="hljs-comment">// \u30AD is &#x27;キ&#x27;</span><br><span class="hljs-keyword">if</span> (キ == <span class="hljs-number">42</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">// \u30AD and キ are the same to the compiler</span><br></code></pre></td></tr></table></figure>
 <p>Windows 剪贴板上的扩展字符的格式特用于应用程序区域设置。 从另一个应用程序剪切这些字符并将其粘贴到你的代码中可能会引入意外的字符编码。 这可能会导致您的代码中出现不知原因的代码错误。我们建议在粘贴扩展的字符之前将源文件编码设置为 Unicode 代码页，以及使用 IME 或字符映射应用生成扩展的字符。</p>
 <hr>
 <h2 id="执行字符集"><a href="#执行字符集" class="headerlink" title="执行字符集"></a>执行字符集</h2><p><em>执行字符集</em> 表示可在编译的程序中显示的字符和字符串。 这些字符集包括源文件中允许的所有字符，以及表示警报、后空、回车符和 null 字符的控制字符。 执行字符集具有特定于区域设置的表示形式。</p>
@@ -338,26 +338,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Автор</div>
+          <div>作者</div>
           <div>CvRaindays,cvraindays@outlook.com</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Опубликовано на</div>
+          <div>发布于</div>
           <div>2022年8月10日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -380,7 +380,7 @@
                       <a href="/2022/12/11/Tips-mingw/" title="Tips-mingw">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Tips-mingw</span>
-                        <span class="visible-mobile">Предыдущий</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -389,7 +389,7 @@
                     
                       <a href="/2022/08/10/Lexical-conventions/" title="ModernC++/词法约定">
                         <span class="hidden-mobile">ModernC++/词法约定</span>
-                        <span class="visible-mobile">Следующий</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -410,7 +410,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Оглавление</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -466,7 +466,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Поиск</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -474,7 +474,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Ключевое слово</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -653,7 +653,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Блог лучше всего работает с включенным JavaScript</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

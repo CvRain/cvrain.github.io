@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-cn" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="ModernC++&#x2F;C++语言参考">
 <meta property="og:url" content="http://example.com/2022/08/07/C++%20Language%20Reference/index.html">
-<meta property="og:site_name" content="CvRaindays">
+<meta property="og:site_name" content="cvrain-以空间追逐时间">
 <meta property="og:description" content="前言赘叙本系列文档是对于微软文档《Modern C++ vs2022》进行翻译并插入一定的个人见解。个人之力翻译可能并不标准，还望海涵，也请多多指点。敝人也尝试通过这次机会向大家分享，也希望个人也能在代码造诣上得到提高。为了能够帮助理解，本人也创建了一个仓库，会在接下来使用代码的地方进行插入，当然也欢迎直接阅读示例demo 点击此处可浏览仓库 CvRain&#x2F;oh-modern-cpp点击">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-07T13:19:30.000Z">
@@ -31,7 +31,7 @@
   
   
   
-  <title>ModernC++/C++语言参考 - CvRaindays</title>
+  <title>ModernC++/C++语言参考 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -95,7 +95,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>ClaudeRainer</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -115,7 +115,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Главная</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Архивы</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -139,7 +139,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Категории</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -151,7 +151,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Теги</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -163,7 +163,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>О</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4k слов
+          4.1k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          34 минут
+          34 分钟
         
       </span>
     
@@ -277,7 +277,7 @@
 <p>点击此处可浏览仓库 <a target="_blank" rel="noopener" href="https://github.com/CvRain/oh-modern-cpp">CvRain&#x2F;oh-modern-cpp</a><br>点击此处可浏览原文 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/cpp-language-reference?view=msvc-170">C++ Language Reference | Microsoft Docs</a></p>
 <hr>
 <h1 id="C-语言参考"><a href="#C-语言参考" class="headerlink" title="C++语言参考"></a>C++语言参考</h1><p><em>C++ Language Reference</em></p>
-<p>本参考说明了在 Microsoft C++ 编译器中实现的 C++ 编程语言。该组织基于 Margaret Ellis 和 Bjarne Stroustrup 的 The Annotated C++ Reference Manual 以及 ANSI&#x2F;ISO C++ 国际标准 (ISO&#x2F;IEC FDIS 14882)。包括 Microsoft 特定的 <a href="%E5%9B%A0%E4%B8%BA%E7%94%B1%E5%BE%AE%E8%BD%AF%E5%AE%9E%E7%8E%B0%EF%BC%8C%E6%89%80%E4%BB%A5%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E6%9C%89%E7%9D%80%E5%85%B6%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%8B%AC%E5%8D%A0%E6%80%A7%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E7%90%86%E8%A7%A3%E4%B8%BA%E9%83%A8%E5%88%86%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E6%80%A7%E9%80%9A%E8%BF%87msvc%E4%BC%9A%E8%8E%B7%E5%BE%97%E4%B8%8D%E5%90%8C%E7%9A%84%E6%95%88%E6%9E%9C">^1</a>C++ 语言功能实现。<br>有关现代 C++ 编程实践的概述，请参阅《<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/welcome-back-to-cpp-modern-cpp?view=msvc-170">Welcome Back to C++</a>》<br>请参阅下表以快速找到关键字或运算符：</p>
+<p>本参考说明了在 Microsoft C++ 编译器中实现的 C++ 编程语言。该组织基于 Margaret Ellis 和 Bjarne Stroustrup 的 The Annotated C++ Reference Manual 以及 ANSI&#x2F;ISO C++ 国际标准 (ISO&#x2F;IEC FDIS 14882)。包括 Microsoft 特定的 <sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="因为由微软实现，所以部分代码有着其平台的独占性，也可以理解为部分函数的特性通过msvc会获得不同的效果">[1]</span></a></sup>C++ 语言功能实现。<br>有关现代 C++ 编程实践的概述，请参阅《<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/welcome-back-to-cpp-modern-cpp?view=msvc-170">Welcome Back to C++</a>》<br>请参阅下表以快速找到关键字或运算符：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/keywords-cpp?view=msvc-170">C++ Keywords</a> （C++关键字）</li>
 <li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/cpp-built-in-operators-precedence-and-associativity?view=msvc-170">C++ Operators</a>（C++操作符）</li>
@@ -382,12 +382,12 @@
 <p>Using assembly language and C++ in <strong><code>__asm</code></strong> blocks.</p>
 </blockquote>
 <hr>
-<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/compiler-com-support?view=msvc-170">Compiler COM Support</a>  编译器对COM的支持[^2]<br>有关用于支持 COM 类型的 Microsoft 专用类和全局函数的参考。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/compiler-com-support?view=msvc-170">Compiler COM Support</a>  编译器对COM的支持<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="Microsoft C++ 编译器可以直接读取组件对象模型 (COM) 类型库，并将内容转换为可包含在编译中的 C++ 源代码。 语言扩展可用于促进桌面应用的客户端上的 COM 编程。">[2]</span></a></sup><br>有关用于支持 COM 类型的 Microsoft 专用类和全局函数的参考。</p>
 <blockquote>
 <p>A reference to Microsoft-specific classes and global functions used to support COM types.</p>
 </blockquote>
 <hr>
-<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/microsoft-extensions?view=msvc-170">Microsoft Extensions</a>  Microsoft的拓展[^3]<br>Microsoft微软对C++进行的扩展</p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/microsoft-extensions?view=msvc-170">Microsoft Extensions</a>  Microsoft的拓展<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="微软对C++制定了许多扩展以及好用的库和框架例如，WIN_API, MFC, Win32等">[3]</span></a></sup><br>Microsoft微软对C++进行的扩展</p>
 <blockquote>
 <p>Microsoft extensions to C++.</p>
 </blockquote>
@@ -399,8 +399,10 @@
 <p>An overview of modern C++ programming practices for writing safe, correct and efficient programs.</p>
 </blockquote>
 <hr>
-<p> [^2]: Microsoft C++ 编译器可以直接读取组件对象模型 (COM) 类型库，并将内容转换为可包含在编译中的 C++ 源代码。 语言扩展可用于促进桌面应用的客户端上的 COM 编程。<br> [^3]: 微软对C++制定了许多扩展以及好用的库和框架例如，WIN_API, MFC, Win32等</p>
-
+ <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>因为由微软实现，所以部分代码有着其平台的独占性，也可以理解为部分函数的特性通过msvc会获得不同的效果
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>Microsoft C++ 编译器可以直接读取组件对象模型 (COM) 类型库，并将内容转换为可包含在编译中的 C++ 源代码。 语言扩展可用于促进桌面应用的客户端上的 COM 编程。
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span>微软对C++制定了许多扩展以及好用的库和框架例如，WIN_API, MFC, Win32等
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
                 
               </div>
             
@@ -430,26 +432,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Автор</div>
+          <div>作者</div>
           <div>CvRaindays,cvraindays@outlook.com</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Опубликовано на</div>
+          <div>发布于</div>
           <div>2022年8月7日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -472,7 +474,7 @@
                       <a href="/2022/08/08/Welcome%20back%20to%20C++/" title="ModernC++/欢迎回到C++ 现代C++">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">ModernC++/欢迎回到C++ 现代C++</span>
-                        <span class="visible-mobile">Предыдущий</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -481,7 +483,7 @@
                     
                       <a href="/2022/08/07/another-gossip/" title="另一篇闲言碎语">
                         <span class="hidden-mobile">另一篇闲言碎语</span>
-                        <span class="visible-mobile">Следующий</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -502,7 +504,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Оглавление</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -558,7 +560,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Поиск</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -566,7 +568,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Ключевое слово</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -745,7 +747,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Блог лучше всего работает с включенным JavaScript</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

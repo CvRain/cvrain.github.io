@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-cn" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tips-mingw">
 <meta property="og:url" content="http://example.com/2022/12/11/Tips-mingw/index.html">
-<meta property="og:site_name" content="CvRaindays">
+<meta property="og:site_name" content="cvrain-以空间追逐时间">
 <meta property="og:description" content="MSYS2和CMake搭建C&#x2F;C++环境 参考指南准备材料 MSYS2 msys2.org CMake cmake.org   如何下载 点击即可下载，之后莽点下一步即可安装    根据系统架构选择对应的版本下载，之后双击安装即可   正式开始 打开安装的MSYS2 MSYS， 更换软件源 (选择任意即可)123456# tuna mirror 清华软件源sed -i &quot;s#m">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/Tips-mingw/1.png">
@@ -44,7 +44,7 @@
   
   
   
-  <title>Tips-mingw - CvRaindays</title>
+  <title>Tips-mingw - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -108,7 +108,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>ClaudeRainer</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -128,7 +128,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Главная</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -140,7 +140,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Архивы</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -152,7 +152,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Категории</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -164,7 +164,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Теги</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -176,7 +176,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>О</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -233,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k слов
+          2.3k 字
         
       </span>
     
@@ -244,7 +244,7 @@
         
         
         
-          20 минут
+          20 分钟
         
       </span>
     
@@ -300,23 +300,23 @@
 
 <hr>
 <h2 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h2><ol>
-<li>打开安装的MSYS2 MSYS， 更换软件源 (选择任意即可)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tuna mirror 清华软件源</span></span><br><span class="line">sed -i <span class="string">&quot;s#mirror.msys2.org/#mirrors.tuna.tsinghua.edu.cn/msys2/#g&quot;</span> /etc/pacman.d/mirrorlist*</span><br><span class="line"></span><br><span class="line"><span class="comment"># ustc mirror 中科大软件源</span></span><br><span class="line">sed -i <span class="string">&quot;s#mirror.msys2.org/#mirrors.ustc.edu.cn/msys2/#g&quot;</span> /etc/pacman.d/mirrorlist*</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>打开安装的MSYS2 MSYS， 更换软件源 (选择任意即可)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># tuna mirror 清华软件源</span><br>sed -i <span class="hljs-string">&quot;s#mirror.msys2.org/#mirrors.tuna.tsinghua.edu.cn/msys2/#g&quot;</span> /etc/pacman.d/mirrorlist*<br><br><span class="hljs-comment"># ustc mirror 中科大软件源</span><br>sed -i <span class="hljs-string">&quot;s#mirror.msys2.org/#mirrors.ustc.edu.cn/msys2/#g&quot;</span> /etc/pacman.d/mirrorlist*<br><br></code></pre></td></tr></table></figure></li>
 </ol>
 <p><img src="/img/Tips-mingw/3.png" srcset="/img/loading.gif" lazyload alt="3.png"></p>
 <p><img src="/img/Tips-mingw/4.png" srcset="/img/loading.gif" lazyload alt="4.png"></p>
 <ol start="2">
-<li>更新一下软件包<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syyu</span><br></pre></td></tr></table></figure>
+<li>更新一下软件包<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman -Syyu<br></code></pre></td></tr></table></figure>
 遇到 :: Proceed with installation? [Y&#x2F;n] 的类似问题时输入y即可</li>
 </ol>
 <p><img src="/img/Tips-mingw/5.png" srcset="/img/loading.gif" lazyload alt="5.png"></p>
 <ol start="3">
-<li>安装mingw<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S base-devel </span><br><span class="line">pacman -S mingw-w64-x86_64-toolchain</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<li>安装mingw<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman -S base-devel <br>pacman -S mingw-w64-x86_64-toolchain<br><br></code></pre></td></tr></table></figure>
 Enter a selection (default&#x3D;all): 输入回车即可<br><img src="/img/Tips-mingw/6.png" srcset="/img/loading.gif" lazyload alt="6.png"></li>
 </ol>
 <p><strong>4. 配置系统环境</strong></p>
 <p>找到安装目录的mingw64路径<br><img src="/img/Tips-mingw/7.png" srcset="/img/loading.gif" lazyload alt="7.png"></p>
 <p>计算机右键属性 -&gt; 高级系统设置 -&gt; 环境变量 -&gt; 系统变量 -&gt; path -&gt; 你的路径<br><img src="/img/Tips-mingw/8.png" srcset="/img/loading.gif" lazyload alt="8.png"><br><img src="/img/Tips-mingw/9.png" srcset="/img/loading.gif" lazyload alt="9.png"><br><img src="/img/Tips-mingw/10.png" srcset="/img/loading.gif" lazyload alt="10.png"><br><img src="/img/Tips-mingw/11.png" srcset="/img/loading.gif" lazyload alt="11.png"></p>
-<h2 id="最后验证"><a href="#最后验证" class="headerlink" title="最后验证"></a>最后验证</h2><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmake --version</span><br><span class="line">gcc -v</span><br></pre></td></tr></table></figure>
+<h2 id="最后验证"><a href="#最后验证" class="headerlink" title="最后验证"></a>最后验证</h2><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dos">cmake --version<br>gcc -v<br></code></pre></td></tr></table></figure>
 
 <p><img src="/img/Tips-mingw/12.png" srcset="/img/loading.gif" lazyload alt="12.png"></p>
 <h2 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h2><p>MSYS2 是什么？<br><strong>MSYS2</strong> is a collection of tools and libraries providing you with an easy-to-use environment for building, installing and running native Windows software.</p>
@@ -378,26 +378,26 @@ Enter a selection (default&#x3D;all): 输入回车即可<br><img src="/img/Tips-
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Автор</div>
+          <div>作者</div>
           <div>CvRaindays,cvraindays@outlook.com</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Опубликовано на</div>
+          <div>发布于</div>
           <div>2022年12月11日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Urheberrechtshinweis</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -423,7 +423,7 @@ Enter a selection (default&#x3D;all): 输入回车即可<br><img src="/img/Tips-
                     
                       <a href="/2022/08/10/Tokens%20and%20character%20sets/" title="ModernC++/标记和字符集">
                         <span class="hidden-mobile">ModernC++/标记和字符集</span>
-                        <span class="visible-mobile">Следующий</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -444,7 +444,7 @@ Enter a selection (default&#x3D;all): 输入回车即可<br><img src="/img/Tips-
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Оглавление</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -500,7 +500,7 @@ Enter a selection (default&#x3D;all): 输入回车即可<br><img src="/img/Tips-
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Поиск</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -508,7 +508,7 @@ Enter a selection (default&#x3D;all): 输入回车即可<br><img src="/img/Tips-
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Ключевое слово</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -687,7 +687,7 @@ Enter a selection (default&#x3D;all): 输入回车即可<br><img src="/img/Tips-
   
 
   <noscript>
-    <div class="noscript-warning">Блог лучше всего работает с включенным JavaScript</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>
