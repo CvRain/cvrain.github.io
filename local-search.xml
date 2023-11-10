@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>你好呀 Haskell</title>
+    <link href="/2023/11/10/hello-haskell/"/>
+    <url>/2023/11/10/hello-haskell/</url>
+    
+    <content type="html"><![CDATA[<h1 id="你好呀Haskell"><a href="#你好呀Haskell" class="headerlink" title="你好呀Haskell"></a>你好呀Haskell</h1><h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>开始玩耍一个新的编程语言:Haskell, 其实很早就准备学习这个语言，而且也在官网上看了一小段教程，但是有一种云里雾里的感觉，不是没有学懂他的语法，而是还没有理解他的思想，所以一直拖到现在。</p><p>直到在上了大学物理这门课程。感谢岳老师的物理课，虽然我的物理学的并不好，但是对于看待事务本身多了一个新的角度。</p><p>对于之前学习C++,C#, Java…还有别的语言，在解决问题方面更像是在解释这个问题应该怎么做。即使是说使用了面向对象、多态、继承、封装、抽象、接口、泛型、多线程、异常等等，但依然更像是描述这个问题应该怎么做，所以这类语言也成为命令式语言。在命令式语言中执行操作需要给电脑安排一组指令, 随着命令的执行，状态会随之发生改变。</p><p>然而在纯函数式编程语言中，不再是像命令式语言那样描述要做什么，而是通过函数描述问题“是什么”。</p><p>有一个简单的例子说， 在函数式编程语言中，变量一旦赋值，就不能改了，比如  <code>x = 5</code> 这里已规定好了，x的值是5，那么在函数式编程语言中，变量x的值就是5，不能被改变。</p><h2 id="简单的运算"><a href="#简单的运算" class="headerlink" title="简单的运算"></a>简单的运算</h2><blockquote><p><strong>simple-calc.hs</strong></p></blockquote><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">plus</span> x y = x + y<br><span class="hljs-title">substract</span> x y = x - y<br><span class="hljs-title">multiply</span> x y = x * y<br><span class="hljs-title">divide</span> x y = x / y<br><br><span class="hljs-title">and_gate</span> x y = x &amp;&amp; y<br><span class="hljs-title">or_gate</span> x y = x || y<br><span class="hljs-title">not_gate</span> x = not x<br><br><span class="hljs-title">is_equal</span> x y = x == y<br><span class="hljs-title">is_bigger</span> x y = x &gt; y<br><span class="hljs-title">is_smaller</span> x y = x &lt; y<br><span class="hljs-title">is_odd</span> x = mod x <span class="hljs-number">2</span> == <span class="hljs-number">0</span><br><br><span class="hljs-title">double_value</span> x = x * <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure><blockquote><p><strong>测试运行</strong></p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ghci simple-calc.hs<br><span class="hljs-comment">#GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help</span><br><span class="hljs-comment">#[1 of 1] Compiling Main             ( simple-calc.hs, interpreted )</span><br><span class="hljs-comment">#Ok, one module loaded.</span><br><br>ghci&gt; plus 2 4<br>6<br>ghci&gt; or_gate True False<br>True<br>ghci&gt; double_value 5<br>10<br><br></code></pre></td></tr></table></figure><blockquote><p><strong>小小解释</strong></p></blockquote><p>定义函数: functionName args &#x3D; expression</p><p>执行函数: functionName args </p><p>如果一个函数有两个参数，也可以用这样的方法调用</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-number">4</span> `mod` <span class="hljs-number">2</span><br><span class="hljs-title">mod</span> <span class="hljs-number">4</span> <span class="hljs-number">2</span> #两者相当<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>haskell</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>视C++为一个语言联邦</title>
     <link href="/2023/11/09/view-cpp-as-a-federation/"/>
     <url>/2023/11/09/view-cpp-as-a-federation/</url>
@@ -23,7 +42,7 @@
   
   
   <entry>
-    <title>guessing-number</title>
+    <title>来做一个猜数游戏吧</title>
     <link href="/2023/11/09/guessing-number/"/>
     <url>/2023/11/09/guessing-number/</url>
     
@@ -42,7 +61,7 @@
   
   
   <entry>
-    <title>Tips-mingw</title>
+    <title>Windows上mingw C/C++环境搭建</title>
     <link href="/2022/12/11/Tips-mingw/"/>
     <url>/2022/12/11/Tips-mingw/</url>
     
