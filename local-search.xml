@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>简单玩一下元组</title>
+    <link href="/2023/11/12/haskell-tuple/"/>
+    <url>/2023/11/12/haskell-tuple/</url>
+    
+    <content type="html"><![CDATA[<h1 id="简单玩一下元组"><a href="#简单玩一下元组" class="headerlink" title="简单玩一下元组"></a>简单玩一下元组</h1><p>有意思的是Haskell中的元组，不仅如同Python中一样可以随便放东西，而且可以当作结构体用<br>如果元组有里面只有两个元素，就可以当作键值对用，真不错啊真不错~</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">numberAndNumber</span> = (<span class="hljs-number">1</span>,<span class="hljs-number">3</span>)<br><span class="hljs-title">triples</span> = [(a,b,c) | a &lt;- [<span class="hljs-number">1</span>..<span class="hljs-number">10</span>], b &lt;- [<span class="hljs-number">1</span>..<span class="hljs-number">10</span>], c &lt;- [<span class="hljs-number">1</span>..<span class="hljs-number">10</span>]]<br><span class="hljs-title">rightTriangles</span> = [(a,b,c) | c &lt;- [<span class="hljs-number">1</span>..<span class="hljs-number">10</span>], a &lt;- [<span class="hljs-number">1</span>..c], b &lt;- [<span class="hljs-number">1</span>..a], a^<span class="hljs-number">2</span> + b^<span class="hljs-number">2</span> == c^<span class="hljs-number">2</span>]<br><span class="hljs-title">someItem</span> = (<span class="hljs-number">1</span>,&#x27;a&#x27;, <span class="hljs-string">&quot;HelloWorld&quot;</span>, <span class="hljs-type">True</span>)<br><span class="hljs-title">main</span> = <span class="hljs-keyword">do</span><br>    putStrLn <span class="hljs-string">&quot;Hello, tuple!&quot;</span><br>    print numberAndNumber<br>    print someItem<br>    <span class="hljs-comment">--对于序队可使用</span><br>    print (fst numberAndNumber)<br>    print (snd numberAndNumber)<br><br>    <span class="hljs-comment">--创建序对</span><br>    print (zip [x | x &lt;- [<span class="hljs-number">1</span>..<span class="hljs-number">10</span>], odd x] [&#x27;a&#x27;..&#x27;z&#x27;])<br>    print (zip [<span class="hljs-number">1</span>..] [<span class="hljs-string">&quot;Python&quot;</span>,<span class="hljs-string">&quot;C&quot;</span>,<span class="hljs-string">&quot;C++&quot;</span>,<span class="hljs-string">&quot;Java&quot;</span>])<br><br>    <span class="hljs-comment">-- 打印0~10之类边长的三角形</span><br>    print rightTriangles<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Haskell</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>浅学一下Haskell中的列表</title>
     <link href="/2023/11/11/haskell-list/"/>
     <url>/2023/11/11/haskell-list/</url>
