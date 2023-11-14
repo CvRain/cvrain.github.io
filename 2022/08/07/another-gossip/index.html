@@ -82,7 +82,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
 <body>
@@ -278,13 +278,7 @@
 <p>首先用日常是开了一个科学上网，用winget把nodejs给整上，迅速的安装一波hexo</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install -g hexo-cli<br>npm install hexo<br>hexo init &lt;blog-name&gt;<br>cd &lt;blog-name&gt;<br>npm install<br></code></pre></td></tr></table></figure>
 
-<p>对了，如果不能直接用hexo指令的话可以配置一下</p>
-<ol>
-<li><code>npx hexo &lt;command&gt;</code></li>
-<li>将 Hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 &#96;hexo <command><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">echo &#x27;PATH=&quot;$PATH:./node_modules/.bin&quot;&#x27; &gt;&gt; ~/.profile<br></code></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<p>上述步骤完成后，就是抄一个主题下来。感谢hexo设计的很简单，让我一下子就上手了。<br>把主题文件放到themes下就可以了，比如我的是<strong>E:\blog\themes\anatole</strong><br><small><em>什么？如何安装主题，当然是点一个然后 <code>git clone</code>下来哦</em></small></p>
+<h2 id="对了，如果不能直接用hexo指令的话可以配置一下1-npx-hexo-lt-command-gt-2-将-Hexo-所在的目录下的-node-modules-添加到环境变量之中即可直接使用-96-hexo"><a href="#对了，如果不能直接用hexo指令的话可以配置一下1-npx-hexo-lt-command-gt-2-将-Hexo-所在的目录下的-node-modules-添加到环境变量之中即可直接使用-96-hexo" class="headerlink" title="对了，如果不能直接用hexo指令的话可以配置一下1.  npx hexo &lt;command&gt;2.  将 Hexo 所在的目录下的 node_modules 添加到环境变量之中即可直接使用 &#96;hexo "></a>对了，如果不能直接用hexo指令的话可以配置一下<br>1.  <code>npx hexo &lt;command&gt;</code><br>2.  将 Hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 &#96;hexo <command><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">echo &#x27;PATH=&quot;$PATH:./node_modules/.bin&quot;&#x27; &gt;&gt; ~/.profile<br></code></pre></td></tr></table></figure></h2><p>上述步骤完成后，就是抄一个主题下来。感谢hexo设计的很简单，让我一下子就上手了。<br>把主题文件放到themes下就可以了，比如我的是<strong>E:\blog\themes\anatole</strong><br><small><em>什么？如何安装主题，当然是点一个然后 <code>git clone</code>下来哦</em></small></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">git clone https://github.com/Ben02/hexo-theme-Anatole.git themes/anatole<br>cd anatole<br>git pull<br>npm install --save hexo-render-pug hexo-generator-archive hexo-generator-tag hexo-generator-index hexo-generator-category<br></code></pre></td></tr></table></figure>
 <p>然后在_config.yml里填写一个特殊的配置</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">archive_generator:</span><br>  <span class="hljs-attr">per_page:</span> <span class="hljs-number">0</span>  <br>  <span class="hljs-attr">yearly:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">monthly:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">daily:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>

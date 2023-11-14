@@ -82,7 +82,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
 <body>
@@ -279,7 +279,7 @@
 
 <hr>
 <p><strong>有一个好习惯是在编写函数时，显示写出函数的类型</strong></p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">removeNonUpperCase</span> :: [<span class="hljs-type">Char</span>] -&gt; [<span class="hljs-type">Char</span>]<br><span class="hljs-title">removeNonUpperCase</span> st = [ c | c &lt;- st, c `elem` [&#x27;<span class="hljs-type">A&#x27;</span>..&#x27;<span class="hljs-type">Z&#x27;</span>]]<br><br><span class="hljs-title">addThree</span> :: <span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Int</span><br><span class="hljs-title">addThree</span> x y z = x + y + z<br><br><span class="hljs-title">main</span> = <span class="hljs-keyword">do</span><br>    putStrLn <span class="hljs-string">&quot;Trust type&quot;</span><br>    print (removeNonUpperCase <span class="hljs-string">&quot;abcDEF&quot;</span>)<br>    print (addThree <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">removeNonUpperCase</span> :: [<span class="hljs-type">Char</span>] -&gt; [<span class="hljs-type">Char</span>]<br><span class="hljs-title">removeNonUpperCase</span> st = [ c | c &lt;- st, c `elem` [<span class="hljs-string">&#x27;A&#x27;</span>..<span class="hljs-string">&#x27;Z&#x27;</span>]]<br><br><span class="hljs-title">addThree</span> :: <span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Int</span><br><span class="hljs-title">addThree</span> x y z = x + y + z<br><br><span class="hljs-title">main</span> = <span class="hljs-keyword">do</span><br>    putStrLn <span class="hljs-string">&quot;Trust type&quot;</span><br>    print (removeNonUpperCase <span class="hljs-string">&quot;abcDEF&quot;</span>)<br>    print (addThree <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
 <p>在这里 :: 读作“它的类型为”，凡是确定的类型，首字母一定是大写的。在这里<code>removeNonUpperCase</code>的类型是<code>[Char] -&gt; [Char]</code>。<br>也就是说接受一个<code>[char]</code>类型作为输入参数，返回一个<code>[char]</code>类型作为输出。在《Haskell趣学指南》中，可能是因为年代原因还有版本原因，字符串输出的<br>结果是<code>[char]</code>而在本人目前这个版本(GHCI 9.0.2) 字符串的类型已经是 <code>String</code>了</p>
 <blockquote>
 <p>String :: *</p>
@@ -377,6 +377,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/11/14/haskell-typeclas/" title="Haskell类型类">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Haskell类型类</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

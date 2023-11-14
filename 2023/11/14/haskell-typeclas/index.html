@@ -16,22 +16,22 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="标记和字符集Tokens and character sets C++程序文本由Tokens(标记)和空格组成。标记是对编译器有用的 C++ 程序的最小元素。 C++ 分析器可识别以下类型的Token：  Keywords （关键字） Identifiers（标识符） Numeric, Boolean and Pointer Literals（数字，布尔值，指针文本） String and Cha">
+    <meta name="description" content="Haskell的类型类类型类(typeclass)是定义行为的接口。类似于其他语言中的interface，比如C++的抽象接口类。如果一个类型是某类型类的实例(instance)，那么他必须实现该类型定义的行为。千万不要将Haskell的类型类与面向对象语言中的类Class搞混淆 假设定义类一个类型类（接口）名字叫做吃饭，然后又定义了鸟、人、鱼作为吃饭类型类的实例，那么鸟、人、鱼类就需要实现怎么吃">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ModernC++&#x2F;标记和字符集">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2022/08/10/Tokens%20and%20character%20sets/index.html">
+<meta property="og:title" content="Haskell类型类">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/14/haskell-typeclas/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="标记和字符集Tokens and character sets C++程序文本由Tokens(标记)和空格组成。标记是对编译器有用的 C++ 程序的最小元素。 C++ 分析器可识别以下类型的Token：  Keywords （关键字） Identifiers（标识符） Numeric, Boolean and Pointer Literals（数字，布尔值，指针文本） String and Cha">
+<meta property="og:description" content="Haskell的类型类类型类(typeclass)是定义行为的接口。类似于其他语言中的interface，比如C++的抽象接口类。如果一个类型是某类型类的实例(instance)，那么他必须实现该类型定义的行为。千万不要将Haskell的类型类与面向对象语言中的类Class搞混淆 假设定义类一个类型类（接口）名字叫做吃饭，然后又定义了鸟、人、鱼作为吃饭类型类的实例，那么鸟、人、鱼类就需要实现怎么吃">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-10T04:14:20.000Z">
-<meta property="article:modified_time" content="2023-11-09T02:42:54.396Z">
+<meta property="article:published_time" content="2023-11-14T02:32:40.000Z">
+<meta property="article:modified_time" content="2023-11-14T08:25:41.077Z">
 <meta property="article:author" content="ClaudeRainer">
-<meta property="article:tag" content="Modern_C++">
+<meta property="article:tag" content="Haskell">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>ModernC++/标记和字符集 - cvrain-以空间追逐时间</title>
+  <title>Haskell类型类 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ModernC++/标记和字符集"></span>
+            <span id="subtitle" data-typed-text="Haskell类型类"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-10 12:14" pubdate>
-          2022年8月10日 中午
+        <time datetime="2023-11-14 10:32" pubdate>
+          2023年11月14日 上午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          2.8k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          16 分钟
+          24 分钟
         
       </span>
     
@@ -268,37 +268,64 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">ModernC++/标记和字符集</h1>
+            <h1 id="seo-header">Haskell类型类</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="标记和字符集"><a href="#标记和字符集" class="headerlink" title="标记和字符集"></a>标记和字符集</h1><p><small>Tokens and character sets</small></p>
-<p>C++程序文本由Tokens(标记)和空格组成。标记是对编译器有用的 C++ 程序的最小元素。 C++ 分析器可识别以下类型的Token：</p>
+                <h1 id="Haskell的类型类"><a href="#Haskell的类型类" class="headerlink" title="Haskell的类型类"></a>Haskell的类型类</h1><p>类型类(<code>typeclass</code>)是定义行为的接口。类似于其他语言中的<code>interface</code>，比如C++的抽象接口类。如果一个类型是某类型类的实例(instance)，那么他必须实现该类型定义的行为。<strong>千万不要将Haskell的类型类与面向对象语言中的类Class搞混淆</strong></p>
+<p>假设定义类一个类型类（接口）名字叫做吃饭，然后又定义了鸟、人、鱼作为吃饭类型类的实例，那么鸟、人、鱼类就需要实现怎么吃饭这个行为。如果用C++的语言表达，可能是需要创建一个类，在里面声明了一个抽象函数(<code>virtual void eat() = 0</code>), 其他的类继承了这个类，那么必须要实现它。<br><em><strong>不过个人觉得，这个思想的方法，Rust中的trait似乎更贴切一点。</strong></em></p>
+<p>使用<code>:t (==)</code> 查看 &#x3D;&#x3D; 在Haskell中的函数原型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">ghci&gt; :t (==)<br>(==) :: Eq a =&gt; a -&gt; a -&gt; Bool<br><br>ghci&gt; :t (+)<br>(+) :: Num a =&gt; a -&gt; a -&gt; a<br></code></pre></td></tr></table></figure>
+<p>这里出现了一个新的符号 &#x3D;&gt; (实际在上篇文章中使用到了)，它的左侧叫做类型约束，这里的 &#x3D;&#x3D; 和 + 分别约束了使用 Eq和Num两个类。</p>
+<h2 id="Eq-类型类"><a href="#Eq-类型类" class="headerlink" title="Eq 类型类"></a>Eq 类型类</h2><p>用于判断相等性的类型，Eq类定义了等式(&#x3D;&#x3D;)和不等式(&#x2F;&#x3D;)。由Prelude导出的所有基本数据类型都是Eq的实例，并且Eq可以为其成分也是Eq实例的任何数据类型派生。 Haskell官方没有定义Eq一定要实现什么。 然而，&#x3D;&#x3D;通常期望实现等价关系，其中两个比较相等的值通过“公共”函数无法区分，“公共”函数是不允许查看实现细节的函数。 例如，对于表示非规范化自然数模100的类型，“公共”函数不会在1和201之间产生差异。</p>
+<p><strong>最小完整定义</strong></p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Haskell">(==) | (/=)<br></code></pre></td></tr></table></figure>
+
+<h2 id="Ord-类型类"><a href="#Ord-类型类" class="headerlink" title="Ord 类型类"></a>Ord 类型类</h2><p>Ord 类用于可比较大小的类型。 Ord的实例可以为任何组成类型为Ord的用户定义数据类型派生。数据声明中构造函数的声明顺序决定派生Ord实例的顺序。Ordering数据类型允许一次比较来确定两个对象的精确排序。<br>和Eq类似，取两个参数，返回一个Bool类型的值，用来表示是否满足对应的比较关系</p>
+<p><strong>最小完整定义</strong></p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">compare</span> | (&lt;=)<br></code></pre></td></tr></table></figure>
+
+<h2 id="Show-类型类"><a href="#Show-类型类" class="headerlink" title="Show 类型类"></a>Show 类型类</h2><p>将值转换为可读字符串。</p>
+<p>Show的派生实例具有以下属性，它们与Read的派生实例兼容:</p>
 <ul>
-<li>Keywords （关键字）</li>
-<li>Identifiers（标识符）</li>
-<li>Numeric, Boolean and Pointer Literals（数字，布尔值，指针文本）</li>
-<li>String and Character Literals（字符串和字符文本）</li>
-<li>User-Defined Literals（用户定义的文本）</li>
-<li>Operators（运算符&#x2F;操作符）</li>
-<li>Punctuators（标点符号）<blockquote>
-<p><strong>译注：</strong><br>词法分析是编译过程的第一步工作，将字符流转换为单词序列，输出到中间文件中，这个中间文件将会作为语法分析程序的输入，进行下一步工作。<br>token可翻译为标记，是构成源代码的最小单位，从输入字符流中生成标记的过程叫作标记化（ tokenization ），在这个过程中，词法分析器还会对标记进行分类。编译器会从左到右扫描我们的源代码，将其中的字符流分割成一个一个的 token。</p>
-</blockquote>
-</li>
+<li>show的结果是一个语法正确的Haskell表达式，只包含常量，只要在声明类型时有效地声明了固定性。它只包含在数据类型、括号和空格中定义的构造函数名称。当使用带标签的构造函数字段时，还会使用大括号、逗号、字段名和等号。</li>
+<li>如果构造函数被定义为中缀操作符，那么showsPrec将生成构造函数的中缀应用。</li>
+<li>如果x中的顶级构造函数的优先级小于d(忽略结合性)，则表示将被括在括号中。因此，如果d为0，则结果永远不会被括号包围;如果d是11，则它总是用圆括号括起来，除非它是原子表达式。</li>
+<li>如果构造函数是使用记录语法定义的，那么show将生成记录语法表单，其中字段的顺序与原始声明的顺序相同。</li>
 </ul>
-<h2 id="Token通常用空格进行切分，可以是一个或多个：-空白-水平或垂直制表符-新行-表单源-注释"><a href="#Token通常用空格进行切分，可以是一个或多个：-空白-水平或垂直制表符-新行-表单源-注释" class="headerlink" title="Token通常用空格进行切分，可以是一个或多个：-   空白-   水平或垂直制表符-   新行-   表单源-   注释"></a>Token通常用空格进行切分，可以是一个或多个：<br>-   空白<br>-   水平或垂直制表符<br>-   新行<br>-   表单源<br>-   注释</h2><h2 id="基本源字符集"><a href="#基本源字符集" class="headerlink" title="基本源字符集"></a>基本源字符集</h2><p>C++标准指定了基本源字符集用于源文件中，要表示此集合之外的字符，可以使用通用字符名称指定其他字符。MSVC编译器允许实现其他字符。要表示此集合之外的字符，可以使用通用字符名称指定其他字符。<br><code>a b c d e f g h i j k l m n o p q r s t u v w x y z</code><br><code>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code><br><code>0 1 2 3 4 5 6 7 8 9</code><br><code>_ &#123; &#125; [ ] # ( ) &lt; &gt; % : ; . ? * + - / ^ &amp; | ~ ! = , \ &quot; &#39;</code></p>
-<p><strong>特用于Microsoft的内容</strong><br>MSVC 包含 $ 字符作为基本源字符集的成员。MSVC 还允许根据文件编码在源文件中使用一组额外的字符。在默认情况下，Visual Studio使用默认代码页存储资源文件。当资源文件使用特定区域或Unicode代码页保存时，MSVC允许你在源代码中使用该代码页的任何字符，但基本源字符集中不允许的控制代码除外。举个例子，您可以通过日文代码页在注释，标识符或字符串中使用日文。MSVC不允许无法转换成为多字节字符和Unicode位码的字符序列。根据编译器选项，并非所有允许的字符都可能出现在标识符中。有关详细信息，请参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/identifiers-cpp?view=msvc-170">标识符</a>。</p>
-<blockquote>
-<p><strong>译注</strong><br>在使用visual studio时如果使用WinAPI例如&lt;Windows.h&gt;便可以遇到LPWSTR等字符类型，这是一种宽字符类型也可称作多字节字符。在MSVC中使用L”xxx”即表示用宽字符输出此字符串，也可在项目设置中设置相关配置，设置默认使用宽字符。</p>
-</blockquote>
-<hr>
-<h2 id="通用字符名称"><a href="#通用字符名称" class="headerlink" title="通用字符名称"></a>通用字符名称</h2><p>由于C++程序可以使用比基础字符集更多的字符，您可以使用通用字符名称以可移植的方式指定这些字符。通用字符名称由表示 Unicode 码位的字符序列组成。可以使用两种类型进行表述，使用<code>UNNNNNNNN</code>来代表为 U+NNNNNNNN的unicode位码字符，NNNNNNNN 是八位的十六进制码位数字。使用四位的 <code>\uNNNN</code> 表示形式为 U+0000NNNN 的 Unicode 码位。<br>通用字符名称可用于标识符以及字符串和字符文字。通用字符名称不能被用于表示0xD800-0xDFFF之间之内的代理项码位，编译器会自动生成任何所需的代理项。其他限制适用于可在标识符中使用的通用字符名称。详细信息请参阅 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/identifiers-cpp?view=msvc-170">Identifiers</a> 和 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/string-and-character-literals-cpp?view=msvc-170">String and Character Literals</a>。</p>
-<p><strong>特用于Microsoft的内容</strong><br>Microsoft C++ 编译器可互换地处理通用字符名称形式和文字形式的字符。例如，您可以使用通用字符名称形式声明标识符，并以文字形式使用它：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">auto</span> \u30AD = <span class="hljs-number">42</span>; <span class="hljs-comment">// \u30AD is &#x27;キ&#x27;</span><br><span class="hljs-keyword">if</span> (キ == <span class="hljs-number">42</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">// \u30AD and キ are the same to the compiler</span><br></code></pre></td></tr></table></figure>
-<p>Windows 剪贴板上的扩展字符的格式特用于应用程序区域设置。 从另一个应用程序剪切这些字符并将其粘贴到你的代码中可能会引入意外的字符编码。 这可能会导致您的代码中出现不知原因的代码错误。我们建议在粘贴扩展的字符之前将源文件编码设置为 Unicode 代码页，以及使用 IME 或字符映射应用生成扩展的字符。</p>
-<hr>
-<h2 id="执行字符集"><a href="#执行字符集" class="headerlink" title="执行字符集"></a>执行字符集</h2><p><em>执行字符集</em> 表示可在编译的程序中显示的字符和字符串。 这些字符集包括源文件中允许的所有字符，以及表示警报、后空、回车符和 null 字符的控制字符。 执行字符集具有特定于区域设置的表示形式。</p>
+<p>除函数以外的所有类型都是SHow的实例，可以使用show函数将值转换为字符串</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">ghci&gt; <span class="hljs-built_in">read</span> 3<br><span class="hljs-string">&quot;3&quot;</span><br><br>ghci&gt; <span class="hljs-built_in">read</span> 5.334<br><span class="hljs-string">&quot;5.334&quot;</span><br><br>ghci&gt; <span class="hljs-built_in">read</span> True<br><span class="hljs-string">&quot;True&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>最小完整定义</strong></p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">showsPrec</span> | show<br></code></pre></td></tr></table></figure>
+
+<h2 id="Read-类型类"><a href="#Read-类型类" class="headerlink" title="Read 类型类"></a>Read 类型类</h2><p>解析字符串，生成值。</p>
+<p>Read的派生实例做出以下假设，这些假设派生了Show obey的实例:</p>
+<ul>
+<li>如果构造函数被定义为中缀操作符，那么派生的Read实例将只解析构造函数的中缀应用程序(而不是前缀形式)。</li>
+<li>结合性不用于减少括号的出现，尽管可以使用优先级。</li>
+<li>如果构造函数是使用记录语法定义的，则派生的Read将只解析记录语法形式，而且，字段必须按照与原始声明相同的顺序给出。</li>
+<li>派生的Read实例允许在输入字符串的令牌之间使用任意的Haskell空白。还允许使用额外的括号。</li>
+</ul>
+<p>Read可以看做Show相反的类型类，之前提到的所有类都是Read类型，read函数可以去一个字符串作为参数并转为Read的某个实例的类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Bash">ghci &gt; <span class="hljs-built_in">read</span> <span class="hljs-string">&quot;True&quot;</span> || False<br>True<br><br>ghci &gt; <span class="hljs-built_in">read</span> <span class="hljs-string">&quot;8.2&quot;</span> + 3.8<br>12.0<br></code></pre></td></tr></table></figure>
+
+<p>如果尝试使用<code>read &quot;4&quot;</code>来得到生成一个数字4的效果，那么这是不可能的，会得到一个大大的报错。因为GHCI并不能准确知道到底要个什么玩意来满足屏幕面前的你<br>所以如果在没有一个表达式的情况下，或者说最好给read转换增加一个显示的类型注解</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Bash">ghci&gt; <span class="hljs-string">&quot;5&quot;</span> :: Int<br>5<br><br>ghci&gt; <span class="hljs-string">&quot;5&quot;</span> :: Float<br>5.0<br></code></pre></td></tr></table></figure>
+
+<p><strong>最小完整定义</strong></p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">readsPrec</span> | readPrec<br></code></pre></td></tr></table></figure>
+
+<h2 id="Enum-类型类"><a href="#Enum-类型类" class="headerlink" title="Enum 类型类"></a>Enum 类型类</h2><p>Enum的实例对象都是可连续的（枚举），每一个值都有相应的后继和前驱，分别可以通过<code>succ</code>和<code>pred</code>得到。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Bash">ghci&gt; [<span class="hljs-string">&#x27;a&#x27;</span>..<span class="hljs-string">&#x27;e&#x27;</span>]<br><span class="hljs-string">&quot;abcde&quot;</span><br><br>ghci&gt; succ <span class="hljs-string">&#x27;B&#x27;</span><br><span class="hljs-string">&#x27;C&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Bounded-类型类"><a href="#Bounded-类型类" class="headerlink" title="Bounded 类型类"></a>Bounded 类型类</h2><p>类型存在一个上限和下限，分别可以通过maxBound和minBound两个函数获得</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Bash">ghci&gt; minBound ::Int<br>-9223372036854775808<br><br>ghci&gt; maxBound ::Char<br><span class="hljs-string">&#x27;\1114111&#x27;</span><br></code></pre></td></tr></table></figure>
+<h2 id="Num-类型类"><a href="#Num-类型类" class="headerlink" title="Num 类型类"></a>Num 类型类</h2><p>表示一个数值的类型类，它的实例都具有数的特征。<br>只有具有Show和Eq的实例类型，才可以成为Num类型类的实例</p>
+<h2 id="Floating-类型类"><a href="#Floating-类型类" class="headerlink" title="Floating 类型类"></a>Floating 类型类</h2><p>包含Float和Double两种浮点类型，用于存储浮点数。<br>使用Floating类型类的实例类型作为参数或者返回类型的函数，一般需要用到浮点数进行某种计算</p>
+<h2 id="Integral-类型类"><a href="#Integral-类型类" class="headerlink" title="Integral 类型类"></a>Integral 类型类</h2><p>另一种表示数值的类型类。Num类型类包含了实数和整数相关的所有类型，Integral只包含了整数。</p>
+<p>详细的对于类型类的介绍可以参考以下官方文档链接：<br><a target="_blank" rel="noopener" href="https://hackage.haskell.org/package/ghc-prim-0.7.0/docs/GHC-Classes.html">https://hackage.haskell.org/package/ghc-prim-0.7.0/docs/GHC-Classes.html</a><br><a target="_blank" rel="noopener" href="https://hackage.haskell.org/package/base-4.15.1.0/docs/GHC-Show.html#t:Show">https://hackage.haskell.org/package/base-4.15.1.0/docs/GHC-Show.html#t:Show</a><br><a target="_blank" rel="noopener" href="https://hackage.haskell.org/package/base-4.15.1.0/docs/Text-Read.html#v:Read">https://hackage.haskell.org/package/base-4.15.1.0/docs/Text-Read.html#v:Read</a></p>
 
                 
               </div>
@@ -311,7 +338,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Modern-C/" class="print-no-link">#Modern_C++</a>
+        <a href="/tags/Haskell/" class="print-no-link">#Haskell</a>
       
     </div>
   
@@ -323,8 +350,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ModernC++/标记和字符集</div>
-      <div>http://cvrain.cloudvl.cn/2022/08/10/Tokens and character sets/</div>
+      <div>Haskell类型类</div>
+      <div>http://cvrain.cloudvl.cn/2023/11/14/haskell-typeclas/</div>
     </div>
     <div class="license-meta">
       
@@ -336,7 +363,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年8月10日</div>
+          <div>2023年11月14日</div>
         </div>
       
       
@@ -368,18 +395,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/11/Tips-mingw/" title="Windows上mingw C/C++环境搭建">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Windows上mingw C/C++环境搭建</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/10/Lexical-conventions/" title="ModernC++/词法约定">
-                        <span class="hidden-mobile">ModernC++/词法约定</span>
+                      <a href="/2023/11/13/haskell-type/" title="Haskell中的类型">
+                        <span class="hidden-mobile">Haskell中的类型</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
