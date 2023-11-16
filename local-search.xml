@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>haskell-where</title>
+    <link href="/2023/11/16/haskell-where/"/>
+    <url>/2023/11/16/haskell-where/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Haskell-where"><a href="#Haskell-where" class="headerlink" title="Haskell-where"></a>Haskell-where</h1><p> 引入一个小案例<br> <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">bmiTest</span> :: <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">String</span><br><span class="hljs-title">bmiTest</span> weight height<br>    | weight / height ^ <span class="hljs-number">2</span> &lt;= <span class="hljs-number">18.5</span> = <span class="hljs-string">&quot;Underweight&quot;</span><br>    | weight / height ^ <span class="hljs-number">2</span> &lt;= <span class="hljs-number">25</span> = <span class="hljs-string">&quot;Normal&quot;</span><br>    | weight / height ^ <span class="hljs-number">2</span> &lt;= <span class="hljs-number">30</span> = <span class="hljs-string">&quot;Overweight&quot;</span><br>    | otherwise = <span class="hljs-string">&quot;Obese&quot;</span><br></code></pre></td></tr></table></figure><br>这是一个简单的bmi指数测试函数，使用了前一篇的guard完成，这样写挺好，但是还是不够完美。这里对bmi数值有三次重复的计算，如果输入的数据走到了otherwise就会算三次，血亏！<br>让我们稍加修改一下代码：</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">bmiTestV2</span> :: <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">String</span><br><span class="hljs-title">bmiTestV2</span> weight height<br>    | bmi &lt;= underWeight = <span class="hljs-string">&quot;Underweight&quot;</span><br>    | bmi &lt;= normal = <span class="hljs-string">&quot;Normal&quot;</span><br>    | bmi &lt;= overWeight = <span class="hljs-string">&quot;Overweight&quot;</span><br>    | otherwise = <span class="hljs-string">&quot;Obese&quot;</span><br>    <span class="hljs-keyword">where</span> bmi = weight / height ^ <span class="hljs-number">2</span><br>          underWeight = <span class="hljs-number">18.5</span><br>          normal = <span class="hljs-number">25</span><br>          overWeight = <span class="hljs-number">30</span><br></code></pre></td></tr></table></figure><p>看着代码应该就明白这个怎么回事了，但是有一点需要吐槽，就是这个缩进问题，他不是像python那样固定缩进到一个代码块就ok了，而是变量定义都必须对齐到同一列，如果不这样规范，Haskell就会搞不清楚他们各自位于哪个代码块中了。</p><h2 id="where的作用域"><a href="#where的作用域" class="headerlink" title="where的作用域"></a><code>where</code>的作用域</h2><p>函数where部分定义的名字只对本函数可见，所以不用担心存在大量的全局函数污染代码。当然如果想要一个全局变量，那么反而是要自己定义一下的。</p><h2 id="where中的模式模式匹配"><a href="#where中的模式模式匹配" class="headerlink" title="where中的模式模式匹配"></a><code>where</code>中的模式模式匹配</h2><p>在where中也可以使用到模式匹配，修改前面的BMI函数</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">bmiTestV2</span> :: <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">String</span><br><span class="hljs-title">bmiTestV2</span> weight height<br>    | bmi &lt;= underWeight = <span class="hljs-string">&quot;Underweight&quot;</span><br>    | bmi &lt;= normal = <span class="hljs-string">&quot;Normal&quot;</span><br>    | bmi &lt;= overWeight = <span class="hljs-string">&quot;Overweight&quot;</span><br>    | otherwise = <span class="hljs-string">&quot;Obese&quot;</span><br>    <span class="hljs-keyword">where</span> bmi = weight / height ^ <span class="hljs-number">2</span><br>          (underWright, normal, overHeight) = (<span class="hljs-number">18.5</span>, <span class="hljs-number">25.0</span>, <span class="hljs-number">30.0</span>)<br></code></pre></td></tr></table></figure><h2 id="where块中的函数"><a href="#where块中的函数" class="headerlink" title="where块中的函数"></a><code>where</code>块中的函数</h2><p>在where中也可以定义函数，美滋滋属于是了。</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">calcBmis</span> :: [(<span class="hljs-type">Double</span>. <span class="hljs-type">Double</span>)] -&gt; [<span class="hljs-type">Double</span>]<br><span class="hljs-title">calcBmis</span> xs = [bmi w h | (w, h) &lt;- xs]<br><span class="hljs-keyword">where</span> bmi weight height = weight / height ^ <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Haskell</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Haskell函数的语法 - 哨卫</title>
+    <link href="/2023/11/16/haskell-guard/"/>
+    <url>/2023/11/16/haskell-guard/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Haskell函数的语法-哨卫"><a href="#Haskell函数的语法-哨卫" class="headerlink" title="Haskell函数的语法 - 哨卫"></a>Haskell函数的语法 - 哨卫</h1><p><strong>Haskell - guard</strong></p><p>在Haskell中，guard是一种编程技巧，用于在满足某个条件时执行一段代码，否则跳过该代码块。guard通常用于控制流语句（如if、elif和else）中，用于在满足某个条件时执行相应的代码。<br>除了使用其他语言基本都会存在的控制流语句之外，还可以使用**|** 来进行条件分支的处理，可读性更高而且与模式匹配契合的非常好</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">scoreLevel</span> :: <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">String</span><br><span class="hljs-title">scoreLevel</span> score<br>    | score &lt; <span class="hljs-number">60</span> = <span class="hljs-string">&quot;Failed!&quot;</span><br>    | score &lt; <span class="hljs-number">70</span> = <span class="hljs-string">&quot;Passed!&quot;</span><br>    | score &lt; <span class="hljs-number">80</span> = <span class="hljs-string">&quot;Good!&quot;</span><br>    | score &lt; <span class="hljs-number">90</span> = <span class="hljs-string">&quot;Excellent!&quot;</span><br>    | otherwise = <span class="hljs-string">&quot;Perfect!&quot;</span><br><br><span class="hljs-title">main</span> = <span class="hljs-keyword">do</span><br>    print (scoreLevel <span class="hljs-number">60</span>)<br>    print (scoreLevel <span class="hljs-number">70</span>)<br>    print (scoreLevel <span class="hljs-number">80</span>)<br>    print (scoreLevel <span class="hljs-number">90</span>)<br></code></pre></td></tr></table></figure><p>这段代码定义了一个名为<code>scoreLevel</code>的函数，接受一个<code>Double</code>类型的参数<code>score</code>，并返回一个字符串。该函数根据<code>score</code>的值，返回不同的字符串。otherwise会捕获剩下的所有条件。<br>一个竖线就是一个布尔表达式，如果计算是True就会选择对应的函数进入，如果是False就会走下面的表达式。一句题外话， |  不像 switch..case一样，进入一个case后就会执行下面的case所有语句。</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">myCompare</span> :: (<span class="hljs-type">Ord</span> a) =&gt; a -&gt; a -&gt; <span class="hljs-type">Ordering</span><br><span class="hljs-title">myCompare</span> x y<br>    | x &gt; y = <span class="hljs-type">GT</span><br>    | x == y = <span class="hljs-type">EQ</span><br>    | otherwise = <span class="hljs-type">LT</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Haskell</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Haskell函数的语法 -1</title>
     <link href="/2023/11/16/haskell-pattern-matching/"/>
     <url>/2023/11/16/haskell-pattern-matching/</url>
