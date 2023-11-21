@@ -225,6 +225,79 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2023/11/21/haskell-case/" target="_self">
+          haskell-case
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/21/haskell-case/" target="_self">
+        <div>
+          Haskell - case函数中模板匹配的本质实际上就是case语句的语法糖。case语句在函数式编程中用途往往比命令式要大很多，因为这样可以很流畅的定义出一个没有指令流程的函数，使得函数的定义更加流畅。举一个简单的例子 123firstLetterV1 :: [a] -&gt; afirstLetterV1 [] = error &quot;Null list&quot;firstLetter
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-21 14:36" pubdate>
+              2023-11-21
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/21/Haskell-let/" target="_self">
+          Haskell - let
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/21/Haskell-let/" target="_self">
+        <div>
+          Haskell - let我们可以在函数中使用where比较轻松的在函数底部绑定变量，他对包括所有guard在内的整个函数可见。可我们还想要更多的功能，比如函数处理过程中可能需要一些局部变量，或者做一些临时运算，那么let可以完成这个功能。 12345678cylinder :: Double -&gt; Double -&gt; Doublecylinder r h =     let side
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-21 10:45" pubdate>
+              2023-11-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Haskell/">#Haskell</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/11/18/java-example-2/" target="_self">
           java小实验-初步使用类
         </a>
@@ -268,14 +341,14 @@
       <h2 class="index-header">
         
         <a href="/2023/11/16/haskell-where/" target="_self">
-          haskell-where
+          Haskell - where
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/11/16/haskell-where/" target="_self">
         <div>
-          Haskell-where 引入一个小案例 123456bmiTest :: Double -&gt; Double -&gt; StringbmiTest weight height    | weight / height ^ 2 &lt;= 18.5 = &quot;Underweight&quot;    | weight / height ^ 2 &lt;= 25 = &quot;Nor
+          Haskell - where 引入一个小案例 123456bmiTest :: Double -&gt; Double -&gt; StringbmiTest weight height    | weight / height ^ 2 &lt;= 18.5 = &quot;Underweight&quot;    | weight / height ^ 2 &lt;= 25 = &quot;N
         </div>
       </a>
 
@@ -308,14 +381,14 @@
       <h2 class="index-header">
         
         <a href="/2023/11/16/haskell-guard/" target="_self">
-          Haskell函数的语法 - 哨卫
+          Haskell - guard
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/11/16/haskell-guard/" target="_self">
         <div>
-          Haskell函数的语法 - 哨卫Haskell - guard 在Haskell中，guard是一种编程技巧，用于在满足某个条件时执行一段代码，否则跳过该代码块。guard通常用于控制流语句（如if、elif和else）中，用于在满足某个条件时执行相应的代码。除了使用其他语言基本都会存在的控制流语句之外，还可以使用**|** 来进行条件分支的处理，可读性更高而且与模式匹配契合的非常好 12345
+          Haskell - guardHaskell - guard 在Haskell中，guard是一种编程技巧，用于在满足某个条件时执行一段代码，否则跳过该代码块。guard通常用于控制流语句（如if、elif和else）中，用于在满足某个条件时执行相应的代码。除了使用其他语言基本都会存在的控制流语句之外，还可以使用**|** 来进行条件分支的处理，可读性更高而且与模式匹配契合的非常好 1234567
         </div>
       </a>
 
@@ -348,14 +421,14 @@
       <h2 class="index-header">
         
         <a href="/2023/11/16/haskell-pattern-matching/" target="_self">
-          Haskell函数的语法 -1
+          Haskell - 模式匹配
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/11/16/haskell-pattern-matching/" target="_self">
         <div>
-          Haskell函数的语法 -1模式匹配引子：假设我们要一个函数，这个函数可以处理一个数是不是7。按照之前的思路，我们可以这样写： 123isSevenV1 x = if x == 7 then &quot;Is seven&quot; else &quot;Is not seven&quot;main = do	print $ isSevenV1 那么如果是判断一个数的是0-10中的哪一个，是否这
+          Haskell - 模式匹配模式匹配引子：假设我们要一个函数，这个函数可以处理一个数是不是7。按照之前的思路，我们可以这样写： 123isSevenV1 x = if x == 7 then &quot;Is seven&quot; else &quot;Is not seven&quot;main = do	print $ isSevenV1 那么如果是判断一个数的是0-10中的哪一个，是否这样
         </div>
       </a>
 
@@ -547,91 +620,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/12/haskell-tuple/" target="_self">
-          简单玩一下元组
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/12/haskell-tuple/" target="_self">
-        <div>
-          简单玩一下元组有意思的是Haskell中的元组，不仅如同Python中一样可以随便放东西，而且可以当作结构体用如果元组有里面只有两个元素，就可以当作键值对用，真不错啊真不错~ 123456789101112131415161718numberAndNumber = (1,3)triples = [(a,b,c) | a &lt;- [1..10], b &lt;- [1..10], c &lt;-
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-12 12:01" pubdate>
-              2023-11-12
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Haskell/">#Haskell</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/11/haskell-list/" target="_self">
-          浅学一下Haskell中的列表
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/11/haskell-list/" target="_self">
-        <div>
-          浅学一下Haskell中的列表 在 Haskell 中，List 就像现实世界中的购物单一样重要。它是最常用的资料结构，并且十分强大，灵活地使用它可以解决很多问题。Haskell中的列表是一种用来存储相同类型的元素的数据结构。列表可以用方括号和逗号来构造，例如[1, 2, 3]是一个包含三个整数的列表。列表也可以用冒号操作符来构造，冒号操作符可以将一个元素添加到一个已有的列表的开头，例如1:[2,
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-11 12:11" pubdate>
-              2023-11-11
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Haskell/">#Haskell</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

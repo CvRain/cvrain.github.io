@@ -16,22 +16,22 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="Haskell-where 引入一个小案例 123456bmiTest :: Double -&gt; Double -&gt; StringbmiTest weight height    | weight &#x2F; height ^ 2 &lt;&#x3D; 18.5 &#x3D; &quot;Underweight&quot;    | weight &#x2F; height ^ 2 &lt;&#x3D; 25 &#x3D; &quot;Nor">
+    <meta name="description" content="Haskell - where 引入一个小案例 123456bmiTest :: Double -&gt; Double -&gt; StringbmiTest weight height    | weight &#x2F; height ^ 2 &lt;&#x3D; 18.5 &#x3D; &quot;Underweight&quot;    | weight &#x2F; height ^ 2 &lt;&#x3D; 25 &#x3D; &quot;N">
 <meta property="og:type" content="article">
-<meta property="og:title" content="haskell-where">
+<meta property="og:title" content="Haskell - where">
 <meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/16/haskell-where/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="Haskell-where 引入一个小案例 123456bmiTest :: Double -&gt; Double -&gt; StringbmiTest weight height    | weight &#x2F; height ^ 2 &lt;&#x3D; 18.5 &#x3D; &quot;Underweight&quot;    | weight &#x2F; height ^ 2 &lt;&#x3D; 25 &#x3D; &quot;Nor">
+<meta property="og:description" content="Haskell - where 引入一个小案例 123456bmiTest :: Double -&gt; Double -&gt; StringbmiTest weight height    | weight &#x2F; height ^ 2 &lt;&#x3D; 18.5 &#x3D; &quot;Underweight&quot;    | weight &#x2F; height ^ 2 &lt;&#x3D; 25 &#x3D; &quot;N">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-16T12:17:27.000Z">
-<meta property="article:modified_time" content="2023-11-16T14:57:37.303Z">
+<meta property="article:modified_time" content="2023-11-21T02:43:33.348Z">
 <meta property="article:author" content="ClaudeRainer">
 <meta property="article:tag" content="Haskell">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>haskell-where - cvrain-以空间追逐时间</title>
+  <title>Haskell - where - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="haskell-where"></span>
+            <span id="subtitle" data-typed-text="Haskell - where"></span>
           
         </div>
 
@@ -268,12 +268,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">haskell-where</h1>
+            <h1 id="seo-header">Haskell - where</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Haskell-where"><a href="#Haskell-where" class="headerlink" title="Haskell-where"></a>Haskell-where</h1><p> 引入一个小案例<br> <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">bmiTest</span> :: <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">String</span><br><span class="hljs-title">bmiTest</span> weight height<br>    | weight / height ^ <span class="hljs-number">2</span> &lt;= <span class="hljs-number">18.5</span> = <span class="hljs-string">&quot;Underweight&quot;</span><br>    | weight / height ^ <span class="hljs-number">2</span> &lt;= <span class="hljs-number">25</span> = <span class="hljs-string">&quot;Normal&quot;</span><br>    | weight / height ^ <span class="hljs-number">2</span> &lt;= <span class="hljs-number">30</span> = <span class="hljs-string">&quot;Overweight&quot;</span><br>    | otherwise = <span class="hljs-string">&quot;Obese&quot;</span><br></code></pre></td></tr></table></figure><br>这是一个简单的bmi指数测试函数，使用了前一篇的guard完成，这样写挺好，但是还是不够完美。这里对bmi数值有三次重复的计算，如果输入的数据走到了otherwise就会算三次，血亏！<br>让我们稍加修改一下代码：</p>
+                <h1 id="Haskell-where"><a href="#Haskell-where" class="headerlink" title="Haskell - where"></a>Haskell - where</h1><p> 引入一个小案例<br> <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">bmiTest</span> :: <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">String</span><br><span class="hljs-title">bmiTest</span> weight height<br>    | weight / height ^ <span class="hljs-number">2</span> &lt;= <span class="hljs-number">18.5</span> = <span class="hljs-string">&quot;Underweight&quot;</span><br>    | weight / height ^ <span class="hljs-number">2</span> &lt;= <span class="hljs-number">25</span> = <span class="hljs-string">&quot;Normal&quot;</span><br>    | weight / height ^ <span class="hljs-number">2</span> &lt;= <span class="hljs-number">30</span> = <span class="hljs-string">&quot;Overweight&quot;</span><br>    | otherwise = <span class="hljs-string">&quot;Obese&quot;</span><br></code></pre></td></tr></table></figure><br>这是一个简单的bmi指数测试函数，使用了前一篇的guard完成，这样写挺好，但是还是不够完美。这里对bmi数值有三次重复的计算，如果输入的数据走到了otherwise就会算三次，血亏！<br>让我们稍加修改一下代码：</p>
 <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">bmiTestV2</span> :: <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">String</span><br><span class="hljs-title">bmiTestV2</span> weight height<br>    | bmi &lt;= underWeight = <span class="hljs-string">&quot;Underweight&quot;</span><br>    | bmi &lt;= normal = <span class="hljs-string">&quot;Normal&quot;</span><br>    | bmi &lt;= overWeight = <span class="hljs-string">&quot;Overweight&quot;</span><br>    | otherwise = <span class="hljs-string">&quot;Obese&quot;</span><br>    <span class="hljs-keyword">where</span> bmi = weight / height ^ <span class="hljs-number">2</span><br>          underWeight = <span class="hljs-number">18.5</span><br>          normal = <span class="hljs-number">25</span><br>          overWeight = <span class="hljs-number">30</span><br></code></pre></td></tr></table></figure>
 <p>看着代码应该就明白这个怎么回事了，但是有一点需要吐槽，就是这个缩进问题，他不是像python那样固定缩进到一个代码块就ok了，而是变量定义都必须对齐到同一列，如果不这样规范，Haskell就会搞不清楚他们各自位于哪个代码块中了。</p>
 <h2 id="where的作用域"><a href="#where的作用域" class="headerlink" title="where的作用域"></a><code>where</code>的作用域</h2><p>函数where部分定义的名字只对本函数可见，所以不用担心存在大量的全局函数污染代码。当然如果想要一个全局变量，那么反而是要自己定义一下的。</p>
@@ -305,7 +305,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>haskell-where</div>
+      <div>Haskell - where</div>
       <div>http://cvrain.cloudvl.cn/2023/11/16/haskell-where/</div>
     </div>
     <div class="license-meta">
@@ -360,8 +360,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/16/haskell-guard/" title="Haskell函数的语法 - 哨卫">
-                        <span class="hidden-mobile">Haskell函数的语法 - 哨卫</span>
+                      <a href="/2023/11/16/haskell-guard/" title="Haskell - guard">
+                        <span class="hidden-mobile">Haskell - guard</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

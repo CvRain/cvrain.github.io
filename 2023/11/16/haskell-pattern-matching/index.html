@@ -16,22 +16,22 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="Haskell函数的语法 -1模式匹配引子：假设我们要一个函数，这个函数可以处理一个数是不是7。按照之前的思路，我们可以这样写： 123isSevenV1 x &#x3D; if x &#x3D;&#x3D; 7 then &quot;Is seven&quot; else &quot;Is not seven&quot;main &#x3D; do	print $ isSevenV1 那么如果是判断一个数的是0-10中的哪一个，是否这">
+    <meta name="description" content="Haskell - 模式匹配模式匹配引子：假设我们要一个函数，这个函数可以处理一个数是不是7。按照之前的思路，我们可以这样写： 123isSevenV1 x &#x3D; if x &#x3D;&#x3D; 7 then &quot;Is seven&quot; else &quot;Is not seven&quot;main &#x3D; do	print $ isSevenV1 那么如果是判断一个数的是0-10中的哪一个，是否这样">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Haskell函数的语法 -1">
+<meta property="og:title" content="Haskell - 模式匹配">
 <meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/16/haskell-pattern-matching/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="Haskell函数的语法 -1模式匹配引子：假设我们要一个函数，这个函数可以处理一个数是不是7。按照之前的思路，我们可以这样写： 123isSevenV1 x &#x3D; if x &#x3D;&#x3D; 7 then &quot;Is seven&quot; else &quot;Is not seven&quot;main &#x3D; do	print $ isSevenV1 那么如果是判断一个数的是0-10中的哪一个，是否这">
+<meta property="og:description" content="Haskell - 模式匹配模式匹配引子：假设我们要一个函数，这个函数可以处理一个数是不是7。按照之前的思路，我们可以这样写： 123isSevenV1 x &#x3D; if x &#x3D;&#x3D; 7 then &quot;Is seven&quot; else &quot;Is not seven&quot;main &#x3D; do	print $ isSevenV1 那么如果是判断一个数的是0-10中的哪一个，是否这样">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-16T08:03:25.000Z">
-<meta property="article:modified_time" content="2023-11-16T10:24:38.031Z">
+<meta property="article:modified_time" content="2023-11-21T02:43:01.465Z">
 <meta property="article:author" content="ClaudeRainer">
 <meta property="article:tag" content="Haskell">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Haskell函数的语法 -1 - cvrain-以空间追逐时间</title>
+  <title>Haskell - 模式匹配 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Haskell函数的语法 -1"></span>
+            <span id="subtitle" data-typed-text="Haskell - 模式匹配"></span>
           
         </div>
 
@@ -268,12 +268,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Haskell函数的语法 -1</h1>
+            <h1 id="seo-header">Haskell - 模式匹配</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Haskell函数的语法-1"><a href="#Haskell函数的语法-1" class="headerlink" title="Haskell函数的语法 -1"></a>Haskell函数的语法 -1</h1><h2 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h2><p>引子：假设我们要一个函数，这个函数可以处理一个数是不是7。按照之前的思路，我们可以这样写：</p>
+                <h1 id="Haskell-模式匹配"><a href="#Haskell-模式匹配" class="headerlink" title="Haskell - 模式匹配"></a>Haskell - 模式匹配</h1><h2 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h2><p>引子：假设我们要一个函数，这个函数可以处理一个数是不是7。按照之前的思路，我们可以这样写：</p>
 <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">isSevenV1</span> x = <span class="hljs-keyword">if</span> x == <span class="hljs-number">7</span> <span class="hljs-keyword">then</span> <span class="hljs-string">&quot;Is seven&quot;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;Is not seven&quot;</span><br><span class="hljs-title">main</span> = <span class="hljs-keyword">do</span><br>	print $ isSevenV1<br></code></pre></td></tr></table></figure>
 <p>那么如果是判断一个数的是0-10中的哪一个，是否这样写会稍微麻烦一点，不过可能想到使用列表<code>[(1,&quot;one&quot;),(2,&quot;two&quot;)]</code>这样来处理。 </p>
 <p>那么或许有一个不错的方法——模式匹配</p>
@@ -336,7 +336,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Haskell函数的语法 -1</div>
+      <div>Haskell - 模式匹配</div>
       <div>http://cvrain.cloudvl.cn/2023/11/16/haskell-pattern-matching/</div>
     </div>
     <div class="license-meta">
@@ -381,9 +381,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/16/haskell-guard/" title="Haskell函数的语法 - 哨卫">
+                      <a href="/2023/11/16/haskell-guard/" title="Haskell - guard">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Haskell函数的语法 - 哨卫</span>
+                        <span class="hidden-mobile">Haskell - guard</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

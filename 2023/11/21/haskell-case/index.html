@@ -16,22 +16,22 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="Haskell - guardHaskell - guard 在Haskell中，guard是一种编程技巧，用于在满足某个条件时执行一段代码，否则跳过该代码块。guard通常用于控制流语句（如if、elif和else）中，用于在满足某个条件时执行相应的代码。除了使用其他语言基本都会存在的控制流语句之外，还可以使用**|** 来进行条件分支的处理，可读性更高而且与模式匹配契合的非常好 1234567">
+    <meta name="description" content="Haskell - case函数中模板匹配的本质实际上就是case语句的语法糖。case语句在函数式编程中用途往往比命令式要大很多，因为这样可以很流畅的定义出一个没有指令流程的函数，使得函数的定义更加流畅。举一个简单的例子 123firstLetterV1 :: [a] -&gt; afirstLetterV1 [] &#x3D; error &quot;Null list&quot;firstLetter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Haskell - guard">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/16/haskell-guard/index.html">
+<meta property="og:title" content="haskell-case">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/21/haskell-case/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="Haskell - guardHaskell - guard 在Haskell中，guard是一种编程技巧，用于在满足某个条件时执行一段代码，否则跳过该代码块。guard通常用于控制流语句（如if、elif和else）中，用于在满足某个条件时执行相应的代码。除了使用其他语言基本都会存在的控制流语句之外，还可以使用**|** 来进行条件分支的处理，可读性更高而且与模式匹配契合的非常好 1234567">
+<meta property="og:description" content="Haskell - case函数中模板匹配的本质实际上就是case语句的语法糖。case语句在函数式编程中用途往往比命令式要大很多，因为这样可以很流畅的定义出一个没有指令流程的函数，使得函数的定义更加流畅。举一个简单的例子 123firstLetterV1 :: [a] -&gt; afirstLetterV1 [] &#x3D; error &quot;Null list&quot;firstLetter">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-16T11:45:41.000Z">
-<meta property="article:modified_time" content="2023-11-21T02:42:47.591Z">
+<meta property="article:published_time" content="2023-11-21T06:36:21.000Z">
+<meta property="article:modified_time" content="2023-11-21T08:29:38.648Z">
 <meta property="article:author" content="ClaudeRainer">
-<meta property="article:tag" content="Haskell">
+<meta property="article:tag" content="C,C++,Linux">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Haskell - guard - cvrain-以空间追逐时间</title>
+  <title>haskell-case - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Haskell - guard"></span>
+            <span id="subtitle" data-typed-text="haskell-case"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-16 19:45" pubdate>
-          2023年11月16日 晚上
+        <time datetime="2023-11-21 14:36" pubdate>
+          2023年11月21日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          778 字
+          786 字
         
       </span>
     
@@ -268,17 +268,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Haskell - guard</h1>
+            <h1 id="seo-header">haskell-case</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Haskell-guard"><a href="#Haskell-guard" class="headerlink" title="Haskell - guard"></a>Haskell - guard</h1><p><strong>Haskell - guard</strong></p>
-<p>在Haskell中，guard是一种编程技巧，用于在满足某个条件时执行一段代码，否则跳过该代码块。guard通常用于控制流语句（如if、elif和else）中，用于在满足某个条件时执行相应的代码。<br>除了使用其他语言基本都会存在的控制流语句之外，还可以使用**|** 来进行条件分支的处理，可读性更高而且与模式匹配契合的非常好</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">scoreLevel</span> :: <span class="hljs-type">Double</span> -&gt; <span class="hljs-type">String</span><br><span class="hljs-title">scoreLevel</span> score<br>    | score &lt; <span class="hljs-number">60</span> = <span class="hljs-string">&quot;Failed!&quot;</span><br>    | score &lt; <span class="hljs-number">70</span> = <span class="hljs-string">&quot;Passed!&quot;</span><br>    | score &lt; <span class="hljs-number">80</span> = <span class="hljs-string">&quot;Good!&quot;</span><br>    | score &lt; <span class="hljs-number">90</span> = <span class="hljs-string">&quot;Excellent!&quot;</span><br>    | otherwise = <span class="hljs-string">&quot;Perfect!&quot;</span><br><br><span class="hljs-title">main</span> = <span class="hljs-keyword">do</span><br>    print (scoreLevel <span class="hljs-number">60</span>)<br>    print (scoreLevel <span class="hljs-number">70</span>)<br>    print (scoreLevel <span class="hljs-number">80</span>)<br>    print (scoreLevel <span class="hljs-number">90</span>)<br></code></pre></td></tr></table></figure>
-<p>这段代码定义了一个名为<code>scoreLevel</code>的函数，接受一个<code>Double</code>类型的参数<code>score</code>，并返回一个字符串。该函数根据<code>score</code>的值，返回不同的字符串。otherwise会捕获剩下的所有条件。<br>一个竖线就是一个布尔表达式，如果计算是True就会选择对应的函数进入，如果是False就会走下面的表达式。一句题外话， |  不像 switch..case一样，进入一个case后就会执行下面的case所有语句。</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">myCompare</span> :: (<span class="hljs-type">Ord</span> a) =&gt; a -&gt; a -&gt; <span class="hljs-type">Ordering</span><br><span class="hljs-title">myCompare</span> x y<br>    | x &gt; y = <span class="hljs-type">GT</span><br>    | x == y = <span class="hljs-type">EQ</span><br>    | otherwise = <span class="hljs-type">LT</span><br></code></pre></td></tr></table></figure>
+                <h1 id="Haskell-case"><a href="#Haskell-case" class="headerlink" title="Haskell - case"></a>Haskell - case</h1><p>函数中模板匹配的本质实际上就是case语句的语法糖。case语句在函数式编程中用途往往比命令式要大很多，因为这样可以很流畅的定义出一个没有指令流程的函数，使得函数的定义更加流畅。<br>举一个简单的例子</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">firstLetterV1</span> :: [a] -&gt; a<br><span class="hljs-title">firstLetterV1</span> [] = error <span class="hljs-string">&quot;Null list&quot;</span><br><span class="hljs-title">firstLetterV1</span> [x:_] = x<br></code></pre></td></tr></table></figure>
+<p>完全等价于这段代码</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">firstLetterV2</span> :: [a] -&gt; a<br><span class="hljs-title">firstLetterV2</span> str = <span class="hljs-keyword">case</span> str <span class="hljs-keyword">of</span> [] -&gt; error <span class="hljs-string">&quot;Null list&quot;</span><br>                                (x:_) -&gt; x<br></code></pre></td></tr></table></figure>
 
+<p>从中我们可以看到case表达式语法长这个样子<br> <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">case</span> expression <span class="hljs-keyword">of</span> pattern -&gt; result<br>			 pattern -&gt; result<br>			 pattern -&gt; result<br>			 <span class="hljs-comment">-- ....</span><br></code></pre></td></tr></table></figure></p>
+<p>于是乎就可以写出这样的代码</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">scoreValue</span> :: <span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Char</span><br><span class="hljs-title">scoreValue</span> value =<br>    <span class="hljs-keyword">let</span> range = div value <span class="hljs-number">10</span><br>    <span class="hljs-keyword">in</span> <span class="hljs-keyword">case</span> range <span class="hljs-keyword">of</span> <span class="hljs-number">6</span> -&gt; <span class="hljs-string">&#x27;D&#x27;</span><br>                     <span class="hljs-number">7</span> -&gt; <span class="hljs-string">&#x27;C&#x27;</span><br>                     <span class="hljs-number">8</span> -&gt; <span class="hljs-string">&#x27;B&#x27;</span><br>                     <span class="hljs-number">9</span> -&gt; <span class="hljs-string">&#x27;A&#x27;</span><br>                     <span class="hljs-number">10</span> -&gt; <span class="hljs-string">&#x27;S&#x27;</span><br>                     _ -&gt; <span class="hljs-string">&#x27;F&#x27;</span><br><br><span class="hljs-title">describeList</span> :: [a] -&gt; <span class="hljs-type">String</span><br><span class="hljs-title">describeList</span> ls = <span class="hljs-string">&quot;The list is &quot;</span> ++ str ls<br>    <span class="hljs-keyword">where</span> str [] = <span class="hljs-string">&quot;empty&quot;</span><br>          str [x] = <span class="hljs-string">&quot;a singleton list&quot;</span><br>          str ls = <span class="hljs-string">&quot;a longer list&quot;</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -286,13 +288,6 @@
             <div>
               <div class="post-metas my-3">
   
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Haskell/" class="print-no-link">#Haskell</a>
-      
-    </div>
   
 </div>
 
@@ -302,8 +297,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Haskell - guard</div>
-      <div>http://cvrain.cloudvl.cn/2023/11/16/haskell-guard/</div>
+      <div>haskell-case</div>
+      <div>http://cvrain.cloudvl.cn/2023/11/21/haskell-case/</div>
     </div>
     <div class="license-meta">
       
@@ -315,7 +310,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月16日</div>
+          <div>2023年11月21日</div>
         </div>
       
       
@@ -347,18 +342,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/16/haskell-where/" title="Haskell - where">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Haskell - where</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/16/haskell-pattern-matching/" title="Haskell - 模式匹配">
-                        <span class="hidden-mobile">Haskell - 模式匹配</span>
+                      <a href="/2023/11/21/Haskell-let/" title="Haskell - let">
+                        <span class="hidden-mobile">Haskell - let</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
