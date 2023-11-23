@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Nim-常量和变量</title>
+    <link href="/2023/11/23/nim-constant-value/"/>
+    <url>/2023/11/23/nim-constant-value/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Nim中的常量和变量"><a href="#Nim中的常量和变量" class="headerlink" title="Nim中的常量和变量"></a>Nim中的常量和变量</h1><h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>常量在创建的是否就需要明确的绑定一个值，编译器必须能够在编译时计算常量声明中的表达式。</p><figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">const</span> x = <span class="hljs-string">&quot;abc&quot;</span>  <span class="hljs-comment"># 定一个一个值为&quot;abc&quot;的常量字符串:x</span><br></code></pre></td></tr></table></figure><p>如果要定义多个常量, 可以把const写在前面（ 让我感受到了go语言导包的味道）</p><figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">const</span><br>x = <span class="hljs-number">1</span><br>y = <span class="hljs-number">2</span><br>z = y + <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure><h2 id="let-语句"><a href="#let-语句" class="headerlink" title="let 语句"></a>let 语句</h2><p><code>let</code>语句的行为和<code>var</code>看起来差不多，都可以用来定义变量，但是<code>let</code>语句定义的变量在初始化完成之后就无法再次修改。可以理解是一个不可变变量。</p><figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">let</span> x = <span class="hljs-string">&quot;abc&quot;</span> <span class="hljs-comment"># 没毛病，申明一个新变量x并给他赋值为&quot;abc&quot;</span><br>x = <span class="hljs-string">&quot;xyz&quot;</span> <span class="hljs-comment"># 非法的，不可以再修改x的值</span><br></code></pre></td></tr></table></figure><p>let 和 const 的区别在于：let 引入了一个不能重新赋值的变量，const 的意思是“强制编译时评估并将其放入数据段”：</p><figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">const</span> input = readLine(<span class="hljs-built_in">stdin</span>) <span class="hljs-comment">#错误的，编译是无法明确input是什么</span><br><span class="hljs-keyword">let</span> input = readLine(<span class="hljs-built_in">stdin</span>) <span class="hljs-comment"># 正确的，他活了</span><br></code></pre></td></tr></table></figure><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>通过<code>var</code>声明的变量可进行多次赋值</p><figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">var</span> x = <span class="hljs-string">&quot;abc&quot;</span><br>x = <span class="hljs-string">&quot;xyz&quot;</span><br></code></pre></td></tr></table></figure><p>&#x3D; 是赋值运算符。赋值运算符可以重载。您可以使用单个赋值语句声明多个变量，并且所有变量将具有相同的值：</p><figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">var</span> x, y = <span class="hljs-number">3</span>  <span class="hljs-comment"># assigns 3 to the variables `x` and `y`</span><br>echo <span class="hljs-string">&quot;x &quot;</span>, x  <span class="hljs-comment"># outputs &quot;x 3&quot;</span><br>echo <span class="hljs-string">&quot;y &quot;</span>, y  <span class="hljs-comment"># outputs &quot;y 3&quot;</span><br>x = <span class="hljs-number">42</span>        <span class="hljs-comment"># changes `x` to 42 without changing `y`</span><br>echo <span class="hljs-string">&quot;x &quot;</span>, x  <span class="hljs-comment"># outputs &quot;x 42&quot;</span><br>echo <span class="hljs-string">&quot;y &quot;</span>, y  <span class="hljs-comment"># outputs &quot;y 3&quot;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Nim</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Nim-hello world</title>
     <link href="/2023/11/23/nim-hello/"/>
     <url>/2023/11/23/nim-hello/</url>
