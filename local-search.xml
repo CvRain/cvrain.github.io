@@ -4,6 +4,63 @@
   
   
   <entry>
+    <title>Nim-hello world</title>
+    <link href="/2023/11/23/nim-hello/"/>
+    <url>/2023/11/23/nim-hello/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Nim-Hello-world"><a href="#Nim-Hello-world" class="headerlink" title="Nim - Hello world!"></a>Nim - Hello world!</h1><p>这段时间一直在玩Haskell, 有点小腻。换个编程语言看看调节一下口味，本系列是对官方文档《 <a href="https://nim-lang.org/docs/tut1.html">Tutorial, part 1</a>》《  <a href="https://nim-lang.org/docs/tut2.html">Tutorial, part 2</a>》和《<a href="https://nim-lang.org/docs/tut3.html">Tutorial, part 3</a>》三部曲进行学习，然后增加了本人的一些思索过程，可全当作是官方学习手册的汉化版本。<br>话不多说，我们直接开始吧。上手，先来一个基本的小程序，问你的名字是什么，然后输出 “hi” + name + “!”。 </p><figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-comment"># This is a comment</span><br>echo <span class="hljs-string">&quot;What&#x27;s your name? &quot;</span><br><span class="hljs-keyword">var</span> name: <span class="hljs-type">string</span> = readLine(<span class="hljs-built_in">stdin</span>)<br>echo <span class="hljs-string">&quot;Hi, &quot;</span>, name, <span class="hljs-string">&quot;!&quot;</span><br></code></pre></td></tr></table></figure><p>将文件保存叫做greetings.nim， 之后就是编译运行他。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">nim compile --run greetings.nim<br></code></pre></td></tr></table></figure><p>添加上<code>--run</code>参数后便可以让nim编译文件通过后运行他，在文件名之后也可以添加运行参数。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">nim compile --run greetings.nim arg1 arg2<br></code></pre></td></tr></table></figure><p>常用的命令和开关都有缩写，因此您还可以使用：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">nim c -r greetings.nim<br></code></pre></td></tr></table></figure><p>在默认情况下编译采用的是<code>Debug</code>模式，如果想要以<code>Release</code>模式进行编译，需要显式添加参数<code>-d:release</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">nim c -d:release greetings.nim<br></code></pre></td></tr></table></figure><p>默认情况下，Nim 编译器会生成大量运行时检查，旨在满足您的调试乐趣。使用 -d:release 会关闭一些检查并打开优化。<br>对于基准测试或生产代码，请使用 -d:release 开关。要将性能与 C 等不安全语言进行比较，请使用 -d:danger 开关以获得有意义的、可比较的结果。否则，Nim 可能会受到 C 无法使用的检查的阻碍。</p><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>在使用到在字符串时，需要用双引号将字符串包起来，这样编译器才会认为这是一个字符串。 var 语句声明一个名为 name 的字符串类型的新变量，其值由 readLine 过程返回。由于编译器知道 readLine 返回一个字符串，因此您可以在声明中省略类型（这称为本地类型推断）。所以这也可以工作：</p><figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">var</span> name = readLine(<span class="hljs-built_in">stdin</span>)<br></code></pre></td></tr></table></figure><p>请注意，这基本上是 Nim 中存在的唯一类型推断形式：它是简洁性和可读性之间的良好折衷。  </p><p>“hello world”程序包含编译器已知的几个标识符：echo、readLine 等。这些内置函数在系统模块中声明，并由任何其他模块隐式导入。</p><h2 id="词汇元素"><a href="#词汇元素" class="headerlink" title="词汇元素"></a>词汇元素</h2><p>让我们更详细地看看 Nim 的词汇元素：与其他编程语言一样，Nim 由（字符串）文字、标识符、关键字、注释、运算符和其他标点符号组成。</p><h3 id="字符串和符号字面量"><a href="#字符串和符号字面量" class="headerlink" title="字符串和符号字面量"></a>字符串和符号字面量</h3><p>字符串需要被一对双引号包裹在里面，特殊的字符（转义字符）使用<code>\</code> 转义符号进行修饰，<code>\n</code>表示换行，<code>\t</code>表示制表符缩进，还有很多别的符号。如果我们不需要转义的字符串，而是一个原始文本，那么在字符串前添加一个<code>r</code>即可。</p><figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-string">r&quot;C:\program files\nim&quot;</span><br></code></pre></td></tr></table></figure><p>在原始文字中，反斜杠不是转义字符。<br>编写字符串文字的第三种也是最后一种方法是长字符串文字。它们用三个引号写成：“”“…”“”；它们可以跨越多行，并且 \ 也不是转义字符。例如，它们对于嵌入 HTML 代码模板非常有用。</p><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>注释以字符串或字符文字之外的任意位置开始，并以井号字符 # 开头。文档注释以##开头：</p><figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-comment"># A comment.</span><br><br><span class="hljs-keyword">var</span> myVariable: <span class="hljs-type">int</span> <span class="hljs-comment">## a documentation comment</span><br></code></pre></td></tr></table></figure><p>文档注释是标记;它们只允许出现在输入文件的特定位置，因为它们属于语法树!该特性支持更简单的文档生成器。<br>多行注释以#[ 开始，以]# 结束。多行注释也可以嵌套。</p><figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-comment">#[</span><br><span class="hljs-type">You</span> can have <span class="hljs-type">any</span> <span class="hljs-type">Nim</span> code text commented<br><span class="hljs-keyword">out</span> inside this <span class="hljs-keyword">with</span> no indentation restrictions.<br>      yes(<span class="hljs-string">&quot;May I ask a pointless question?&quot;</span>)<br>  <span class="hljs-comment">#[</span><br>     <span class="hljs-type">Note</span>: these can be nested!!<br>  ]<span class="hljs-comment">#</span><br>]<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure><h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>数字文字的书写方式与大多数其他语言一样。作为一个特殊的变化，允许使用下划线以获得更好的可读性:1_000_000(一百万)。包含点(或’e’或’e’)的数字是浮点文字:10.e9(十亿)。十六进制字面值以0x为前缀，二进制字面值以0b为前缀，八进制字面值以0为前缀。单独的前导零不能产生八进制数。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Nim</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>haskell-柯里函数</title>
+    <link href="/2023/11/21/haskell-currying/"/>
+    <url>/2023/11/21/haskell-currying/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Haskell</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Haskell - 递归</title>
+    <link href="/2023/11/21/haskell-recursion/"/>
+    <url>/2023/11/21/haskell-recursion/</url>
+    
+    <content type="html"><![CDATA[<h1 id="你好，递归"><a href="#你好，递归" class="headerlink" title="你好，递归"></a>你好，递归</h1><p>递归是指在定义的应用自身的方式，将白了就是函数会自己调用自己。“从前有座山，山里有座庙，庙里有个老和尚给小和尚讲故事，讲的是什么呢：从前有座山，山里有座庙……”<br>数学定义中存在的递归随处可见，比如斐波那契数列，杨辉三角形等。递归在函数式语言中能够发挥真正的威力，因为在函数式编程中，重要的不是给出求解的步骤，而是定义问题与解的描述。<br>在下文会使用Haskell和C++两种语言进行描述。</p><ol><li><p>求列表中元素的最大值</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">maximumNumber</span> :: (<span class="hljs-type">Ord</span> a) =&gt; [a] -&gt; a<br><span class="hljs-title">maximumNumber</span> [] = error <span class="hljs-string">&quot;maximumNumber of empty list&quot;</span><br><span class="hljs-title">maximumNumber</span> [oneElement] = oneElement<br><span class="hljs-title">maximumNumber</span> (element : elements) = max element (maximumNumber elements)<br><br><span class="hljs-title">main</span> = <span class="hljs-keyword">do</span><br>    print $ maximumNumber [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>]<br></code></pre></td></tr></table></figure></li><li><p>求斐波那契数列</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">fibonacci</span> :: (<span class="hljs-type">Num</span> a, <span class="hljs-type">Ord</span> a) =&gt; a -&gt; a<br><span class="hljs-title">fibonacci</span> <span class="hljs-number">0</span> = <span class="hljs-number">0</span><br><span class="hljs-title">fibonacci</span> <span class="hljs-number">1</span> = <span class="hljs-number">1</span><br><span class="hljs-title">fibonacci</span> n = fibonacci (n - <span class="hljs-number">1</span>) + fibonacci (n - <span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure></li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">template</span>&lt;<span class="hljs-type">size_t</span> N&gt; <span class="hljs-keyword">constexpr</span> <span class="hljs-type">size_t</span> fibonacci = fibonacci&lt;N<span class="hljs-number">-1</span>&gt; + fibonacci&lt;N<span class="hljs-number">-2</span>&gt;;<br><span class="hljs-keyword">template</span>&lt;&gt; <span class="hljs-keyword">constexpr</span> <span class="hljs-type">size_t</span> fibonacci&lt;<span class="hljs-number">1</span>&gt; = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">template</span>&lt;&gt; <span class="hljs-keyword">constexpr</span> <span class="hljs-type">size_t</span> fibonacci&lt;<span class="hljs-number">0</span>&gt; = <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure><ol start="3"><li><p>实现replicate</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">replicate&#x27;</span> :: <span class="hljs-type">Int</span> -&gt; a -&gt; [a]<br><span class="hljs-title">repllicte&#x27;</span> n x<br>| n &lt;= <span class="hljs-number">0</span> = []<br>| otherwise = x:replicate&#x27; (n-<span class="hljs-number">1</span>) x<br></code></pre></td></tr></table></figure></li><li><p>实现take</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">take&#x27;</span> :: (<span class="hljs-type">Num</span> i, <span class="hljs-type">Ord</span> i) =&gt; i -&gt; [a] -&gt; a<br><span class="hljs-title">take&#x27;</span> n _        <br>| n &lt;= <span class="hljs-number">0</span>     = []<br><span class="hljs-title">take&#x27;</span> _ []       = []<br><span class="hljs-title">take&#x27;</span> n (x:xs)   = x : take&#x27; (n-<span class="hljs-number">1</span>) xs<br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Haskell</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>haskell-case</title>
     <link href="/2023/11/21/haskell-case/"/>
     <url>/2023/11/21/haskell-case/</url>

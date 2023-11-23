@@ -16,22 +16,22 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="Haskell - case函数中模板匹配的本质实际上就是case语句的语法糖。case语句在函数式编程中用途往往比命令式要大很多，因为这样可以很流畅的定义出一个没有指令流程的函数，使得函数的定义更加流畅。举一个简单的例子 123firstLetterV1 :: [a] -&gt; afirstLetterV1 [] &#x3D; error &quot;Null list&quot;firstLetter">
+    <meta name="description" content="你好，递归递归是指在定义的应用自身的方式，将白了就是函数会自己调用自己。“从前有座山，山里有座庙，庙里有个老和尚给小和尚讲故事，讲的是什么呢：从前有座山，山里有座庙……”数学定义中存在的递归随处可见，比如斐波那契数列，杨辉三角形等。递归在函数式语言中能够发挥真正的威力，因为在函数式编程中，重要的不是给出求解的步骤，而是定义问题与解的描述。在下文会使用Haskell和C++两种语言进行描述。  求列">
 <meta property="og:type" content="article">
-<meta property="og:title" content="haskell-case">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/21/haskell-case/index.html">
+<meta property="og:title" content="Haskell - 递归">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/21/haskell-recursion/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="Haskell - case函数中模板匹配的本质实际上就是case语句的语法糖。case语句在函数式编程中用途往往比命令式要大很多，因为这样可以很流畅的定义出一个没有指令流程的函数，使得函数的定义更加流畅。举一个简单的例子 123firstLetterV1 :: [a] -&gt; afirstLetterV1 [] &#x3D; error &quot;Null list&quot;firstLetter">
+<meta property="og:description" content="你好，递归递归是指在定义的应用自身的方式，将白了就是函数会自己调用自己。“从前有座山，山里有座庙，庙里有个老和尚给小和尚讲故事，讲的是什么呢：从前有座山，山里有座庙……”数学定义中存在的递归随处可见，比如斐波那契数列，杨辉三角形等。递归在函数式语言中能够发挥真正的威力，因为在函数式编程中，重要的不是给出求解的步骤，而是定义问题与解的描述。在下文会使用Haskell和C++两种语言进行描述。  求列">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-21T06:36:21.000Z">
-<meta property="article:modified_time" content="2023-11-21T08:29:38.648Z">
+<meta property="article:published_time" content="2023-11-21T09:23:48.000Z">
+<meta property="article:modified_time" content="2023-11-21T12:15:24.024Z">
 <meta property="article:author" content="ClaudeRainer">
-<meta property="article:tag" content="C,C++,Linux">
+<meta property="article:tag" content="Haskell">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>haskell-case - cvrain-以空间追逐时间</title>
+  <title>Haskell - 递归 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="haskell-case"></span>
+            <span id="subtitle" data-typed-text="Haskell - 递归"></span>
           
         </div>
 
@@ -208,7 +208,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-21 14:36" pubdate>
+        <time datetime="2023-11-21 17:23" pubdate>
           2023年11月21日 下午
         </time>
       </span>
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          786 字
+          1k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          7 分钟
+          9 分钟
         
       </span>
     
@@ -268,19 +268,29 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">haskell-case</h1>
+            <h1 id="seo-header">Haskell - 递归</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Haskell-case"><a href="#Haskell-case" class="headerlink" title="Haskell - case"></a>Haskell - case</h1><p>函数中模板匹配的本质实际上就是case语句的语法糖。case语句在函数式编程中用途往往比命令式要大很多，因为这样可以很流畅的定义出一个没有指令流程的函数，使得函数的定义更加流畅。<br>举一个简单的例子</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">firstLetterV1</span> :: [a] -&gt; a<br><span class="hljs-title">firstLetterV1</span> [] = error <span class="hljs-string">&quot;Null list&quot;</span><br><span class="hljs-title">firstLetterV1</span> [x:_] = x<br></code></pre></td></tr></table></figure>
-<p>完全等价于这段代码</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">firstLetterV2</span> :: [a] -&gt; a<br><span class="hljs-title">firstLetterV2</span> str = <span class="hljs-keyword">case</span> str <span class="hljs-keyword">of</span> [] -&gt; error <span class="hljs-string">&quot;Null list&quot;</span><br>                                (x:_) -&gt; x<br></code></pre></td></tr></table></figure>
+                <h1 id="你好，递归"><a href="#你好，递归" class="headerlink" title="你好，递归"></a>你好，递归</h1><p>递归是指在定义的应用自身的方式，将白了就是函数会自己调用自己。“从前有座山，山里有座庙，庙里有个老和尚给小和尚讲故事，讲的是什么呢：从前有座山，山里有座庙……”<br>数学定义中存在的递归随处可见，比如斐波那契数列，杨辉三角形等。递归在函数式语言中能够发挥真正的威力，因为在函数式编程中，重要的不是给出求解的步骤，而是定义问题与解的描述。<br>在下文会使用Haskell和C++两种语言进行描述。</p>
+<ol>
+<li><p>求列表中元素的最大值</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">maximumNumber</span> :: (<span class="hljs-type">Ord</span> a) =&gt; [a] -&gt; a<br><span class="hljs-title">maximumNumber</span> [] = error <span class="hljs-string">&quot;maximumNumber of empty list&quot;</span><br><span class="hljs-title">maximumNumber</span> [oneElement] = oneElement<br><span class="hljs-title">maximumNumber</span> (element : elements) = max element (maximumNumber elements)<br><br><span class="hljs-title">main</span> = <span class="hljs-keyword">do</span><br>    print $ maximumNumber [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>]<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>求斐波那契数列</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">fibonacci</span> :: (<span class="hljs-type">Num</span> a, <span class="hljs-type">Ord</span> a) =&gt; a -&gt; a<br><span class="hljs-title">fibonacci</span> <span class="hljs-number">0</span> = <span class="hljs-number">0</span><br><span class="hljs-title">fibonacci</span> <span class="hljs-number">1</span> = <span class="hljs-number">1</span><br><span class="hljs-title">fibonacci</span> n = fibonacci (n - <span class="hljs-number">1</span>) + fibonacci (n - <span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure></li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">template</span>&lt;<span class="hljs-type">size_t</span> N&gt; <span class="hljs-keyword">constexpr</span> <span class="hljs-type">size_t</span> fibonacci = fibonacci&lt;N<span class="hljs-number">-1</span>&gt; + fibonacci&lt;N<span class="hljs-number">-2</span>&gt;;<br><span class="hljs-keyword">template</span>&lt;&gt; <span class="hljs-keyword">constexpr</span> <span class="hljs-type">size_t</span> fibonacci&lt;<span class="hljs-number">1</span>&gt; = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">template</span>&lt;&gt; <span class="hljs-keyword">constexpr</span> <span class="hljs-type">size_t</span> fibonacci&lt;<span class="hljs-number">0</span>&gt; = <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
 
-<p>从中我们可以看到case表达式语法长这个样子<br> <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">case</span> expression <span class="hljs-keyword">of</span> pattern -&gt; result<br>			 pattern -&gt; result<br>			 pattern -&gt; result<br>			 <span class="hljs-comment">-- ....</span><br></code></pre></td></tr></table></figure></p>
-<p>于是乎就可以写出这样的代码</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">scoreValue</span> :: <span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Char</span><br><span class="hljs-title">scoreValue</span> value =<br>    <span class="hljs-keyword">let</span> range = div value <span class="hljs-number">10</span><br>    <span class="hljs-keyword">in</span> <span class="hljs-keyword">case</span> range <span class="hljs-keyword">of</span> <span class="hljs-number">6</span> -&gt; <span class="hljs-string">&#x27;D&#x27;</span><br>                     <span class="hljs-number">7</span> -&gt; <span class="hljs-string">&#x27;C&#x27;</span><br>                     <span class="hljs-number">8</span> -&gt; <span class="hljs-string">&#x27;B&#x27;</span><br>                     <span class="hljs-number">9</span> -&gt; <span class="hljs-string">&#x27;A&#x27;</span><br>                     <span class="hljs-number">10</span> -&gt; <span class="hljs-string">&#x27;S&#x27;</span><br>                     _ -&gt; <span class="hljs-string">&#x27;F&#x27;</span><br><br><span class="hljs-title">describeList</span> :: [a] -&gt; <span class="hljs-type">String</span><br><span class="hljs-title">describeList</span> ls = <span class="hljs-string">&quot;The list is &quot;</span> ++ str ls<br>    <span class="hljs-keyword">where</span> str [] = <span class="hljs-string">&quot;empty&quot;</span><br>          str [x] = <span class="hljs-string">&quot;a singleton list&quot;</span><br>          str ls = <span class="hljs-string">&quot;a longer list&quot;</span><br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>实现replicate</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">replicate&#x27;</span> :: <span class="hljs-type">Int</span> -&gt; a -&gt; [a]<br><span class="hljs-title">repllicte&#x27;</span> n x<br>	| n &lt;= <span class="hljs-number">0</span> = []<br>	| otherwise = x:replicate&#x27; (n-<span class="hljs-number">1</span>) x<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>实现take</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">take&#x27;</span> :: (<span class="hljs-type">Num</span> i, <span class="hljs-type">Ord</span> i) =&gt; i -&gt; [a] -&gt; a<br><span class="hljs-title">take&#x27;</span> n _        <br>	| n &lt;= <span class="hljs-number">0</span>     = []<br><span class="hljs-title">take&#x27;</span> _ []       = []<br><span class="hljs-title">take&#x27;</span> n (x:xs)   = x : take&#x27; (n-<span class="hljs-number">1</span>) xs<br></code></pre></td></tr></table></figure></li>
+</ol>
+
                 
               </div>
             
@@ -288,6 +298,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Haskell/" class="print-no-link">#Haskell</a>
+      
+    </div>
   
 </div>
 
@@ -297,8 +314,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>haskell-case</div>
-      <div>http://cvrain.cloudvl.cn/2023/11/21/haskell-case/</div>
+      <div>Haskell - 递归</div>
+      <div>http://cvrain.cloudvl.cn/2023/11/21/haskell-recursion/</div>
     </div>
     <div class="license-meta">
       
@@ -342,9 +359,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/21/haskell-recursion/" title="Haskell - 递归">
+                      <a href="/2023/11/21/haskell-currying/" title="haskell-柯里函数">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Haskell - 递归</span>
+                        <span class="hidden-mobile">haskell-柯里函数</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -352,8 +369,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/21/Haskell-let/" title="Haskell - let">
-                        <span class="hidden-mobile">Haskell - let</span>
+                      <a href="/2023/11/21/haskell-case/" title="haskell-case">
+                        <span class="hidden-mobile">haskell-case</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
