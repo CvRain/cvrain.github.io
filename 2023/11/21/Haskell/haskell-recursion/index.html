@@ -16,23 +16,22 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="视C++为一个语言联邦View C++ as a federation of languages  一开始，C++只是C加上一些面向对象特性。 C++ 最初的名称 C with Classes 也反应来这个血缘关系 (Effective C++)   随着C++的不断发展，C++的特性越来越多，甚至有些特性是C++独有的。 学了有一段时间的C++， 向他人请教过C++的技巧，也教过人怎么学习C++">
+    <meta name="description" content="你好，递归递归是指在定义的应用自身的方式，将白了就是函数会自己调用自己。“从前有座山，山里有座庙，庙里有个老和尚给小和尚讲故事，讲的是什么呢：从前有座山，山里有座庙……”数学定义中存在的递归随处可见，比如斐波那契数列，杨辉三角形等。递归在函数式语言中能够发挥真正的威力，因为在函数式编程中，重要的不是给出求解的步骤，而是定义问题与解的描述。在下文会使用Haskell和C++两种语言进行描述。  求列">
 <meta property="og:type" content="article">
-<meta property="og:title" content="视C++为一个语言联邦">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/09/view-cpp-as-a-federation/index.html">
+<meta property="og:title" content="Haskell - 递归">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/21/Haskell/haskell-recursion/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="视C++为一个语言联邦View C++ as a federation of languages  一开始，C++只是C加上一些面向对象特性。 C++ 最初的名称 C with Classes 也反应来这个血缘关系 (Effective C++)   随着C++的不断发展，C++的特性越来越多，甚至有些特性是C++独有的。 学了有一段时间的C++， 向他人请教过C++的技巧，也教过人怎么学习C++">
+<meta property="og:description" content="你好，递归递归是指在定义的应用自身的方式，将白了就是函数会自己调用自己。“从前有座山，山里有座庙，庙里有个老和尚给小和尚讲故事，讲的是什么呢：从前有座山，山里有座庙……”数学定义中存在的递归随处可见，比如斐波那契数列，杨辉三角形等。递归在函数式语言中能够发挥真正的威力，因为在函数式编程中，重要的不是给出求解的步骤，而是定义问题与解的描述。在下文会使用Haskell和C++两种语言进行描述。  求列">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-09T02:50:20.000Z">
-<meta property="article:modified_time" content="2023-11-14T12:57:03.091Z">
+<meta property="article:published_time" content="2023-11-21T09:23:48.000Z">
+<meta property="article:modified_time" content="2023-11-21T12:15:24.024Z">
 <meta property="article:author" content="ClaudeRainer">
-<meta property="article:tag" content="Modern-cpp">
-<meta property="article:tag" content="Cpp">
+<meta property="article:tag" content="Haskell">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>视C++为一个语言联邦 - cvrain-以空间追逐时间</title>
+  <title>Haskell - 递归 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="视C++为一个语言联邦"></span>
+            <span id="subtitle" data-typed-text="Haskell - 递归"></span>
           
         </div>
 
@@ -209,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-09 10:50" pubdate>
-          2023年11月9日 上午
+        <time datetime="2023-11-21 17:23" pubdate>
+          2023年11月21日 下午
         </time>
       </span>
     
@@ -221,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1k 字
         
       </span>
     
@@ -232,7 +231,7 @@
         
         
         
-          11 分钟
+          9 分钟
         
       </span>
     
@@ -269,35 +268,28 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">视C++为一个语言联邦</h1>
+            <h1 id="seo-header">Haskell - 递归</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="视C-为一个语言联邦"><a href="#视C-为一个语言联邦" class="headerlink" title="视C++为一个语言联邦"></a>视C++为一个语言联邦</h1><p><small>View C++ as a federation of languages</small></p>
-<blockquote>
-<p>一开始，C++只是C加上一些面向对象特性。 C++ 最初的名称 C with Classes 也反应来这个血缘关系 (Effective C++)</p>
-</blockquote>
-<hr>
-<p>随着C++的不断发展，C++的特性越来越多，甚至有些特性是C++独有的。 学了有一段时间的C++， 向他人请教过C++的技巧，也教过人怎么学习C++。 语法以及技巧不是很难去教授的，但是有一段时间令我头疼的是，如何对新手做一个C++的介绍。 因为C++的特性太多， 而且C++的特性之间又存在一定的联系， 导致很难对一个新手进行一个系统的学习。</p>
-<p>直到有一天我再次翻开《Effective C++ 改善程序的55个做法》， 而条款01就是”视C++为一个语言联邦“<br>可以说，C++其实是一个联邦， 联邦由若干个语言组成， 每个语言都具有自己的特性， 这些特性又相互关联。今天的C++是个多重范式的编程语言， 它同时具有面向过程、面向对象、泛型编程、模板、异常处理、标准库、标准模板库等特性。</p>
-<h2 id="语言联邦"><a href="#语言联邦" class="headerlink" title="语言联邦"></a>语言联邦</h2><blockquote>
+                <h1 id="你好，递归"><a href="#你好，递归" class="headerlink" title="你好，递归"></a>你好，递归</h1><p>递归是指在定义的应用自身的方式，将白了就是函数会自己调用自己。“从前有座山，山里有座庙，庙里有个老和尚给小和尚讲故事，讲的是什么呢：从前有座山，山里有座庙……”<br>数学定义中存在的递归随处可见，比如斐波那契数列，杨辉三角形等。递归在函数式语言中能够发挥真正的威力，因为在函数式编程中，重要的不是给出求解的步骤，而是定义问题与解的描述。<br>在下文会使用Haskell和C++两种语言进行描述。</p>
 <ol>
-<li>Base C language</li>
-<li>Object-Oriented C++</li>
-<li>Template C++</li>
-<li>STL</li>
+<li><p>求列表中元素的最大值</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">maximumNumber</span> :: (<span class="hljs-type">Ord</span> a) =&gt; [a] -&gt; a<br><span class="hljs-title">maximumNumber</span> [] = error <span class="hljs-string">&quot;maximumNumber of empty list&quot;</span><br><span class="hljs-title">maximumNumber</span> [oneElement] = oneElement<br><span class="hljs-title">maximumNumber</span> (element : elements) = max element (maximumNumber elements)<br><br><span class="hljs-title">main</span> = <span class="hljs-keyword">do</span><br>    print $ maximumNumber [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>]<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>求斐波那契数列</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">fibonacci</span> :: (<span class="hljs-type">Num</span> a, <span class="hljs-type">Ord</span> a) =&gt; a -&gt; a<br><span class="hljs-title">fibonacci</span> <span class="hljs-number">0</span> = <span class="hljs-number">0</span><br><span class="hljs-title">fibonacci</span> <span class="hljs-number">1</span> = <span class="hljs-number">1</span><br><span class="hljs-title">fibonacci</span> n = fibonacci (n - <span class="hljs-number">1</span>) + fibonacci (n - <span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure></li>
 </ol>
-</blockquote>
-<h3 id="Base-C-language"><a href="#Base-C-language" class="headerlink" title="Base C language"></a>Base C language</h3><p>说到底，C++可以理解是一个C语言的超集， 它包含了C语言的所有特性， 并且还增加了面向对象、泛型编程、异常处理、标准库、标准。许多时候一个问题的C++解法， 往往可以由C语言的解法推导而来，也可以说是较为高级、较为抽象的C语言的解法。</p>
-<h3 id="Object-Oriented-C"><a href="#Object-Oriented-C" class="headerlink" title="Object-Oriented C++"></a>Object-Oriented C++</h3><p>C++语言是面向对象的， 它包含了一些面向对象的特性， 例如： 类、对象、继承、多态、虚函数。<br>这部分也就是C with classes所诉求的， 它也被称为OO C++： classes, inheritance, and polymorphism.</p>
-<h3 id="Template-C"><a href="#Template-C" class="headerlink" title="Template C++"></a>Template C++</h3><p>C++的模板特性， 使得C++可以进行泛型编程， 它使得C++可以进行泛型编程。不严谨的说，模板能够批量生成大量功能相似，但是有些许不同的代码。</p>
-<h3 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h3><p>STL是C++标准模板库， 它提供了一组通用的、可复用的算法和数据结构， 例如： 容器、迭代器、算法、函数对象、适配器、分配器、流、字符串、数值等。然而STL有自己独特的办事方式，当你同STL一同工作，你必须遵守他的约定。</p>
-<p>在编程时候， 这些语言联邦中的特性相互之间是相互独立的， 它们之间可以相互组合， 也可以相互分离。 例如，你可以只使用C语言特性完成某些事情，或者在一个类中自己封装一个STL容器， 或者使用STL容器完成一些C++特性。</p>
-<blockquote>
-<p>当你从某个次语言切换到另一个时，导致高效编程守则编程守则要求你改变策略时，不要感到惊讶。因此说C++并不是一个一组带有一组守则一体的语言：它是从四个次语言组成的联邦政府，每个次语言都有自己的规约。<br><strong>C++高效编程守则视状况而变化，取决于你使用C++的哪一个部分</strong></p>
-</blockquote>
-<h2 id="学习C-的流程"><a href="#学习C-的流程" class="headerlink" title="学习C++的流程"></a>学习C++的流程</h2><p>所以说，学习C++本体或许并不一定要掌握C语言，“不必是一个火箭科学家”， 只需要掌握C++的特性， 就可以写出一些有趣的代码。<br>之后在针对C++的特性进行学习， 例如： 模板、STL、异常处理等。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">template</span>&lt;<span class="hljs-type">size_t</span> N&gt; <span class="hljs-keyword">constexpr</span> <span class="hljs-type">size_t</span> fibonacci = fibonacci&lt;N<span class="hljs-number">-1</span>&gt; + fibonacci&lt;N<span class="hljs-number">-2</span>&gt;;<br><span class="hljs-keyword">template</span>&lt;&gt; <span class="hljs-keyword">constexpr</span> <span class="hljs-type">size_t</span> fibonacci&lt;<span class="hljs-number">1</span>&gt; = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">template</span>&lt;&gt; <span class="hljs-keyword">constexpr</span> <span class="hljs-type">size_t</span> fibonacci&lt;<span class="hljs-number">0</span>&gt; = <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>实现replicate</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">replicate&#x27;</span> :: <span class="hljs-type">Int</span> -&gt; a -&gt; [a]<br><span class="hljs-title">repllicte&#x27;</span> n x<br>	| n &lt;= <span class="hljs-number">0</span> = []<br>	| otherwise = x:replicate&#x27; (n-<span class="hljs-number">1</span>) x<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>实现take</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">take&#x27;</span> :: (<span class="hljs-type">Num</span> i, <span class="hljs-type">Ord</span> i) =&gt; i -&gt; [a] -&gt; a<br><span class="hljs-title">take&#x27;</span> n _        <br>	| n &lt;= <span class="hljs-number">0</span>     = []<br><span class="hljs-title">take&#x27;</span> _ []       = []<br><span class="hljs-title">take&#x27;</span> n (x:xs)   = x : take&#x27; (n-<span class="hljs-number">1</span>) xs<br></code></pre></td></tr></table></figure></li>
+</ol>
 
                 
               </div>
@@ -310,9 +302,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Modern-cpp/" class="print-no-link">#Modern-cpp</a>
-      
-        <a href="/tags/Cpp/" class="print-no-link">#Cpp</a>
+        <a href="/tags/Haskell/" class="print-no-link">#Haskell</a>
       
     </div>
   
@@ -324,8 +314,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>视C++为一个语言联邦</div>
-      <div>http://cvrain.cloudvl.cn/2023/11/09/view-cpp-as-a-federation/</div>
+      <div>Haskell - 递归</div>
+      <div>http://cvrain.cloudvl.cn/2023/11/21/Haskell/haskell-recursion/</div>
     </div>
     <div class="license-meta">
       
@@ -337,7 +327,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月9日</div>
+          <div>2023年11月21日</div>
         </div>
       
       
@@ -369,9 +359,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/10/Haskell/hello-haskell/" title="你好呀 Haskell">
+                      <a href="/2023/11/21/Haskell/haskell-currying/" title="haskell-柯里函数">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">你好呀 Haskell</span>
+                        <span class="hidden-mobile">haskell-柯里函数</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -379,8 +369,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/09/guessing-number/" title="来做一个猜数游戏吧">
-                        <span class="hidden-mobile">来做一个猜数游戏吧</span>
+                      <a href="/2023/11/21/Haskell/haskell-case/" title="haskell-case">
+                        <span class="hidden-mobile">haskell-case</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

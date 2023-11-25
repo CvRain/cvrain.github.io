@@ -16,23 +16,22 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="视C++为一个语言联邦View C++ as a federation of languages  一开始，C++只是C加上一些面向对象特性。 C++ 最初的名称 C with Classes 也反应来这个血缘关系 (Effective C++)   随着C++的不断发展，C++的特性越来越多，甚至有些特性是C++独有的。 学了有一段时间的C++， 向他人请教过C++的技巧，也教过人怎么学习C++">
+    <meta name="description" content="Nim - Hello world!这段时间一直在玩Haskell, 有点小腻。换个编程语言看看调节一下口味，本系列是对官方文档《 Tutorial, part 1》《  Tutorial, part 2》和《Tutorial, part 3》三部曲进行学习，然后增加了本人的一些思索过程，可全当作是官方学习手册的汉化版本。话不多说，我们直接开始吧。上手，先来一个基本的小程序，问你的名字是什么，然后">
 <meta property="og:type" content="article">
-<meta property="og:title" content="视C++为一个语言联邦">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/09/view-cpp-as-a-federation/index.html">
+<meta property="og:title" content="Nim-hello world">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/23/Nim/nim-hello/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="视C++为一个语言联邦View C++ as a federation of languages  一开始，C++只是C加上一些面向对象特性。 C++ 最初的名称 C with Classes 也反应来这个血缘关系 (Effective C++)   随着C++的不断发展，C++的特性越来越多，甚至有些特性是C++独有的。 学了有一段时间的C++， 向他人请教过C++的技巧，也教过人怎么学习C++">
+<meta property="og:description" content="Nim - Hello world!这段时间一直在玩Haskell, 有点小腻。换个编程语言看看调节一下口味，本系列是对官方文档《 Tutorial, part 1》《  Tutorial, part 2》和《Tutorial, part 3》三部曲进行学习，然后增加了本人的一些思索过程，可全当作是官方学习手册的汉化版本。话不多说，我们直接开始吧。上手，先来一个基本的小程序，问你的名字是什么，然后">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-09T02:50:20.000Z">
-<meta property="article:modified_time" content="2023-11-14T12:57:03.091Z">
+<meta property="article:published_time" content="2023-11-23T00:47:57.000Z">
+<meta property="article:modified_time" content="2023-11-23T01:43:48.647Z">
 <meta property="article:author" content="ClaudeRainer">
-<meta property="article:tag" content="Modern-cpp">
-<meta property="article:tag" content="Cpp">
+<meta property="article:tag" content="Nim">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>视C++为一个语言联邦 - cvrain-以空间追逐时间</title>
+  <title>Nim-hello world - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="视C++为一个语言联邦"></span>
+            <span id="subtitle" data-typed-text="Nim-hello world"></span>
           
         </div>
 
@@ -209,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-09 10:50" pubdate>
-          2023年11月9日 上午
+        <time datetime="2023-11-23 08:47" pubdate>
+          2023年11月23日 早上
         </time>
       </span>
     
@@ -221,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.8k 字
         
       </span>
     
@@ -232,7 +231,7 @@
         
         
         
-          11 分钟
+          16 分钟
         
       </span>
     
@@ -269,35 +268,42 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">视C++为一个语言联邦</h1>
+            <h1 id="seo-header">Nim-hello world</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="视C-为一个语言联邦"><a href="#视C-为一个语言联邦" class="headerlink" title="视C++为一个语言联邦"></a>视C++为一个语言联邦</h1><p><small>View C++ as a federation of languages</small></p>
-<blockquote>
-<p>一开始，C++只是C加上一些面向对象特性。 C++ 最初的名称 C with Classes 也反应来这个血缘关系 (Effective C++)</p>
-</blockquote>
-<hr>
-<p>随着C++的不断发展，C++的特性越来越多，甚至有些特性是C++独有的。 学了有一段时间的C++， 向他人请教过C++的技巧，也教过人怎么学习C++。 语法以及技巧不是很难去教授的，但是有一段时间令我头疼的是，如何对新手做一个C++的介绍。 因为C++的特性太多， 而且C++的特性之间又存在一定的联系， 导致很难对一个新手进行一个系统的学习。</p>
-<p>直到有一天我再次翻开《Effective C++ 改善程序的55个做法》， 而条款01就是”视C++为一个语言联邦“<br>可以说，C++其实是一个联邦， 联邦由若干个语言组成， 每个语言都具有自己的特性， 这些特性又相互关联。今天的C++是个多重范式的编程语言， 它同时具有面向过程、面向对象、泛型编程、模板、异常处理、标准库、标准模板库等特性。</p>
-<h2 id="语言联邦"><a href="#语言联邦" class="headerlink" title="语言联邦"></a>语言联邦</h2><blockquote>
-<ol>
-<li>Base C language</li>
-<li>Object-Oriented C++</li>
-<li>Template C++</li>
-<li>STL</li>
-</ol>
-</blockquote>
-<h3 id="Base-C-language"><a href="#Base-C-language" class="headerlink" title="Base C language"></a>Base C language</h3><p>说到底，C++可以理解是一个C语言的超集， 它包含了C语言的所有特性， 并且还增加了面向对象、泛型编程、异常处理、标准库、标准。许多时候一个问题的C++解法， 往往可以由C语言的解法推导而来，也可以说是较为高级、较为抽象的C语言的解法。</p>
-<h3 id="Object-Oriented-C"><a href="#Object-Oriented-C" class="headerlink" title="Object-Oriented C++"></a>Object-Oriented C++</h3><p>C++语言是面向对象的， 它包含了一些面向对象的特性， 例如： 类、对象、继承、多态、虚函数。<br>这部分也就是C with classes所诉求的， 它也被称为OO C++： classes, inheritance, and polymorphism.</p>
-<h3 id="Template-C"><a href="#Template-C" class="headerlink" title="Template C++"></a>Template C++</h3><p>C++的模板特性， 使得C++可以进行泛型编程， 它使得C++可以进行泛型编程。不严谨的说，模板能够批量生成大量功能相似，但是有些许不同的代码。</p>
-<h3 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h3><p>STL是C++标准模板库， 它提供了一组通用的、可复用的算法和数据结构， 例如： 容器、迭代器、算法、函数对象、适配器、分配器、流、字符串、数值等。然而STL有自己独特的办事方式，当你同STL一同工作，你必须遵守他的约定。</p>
-<p>在编程时候， 这些语言联邦中的特性相互之间是相互独立的， 它们之间可以相互组合， 也可以相互分离。 例如，你可以只使用C语言特性完成某些事情，或者在一个类中自己封装一个STL容器， 或者使用STL容器完成一些C++特性。</p>
-<blockquote>
-<p>当你从某个次语言切换到另一个时，导致高效编程守则编程守则要求你改变策略时，不要感到惊讶。因此说C++并不是一个一组带有一组守则一体的语言：它是从四个次语言组成的联邦政府，每个次语言都有自己的规约。<br><strong>C++高效编程守则视状况而变化，取决于你使用C++的哪一个部分</strong></p>
-</blockquote>
-<h2 id="学习C-的流程"><a href="#学习C-的流程" class="headerlink" title="学习C++的流程"></a>学习C++的流程</h2><p>所以说，学习C++本体或许并不一定要掌握C语言，“不必是一个火箭科学家”， 只需要掌握C++的特性， 就可以写出一些有趣的代码。<br>之后在针对C++的特性进行学习， 例如： 模板、STL、异常处理等。</p>
+                <h1 id="Nim-Hello-world"><a href="#Nim-Hello-world" class="headerlink" title="Nim - Hello world!"></a>Nim - Hello world!</h1><p>这段时间一直在玩Haskell, 有点小腻。换个编程语言看看调节一下口味，本系列是对官方文档《 <a target="_blank" rel="noopener" href="https://nim-lang.org/docs/tut1.html">Tutorial, part 1</a>》《  <a target="_blank" rel="noopener" href="https://nim-lang.org/docs/tut2.html">Tutorial, part 2</a>》和《<a target="_blank" rel="noopener" href="https://nim-lang.org/docs/tut3.html">Tutorial, part 3</a>》三部曲进行学习，然后增加了本人的一些思索过程，可全当作是官方学习手册的汉化版本。<br>话不多说，我们直接开始吧。上手，先来一个基本的小程序，问你的名字是什么，然后输出 “hi” + name + “!”。 </p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-comment"># This is a comment</span><br>echo <span class="hljs-string">&quot;What&#x27;s your name? &quot;</span><br><span class="hljs-keyword">var</span> name: <span class="hljs-type">string</span> = readLine(<span class="hljs-built_in">stdin</span>)<br>echo <span class="hljs-string">&quot;Hi, &quot;</span>, name, <span class="hljs-string">&quot;!&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>将文件保存叫做greetings.nim， 之后就是编译运行他。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">nim compile --run greetings.nim<br></code></pre></td></tr></table></figure>
+
+<p>添加上<code>--run</code>参数后便可以让nim编译文件通过后运行他，在文件名之后也可以添加运行参数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">nim compile --run greetings.nim arg1 arg2<br></code></pre></td></tr></table></figure>
+
+<p>常用的命令和开关都有缩写，因此您还可以使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">nim c -r greetings.nim<br></code></pre></td></tr></table></figure>
+
+<p>在默认情况下编译采用的是<code>Debug</code>模式，如果想要以<code>Release</code>模式进行编译，需要显式添加参数<code>-d:release</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">nim c -d:release greetings.nim<br></code></pre></td></tr></table></figure>
+
+<p>默认情况下，Nim 编译器会生成大量运行时检查，旨在满足您的调试乐趣。使用 -d:release 会关闭一些检查并打开优化。<br>对于基准测试或生产代码，请使用 -d:release 开关。要将性能与 C 等不安全语言进行比较，请使用 -d:danger 开关以获得有意义的、可比较的结果。否则，Nim 可能会受到 C 无法使用的检查的阻碍。</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>在使用到在字符串时，需要用双引号将字符串包起来，这样编译器才会认为这是一个字符串。 var 语句声明一个名为 name 的字符串类型的新变量，其值由 readLine 过程返回。由于编译器知道 readLine 返回一个字符串，因此您可以在声明中省略类型（这称为本地类型推断）。所以这也可以工作：</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">var</span> name = readLine(<span class="hljs-built_in">stdin</span>)<br></code></pre></td></tr></table></figure>
+<p>请注意，这基本上是 Nim 中存在的唯一类型推断形式：它是简洁性和可读性之间的良好折衷。  </p>
+<p>“hello world”程序包含编译器已知的几个标识符：echo、readLine 等。这些内置函数在系统模块中声明，并由任何其他模块隐式导入。</p>
+<h2 id="词汇元素"><a href="#词汇元素" class="headerlink" title="词汇元素"></a>词汇元素</h2><p>让我们更详细地看看 Nim 的词汇元素：与其他编程语言一样，Nim 由（字符串）文字、标识符、关键字、注释、运算符和其他标点符号组成。</p>
+<h3 id="字符串和符号字面量"><a href="#字符串和符号字面量" class="headerlink" title="字符串和符号字面量"></a>字符串和符号字面量</h3><p>字符串需要被一对双引号包裹在里面，特殊的字符（转义字符）使用<code>\</code> 转义符号进行修饰，<code>\n</code>表示换行，<code>\t</code>表示制表符缩进，还有很多别的符号。如果我们不需要转义的字符串，而是一个原始文本，那么在字符串前添加一个<code>r</code>即可。</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-string">r&quot;C:\program files\nim&quot;</span><br></code></pre></td></tr></table></figure>
+<p>在原始文字中，反斜杠不是转义字符。<br>编写字符串文字的第三种也是最后一种方法是长字符串文字。它们用三个引号写成：“”“…”“”；它们可以跨越多行，并且 \ 也不是转义字符。例如，它们对于嵌入 HTML 代码模板非常有用。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>注释以字符串或字符文字之外的任意位置开始，并以井号字符 # 开头。文档注释以##开头：</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-comment"># A comment.</span><br><br><span class="hljs-keyword">var</span> myVariable: <span class="hljs-type">int</span> <span class="hljs-comment">## a documentation comment</span><br></code></pre></td></tr></table></figure>
+
+<p>文档注释是标记;它们只允许出现在输入文件的特定位置，因为它们属于语法树!该特性支持更简单的文档生成器。<br>多行注释以#[ 开始，以]# 结束。多行注释也可以嵌套。</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-comment">#[</span><br><span class="hljs-type">You</span> can have <span class="hljs-type">any</span> <span class="hljs-type">Nim</span> code text commented<br><span class="hljs-keyword">out</span> inside this <span class="hljs-keyword">with</span> no indentation restrictions.<br>      yes(<span class="hljs-string">&quot;May I ask a pointless question?&quot;</span>)<br>  <span class="hljs-comment">#[</span><br>     <span class="hljs-type">Note</span>: these can be nested!!<br>  ]<span class="hljs-comment">#</span><br>]<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>数字文字的书写方式与大多数其他语言一样。作为一个特殊的变化，允许使用下划线以获得更好的可读性:1_000_000(一百万)。包含点(或’e’或’e’)的数字是浮点文字:10.e9(十亿)。十六进制字面值以0x为前缀，二进制字面值以0b为前缀，八进制字面值以0为前缀。单独的前导零不能产生八进制数。</p>
 
                 
               </div>
@@ -310,9 +316,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Modern-cpp/" class="print-no-link">#Modern-cpp</a>
-      
-        <a href="/tags/Cpp/" class="print-no-link">#Cpp</a>
+        <a href="/tags/Nim/" class="print-no-link">#Nim</a>
       
     </div>
   
@@ -324,8 +328,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>视C++为一个语言联邦</div>
-      <div>http://cvrain.cloudvl.cn/2023/11/09/view-cpp-as-a-federation/</div>
+      <div>Nim-hello world</div>
+      <div>http://cvrain.cloudvl.cn/2023/11/23/Nim/nim-hello/</div>
     </div>
     <div class="license-meta">
       
@@ -337,7 +341,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月9日</div>
+          <div>2023年11月23日</div>
         </div>
       
       
@@ -369,9 +373,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/10/Haskell/hello-haskell/" title="你好呀 Haskell">
+                      <a href="/2023/11/23/Nim/nim-constant-value/" title="Nim-常量和变量">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">你好呀 Haskell</span>
+                        <span class="hidden-mobile">Nim-常量和变量</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -379,8 +383,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/09/guessing-number/" title="来做一个猜数游戏吧">
-                        <span class="hidden-mobile">来做一个猜数游戏吧</span>
+                      <a href="/2023/11/21/Haskell/haskell-currying/" title="haskell-柯里函数">
+                        <span class="hidden-mobile">haskell-柯里函数</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
