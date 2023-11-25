@@ -1,0 +1,678 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ClaudeRainer">
+  <meta name="keywords" content="C,C++,Linux">
+  
+    <meta name="description" content="Nim - procedure要定义示例中的echo和readLine等新命令，需要过程的概念。您可能习惯了它们在其他语言中被称为方法或函数，但是Nim区分了这些概念。在Nim中，新过程是用proc关键字定义的: 其实函数叫做过程这个名字还是很贴切的，我们平时一直区分一个语言是面向过程的还是面向对象的，比如说C语言是一个面向对象的语言。在C语言中内存被分为四大类：全局区、静态区、堆区和栈区。而栈区">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nim-过程(procedure)">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/25/Nim/nim-procedure/index.html">
+<meta property="og:site_name" content="cvrain-以空间追逐时间">
+<meta property="og:description" content="Nim - procedure要定义示例中的echo和readLine等新命令，需要过程的概念。您可能习惯了它们在其他语言中被称为方法或函数，但是Nim区分了这些概念。在Nim中，新过程是用proc关键字定义的: 其实函数叫做过程这个名字还是很贴切的，我们平时一直区分一个语言是面向过程的还是面向对象的，比如说C语言是一个面向对象的语言。在C语言中内存被分为四大类：全局区、静态区、堆区和栈区。而栈区">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-25T08:37:23.000Z">
+<meta property="article:modified_time" content="2023-11-25T11:24:30.157Z">
+<meta property="article:author" content="ClaudeRainer">
+<meta property="article:tag" content="Nim">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Nim-过程(procedure) - cvrain-以空间追逐时间</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"cvrain.cloudvl.cn","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ClaudeRainer</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Nim-过程(procedure)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-25 16:37" pubdate>
+          2023年11月25日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          44 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Nim-过程(procedure)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Nim-procedure"><a href="#Nim-procedure" class="headerlink" title="Nim - procedure"></a>Nim - procedure</h1><p>要定义示例中的echo和readLine等新命令，需要<code>过程</code>的概念。您可能习惯了它们在其他语言中被称为方法或函数，但是Nim区分了这些概念。在Nim中，新过程是用proc关键字定义的:</p>
+<p>其实函数叫做过程这个名字还是很贴切的，我们平时一直区分一个语言是面向过程的还是面向对象的，比如说C语言是一个面向对象的语言。在C语言中内存被分为四大类：全局区、静态区、堆区和栈区。而栈区主要依赖于函数，而有些翻译就会将栈区翻译为存储过程。从C语言的角度来看，每一个程序就是一个过程，这个过程在执行的途中会有很多其他的子过程也就是其他的函数。一个程序就是若干个过程嵌套凭借组合的结果。</p>
+<p>所以在这里叫做过程没有丝毫的问题，而且很直观。</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">proc</span> yes(question: <span class="hljs-type">string</span>): <span class="hljs-type">bool</span> =<br>  echo question, <span class="hljs-string">&quot; (y/n)&quot;</span><br>  <span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>:<br>    <span class="hljs-keyword">case</span> readLine(<span class="hljs-built_in">stdin</span>)<br>    <span class="hljs-keyword">of</span> <span class="hljs-string">&quot;y&quot;</span>, <span class="hljs-string">&quot;Y&quot;</span>, <span class="hljs-string">&quot;yes&quot;</span>, <span class="hljs-string">&quot;Yes&quot;</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>    <span class="hljs-keyword">of</span> <span class="hljs-string">&quot;n&quot;</span>, <span class="hljs-string">&quot;N&quot;</span>, <span class="hljs-string">&quot;no&quot;</span>, <span class="hljs-string">&quot;No&quot;</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    <span class="hljs-keyword">else</span>: echo <span class="hljs-string">&quot;Please be clear: yes or no&quot;</span><br><br><span class="hljs-keyword">if</span> yes(<span class="hljs-string">&quot;Should I delete all your important files?&quot;</span>):<br>  echo <span class="hljs-string">&quot;I&#x27;m sorry Dave, I&#x27;m afraid I can&#x27;t do that.&quot;</span><br><span class="hljs-keyword">else</span>:<br>  echo <span class="hljs-string">&quot;I think you know what the problem is just as well as I do.&quot;</span><br></code></pre></td></tr></table></figure>
+<p>这个例子展示了一个叫做<code>yes</code>的过程，他接受一个叫做<code>question</code>类型为<code>string</code>的形式参数，返回一个布尔类型。</p>
+<p>过程的第一句<code>echo</code>输出 question的内容以及 (y&#x2F;n) 然后进入一个”死循环“中，然后使用<code>case</code>判断用户输入的内容，匹配到”y”, “Y”, “yes”, “Yes” 就返回 <code>true</code>， 匹配到”n”, “N”, “no”, “No” 将返回<code>false</code>。如果不是上述两种情况就进入else兜底，输出”Please be clear: yes or no” 之后进入下一次循环。</p>
+<p>之后的if就不再是yes过程的内容了，则是调用yes后对其返回值进行一些处理。<strong>下面是原文的翻译</strong></p>
+<blockquote>
+<p>这个例子展示了一个名为yes的过程，它向用户询问一个问题，如果他们回答“是”(或类似的东西)就返回true，如果他们回答“否”(或类似的东西)就返回false。return语句立即离开过程(因此也离开while循环)。(question: string): bool语法描述了过程期望一个名为question的字符串类型的参数，并返回bool类型的值。bool类型是内置的:bool的唯一有效值是true和false。if或while语句中的条件必须是bool类型。</p>
+<p>一些术语:在示例中，问题被称为(形式)参数，“我应该…”被称为传递给该参数的实参。</p>
+</blockquote>
+<h2 id="结果变量"><a href="#结果变量" class="headerlink" title="结果变量"></a>结果变量</h2><p>返回值的过程声明了一个表示返回值的隐式结果变量。没有表达式的返回语句是返回结果的简写。如果在退出处没有返回语句，则总是在过程结束时自动返回结果值。</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">proc</span> sumTillNegative(x: <span class="hljs-type">varargs</span>[<span class="hljs-type">int</span>]): <span class="hljs-type">int</span> =<br>  <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> x:<br>    <span class="hljs-keyword">if</span> i &lt; <span class="hljs-number">0</span>:<br>      <span class="hljs-keyword">return</span><br>    <span class="hljs-built_in">result</span> = <span class="hljs-built_in">result</span> + i<br><br>echo sumTillNegative() <span class="hljs-comment"># echoes 0</span><br>echo sumTillNegative(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>) <span class="hljs-comment"># echoes 12</span><br>echo sumTillNegative(<span class="hljs-number">3</span>, <span class="hljs-number">4</span> , -<span class="hljs-number">1</span> , <span class="hljs-number">6</span>) <span class="hljs-comment"># echoes 7</span><br></code></pre></td></tr></table></figure>
+<p>结果变量已经在函数的开头隐式地声明了，因此再次用’var result’声明它，例如，将使用同名的普通变量来遮蔽它。结果变量也已经用类型的默认值初始化了。注意，在过程开始时，引用数据类型将为nil，因此可能需要手动初始化。</p>
+<p>没有任何返回语句且不使用特殊结果变量的过程返回其最后一个表达式的值。例如，这个程序</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">proc</span> helloWorld(): <span class="hljs-type">string</span> =<br>  <span class="hljs-string">&quot;Hello, World!&quot;</span><br></code></pre></td></tr></table></figure>
+<p>结果就是返回一个”Hello, World”。</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>过程体中的参数是不可变的。默认情况下，它们的值不能更改，因为这允许编译器以最有效的方式实现参数传递。如果过程中需要一个可变变量，则必须在过程体中使用var声明它。隐藏参数名是可能的，这实际上是一种习惯用法:</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">proc</span> printSeq(s: <span class="hljs-type">seq</span>, nprinted: <span class="hljs-type">int</span> = -<span class="hljs-number">1</span>) =<br>  <span class="hljs-keyword">var</span> nprinted = <span class="hljs-keyword">if</span> nprinted == -<span class="hljs-number">1</span>: s.len <span class="hljs-keyword">else</span>: min(nprinted, s.len)<br>  <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span> ..&lt; nprinted:<br>    echo s[i]<br></code></pre></td></tr></table></figure>
+
+<p>如果过程需要修改调用者的参数，可以使用 var 参数（又是一个小细节）：</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">proc</span> divmod(a, b: <span class="hljs-type">int</span>; res, remainder: <span class="hljs-keyword">var</span> <span class="hljs-type">int</span>) =<br>  res = a <span class="hljs-keyword">div</span> b        <span class="hljs-comment"># integer division</span><br>  remainder = a <span class="hljs-keyword">mod</span> b  <span class="hljs-comment"># integer modulo operation</span><br><br><span class="hljs-keyword">var</span><br>  x, y: <span class="hljs-type">int</span><br>divmod(<span class="hljs-number">8</span>, <span class="hljs-number">5</span>, x, y) <span class="hljs-comment"># modifies x and y</span><br>echo x<br>echo y<br></code></pre></td></tr></table></figure>
+<p>在示例中，<code>res</code> 和<code>remainder</code>是 <code>var</code> 参数。过程可以修改 <code>var</code> 参数，并且调用者可以看到更改。请注意，上面的示例最好使用元组作为返回值，而不是使用 var 参数。</p>
+<h2 id="忽略语句"><a href="#忽略语句" class="headerlink" title="忽略语句"></a>忽略语句</h2><p>若要调用仅为其副作用返回值而忽略其返回值的过程，则必须使用discard语句。Nim不允许静默地丢弃返回值:</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">discard</span> yes(<span class="hljs-string">&quot;May I ask a pointless question?&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>如果调用的proc&#x2F;迭代器已经被声明为可丢弃的pragma，则返回值可以被隐式忽略:</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">proc</span> p(x, y: <span class="hljs-type">int</span>): <span class="hljs-type">int</span> <span class="hljs-meta">&#123;.discardable.&#125;</span> =<br>  <span class="hljs-keyword">return</span> x + y<br><br>p(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>) <span class="hljs-comment"># now valid</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="命名参数"><a href="#命名参数" class="headerlink" title="命名参数"></a>命名参数</h2><p>通常一个过程有许多参数，但并不清楚参数出现的顺序。对于构造复杂数据类型的过程尤其如此。因此，可以为过程的参数命名，以便清楚哪个参数属于哪个形参:</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">proc</span> createWindow(x, y, width, height: <span class="hljs-type">int</span>; title: <span class="hljs-type">string</span>;<br>                  show: <span class="hljs-type">bool</span>): <span class="hljs-type">Window</span> =<br>   <span class="hljs-comment"># ...</span><br><br><span class="hljs-keyword">var</span> w = createWindow(show = <span class="hljs-literal">true</span>, title = <span class="hljs-string">&quot;My Application&quot;</span>,<br>                     x = <span class="hljs-number">0</span>, y = <span class="hljs-number">0</span>, height = <span class="hljs-number">600</span>, width = <span class="hljs-number">800</span>)<br></code></pre></td></tr></table></figure>
+<p>简单来说就是在调用过程传参数时候，可以加上参数名字来指定参数到底传给谁。很直接。</p>
+<p>现在我们使用命名参数来调用createWindow，参数顺序不再重要了。将命名参数与有序参数混合也是可能的，但不是很好读:</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">var</span> w = createWindow(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, title = <span class="hljs-string">&quot;My Application&quot;</span>,<br>                     height = <span class="hljs-number">600</span>, width = <span class="hljs-number">800</span>, <span class="hljs-literal">true</span>)<br></code></pre></td></tr></table></figure>
+<p>编译器检查每个形参是否只接收一个实参。</p>
+<h2 id="默认参数值"><a href="#默认参数值" class="headerlink" title="默认参数值"></a>默认参数值</h2><p>为了使createWindow过程更容易使用，它应该提供默认值;如果调用者没有指定这些值，则将它们用作参数:</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">proc</span> createWindow(x = <span class="hljs-number">0</span>, y = <span class="hljs-number">0</span>, width = <span class="hljs-number">500</span>, height = <span class="hljs-number">700</span>,<br>                  title = <span class="hljs-string">&quot;unknown&quot;</span>,<br>                  show = <span class="hljs-literal">true</span>): <span class="hljs-type">Window</span> =<br>   <br><br><span class="hljs-keyword">var</span> w = createWindow(title = <span class="hljs-string">&quot;My Application&quot;</span>, height = <span class="hljs-number">600</span>, width = <span class="hljs-number">800</span>)<br></code></pre></td></tr></table></figure>
+<p>现在，对createWindow的调用只需要设置与默认值不同的值。</p>
+<p>请注意，类型推断适用于具有默认值的参数;例如，不需要写title: string &#x3D; “unknown”。</p>
+<h2 id="重载过程"><a href="#重载过程" class="headerlink" title="重载过程"></a>重载过程</h2><p>Nim的过程重载和C++的函数重载很相似</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">proc</span> toString(x: <span class="hljs-type">int</span>): <span class="hljs-type">string</span> =<br>  <span class="hljs-built_in">result</span> =<br>    <span class="hljs-keyword">if</span> x &lt; <span class="hljs-number">0</span>: <span class="hljs-string">&quot;negative&quot;</span><br>    <span class="hljs-keyword">elif</span> x &gt; <span class="hljs-number">0</span>: <span class="hljs-string">&quot;positive&quot;</span><br>    <span class="hljs-keyword">else</span>: <span class="hljs-string">&quot;zero&quot;</span><br><br><span class="hljs-keyword">proc</span> toString(x: <span class="hljs-type">bool</span>): <span class="hljs-type">string</span> =<br>  <span class="hljs-built_in">result</span> =<br>    <span class="hljs-keyword">if</span> x: <span class="hljs-string">&quot;yep&quot;</span><br>    <span class="hljs-keyword">else</span>: <span class="hljs-string">&quot;nope&quot;</span><br><br>assert toString(<span class="hljs-number">13</span>) == <span class="hljs-string">&quot;positive&quot;</span> <span class="hljs-comment"># calls the toString(x: int) proc</span><br>assert toString(<span class="hljs-literal">true</span>) == <span class="hljs-string">&quot;yep&quot;</span>    <span class="hljs-comment"># calls the toString(x: bool) proc</span><br></code></pre></td></tr></table></figure>
+<p>(注意，toString通常是Nim中的$操作符。)编译器为toString调用选择最合适的过程。这里不讨论重载解析算法是如何工作的——详细信息请参阅手册。歧义调用被报告为错误。</p>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>Nim标准库大量使用了重载——其中一个原因是像+这样的每个操作符都只是一个重载的过程。解析器允许您以中缀符号(a + b)或前缀符号(+ a)使用操作符。中缀操作符总是接收两个参数，前缀操作符总是接收一个参数。(后缀操作符是不可能的，因为这将是模棱两可的:a@ @b是表示(a) @ (@b)还是(a@) @ (b)?它总是表示(a) @ (@b)，因为在Nim中没有后缀操作符。</p>
+<p>除了一些内置的关键字操作符，如and, or, not，操作符总是由以下字符组成:+ - * \ &#x2F; &lt; &gt; &#x3D; @ $ ~ &amp; % !？ ^。|</p>
+<p>允许使用用户定义的操作符。没有什么能阻止你定义自己的@!?+~操作符，但这样做可能会降低可读性。</p>
+<p>操作符的优先级由它的第一个字符决定。详细信息可在手册中找到。</p>
+<p>定义new操作符时，将操作符用反引号” ‘ “括起来:</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">proc</span> `$` (x: myDataType): <span class="hljs-type">string</span> = <br><span class="hljs-comment"># now the $ operator also works with myDataType, overloading resolution</span><br><span class="hljs-comment"># ensures that $ works for built-in types just like before</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="前置申明"><a href="#前置申明" class="headerlink" title="前置申明"></a>前置申明</h2><p>每个变量、过程等在使用之前都需要声明。(这样做的原因是，在像Nim这样广泛支持元编程的语言中避免这种需求是很重要的。)然而，对于相互递归的过程不能这样做:</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-comment"># forward declaration:</span><br><span class="hljs-keyword">proc</span> even(n: <span class="hljs-type">int</span>): <span class="hljs-type">bool</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Nim"><span class="hljs-keyword">proc</span> odd(n: <span class="hljs-type">int</span>): <span class="hljs-type">bool</span> =<br>  assert(n &gt;= <span class="hljs-number">0</span>) <span class="hljs-comment"># makes sure we don&#x27;t run into negative recursion</span><br>  <span class="hljs-keyword">if</span> n == <span class="hljs-number">0</span>: <span class="hljs-literal">false</span><br>  <span class="hljs-keyword">else</span>:<br>    n == <span class="hljs-number">1</span> <span class="hljs-keyword">or</span> even(n-<span class="hljs-number">1</span>)<br><br><span class="hljs-keyword">proc</span> even(n: <span class="hljs-type">int</span>): <span class="hljs-type">bool</span> =<br>  assert(n &gt;= <span class="hljs-number">0</span>) <span class="hljs-comment"># makes sure we don&#x27;t run into negative recursion</span><br>  <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>: <span class="hljs-literal">false</span><br>  <span class="hljs-keyword">else</span>:<br>    n == <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> odd(n-<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+<p>这里奇数取决于偶数，反之亦然。因此，甚至需要在编译器完全定义它之前引入它。这种前向声明的语法很简单:只需省略&#x3D;和过程体即可。assert只是添加边界条件，稍后将在模块一节中介绍。</p>
+<p>该语言的后续版本将削弱对前向声明的要求。</p>
+<p>该示例还显示了进程的主体可以由单个表达式组成，然后隐式返回该表达式的值。</p>
+<h2 id="函数和方法"><a href="#函数和方法" class="headerlink" title="函数和方法"></a>函数和方法</h2><p>正如在介绍中提到的，Nim区分了过程、函数和方法，它们分别由proc、func和method关键字定义。在某些方面，Nim的定义比其他语言更迂腐。</p>
+<p>函数更接近于纯数学函数的概念，如果你曾经做过函数式编程，你可能会对它很熟悉。本质上，它们是带有附加限制的过程:它们不能访问全局状态(除了const)，也不能产生副作用。func关键字基本上是带有{. nosideeffects .}标记的proc的别名。然而，函数仍然可以更改其可变参数，即那些标记为var的参数，以及任何ref对象。</p>
+<p>与过程不同，方法是动态分派的。这听起来有点复杂，但它是一个与继承和面向对象编程密切相关的概念。如果您重载一个过程(两个具有相同名称但不同类型或具有不同参数集的过程被称为重载)，要使用的过程将在编译时确定。另一方面，方法依赖于从RootObj继承的对象。这将在本教程的第二部分进行更深入的讨论。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Nim/" class="print-no-link">#Nim</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Nim-过程(procedure)</div>
+      <div>http://cvrain.cloudvl.cn/2023/11/25/Nim/nim-procedure/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>ClaudeRainer</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年11月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/23/Nim/nim-control-flow/" title="Nim-控制流">
+                        <span class="hidden-mobile">Nim-控制流</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
