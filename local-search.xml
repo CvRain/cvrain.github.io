@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Haskell - 一些有用的函数</title>
+    <link href="/2023/11/28/Haskell/haskell-useful-function/"/>
+    <url>/2023/11/28/Haskell/haskell-useful-function/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Haskell-函数式程序员工具箱"><a href="#Haskell-函数式程序员工具箱" class="headerlink" title="Haskell - 函数式程序员工具箱"></a>Haskell - 函数式程序员工具箱</h1><h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">map</span> :: ( a -&gt; b ) -&gt; [a] -&gt; [b]<br><span class="hljs-title">map</span> _ [] = []<br><span class="hljs-title">map</span> f (x:xs) = f x : map f xs<br></code></pre></td></tr></table></figure><p>接受两个参数，第一个参数是一个函数，第二个参数是一个列表，返回一个函数。看起来就是很简单的工具函数，实际使用中就可以玩出来很多花里胡哨的东西</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">map</span> (+<span class="hljs-number">3</span>) [<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">6</span>]<br><span class="hljs-title">map</span> (++ <span class="hljs-string">&quot;!&quot;</span>) [<span class="hljs-string">&quot;BIFF&quot;</span>, <span class="hljs-string">&quot;BANG&quot;</span>, <span class="hljs-string">&quot;POW&quot;</span>]<br><span class="hljs-title">map</span> (replicate <span class="hljs-number">3</span>) [<span class="hljs-number">3</span>..<span class="hljs-number">6</span>]<br><span class="hljs-title">map</span> (map (^<span class="hljs-number">2</span>)) [[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>],[<span class="hljs-number">7</span>,<span class="hljs-number">8</span>]]<br></code></pre></td></tr></table></figure><h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p>取一个谓词和一个列表，返回由列表中所有符合该条件的元素组成的列表。很像C#中的linq （可恶，为什么C++没有linq）</p><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">filter</span> :: (a -&gt; <span class="hljs-type">Bool</span>) -&gt; [a] -&gt; [a]<br><span class="hljs-title">filter</span> _ [] = []<br><span class="hljs-title">filter</span> p (x:xs)<br>| p x       = x : filter p xs<br>| otherwise = filter p xs<br></code></pre></td></tr></table></figure><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Haskell"><span class="hljs-title">filter</span> (&gt;<span class="hljs-number">3</span>) [<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">6</span>,<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>]<br><span class="hljs-title">filter</span> (==<span class="hljs-number">3</span>) [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]<br><span class="hljs-title">filter</span> even [<span class="hljs-number">1</span>..<span class="hljs-number">10</span>]<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Haskell</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Haskell - 一些高级函数</title>
     <link href="/2023/11/27/Haskell/haskell-hyper-function/"/>
     <url>/2023/11/27/Haskell/haskell-hyper-function/</url>
