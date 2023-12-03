@@ -16,24 +16,38 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="一个猜数小游戏分析 首先尝试接受用户的一个输入数字 生成一个随机数 进入游戏循环主体中 输入数字大于随机数：输出大了，循环继续 输入数字小于随机数：输入小了，循环继续 输入数字等于随机数：猜对了，退出循环   结束程序  程序源码12345678910111213141516171819202122232425262728293031323334#include &lt;random&gt;#in">
+    <meta name="description" content="MSYS2和CMake搭建C&#x2F;C++环境 参考指南准备材料 MSYS2 msys2.org CMake cmake.org   如何下载 点击即可下载，之后莽点下一步即可安装    根据系统架构选择对应的版本下载，之后双击安装即可   正式开始 打开安装的MSYS2 MSYS， 更换软件源 (选择任意即可)123456# tuna mirror 清华软件源sed -i &quot;s#m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="来做一个猜数游戏吧">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/09/guessing-number/index.html">
+<meta property="og:title" content="Windows上mingw C&#x2F;C++环境搭建">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2022/12/11/Cpp/Tips-mingw/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="一个猜数小游戏分析 首先尝试接受用户的一个输入数字 生成一个随机数 进入游戏循环主体中 输入数字大于随机数：输出大了，循环继续 输入数字小于随机数：输入小了，循环继续 输入数字等于随机数：猜对了，退出循环   结束程序  程序源码12345678910111213141516171819202122232425262728293031323334#include &lt;random&gt;#in">
+<meta property="og:description" content="MSYS2和CMake搭建C&#x2F;C++环境 参考指南准备材料 MSYS2 msys2.org CMake cmake.org   如何下载 点击即可下载，之后莽点下一步即可安装    根据系统架构选择对应的版本下载，之后双击安装即可   正式开始 打开安装的MSYS2 MSYS， 更换软件源 (选择任意即可)123456# tuna mirror 清华软件源sed -i &quot;s#m">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-09T02:45:25.000Z">
-<meta property="article:modified_time" content="2023-11-10T14:24:59.006Z">
+<meta property="og:image" content="http://cvrain.cloudvl.cn/img/Tips-mingw/1.png">
+<meta property="og:image" content="http://cvrain.cloudvl.cn/img/Tips-mingw/2.png">
+<meta property="og:image" content="http://cvrain.cloudvl.cn/img/Tips-mingw/3.png">
+<meta property="og:image" content="http://cvrain.cloudvl.cn/img/Tips-mingw/4.png">
+<meta property="og:image" content="http://cvrain.cloudvl.cn/img/Tips-mingw/5.png">
+<meta property="og:image" content="http://cvrain.cloudvl.cn/img/Tips-mingw/6.png">
+<meta property="og:image" content="http://cvrain.cloudvl.cn/img/Tips-mingw/7.png">
+<meta property="og:image" content="http://cvrain.cloudvl.cn/img/Tips-mingw/8.png">
+<meta property="og:image" content="http://cvrain.cloudvl.cn/img/Tips-mingw/9.png">
+<meta property="og:image" content="http://cvrain.cloudvl.cn/img/Tips-mingw/10.png">
+<meta property="og:image" content="http://cvrain.cloudvl.cn/img/Tips-mingw/11.png">
+<meta property="og:image" content="http://cvrain.cloudvl.cn/img/Tips-mingw/12.png">
+<meta property="article:published_time" content="2022-12-11T00:55:56.000Z">
+<meta property="article:modified_time" content="2023-11-14T12:56:27.194Z">
 <meta property="article:author" content="ClaudeRainer">
-<meta property="article:tag" content="cpp-example">
+<meta property="article:tag" content="Cpp">
+<meta property="article:tag" content="Tips">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://cvrain.cloudvl.cn/img/Tips-mingw/1.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>来做一个猜数游戏吧 - cvrain-以空间追逐时间</title>
+  <title>Windows上mingw C/C++环境搭建 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="来做一个猜数游戏吧"></span>
+            <span id="subtitle" data-typed-text="Windows上mingw C/C++环境搭建"></span>
           
         </div>
 
@@ -210,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-09 10:45" pubdate>
-          2023年11月9日 上午
+        <time datetime="2022-12-11 08:55" pubdate>
+          2022年12月11日 早上
         </time>
       </span>
     
@@ -222,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          2.3k 字
         
       </span>
     
@@ -233,7 +247,7 @@
         
         
         
-          22 分钟
+          20 分钟
         
       </span>
     
@@ -278,64 +292,73 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">来做一个猜数游戏吧</h1>
+            <h1 id="seo-header">Windows上mingw C/C++环境搭建</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="一个猜数小游戏"><a href="#一个猜数小游戏" class="headerlink" title="一个猜数小游戏"></a>一个猜数小游戏</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ol>
-<li>首先尝试接受用户的一个输入数字</li>
-<li>生成一个随机数</li>
-<li>进入游戏循环主体中<ol>
-<li>输入数字大于随机数：输出大了，循环继续</li>
-<li>输入数字小于随机数：输入小了，循环继续</li>
-<li>输入数字等于随机数：猜对了，退出循环</li>
-</ol>
-</li>
-<li>结束程序</li>
-</ol>
-<h2 id="程序源码"><a href="#程序源码" class="headerlink" title="程序源码"></a>程序源码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;random&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-comment">// Create random number generator</span><br>    std::random_device random_device;<br>    <span class="hljs-function">std::mt19937 <span class="hljs-title">generator</span><span class="hljs-params">(random_device())</span></span>;<br>    <span class="hljs-function">std::uniform_int_distribution&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">distribution</span><span class="hljs-params">(<span class="hljs-number">1</span>,<span class="hljs-number">100</span>)</span></span>;<br>    <span class="hljs-type">const</span> <span class="hljs-keyword">auto</span> random_number = <span class="hljs-built_in">distribution</span>(generator);<br>    std::cout &lt;&lt; random_number &lt;&lt; std::endl;<br>    <br>    <span class="hljs-comment">// Create variable to store user&#x27;s guess</span><br>    <span class="hljs-type">int</span> guessing_number&#123;&#125;;<br><br>    <span class="hljs-comment">// Create loop to allow user to guess the random number</span><br>    <span class="hljs-keyword">while</span>(guessing_number != random_number)&#123;<br>        std::cin &gt;&gt; guessing_number;<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;Guessing number: &quot;</span> &lt;&lt; guessing_number &lt;&lt; std::endl;<br>        <span class="hljs-keyword">if</span>(guessing_number &gt; random_number)&#123;<br>            std::cout &lt;&lt; <span class="hljs-string">&quot;Too high&quot;</span> &lt;&lt; std::endl;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(guessing_number &lt; random_number)&#123;<br>            std::cout &lt;&lt; <span class="hljs-string">&quot;Too low&quot;</span> &lt;&lt; std::endl;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            std::cout &lt;&lt; <span class="hljs-string">&quot;You got it!&quot;</span> &lt;&lt; std::endl;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+                <h1 id="MSYS2和CMake搭建C-x2F-C-环境-参考指南"><a href="#MSYS2和CMake搭建C-x2F-C-环境-参考指南" class="headerlink" title="MSYS2和CMake搭建C&#x2F;C++环境 参考指南"></a>MSYS2和CMake搭建C&#x2F;C++环境 参考指南</h1><h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a><strong>准备材料</strong></h2><ul>
+<li>MSYS2 <a target="_blank" rel="noopener" href="https://www.msys2.org/">msys2.org</a></li>
+<li>CMake <a target="_blank" rel="noopener" href="https://cmake.org/download/">cmake.org</a></li>
+</ul>
+<hr>
+<h2 id="如何下载"><a href="#如何下载" class="headerlink" title="如何下载"></a>如何下载</h2><p><img src="/img/Tips-mingw/1.png" srcset="/img/loading.gif" lazyload alt="1.png"></p>
+<center><small>点击即可下载，之后莽点下一步即可安装</small></center>
 
 
-<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="随机数引擎"><a href="#随机数引擎" class="headerlink" title="随机数引擎"></a>随机数引擎</h3><p><strong>要在C++中使用<random>库生成一个随机数，请按照以下步骤操作：</strong></p>
-<ol>
-<li><p>首先，确保已经包含了<code>&lt;random&gt;</code>头文件。在文件的开头添加以下代码：<code>#include &lt;random&gt;</code></p>
-</li>
-<li><p>接下来，创建一个<code>std::random_device</code>对象，用于生成随机种子。这可以确保每次运行程序时生成的随机数不同。<br><code>std::random_device rd;</code></p>
-</li>
-<li><p>使用<code>std::seed</code>函数，将random_device对象生成的随机种子用于初始化std::mt19937随机数生成器。<br><code>std::mt19937 gen(rd());</code></p>
-</li>
-<li><p>使用<code>std::uniform_int_distribution</code>对象，指定随机数的范围。例如，要生成0到100之间的随机数，可以使用以下代码：<br><code>std::uniform_int_distribution&lt;&gt; distrib(0, 100);</code></p>
-</li>
-<li><p>使用distrib对象生成随机数，并将其存储在变量中。<br><code>const auto random_number = distrib(gen);</code></p>
-</li>
-</ol>
-<p><code>std::mt19937</code>是一个Mersenne Twister伪随机数生成器，它是C++标准库中的一个均匀分布随机数生成器。Mersenne Twister是一种广泛使用的随机数生成器，其性能和分布非常广泛，因此在许多应用中都被广泛使用。</p>
-<p><code>std::mt19937</code>的构造函数接受一个random_device对象作为参数，该对象用于生成随机种子。通过使用random_device，可以确保每次运行程序时生成的随机数不同。</p>
-<p><code>std::mt19937</code>生成的随机数服从均匀分布，即在指定的区间内等概率地取值。</p>
-<h3 id="const-和-auto"><a href="#const-和-auto" class="headerlink" title="const 和 auto"></a>const 和 auto</h3><p>const 关键字用于声明常量，即在程序运行期间其值不能被修改的量。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-type">const</span> <span class="hljs-type">int</span> a = <span class="hljs-number">5</span>;<br>a = <span class="hljs-number">6</span> <span class="hljs-comment">// 错误，不能修改常量的值</span><br></code></pre></td></tr></table></figure>
+<p><img src="/img/Tips-mingw/2.png" srcset="/img/loading.gif" lazyload alt="2.png"></p>
+<center><small>根据系统架构选择对应的版本下载，之后双击安装即可</small></center>
 
-<p>auto 关键字用于声明自动类型变量，即编译器会根据初始值自动推断出变量的类型。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-type">const</span> <span class="hljs-type">int</span> a = <span class="hljs-number">5</span>;    <span class="hljs-comment">//声明一个int类型的a,并且定义值为5</span><br><span class="hljs-keyword">auto</span> b = a; <span class="hljs-comment">// b的类型和a一样，都是int类型</span><br>b = <span class="hljs-number">7</span>;  <span class="hljs-comment">//正确，可以修改b的值</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="主体判断框架"><a href="#主体判断框架" class="headerlink" title="主体判断框架"></a>主体判断框架</h3><p>使用while循环，在循环体中判断条件是否成立，如果条件成立，则执行循环体，否则退出循环。<br>用户如果输入错误数值，那么就一直循环，直到输入正确为止。<br>用户输入正确，那么就会通过break跳出循环。</p>
-<h3 id="整体解释"><a href="#整体解释" class="headerlink" title="整体解释"></a>整体解释</h3><ol>
-<li>引入所需的头文件，包括<random>（用于随机数生成器）和<iostream>（用于输入输出）。</li>
-<li>在main函数中，定义一个random_device对象，用于生成随机种子。</li>
-<li>定义一个std::mt19937对象，作为随机数生成器，并将random_device对象作为参数传递。</li>
-<li>定义一个std::uniform_int_distribution对象，用于生成1到100之间的随机整数。</li>
-<li>使用distribution对象生成一个随机整数，并将其存储在random_number变量中。</li>
-<li>使用std::cout输出随机数。</li>
-<li>定义一个guessing_number变量，用于存储用户输入的数字。</li>
-<li>使用一个while循环，直到用户猜对数字为止。</li>
-<li>在循环中，使用std::cin从用户输入一个数字，并将其存储在guessing_number变量中。</li>
-<li>使用std::cout输出用户输入的数字。</li>
-<li>如果guessing_number大于random_number，则输出“Too high”。</li>
-<li>如果guessing_number小于random_number，则输出“Too low”。</li>
-<li>如果guessing_number等于random_number，则输出“You got it!”并跳出循环。</li>
-<li>最后，return 0表示程序正常退出。</li>
+<hr>
+<h2 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h2><ol>
+<li>打开安装的MSYS2 MSYS， 更换软件源 (选择任意即可)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># tuna mirror 清华软件源</span><br>sed -i <span class="hljs-string">&quot;s#mirror.msys2.org/#mirrors.tuna.tsinghua.edu.cn/msys2/#g&quot;</span> /etc/pacman.d/mirrorlist*<br><br><span class="hljs-comment"># ustc mirror 中科大软件源</span><br>sed -i <span class="hljs-string">&quot;s#mirror.msys2.org/#mirrors.ustc.edu.cn/msys2/#g&quot;</span> /etc/pacman.d/mirrorlist*<br><br></code></pre></td></tr></table></figure></li>
 </ol>
+<p><img src="/img/Tips-mingw/3.png" srcset="/img/loading.gif" lazyload alt="3.png"></p>
+<p><img src="/img/Tips-mingw/4.png" srcset="/img/loading.gif" lazyload alt="4.png"></p>
+<ol start="2">
+<li>更新一下软件包<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman -Syyu<br></code></pre></td></tr></table></figure>
+遇到 :: Proceed with installation? [Y&#x2F;n] 的类似问题时输入y即可</li>
+</ol>
+<p><img src="/img/Tips-mingw/5.png" srcset="/img/loading.gif" lazyload alt="5.png"></p>
+<ol start="3">
+<li>安装mingw<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman -S base-devel <br>pacman -S mingw-w64-x86_64-toolchain<br><br></code></pre></td></tr></table></figure>
+Enter a selection (default&#x3D;all): 输入回车即可<br><img src="/img/Tips-mingw/6.png" srcset="/img/loading.gif" lazyload alt="6.png"></li>
+</ol>
+<p><strong>4. 配置系统环境</strong></p>
+<p>找到安装目录的mingw64路径<br><img src="/img/Tips-mingw/7.png" srcset="/img/loading.gif" lazyload alt="7.png"></p>
+<p>计算机右键属性 -&gt; 高级系统设置 -&gt; 环境变量 -&gt; 系统变量 -&gt; path -&gt; 你的路径<br><img src="/img/Tips-mingw/8.png" srcset="/img/loading.gif" lazyload alt="8.png"><br><img src="/img/Tips-mingw/9.png" srcset="/img/loading.gif" lazyload alt="9.png"><br><img src="/img/Tips-mingw/10.png" srcset="/img/loading.gif" lazyload alt="10.png"><br><img src="/img/Tips-mingw/11.png" srcset="/img/loading.gif" lazyload alt="11.png"></p>
+<h2 id="最后验证"><a href="#最后验证" class="headerlink" title="最后验证"></a>最后验证</h2><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dos">cmake --version<br>gcc -v<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/Tips-mingw/12.png" srcset="/img/loading.gif" lazyload alt="12.png"></p>
+<h2 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h2><p>MSYS2 是什么？<br><strong>MSYS2</strong> is a collection of tools and libraries providing you with an easy-to-use environment for building, installing and running native Windows software.</p>
+<p>It consists of a command line terminal called <a target="_blank" rel="noopener" href="https://mintty.github.io/">mintty</a>, bash, version control systems like git and subversion, tools like tar and awk and even build systems like autotools, all based on a modified version of <a target="_blank" rel="noopener" href="https://cygwin.com/">Cygwin</a>. Despite some of these central parts being based on Cygwin, the main focus of MSYS2 is to provide a build environment for native Windows software and the Cygwin-using parts are kept at a minimum. MSYS2 provides up-to-date native builds for GCC, mingw-w64, CPython, CMake, Meson, OpenSSL, FFmpeg, Rust, Ruby, just to name a few.</p>
+<p>To provide easy installation of packages and a way to keep them updated it features a package management system called <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/pacman">Pacman</a>, which should be familiar to Arch Linux users. It brings many powerful features such as dependency resolution and simple complete system upgrades, as well as straight-forward and reproducible package building. Our package repository contains <a target="_blank" rel="noopener" href="https://packages.msys2.org/base">more than 2600 pre-built packages</a> ready to install.</p>
+<p>For more details see <a target="_blank" rel="noopener" href="https://www.msys2.org/docs/what-is-msys2/">‘What is MSYS2?’</a> which also compares MSYS2 to other software distributions and development environments like <a target="_blank" rel="noopener" href="https://cygwin.com/">Cygwin</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux">WSL</a>, <a target="_blank" rel="noopener" href="https://chocolatey.org/">Chocolatey</a>, <a target="_blank" rel="noopener" href="https://scoop.sh/">Scoop</a>, … and <a target="_blank" rel="noopener" href="https://www.msys2.org/docs/who-is-using-msys2/">‘Who Is Using MSYS2?’</a> to see which projects are using MSYS2 and what for.</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">MSYSY2 MSYS</td>
+<td align="left">用来管理和安装包的</td>
+</tr>
+<tr>
+<td align="left">MSYSY2 MinGW 32-bit</td>
+<td align="left">编译32位程序，库链接到msvcrt上</td>
+</tr>
+<tr>
+<td align="left">MSYSY2 MinGW 64-bit</td>
+<td align="left">编译64位程序，库链接到msvcrt上</td>
+</tr>
+<tr>
+<td align="left">MSYSY2 MSYS UCRT 64-bit</td>
+<td align="left">编译64位程序，库链接到ucrt上</td>
+</tr>
+</tbody></table>
+<p>CMake is an open-source, cross-platform family of tools designed to build, test and package software. CMake is used to control the software compilation process using simple platform and compiler independent configuration files, and generate native makefiles and workspaces that can be used in the compiler environment of your choice. The suite of CMake tools were created by Kitware in response to the need for a powerful, cross-platform build environment for open-source projects such as ITK and VTK.</p>
 
                 
               </div>
@@ -348,7 +371,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/cpp-example/" class="print-no-link">#cpp-example</a>
+        <a href="/tags/Cpp/" class="print-no-link">#Cpp</a>
+      
+        <a href="/tags/Tips/" class="print-no-link">#Tips</a>
       
     </div>
   
@@ -360,8 +385,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>来做一个猜数游戏吧</div>
-      <div>http://cvrain.cloudvl.cn/2023/11/09/guessing-number/</div>
+      <div>Windows上mingw C/C++环境搭建</div>
+      <div>http://cvrain.cloudvl.cn/2022/12/11/Cpp/Tips-mingw/</div>
     </div>
     <div class="license-meta">
       
@@ -373,7 +398,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月9日</div>
+          <div>2022年12月11日</div>
         </div>
       
       
@@ -405,9 +430,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/09/view-cpp-as-a-federation/" title="视C++为一个语言联邦">
+                      <a href="/2023/11/09/Cpp/guessing-number/" title="来做一个猜数游戏吧">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">视C++为一个语言联邦</span>
+                        <span class="hidden-mobile">来做一个猜数游戏吧</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -415,8 +440,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/11/Tips-mingw/" title="Windows上mingw C/C++环境搭建">
-                        <span class="hidden-mobile">Windows上mingw C/C++环境搭建</span>
+                      <a href="/2022/08/10/Cpp/Tokens%20and%20character%20sets/" title="ModernC++/标记和字符集">
+                        <span class="hidden-mobile">ModernC++/标记和字符集</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
