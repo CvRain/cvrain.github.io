@@ -1,1 +1,663 @@
-<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="auto"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png"><link rel="icon" href="/img/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="theme-color" content="#2f4154"><meta name="author" content="ClaudeRainer"><meta name="keywords" content="C,C++,Linux"><meta name="description" content="视C++为一个语言联邦View C++ as a federation of languages  一开始，C++只是C加上一些面向对象特性。 C++ 最初的名称 C with Classes 也反应来这个血缘关系 (Effective C++)   随着C++的不断发展，C++的特性越来越多，甚至有些特性是C++独有的。 学了有一段时间的C++， 向他人请教过C++的技巧，也教过人怎么学习C++"><meta property="og:type" content="article"><meta property="og:title" content="视C++为一个语言联邦"><meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/09/Cpp/view-cpp-as-a-federation/index.html"><meta property="og:site_name" content="cvrain-以空间追逐时间"><meta property="og:description" content="视C++为一个语言联邦View C++ as a federation of languages  一开始，C++只是C加上一些面向对象特性。 C++ 最初的名称 C with Classes 也反应来这个血缘关系 (Effective C++)   随着C++的不断发展，C++的特性越来越多，甚至有些特性是C++独有的。 学了有一段时间的C++， 向他人请教过C++的技巧，也教过人怎么学习C++"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2023-11-09T02:50:20.000Z"><meta property="article:modified_time" content="2023-11-14T12:57:03.091Z"><meta property="article:author" content="ClaudeRainer"><meta property="article:tag" content="Modern-cpp"><meta property="article:tag" content="Cpp"><meta name="twitter:card" content="summary_large_image"><meta name="referrer" content="no-referrer-when-downgrade"><title>视C++为一个语言联邦 - cvrain-以空间追逐时间</title><link rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css"><link rel="stylesheet" href="/css/main.css"><link id="highlight-css" rel="stylesheet" href="/css/highlight.css"><link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css"><script id="fluid-configs">var Fluid=window.Fluid||{};Fluid.ctx=Object.assign({},Fluid.ctx);var CONFIG={hostname:"cvrain.cloudvl.cn",root:"/",version:"1.9.6",typing:{enable:!0,typeSpeed:70,cursorChar:"_",loop:!1,scope:[]},anchorjs:{enable:!0,element:"h1,h2,h3,h4,h5,h6",placement:"left",visible:"hover",icon:""},progressbar:{enable:!0,height_px:3,color:"#29d",options:{showSpinner:!1,trickleSpeed:100}},code_language:{enable:!0,default:"TEXT"},copy_btn:!0,image_caption:{enable:!0},image_zoom:{enable:!0,img_url_replace:["",""]},toc:{enable:!0,placement:"right",headingSelector:"h1,h2,h3,h4,h5,h6",collapseDepth:0},lazyload:{enable:!0,loading_img:"/img/loading.gif",onlypost:!1,offset_factor:2},web_analytics:{enable:!1,follow_dnt:!0,baidu:null,google:{measurement_id:null},tencent:{sid:null,cid:null},woyaola:null,cnzz:null,leancloud:{app_id:null,app_key:null,server_url:null,path:"window.location.pathname",ignore_local:!1}},search_path:"/local-search.xml",include_content_in_search:!0};if(CONFIG.web_analytics.follow_dnt){var dntVal=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack;Fluid.ctx.dnt=dntVal&&(dntVal.startsWith("1")||dntVal.startsWith("yes")||dntVal.startsWith("on"))}</script><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 6.3.0"></head><body><header><div class="header-inner" style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/"><strong>ClaudeRainer</strong> </a><button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/" target="_self"><i class="iconfont icon-home-fill"></i> <span>首页</span></a></li><li class="nav-item"><a class="nav-link" href="/archives/" target="_self"><i class="iconfont icon-archive-fill"></i> <span>归档</span></a></li><li class="nav-item"><a class="nav-link" href="/categories/" target="_self"><i class="iconfont icon-category-fill"></i> <span>分类</span></a></li><li class="nav-item"><a class="nav-link" href="/tags/" target="_self"><i class="iconfont icon-tags-fill"></i> <span>标签</span></a></li><li class="nav-item"><a class="nav-link" href="/about/" target="_self"><i class="iconfont icon-user-fill"></i> <span>关于</span></a></li><li class="nav-item" id="search-btn"><a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search"><i class="iconfont icon-search"></i></a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle"><i class="iconfont icon-dark" id="color-toggle-icon"></i></a></li></ul></div></div></nav><div id="banner" class="banner" parallax="true" style="background:url(/img/default.png) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="banner-text text-center fade-in-up"><div class="h2"><span id="subtitle" data-typed-text="视C++为一个语言联邦"></span></div><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2023-11-09 10:50" pubdate>2023年11月9日 上午</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 839 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 7 分钟 </span><span id="busuanzi_container_page_pv" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="busuanzi_value_page_pv"></span>次</span></div></div></div></div></div></div></header><main><div class="container-fluid nopadding-x"><div class="row nomargin-x"><div class="side-col d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-x-md"><div class="container nopadding-x-md" id="board-ctn"><div id="board"><article class="post-content mx-auto"><h1 id="seo-header">视C++为一个语言联邦</h1><div class="markdown-body"><h1 id="视C-为一个语言联邦"><a href="#视C-为一个语言联邦" class="headerlink" title="视C++为一个语言联邦"></a>视C++为一个语言联邦</h1><p><small>View C++ as a federation of languages</small></p><blockquote><p>一开始，C++只是C加上一些面向对象特性。 C++ 最初的名称 C with Classes 也反应来这个血缘关系 (Effective C++)</p></blockquote><hr><p>随着C++的不断发展，C++的特性越来越多，甚至有些特性是C++独有的。 学了有一段时间的C++， 向他人请教过C++的技巧，也教过人怎么学习C++。 语法以及技巧不是很难去教授的，但是有一段时间令我头疼的是，如何对新手做一个C++的介绍。 因为C++的特性太多， 而且C++的特性之间又存在一定的联系， 导致很难对一个新手进行一个系统的学习。</p><p>直到有一天我再次翻开《Effective C++ 改善程序的55个做法》， 而条款01就是”视C++为一个语言联邦“<br>可以说，C++其实是一个联邦， 联邦由若干个语言组成， 每个语言都具有自己的特性， 这些特性又相互关联。今天的C++是个多重范式的编程语言， 它同时具有面向过程、面向对象、泛型编程、模板、异常处理、标准库、标准模板库等特性。</p><h2 id="语言联邦"><a href="#语言联邦" class="headerlink" title="语言联邦"></a>语言联邦</h2><blockquote><ol><li>Base C language</li><li>Object-Oriented C++</li><li>Template C++</li><li>STL</li></ol></blockquote><h3 id="Base-C-language"><a href="#Base-C-language" class="headerlink" title="Base C language"></a>Base C language</h3><p>说到底，C++可以理解是一个C语言的超集， 它包含了C语言的所有特性， 并且还增加了面向对象、泛型编程、异常处理、标准库、标准。许多时候一个问题的C++解法， 往往可以由C语言的解法推导而来，也可以说是较为高级、较为抽象的C语言的解法。</p><h3 id="Object-Oriented-C"><a href="#Object-Oriented-C" class="headerlink" title="Object-Oriented C++"></a>Object-Oriented C++</h3><p>C++语言是面向对象的， 它包含了一些面向对象的特性， 例如： 类、对象、继承、多态、虚函数。<br>这部分也就是C with classes所诉求的， 它也被称为OO C++： classes, inheritance, and polymorphism.</p><h3 id="Template-C"><a href="#Template-C" class="headerlink" title="Template C++"></a>Template C++</h3><p>C++的模板特性， 使得C++可以进行泛型编程， 它使得C++可以进行泛型编程。不严谨的说，模板能够批量生成大量功能相似，但是有些许不同的代码。</p><h3 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h3><p>STL是C++标准模板库， 它提供了一组通用的、可复用的算法和数据结构， 例如： 容器、迭代器、算法、函数对象、适配器、分配器、流、字符串、数值等。然而STL有自己独特的办事方式，当你同STL一同工作，你必须遵守他的约定。</p><p>在编程时候， 这些语言联邦中的特性相互之间是相互独立的， 它们之间可以相互组合， 也可以相互分离。 例如，你可以只使用C语言特性完成某些事情，或者在一个类中自己封装一个STL容器， 或者使用STL容器完成一些C++特性。</p><blockquote><p>当你从某个次语言切换到另一个时，导致高效编程守则编程守则要求你改变策略时，不要感到惊讶。因此说C++并不是一个一组带有一组守则一体的语言：它是从四个次语言组成的联邦政府，每个次语言都有自己的规约。<br><strong>C++高效编程守则视状况而变化，取决于你使用C++的哪一个部分</strong></p></blockquote><h2 id="学习C-的流程"><a href="#学习C-的流程" class="headerlink" title="学习C++的流程"></a>学习C++的流程</h2><p>所以说，学习C++本体或许并不一定要掌握C语言，“不必是一个火箭科学家”， 只需要掌握C++的特性， 就可以写出一些有趣的代码。<br>之后在针对C++的特性进行学习， 例如： 模板、STL、异常处理等。</p></div><hr><div><div class="post-metas my-3"><div class="post-meta"><i class="iconfont icon-tags"></i> <a href="/tags/Modern-cpp/" class="print-no-link">#Modern-cpp</a> <a href="/tags/Cpp/" class="print-no-link">#Cpp</a></div></div><div class="license-box my-3"><div class="license-title"><div>视C++为一个语言联邦</div><div>http://cvrain.cloudvl.cn/2023/11/09/Cpp/view-cpp-as-a-federation/</div></div><div class="license-meta"><div class="license-meta-item"><div>作者</div><div>ClaudeRainer</div></div><div class="license-meta-item license-meta-date"><div>发布于</div><div>2023年11月9日</div></div><div class="license-meta-item"><div>许可协议</div><div><a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/"><span class="hint--top hint--rounded" aria-label="BY - 署名"><i class="iconfont icon-by"></i></span></a></div></div></div><div class="license-icon iconfont"></div></div><div class="post-prevnext my-3"><article class="post-prev col-6"><a href="/2023/11/10/Haskell/hello-haskell/" title="你好呀 Haskell"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">你好呀 Haskell</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/2023/11/09/Cpp/guessing-number/" title="来做一个猜数游戏吧"><span class="hidden-mobile">来做一个猜数游戏吧</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div></article></div></div></div><div class="side-col d-none d-lg-block col-lg-2"><aside class="sidebar" style="margin-left:-1rem"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i> <span>目录</span></p><div class="toc-body" id="toc-body"></div></div></aside></div></div></div><a id="scroll-top-button" aria-label="TOP" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div></main><footer><div class="footer-inner"><div class="footer-content"><a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a></div></div></footer><script src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js"></script><link rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css"><script>NProgress.configure({showSpinner:!1,trickleSpeed:100}),NProgress.start(),window.addEventListener("load",(function(){NProgress.done()}))</script><script src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js"></script><script src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script><script src="/js/events.js"></script><script src="/js/plugins.js"></script><script src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js"></script><script>!function(t,e){var i=Fluid.plugins.typing,n=e.getElementById("subtitle");n&&i&&i(n.getAttribute("data-typed-text"))}(window,document)</script><script src="/js/img-lazyload.js"></script><script>Fluid.utils.createScript("https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js",(function(){var t=jQuery("#toc");if(0!==t.length&&window.tocbot){var i=jQuery("#board-ctn").offset().top;window.tocbot.init(Object.assign({tocSelector:"#toc-body",contentSelector:".markdown-body",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",scrollSmooth:!0,includeTitleTags:!0,headingsOffset:-i},CONFIG.toc)),t.find(".toc-list-item").length>0&&t.css("visibility","visible"),Fluid.events.registerRefreshCallback((function(){if("tocbot"in window){tocbot.refresh();var t=jQuery("#toc");if(0===t.length||!tocbot)return;t.find(".toc-list-item").length>0&&t.css("visibility","visible")}}))}}))</script><script src="https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js"></script><script>Fluid.plugins.codeWidget()</script><script>Fluid.utils.createScript("https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js",(function(){window.anchors.options={placement:CONFIG.anchorjs.placement,visible:CONFIG.anchorjs.visible},CONFIG.anchorjs.icon&&(window.anchors.options.icon=CONFIG.anchorjs.icon);var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(window.anchors.options.class="anchorjs-link-left"),window.anchors.add(o.join(", ")),Fluid.events.registerRefreshCallback((function(){if("anchors"in window){anchors.removeAll();var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(anchors.options.class="anchorjs-link-left"),anchors.add(o.join(", "))}}))}))</script><script>Fluid.utils.createScript("https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js",(function(){Fluid.plugins.fancyBox()}))</script><script>Fluid.plugins.imageCaption()</script><script src="/js/local-search.js"></script><script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="/js/boot.js"></script><noscript><div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div></noscript></body></html>
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ClaudeRainer">
+  <meta name="keywords" content="C,C++,Linux">
+  
+    <meta name="description" content="视C++为一个语言联邦View C++ as a federation of languages  一开始，C++只是C加上一些面向对象特性。 C++ 最初的名称 C with Classes 也反应来这个血缘关系 (Effective C++)   随着C++的不断发展，C++的特性越来越多，甚至有些特性是C++独有的。 学了有一段时间的C++， 向他人请教过C++的技巧，也教过人怎么学习C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="视C++为一个语言联邦">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/11/09/Cpp/view-cpp-as-a-federation/index.html">
+<meta property="og:site_name" content="cvrain-以空间追逐时间">
+<meta property="og:description" content="视C++为一个语言联邦View C++ as a federation of languages  一开始，C++只是C加上一些面向对象特性。 C++ 最初的名称 C with Classes 也反应来这个血缘关系 (Effective C++)   随着C++的不断发展，C++的特性越来越多，甚至有些特性是C++独有的。 学了有一段时间的C++， 向他人请教过C++的技巧，也教过人怎么学习C++">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-09T02:50:20.000Z">
+<meta property="article:modified_time" content="2023-11-14T12:57:03.091Z">
+<meta property="article:author" content="ClaudeRainer">
+<meta property="article:tag" content="Modern-cpp">
+<meta property="article:tag" content="Cpp">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>视C++为一个语言联邦 - cvrain-以空间追逐时间</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"cvrain.cloudvl.cn","root":"/","version":"1.9.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ClaudeRainer</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="视C++为一个语言联邦"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-09 10:50" pubdate>
+          2023年11月9日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          839 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">视C++为一个语言联邦</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="视C-为一个语言联邦"><a href="#视C-为一个语言联邦" class="headerlink" title="视C++为一个语言联邦"></a>视C++为一个语言联邦</h1><p><small>View C++ as a federation of languages</small></p>
+<blockquote>
+<p>一开始，C++只是C加上一些面向对象特性。 C++ 最初的名称 C with Classes 也反应来这个血缘关系 (Effective C++)</p>
+</blockquote>
+<hr>
+<p>随着C++的不断发展，C++的特性越来越多，甚至有些特性是C++独有的。 学了有一段时间的C++， 向他人请教过C++的技巧，也教过人怎么学习C++。 语法以及技巧不是很难去教授的，但是有一段时间令我头疼的是，如何对新手做一个C++的介绍。 因为C++的特性太多， 而且C++的特性之间又存在一定的联系， 导致很难对一个新手进行一个系统的学习。</p>
+<p>直到有一天我再次翻开《Effective C++ 改善程序的55个做法》， 而条款01就是”视C++为一个语言联邦“<br>可以说，C++其实是一个联邦， 联邦由若干个语言组成， 每个语言都具有自己的特性， 这些特性又相互关联。今天的C++是个多重范式的编程语言， 它同时具有面向过程、面向对象、泛型编程、模板、异常处理、标准库、标准模板库等特性。</p>
+<h2 id="语言联邦"><a href="#语言联邦" class="headerlink" title="语言联邦"></a>语言联邦</h2><blockquote>
+<ol>
+<li>Base C language</li>
+<li>Object-Oriented C++</li>
+<li>Template C++</li>
+<li>STL</li>
+</ol>
+</blockquote>
+<h3 id="Base-C-language"><a href="#Base-C-language" class="headerlink" title="Base C language"></a>Base C language</h3><p>说到底，C++可以理解是一个C语言的超集， 它包含了C语言的所有特性， 并且还增加了面向对象、泛型编程、异常处理、标准库、标准。许多时候一个问题的C++解法， 往往可以由C语言的解法推导而来，也可以说是较为高级、较为抽象的C语言的解法。</p>
+<h3 id="Object-Oriented-C"><a href="#Object-Oriented-C" class="headerlink" title="Object-Oriented C++"></a>Object-Oriented C++</h3><p>C++语言是面向对象的， 它包含了一些面向对象的特性， 例如： 类、对象、继承、多态、虚函数。<br>这部分也就是C with classes所诉求的， 它也被称为OO C++： classes, inheritance, and polymorphism.</p>
+<h3 id="Template-C"><a href="#Template-C" class="headerlink" title="Template C++"></a>Template C++</h3><p>C++的模板特性， 使得C++可以进行泛型编程， 它使得C++可以进行泛型编程。不严谨的说，模板能够批量生成大量功能相似，但是有些许不同的代码。</p>
+<h3 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h3><p>STL是C++标准模板库， 它提供了一组通用的、可复用的算法和数据结构， 例如： 容器、迭代器、算法、函数对象、适配器、分配器、流、字符串、数值等。然而STL有自己独特的办事方式，当你同STL一同工作，你必须遵守他的约定。</p>
+<p>在编程时候， 这些语言联邦中的特性相互之间是相互独立的， 它们之间可以相互组合， 也可以相互分离。 例如，你可以只使用C语言特性完成某些事情，或者在一个类中自己封装一个STL容器， 或者使用STL容器完成一些C++特性。</p>
+<blockquote>
+<p>当你从某个次语言切换到另一个时，导致高效编程守则编程守则要求你改变策略时，不要感到惊讶。因此说C++并不是一个一组带有一组守则一体的语言：它是从四个次语言组成的联邦政府，每个次语言都有自己的规约。<br><strong>C++高效编程守则视状况而变化，取决于你使用C++的哪一个部分</strong></p>
+</blockquote>
+<h2 id="学习C-的流程"><a href="#学习C-的流程" class="headerlink" title="学习C++的流程"></a>学习C++的流程</h2><p>所以说，学习C++本体或许并不一定要掌握C语言，“不必是一个火箭科学家”， 只需要掌握C++的特性， 就可以写出一些有趣的代码。<br>之后在针对C++的特性进行学习， 例如： 模板、STL、异常处理等。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Modern-cpp/" class="print-no-link">#Modern-cpp</a>
+      
+        <a href="/tags/Cpp/" class="print-no-link">#Cpp</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>视C++为一个语言联邦</div>
+      <div>http://cvrain.cloudvl.cn/2023/11/09/Cpp/view-cpp-as-a-federation/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>ClaudeRainer</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年11月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/11/10/Haskell/hello-haskell/" title="你好呀 Haskell">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">你好呀 Haskell</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/09/Cpp/guessing-number/" title="来做一个猜数游戏吧">
+                        <span class="hidden-mobile">来做一个猜数游戏吧</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

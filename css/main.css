@@ -851,8 +851,10 @@ i.iconfont {
   --scrollbar-hover-color: #a6a6a6;
   --button-bg-color: transparent;
   --button-hover-bg-color: #f2f3f5;
-  --highlight-bg-color: #f6f8fa;
+  --highlight-bg-color: #282c34;
   --inlinecode-bg-color: rgba(175,184,193,0.2);
+  --fold-title-color: #3c4858;
+  --fold-border-color: #eaecef;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -878,6 +880,8 @@ i.iconfont {
     --button-hover-bg-color: #46647e;
     --highlight-bg-color: #303030;
     --inlinecode-bg-color: rgba(99,110,123,0.4);
+    --fold-title-color: #3c4858;
+    --fold-border-color: #eaecef;
   }
   :root:not([data-user-color-scheme]) img {
     -webkit-filter: brightness(0.9);
@@ -914,6 +918,8 @@ i.iconfont {
     --button-hover-bg-color: #46647e;
     --highlight-bg-color: #303030;
     --inlinecode-bg-color: rgba(99,110,123,0.4);
+    --fold-title-color: #3c4858;
+    --fold-border-color: #eaecef;
   }
   [data-user-color-scheme="dark"] img {
     -webkit-filter: brightness(0.9);
@@ -1245,7 +1251,7 @@ i.iconfont {
 }
 .index-excerpt {
   color: var(--sec-text-color);
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 0.5rem 0;
   height: calc(1.4rem * 3);
   overflow: hidden;
   display: flex;
@@ -1277,6 +1283,11 @@ i.iconfont {
   }
   .index-header .index-pin {
     font-size: 1.25rem;
+  }
+  .index-excerpt {
+    height: auto;
+    max-height: calc(1.4rem * 3);
+    margin: 0.25rem 0;
   }
 }
 #valine.v[data-class=v] .status-bar,
@@ -1785,6 +1796,53 @@ mjx-container svg:focus,
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
+}
+.fold {
+  margin: 1rem 0;
+  border: 0.5px solid var(--fold-border-color);
+  position: relative;
+  clear: both;
+  border-radius: 0.125rem;
+}
+.fold .fold-title {
+  color: var(--fold-title-color);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 0.125rem;
+}
+.fold .fold-title:not(.collapsed) > .fold-arrow {
+  transform: rotate(90deg);
+  transform-origin: center center;
+}
+.fold .fold-title .fold-arrow {
+  display: inline-block;
+  margin-right: 0.35rem;
+  transition: transform 0.3s ease-out;
+}
+.fold .fold-content > * {
+  margin: 0;
+}
+.fold .fold-content > p {
+  padding: 1rem 1rem;
+}
+.fold-default {
+  background: rgba(187,187,187,0.25);
+}
+.fold-primary {
+  background: rgba(183,160,224,0.25);
+}
+.fold-info {
+  background: rgba(160,197,228,0.25);
+}
+.fold-success {
+  background: rgba(174,220,174,0.25);
+}
+.fold-warning {
+  background: rgba(248,214,166,0.25);
+}
+.fold-danger {
+  background: rgba(236,169,167,0.25);
 }
 .note {
   padding: 0.75rem;

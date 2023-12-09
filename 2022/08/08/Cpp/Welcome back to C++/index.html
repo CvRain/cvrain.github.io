@@ -1,1 +1,695 @@
-<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="auto"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png"><link rel="icon" href="/img/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="theme-color" content="#2f4154"><meta name="author" content="ClaudeRainer"><meta name="keywords" content="C,C++,Linux"><meta name="description" content="欢迎回到C++ -现代C++Welcome back to C++ - Modern C++ 自从它被创建，C++逐渐成为世界上使用最广泛的语言之一。正确编写的 C++ 程序快速、高效。 相对于其他语言，该语言更加灵活：它可以在最高抽象级别上工作，也可以在芯片级（硅级别）上工作。C++ 提供高度优化的标准库。它允许访问低级硬件功能，以最大限度地提高速度并最大限度地减少内存需求。C++可以创建继续所"><meta property="og:type" content="article"><meta property="og:title" content="ModernC++&#x2F;欢迎回到C++ 现代C++"><meta property="og:url" content="http://cvrain.cloudvl.cn/2022/08/08/Cpp/Welcome%20back%20to%20C++/index.html"><meta property="og:site_name" content="cvrain-以空间追逐时间"><meta property="og:description" content="欢迎回到C++ -现代C++Welcome back to C++ - Modern C++ 自从它被创建，C++逐渐成为世界上使用最广泛的语言之一。正确编写的 C++ 程序快速、高效。 相对于其他语言，该语言更加灵活：它可以在最高抽象级别上工作，也可以在芯片级（硅级别）上工作。C++ 提供高度优化的标准库。它允许访问低级硬件功能，以最大限度地提高速度并最大限度地减少内存需求。C++可以创建继续所"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2022-08-08T01:13:35.000Z"><meta property="article:modified_time" content="2023-11-14T12:56:49.709Z"><meta property="article:author" content="ClaudeRainer"><meta property="article:tag" content="Modern-cpp"><meta property="article:tag" content="Cpp"><meta name="twitter:card" content="summary_large_image"><meta name="referrer" content="no-referrer-when-downgrade"><title>ModernC++/欢迎回到C++ 现代C++ - cvrain-以空间追逐时间</title><link rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css"><link rel="stylesheet" href="/css/main.css"><link id="highlight-css" rel="stylesheet" href="/css/highlight.css"><link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css"><script id="fluid-configs">var Fluid=window.Fluid||{};Fluid.ctx=Object.assign({},Fluid.ctx);var CONFIG={hostname:"cvrain.cloudvl.cn",root:"/",version:"1.9.6",typing:{enable:!0,typeSpeed:70,cursorChar:"_",loop:!1,scope:[]},anchorjs:{enable:!0,element:"h1,h2,h3,h4,h5,h6",placement:"left",visible:"hover",icon:""},progressbar:{enable:!0,height_px:3,color:"#29d",options:{showSpinner:!1,trickleSpeed:100}},code_language:{enable:!0,default:"TEXT"},copy_btn:!0,image_caption:{enable:!0},image_zoom:{enable:!0,img_url_replace:["",""]},toc:{enable:!0,placement:"right",headingSelector:"h1,h2,h3,h4,h5,h6",collapseDepth:0},lazyload:{enable:!0,loading_img:"/img/loading.gif",onlypost:!1,offset_factor:2},web_analytics:{enable:!1,follow_dnt:!0,baidu:null,google:{measurement_id:null},tencent:{sid:null,cid:null},woyaola:null,cnzz:null,leancloud:{app_id:null,app_key:null,server_url:null,path:"window.location.pathname",ignore_local:!1}},search_path:"/local-search.xml",include_content_in_search:!0};if(CONFIG.web_analytics.follow_dnt){var dntVal=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack;Fluid.ctx.dnt=dntVal&&(dntVal.startsWith("1")||dntVal.startsWith("yes")||dntVal.startsWith("on"))}</script><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 6.3.0"></head><body><header><div class="header-inner" style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/"><strong>ClaudeRainer</strong> </a><button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/" target="_self"><i class="iconfont icon-home-fill"></i> <span>首页</span></a></li><li class="nav-item"><a class="nav-link" href="/archives/" target="_self"><i class="iconfont icon-archive-fill"></i> <span>归档</span></a></li><li class="nav-item"><a class="nav-link" href="/categories/" target="_self"><i class="iconfont icon-category-fill"></i> <span>分类</span></a></li><li class="nav-item"><a class="nav-link" href="/tags/" target="_self"><i class="iconfont icon-tags-fill"></i> <span>标签</span></a></li><li class="nav-item"><a class="nav-link" href="/about/" target="_self"><i class="iconfont icon-user-fill"></i> <span>关于</span></a></li><li class="nav-item" id="search-btn"><a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search"><i class="iconfont icon-search"></i></a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle"><i class="iconfont icon-dark" id="color-toggle-icon"></i></a></li></ul></div></div></nav><div id="banner" class="banner" parallax="true" style="background:url(/img/default.png) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="banner-text text-center fade-in-up"><div class="h2"><span id="subtitle" data-typed-text="ModernC++/欢迎回到C++ 现代C++"></span></div><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2022-08-08 09:13" pubdate>2022年8月8日 上午</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 2.8k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 23 分钟 </span><span id="busuanzi_container_page_pv" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="busuanzi_value_page_pv"></span>次</span></div></div></div></div></div></div></header><main><div class="container-fluid nopadding-x"><div class="row nomargin-x"><div class="side-col d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-x-md"><div class="container nopadding-x-md" id="board-ctn"><div id="board"><article class="post-content mx-auto"><h1 id="seo-header">ModernC++/欢迎回到C++ 现代C++</h1><div class="markdown-body"><h1 id="欢迎回到C-现代C"><a href="#欢迎回到C-现代C" class="headerlink" title="欢迎回到C++ -现代C++"></a>欢迎回到C++ -现代C++</h1><p><small>Welcome back to C++ - Modern C++</small></p><p>自从它被创建，C++逐渐成为世界上使用最广泛的语言之一。正确编写的 C++ 程序快速、高效。 相对于其他语言，该语言更加灵活：它可以在最高抽象级别上工作，也可以在芯片级（硅级别）上工作。C++ 提供高度优化的标准库。它允许访问低级硬件功能，以最大限度地提高速度并最大限度地减少内存需求。C++可以创建继续所有种类的应用：游戏、设备驱动、HPC、云、桌面、嵌入式和移动应用程序等等。甚至其他编程语言的库和编译器也是用 C++ 编写的。<br>C++的一个原始需求是向下兼容C语言。因此，C++总是允许以C风格编程，使用原始指针、数组、以空字符结尾的数组字符串<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote">&lt;span class&#x3D;”hint–top hint–rounded” aria-label&#x3D;”及用数组存储的字符串，以 <code>\0</code>结束。例<code>const char *str = &quot;Hello World\0&quot;;</code>“&gt;[1]</a></sup>以及其他功能。这或许能够拥有高效的表现，但也可以出现报错并让程序出现复杂性。C++的发展强调了一些特性，这些特性大大减少了对使用C风格语法的需要。当您需要他们时，旧式C编程工具仍然存在。但是，在现代 C++ 代码中，您应该越来越少地需要它们。现代 C++ 代码更简单、更安全、更优雅，并且仍然和以往一样快。<br>以下部分概述了现代 C++ 的主要特性。除非另有说明，此处列出的功能在 C++11 及更高版本中可用。在 Microsoft C++ 编译器中，您可以设置 &#x2F;std 编译器选项来指定要用于您的项目的标准版本。</p><h2 id="资源和智能指针"><a href="#资源和智能指针" class="headerlink" title="资源和智能指针"></a>资源和智能指针</h2><p><small>Resource and smart pointers</small><br>C风格编程中的一类主要bug是内存泄漏（确实如此，三天写代码，两天找bug）。泄漏通常是由于对使用 new 分配的内存调用 delete 失败引起的。现代 C++ 强调“资源获取即初始化”(RAII) <sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="RAII，Resouce Acquisition Is Initialization:资源获取即初始化">[2]</span></a></sup>原则。 其理念很简单。 资源（堆内存、文件句柄、套接字等）应由对象“拥有”。 该对象在其构造函数中创建或接收新分配的资源，并在其析构函数中将此资源删除。 RAII 原则可确保当所属对象超出范围时，所有资源都能正确返回到操作系统。<br>为了支持对简单采用RAII的原则，C++基本库（STL）提供了三个智能指针类型: <code>std::unique_ptr</code>、<code>std::shared_ptr</code>以及<code>std::weak_ptr</code>。智能指针拥有申请和删除内存的控制句柄（智能指针处理它所拥有的内存的分配和删除）<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="智能指针说白了就是一个模板类来控制一个原始指针的内存操作。此部分可以翻阅其他书籍。">[3]</span></a></sup>。下面的示例演示了一个类，其中包含一个数组成员，该成员是在调用 <code>make_unique()</code> 时在堆上分配的。 对和的 <strong><code>new</code></strong> 调用 <strong><code>delete</code></strong> 由 <code>unique_ptr</code> 类封装。 当 <code>widget</code> 对象超出范围时，将调用 unique_ptr 析构函数，此函数将释放为数组分配的内存。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;memory&gt;</span></span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">widget</span><br>&#123;<br><span class="hljs-keyword">private</span>:<br>    std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; data;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">widget</span>(<span class="hljs-type">const</span> <span class="hljs-type">int</span> size) &#123; data = std::<span class="hljs-built_in">make_unique</span>&lt;<span class="hljs-type">int</span>&gt;(size); &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">do_something</span><span class="hljs-params">()</span> </span>&#123;&#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">functionUsingWidget</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">widget <span class="hljs-title">w</span><span class="hljs-params">(<span class="hljs-number">1000000</span>)</span></span>;   <span class="hljs-comment">// lifetime automatically tied to enclosing scope</span><br>                <span class="hljs-comment">// constructs w, including the w.data gadget member</span><br>    <span class="hljs-comment">// ...</span><br>    w.<span class="hljs-built_in">do_something</span>();<br>    <span class="hljs-comment">// ...</span><br>&#125; <span class="hljs-comment">// automatic destruction and deallocation for w and w.data</span><br></code></pre></td></tr></table></figure><p>请尽可能使用智能指针管理堆内存（确实如此，如果没有追求极致效率的需求，使用智能指针是最方便且安全的）。 如果必须 <strong><code>new</code></strong> 显式使用和 <strong><code>delete</code></strong> 运算符，请遵循 RAII 原则。 有关详细信息，请参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/object-lifetime-and-resource-management-modern-cpp?view=msvc-170">对象生存期和资源管理 (RAII)</a>。</p><h2 id="std-string-和-std-string-view"><a href="#std-string-和-std-string-view" class="headerlink" title="std::string 和 std::string_view"></a>std::string 和 std::string_view</h2><p><small>std::string and std::string_view</small><br>C风格字符串是错误产生的另一个重要来源。通过使用<code>std::string</code> 和 <code>std::wstring</code>，您可以排除几乎所有和C风格字符串有联系的错误。此外，你还可以通过其成员方法获得更多字符串操作上的便利，例如搜索，追加，前缀等。两者都针对速度进行了高度优化<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="但实际上std::string 在某些方面使用性能并不优越，比如复制字符串。这里可参阅《C++性能优化指南》">[4]</span></a></sup>。将字符串传递给只需要只读访问权限的函数时，在 C++17 中，您可以使用 std::string_view 以获得更大的性能优势。</p><h2 id="std-vector向量和其他标准库容器"><a href="#std-vector向量和其他标准库容器" class="headerlink" title="std::vector向量和其他标准库容器"></a>std::vector向量和其他标准库容器</h2><p><small>std::string and other Standard Library containers</small><br>标准库容器都遵循 RAII 原则。 它们为安全遍历元素提供迭代器。 此外，它们对性能进行了高度优化，并且已充分测试正确性。 通过使用这些容器，可以消除自定义数据结构中可能引入的 bug 或低效问题。 使用 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/standard-library/vector-class?view=msvc-170"><code>vector</code></a> 替代原始数组，来作为 C++ 中的序列容器。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C++">vector&lt;string&gt; apples;<br>apples.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;Granny Smith&quot;</span>);<br></code></pre></td></tr></table></figure><p>使用 map（而不是 unordered_map），作为默认关联容器。 对于退化和多案例，使用 set、multimap 和 multiset。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++">map&lt;string, string&gt; apple_color;<br><span class="hljs-comment">// ...</span><br>apple_color[<span class="hljs-string">&quot;Granny Smith&quot;</span>] = <span class="hljs-string">&quot;Green&quot;</span>;<br></code></pre></td></tr></table></figure><p>需要进行性能优化时，请考虑以下用法：</p><ul><li>例如当重要的数据被嵌入时，将std::array类型作为类成员。</li><li>使用无序的关联容器，例如 unordered_map。 它们的每个元素的开销较低，并且具有固定时间查找功能，但正确高效地使用它们的难度更高。</li><li>使用std::vector时需要排序。有关详细信息，请参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/standard-library/algorithms?view=msvc-170">算法</a>。<br>不要使用 C 风格的数组。对于需要直接访问数据的旧 API，请使用访问器方法，例如 <code>f(vec.data(), vec.size());</code> 有关容器的更多信息，请参阅 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/standard-library/stl-containers?view=msvc-170">C++ 标准库容器</a>。</li></ul><h2 id="标准库算法"><a href="#标准库算法" class="headerlink" title="标准库算法"></a>标准库算法</h2><p>在假设需要为程序编写自定义算法之前，请首先查阅C++ 标准库中的算法。 标准库包含许多常见操作（如搜索、排序、筛选和随机化）的算法分类，且这些分类的算法库还在不断增加。 譬如&lt;math&gt;中的内容涵盖的很广泛。 自 C++17 起，变提供了许多算法的并行版本。<br>这里列举以下内容，比较重要。</p><ul><li><code>for_each</code>：默认遍历算法（基于范围的 for 循环）。</li><li><code>transform</code>：用于容器元素的非就地修改<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="`std::stransform` 不保证按顺序适用unary_op或binary_op若要按顺序将函数应用于序列或应用修改序列元素的函数(在指定的范围内应用于给定的操作，并将结果存储在指定的另一个范围内)。">[5]</span></a></sup>。</li><li><code>find_if</code>：默认搜索算法。</li><li><code>sort</code>,<code>lower_bound</code>：排序、在一个范围内找到搜索元素的下标。以及其他排序和搜索算法。</li></ul><p>如果要写一个比较函数，可以使用lambda表达式以及’&lt;’符号</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">auto</span> comp = [](<span class="hljs-type">const</span> widget&amp; w1, <span class="hljs-type">const</span> widget&amp; w2)<br>     &#123; <span class="hljs-keyword">return</span> w1.<span class="hljs-built_in">weight</span>() &lt; w2.<span class="hljs-built_in">weight</span>(); &#125;<br><br><span class="hljs-built_in">sort</span>( v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>(), comp );<br><br><span class="hljs-keyword">auto</span> i = <span class="hljs-built_in">lower_bound</span>( v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>(), widget&#123;<span class="hljs-number">0</span>&#125;, comp );<br></code></pre></td></tr></table></figure><h2 id="使用auto关键字代替显示类型名称"><a href="#使用auto关键字代替显示类型名称" class="headerlink" title="使用auto关键字代替显示类型名称"></a>使用auto关键字代替显示类型名称</h2><p><small>auto instread of explicit type names</small><br>C++11引入了auto关键字，以便在变量、函数和模板的声明。auto关键字会指示编译器推导对象的类型，这样您即可无需显示键入。当对象是嵌套模板时，使用auto进行声明尤其有用。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C++">map&lt;<span class="hljs-type">int</span>,list&lt;string&gt;&gt;::iterator i = m.<span class="hljs-built_in">begin</span>(); <span class="hljs-comment">// C-style</span><br><span class="hljs-keyword">auto</span> i = m.<span class="hljs-built_in">begin</span>(); <span class="hljs-comment">// modern C++</span><br></code></pre></td></tr></table></figure><h2 id="基于范围的for循环"><a href="#基于范围的for循环" class="headerlink" title="基于范围的for循环"></a>基于范围的for循环</h2><p><small>Range-based for loops</small><br>对数组和容器的C风格迭代容易出现索引错误，且重复的键入过程单调乏味。要消除这些错误并使您的代码更具可读性，请使用基于范围的 for 循环以及标准库容器和原始数组。有关详细信息，请参阅请参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/range-based-for-statement-cpp?view=msvc-170">基于范围的</a> (<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/range-based-for-statement-cpp?view=msvc-170)%E8%AF%AD%E5%8F%A5%E3%80%82">https://docs.microsoft.com/zh-cn/cpp/cpp/range-based-for-statement-cpp?view=msvc-170)语句。</a></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    std::vector&lt;<span class="hljs-type">int</span>&gt; v &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;<br><br>    <span class="hljs-comment">// C-style</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; v.<span class="hljs-built_in">size</span>(); ++i)&#123;<br>        std::cout &lt;&lt; v[i];<br>    &#125;<br><br>    <span class="hljs-comment">// Modern C++:</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span>&amp; num : v)&#123;<br>        std::cout &lt;&lt; num;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>译注：<br>使用for_each虽然可以极大的提高for效率，但是如果在处理极大数据时或极长文本时请谨慎使用。因为其会将内容复制一份进行遍历。</p><h2 id="用-constexpr-表达式替代宏"><a href="#用-constexpr-表达式替代宏" class="headerlink" title="用 constexpr 表达式替代宏"></a>用 <code>constexpr</code> 表达式替代宏</h2><p>C 和 C++ 中的宏是在编译前由预处理器处理的一种标记。在编译代码之前，编译器会将使用宏定义的地方替换成宏所定义的值。C 样式编程通常使用宏来定义编译时常量值。 但宏容易出错且难以调试。 在现代 C++ 中，应优先使用 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/constexpr-cpp?view=msvc-170"><code>constexpr</code></a> 变量定义编译时常量：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">define</span> SIZE 10 <span class="hljs-comment">// C-style</span></span><br><span class="hljs-keyword">constexpr</span> <span class="hljs-type">int</span> size = <span class="hljs-number">10</span>; <span class="hljs-comment">// modern C++</span><br><span class="hljs-keyword">constexpr</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> number = <span class="hljs-number">114514</span>;<br><br></code></pre></td></tr></table></figure><h2 id="统一初始化"><a href="#统一初始化" class="headerlink" title="统一初始化"></a>统一初始化</h2><p>在现代 C++ 中，可以使用任何类型的括号初始化。 在初始化数组、矢量或其他容器时，这种初始化形式会非常方便。在下面的这个例子中声明了一个类S，三个均为std::vetor(向量)类型的变量v1,v1,v3并用不同方式进行初始化。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">S</span><br>&#123;<br>    std::string name;<br>    <span class="hljs-type">float</span> num;<br>    <span class="hljs-built_in">S</span>(std::string s, <span class="hljs-type">float</span> f) : <span class="hljs-built_in">name</span>(s), <span class="hljs-built_in">num</span>(f) &#123;&#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// C-style initialization</span><br>    std::vector&lt;S&gt; v;<br>    <span class="hljs-function">S <span class="hljs-title">s1</span><span class="hljs-params">(<span class="hljs-string">&quot;Norah&quot;</span>, <span class="hljs-number">2.7</span>)</span></span>;<br>    <span class="hljs-function">S <span class="hljs-title">s2</span><span class="hljs-params">(<span class="hljs-string">&quot;Frank&quot;</span>, <span class="hljs-number">3.5</span>)</span></span>;<br>    <span class="hljs-function">S <span class="hljs-title">s3</span><span class="hljs-params">(<span class="hljs-string">&quot;Jeri&quot;</span>, <span class="hljs-number">85.9</span>)</span></span>;<br><br>    v.<span class="hljs-built_in">push_back</span>(s1);<br>    v.<span class="hljs-built_in">push_back</span>(s2);<br>    v.<span class="hljs-built_in">push_back</span>(s3);<br><br>    <span class="hljs-comment">// Modern C++:</span><br>    std::vector&lt;S&gt; v2 &#123;s1, s2, s3&#125;;<br><br>    <span class="hljs-comment">// or...</span><br>    std::vector&lt;S&gt; v3&#123; &#123;<span class="hljs-string">&quot;Norah&quot;</span>, <span class="hljs-number">2.7</span>&#125;, &#123;<span class="hljs-string">&quot;Frank&quot;</span>, <span class="hljs-number">3.5</span>&#125;, &#123;<span class="hljs-string">&quot;Jeri&quot;</span>, <span class="hljs-number">85.9</span>&#125; &#125;;<br><br>&#125;<br></code></pre></td></tr></table></figure><p>若要了解详细信息，请参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/initializing-classes-and-structs-without-constructors-cpp?view=msvc-170">括号初始化</a>。</p><h2 id="移动语义"><a href="#移动语义" class="headerlink" title="移动语义"></a>移动语义</h2><p>现代 C++ 提供了移动语义，此功能可以避免进行不必要的内存复制。 在此语言的早期版本中，在某些情况下无法避免复制。 移动操作会将资源的所有权从一个对象转移到下一个对象，而不必再进行复制。 一些类拥有堆内存、文件句柄等资源。 实现资源所属的类时，可以定义此类的移动构造函数和移动赋值运算符。 在解析重载期间，如果不需要进行复制，编译器会选择这些特殊成员。 如果定义了移动构造函数，则标准库容器类型会在对象中调用此函数。 有关详细信息，请参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/move-constructors-and-move-assignment-operators-cpp?view=msvc-170">移动构造函数和移动赋值运算符 (C++)</a>。</p><h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><p>在使用C语法编程中，一个函数可以通过返回函数指针的方式传递给另一个函数，这不方便位于和理解。它们引用的函数可能在源代码的其他地方定义，而不是从调用它的位置定义的。而且他们不是类型安全的。现代C++提供了对函数对象、类的运算符重写，从而使它们可以像函数一样进行调用。创建函数对象的最简便方法是使用内联 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/lambda-expressions-in-cpp?view=msvc-170">lambda 表达式</a>。 下面的示例演示如何使用 lambda 表达式传递函数对象，然后由 <code>for_each</code> 函数在vector的每个元素中调用此函数对象：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs C++">std::vector&lt;<span class="hljs-type">int</span>&gt; v &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;<br>    <span class="hljs-type">int</span> x = <span class="hljs-number">2</span>;<br>    <span class="hljs-type">int</span> y = <span class="hljs-number">4</span>;<br>    <span class="hljs-keyword">auto</span> result = <span class="hljs-built_in">find_if</span>(<span class="hljs-built_in">begin</span>(v), <span class="hljs-built_in">end</span>(v), [=](<span class="hljs-type">int</span> i) &#123; <br>		    <span class="hljs-keyword">return</span> i &gt; x &amp;&amp; i &lt; y; <br>	    &#125;<br>    );<br></code></pre></td></tr></table></figure><p>Lambda表达式的形式为<code>[]()&#123;&#125;</code>，这里的是<code>[=](int i) &#123; return i &gt; x &amp;&amp; i &lt; y; &#125;</code>。此函数有一个int类型的形参，并返回一个bool类型的值，指示该参数是否大于 <code>x</code> 且小于 <code>y</code>。这里使用的x,y是lambda之前声明的两个变量。行为上看似是[&#x3D;]接受了上文的变量，实际上是lambda接受了值的副本。有关更详细的内容请看相关专题。</p><h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p><small>Exceptions</small><br>现代 c + + 强调异常，而不是错误代码，作为报告和处理错误条件的最佳方式。 有关详细信息，请参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/errors-and-exception-handling-modern-cpp?view=msvc-170">现代 C++ 处理异常和错误的最佳做法</a>。</p><h2 id="std-atomic"><a href="#std-atomic" class="headerlink" title="std::atomic"></a>std::atomic</h2><p>对线程间通信机制使用 C++ 标准库 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/standard-library/atomic-structure?view=msvc-170"><code>std::atomic</code></a> 结构和相关类型。</p><h2 id="std-variant-C-17"><a href="#std-variant-C-17" class="headerlink" title="std::variant(C++17)"></a>std::variant(C++17)</h2><p>在以C风格编程程序时通过使用联合体（共用体）使不同类型的成员占据同一个内存位置而达到节约内存的目的。但这并不是安全的，并容易导致编译错误。 C++17 引入了更加安全可靠的 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/standard-library/variant-class?view=msvc-170"><code>std::variant</code></a> 类，来作为联合体（共用体）的替代项。可以使用 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/standard-library/variant-functions?view=msvc-170#visit"><code>std::visit</code></a> 函数以类型安全的方式访问 <code>variant</code> 类型的成员。</p><hr><p><strong>译者有话说</strong><br>本页的上述的示例代码为微软参考手册的简单案例，本人会在下方附上个人理解的完整代码。此部分代码也可以移步至<a target="_blank" rel="noopener" href="https://github.com/CvRain/oh-modern-cpp">CvRain&#x2F;oh-modern-cpp: Code example of Microsoft modern C + + vs2022 translation (github.com)</a>进行阅览，请原谅本人代码水平不精，谢谢。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;memory&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Student</span>() = <span class="hljs-keyword">delete</span>;<br>    <span class="hljs-built_in">Student</span>(<span class="hljs-type">const</span> std::string &amp;name, <span class="hljs-type">const</span> std::string &amp;id)<br>        : <span class="hljs-built_in">stu_name</span>(name), <span class="hljs-built_in">stu_id</span>(id)&#123;<br>    &#125;<br>    <span class="hljs-function">std::string <span class="hljs-title">GetName</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> stu_name;<br>    &#125;<br>    <span class="hljs-function">std::string <span class="hljs-title">GetId</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> stu_id;<br>    &#125;<br>    <span class="hljs-function">std::string <span class="hljs-title">GetCollege</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> stu_college;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SetCollage</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string college)</span> </span>&#123;<br>        stu_college = college;<br>    &#125;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">const</span> std::string stu_name;<br>    <span class="hljs-type">const</span> std::string stu_id;<br>    std::string stu_college&#123;&#125;;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">auto</span> student = std::<span class="hljs-built_in">make_unique</span>&lt;Student&gt;(<span class="hljs-string">&quot;田所浩二&quot;</span>, <span class="hljs-string">&quot;114514&quot;</span>);<br>    std::cout &lt;&lt; student-&gt;<span class="hljs-built_in">GetId</span>() &lt;&lt; std::endl;<br>    std::cout &lt;&lt; (*student).<span class="hljs-built_in">GetName</span>() &lt;&lt; std::endl;<br>    <span class="hljs-keyword">auto</span> ptr_stu = student.<span class="hljs-built_in">get</span>(); <span class="hljs-comment">// if smart pointer is released, this raw pointer will be null</span><br>    ptr_stu-&gt;<span class="hljs-built_in">SetCollage</span>(<span class="hljs-string">&quot;computr network&quot;</span>);<br>    std::cout &lt;&lt; ptr_stu-&gt;<span class="hljs-built_in">GetCollege</span>() &lt;&lt; std::endl;<br><br>    <span class="hljs-keyword">auto</span> share_stu = std::<span class="hljs-built_in">make_shared</span>&lt;Student&gt;(<span class="hljs-string">&quot;114&quot;</span>, <span class="hljs-string">&quot;1919810&quot;</span>);<br>    <span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">share_stu_1</span><span class="hljs-params">(share_stu)</span></span>;<br>    share_stu_1-&gt;<span class="hljs-built_in">SetCollage</span>(<span class="hljs-string">&quot;communication engineering&quot;</span>);<br>    std::cout &lt;&lt; share_stu-&gt;<span class="hljs-built_in">GetCollege</span>() &lt;&lt; std::endl;<br>&#125;<br><br>  <br><br><span class="hljs-comment">// make_unique (C++14) creates a unique poniter that manages a new object</span><br><span class="hljs-comment">// make_unique_for_overwrite (C++20)</span><br></code></pre></td></tr></table></figure><hr><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>及用数组存储的字符串，以 <code>\0</code>结束。例<code>const char *str = &quot;Hello World\0&quot;;</code> <a href="#fnref:1" rev="footnote" class="footnote-backref">↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>RAII，Resouce Acquisition Is Initialization:资源获取即初始化 <a href="#fnref:2" rev="footnote" class="footnote-backref">↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span>智能指针说白了就是一个模板类来控制一个原始指针的内存操作。此部分可以翻阅其他书籍。 <a href="#fnref:3" rev="footnote" class="footnote-backref">↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span>但实际上std::string 在某些方面使用性能并不优越，比如复制字符串。这里可参阅《C++性能优化指南》 <a href="#fnref:4" rev="footnote" class="footnote-backref">↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><code>std::stransform</code> 不保证按顺序适用unary_op或binary_op若要按顺序将函数应用于序列或应用修改序列元素的函数(在指定的范围内应用于给定的操作，并将结果存储在指定的另一个范围内)。 <a href="#fnref:5" rev="footnote" class="footnote-backref">↩</a></span></span></li></ol></div></section></div><hr><div><div class="post-metas my-3"><div class="post-meta"><i class="iconfont icon-tags"></i> <a href="/tags/Modern-cpp/" class="print-no-link">#Modern-cpp</a> <a href="/tags/Cpp/" class="print-no-link">#Cpp</a></div></div><div class="license-box my-3"><div class="license-title"><div>ModernC++/欢迎回到C++ 现代C++</div><div>http://cvrain.cloudvl.cn/2022/08/08/Cpp/Welcome back to C++/</div></div><div class="license-meta"><div class="license-meta-item"><div>作者</div><div>ClaudeRainer</div></div><div class="license-meta-item license-meta-date"><div>发布于</div><div>2022年8月8日</div></div><div class="license-meta-item"><div>许可协议</div><div><a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/"><span class="hint--top hint--rounded" aria-label="BY - 署名"><i class="iconfont icon-by"></i></span></a></div></div></div><div class="license-icon iconfont"></div></div><div class="post-prevnext my-3"><article class="post-prev col-6"><a href="/2022/08/10/Cpp/Lexical-conventions/" title="ModernC++/词法约定"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">ModernC++/词法约定</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/2022/08/07/Cpp/C++%20Language%20Reference/" title="ModernC++/C++语言参考"><span class="hidden-mobile">ModernC++/C++语言参考</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div></article></div></div></div><div class="side-col d-none d-lg-block col-lg-2"><aside class="sidebar" style="margin-left:-1rem"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i> <span>目录</span></p><div class="toc-body" id="toc-body"></div></div></aside></div></div></div><a id="scroll-top-button" aria-label="TOP" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div></main><footer><div class="footer-inner"><div class="footer-content"><a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a></div></div></footer><script src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js"></script><link rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css"><script>NProgress.configure({showSpinner:!1,trickleSpeed:100}),NProgress.start(),window.addEventListener("load",(function(){NProgress.done()}))</script><script src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js"></script><script src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script><script src="/js/events.js"></script><script src="/js/plugins.js"></script><script src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js"></script><script>!function(t,e){var i=Fluid.plugins.typing,n=e.getElementById("subtitle");n&&i&&i(n.getAttribute("data-typed-text"))}(window,document)</script><script src="/js/img-lazyload.js"></script><script>Fluid.utils.createScript("https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js",(function(){var t=jQuery("#toc");if(0!==t.length&&window.tocbot){var i=jQuery("#board-ctn").offset().top;window.tocbot.init(Object.assign({tocSelector:"#toc-body",contentSelector:".markdown-body",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",scrollSmooth:!0,includeTitleTags:!0,headingsOffset:-i},CONFIG.toc)),t.find(".toc-list-item").length>0&&t.css("visibility","visible"),Fluid.events.registerRefreshCallback((function(){if("tocbot"in window){tocbot.refresh();var t=jQuery("#toc");if(0===t.length||!tocbot)return;t.find(".toc-list-item").length>0&&t.css("visibility","visible")}}))}}))</script><script src="https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js"></script><script>Fluid.plugins.codeWidget()</script><script>Fluid.utils.createScript("https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js",(function(){window.anchors.options={placement:CONFIG.anchorjs.placement,visible:CONFIG.anchorjs.visible},CONFIG.anchorjs.icon&&(window.anchors.options.icon=CONFIG.anchorjs.icon);var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(window.anchors.options.class="anchorjs-link-left"),window.anchors.add(o.join(", ")),Fluid.events.registerRefreshCallback((function(){if("anchors"in window){anchors.removeAll();var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(anchors.options.class="anchorjs-link-left"),anchors.add(o.join(", "))}}))}))</script><script>Fluid.utils.createScript("https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js",(function(){Fluid.plugins.fancyBox()}))</script><script>Fluid.plugins.imageCaption()</script><script src="/js/local-search.js"></script><script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="/js/boot.js"></script><noscript><div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div></noscript></body></html>
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ClaudeRainer">
+  <meta name="keywords" content="C,C++,Linux">
+  
+    <meta name="description" content="欢迎回到C++ -现代C++Welcome back to C++ - Modern C++ 自从它被创建，C++逐渐成为世界上使用最广泛的语言之一。正确编写的 C++ 程序快速、高效。 相对于其他语言，该语言更加灵活：它可以在最高抽象级别上工作，也可以在芯片级（硅级别）上工作。C++ 提供高度优化的标准库。它允许访问低级硬件功能，以最大限度地提高速度并最大限度地减少内存需求。C++可以创建继续所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ModernC++&#x2F;欢迎回到C++ 现代C++">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2022/08/08/Cpp/Welcome%20back%20to%20C++/index.html">
+<meta property="og:site_name" content="cvrain-以空间追逐时间">
+<meta property="og:description" content="欢迎回到C++ -现代C++Welcome back to C++ - Modern C++ 自从它被创建，C++逐渐成为世界上使用最广泛的语言之一。正确编写的 C++ 程序快速、高效。 相对于其他语言，该语言更加灵活：它可以在最高抽象级别上工作，也可以在芯片级（硅级别）上工作。C++ 提供高度优化的标准库。它允许访问低级硬件功能，以最大限度地提高速度并最大限度地减少内存需求。C++可以创建继续所">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-08T01:13:35.000Z">
+<meta property="article:modified_time" content="2023-11-14T12:56:49.709Z">
+<meta property="article:author" content="ClaudeRainer">
+<meta property="article:tag" content="Modern-cpp">
+<meta property="article:tag" content="Cpp">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>ModernC++/欢迎回到C++ 现代C++ - cvrain-以空间追逐时间</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"cvrain.cloudvl.cn","root":"/","version":"1.9.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ClaudeRainer</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="ModernC++/欢迎回到C++ 现代C++"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-08 09:13" pubdate>
+          2022年8月8日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          23 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">ModernC++/欢迎回到C++ 现代C++</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="欢迎回到C-现代C"><a href="#欢迎回到C-现代C" class="headerlink" title="欢迎回到C++ -现代C++"></a>欢迎回到C++ -现代C++</h1><p><small>Welcome back to C++ - Modern C++</small></p>
+<p>自从它被创建，C++逐渐成为世界上使用最广泛的语言之一。正确编写的 C++ 程序快速、高效。 相对于其他语言，该语言更加灵活：它可以在最高抽象级别上工作，也可以在芯片级（硅级别）上工作。C++ 提供高度优化的标准库。它允许访问低级硬件功能，以最大限度地提高速度并最大限度地减少内存需求。C++可以创建继续所有种类的应用：游戏、设备驱动、HPC、云、桌面、嵌入式和移动应用程序等等。甚至其他编程语言的库和编译器也是用 C++ 编写的。<br>C++的一个原始需求是向下兼容C语言。因此，C++总是允许以C风格编程，使用原始指针、数组、以空字符结尾的数组字符串<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote">&lt;span class&#x3D;”hint–top hint–rounded” aria-label&#x3D;”及用数组存储的字符串，以 <code>\0</code>结束。例<code>const char *str = &quot;Hello World\0&quot;;</code>“&gt;[1]</span></a></sup>以及其他功能。这或许能够拥有高效的表现，但也可以出现报错并让程序出现复杂性。C++的发展强调了一些特性，这些特性大大减少了对使用C风格语法的需要。当您需要他们时，旧式C编程工具仍然存在。但是，在现代 C++ 代码中，您应该越来越少地需要它们。现代 C++ 代码更简单、更安全、更优雅，并且仍然和以往一样快。<br>以下部分概述了现代 C++ 的主要特性。除非另有说明，此处列出的功能在 C++11 及更高版本中可用。在 Microsoft C++ 编译器中，您可以设置 &#x2F;std 编译器选项来指定要用于您的项目的标准版本。</p>
+<h2 id="资源和智能指针"><a href="#资源和智能指针" class="headerlink" title="资源和智能指针"></a>资源和智能指针</h2><p><small>Resource and smart pointers</small><br>C风格编程中的一类主要bug是内存泄漏（确实如此，三天写代码，两天找bug）。泄漏通常是由于对使用 new 分配的内存调用 delete 失败引起的。现代 C++ 强调“资源获取即初始化”(RAII) <sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="RAII，Resouce Acquisition Is Initialization:资源获取即初始化">[2]</span></a></sup>原则。 其理念很简单。 资源（堆内存、文件句柄、套接字等）应由对象“拥有”。 该对象在其构造函数中创建或接收新分配的资源，并在其析构函数中将此资源删除。 RAII 原则可确保当所属对象超出范围时，所有资源都能正确返回到操作系统。<br>为了支持对简单采用RAII的原则，C++基本库（STL）提供了三个智能指针类型: <code>std::unique_ptr</code>、<code>std::shared_ptr</code>以及<code>std::weak_ptr</code>。智能指针拥有申请和删除内存的控制句柄（智能指针处理它所拥有的内存的分配和删除）<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="智能指针说白了就是一个模板类来控制一个原始指针的内存操作。此部分可以翻阅其他书籍。">[3]</span></a></sup>。下面的示例演示了一个类，其中包含一个数组成员，该成员是在调用 <code>make_unique()</code> 时在堆上分配的。 对和的 <strong><code>new</code></strong> 调用 <strong><code>delete</code></strong> 由 <code>unique_ptr</code> 类封装。 当 <code>widget</code> 对象超出范围时，将调用 unique_ptr 析构函数，此函数将释放为数组分配的内存。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;memory&gt;</span></span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">widget</span><br>&#123;<br><span class="hljs-keyword">private</span>:<br>    std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; data;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">widget</span>(<span class="hljs-type">const</span> <span class="hljs-type">int</span> size) &#123; data = std::<span class="hljs-built_in">make_unique</span>&lt;<span class="hljs-type">int</span>&gt;(size); &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">do_something</span><span class="hljs-params">()</span> </span>&#123;&#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">functionUsingWidget</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">widget <span class="hljs-title">w</span><span class="hljs-params">(<span class="hljs-number">1000000</span>)</span></span>;   <span class="hljs-comment">// lifetime automatically tied to enclosing scope</span><br>                <span class="hljs-comment">// constructs w, including the w.data gadget member</span><br>    <span class="hljs-comment">// ...</span><br>    w.<span class="hljs-built_in">do_something</span>();<br>    <span class="hljs-comment">// ...</span><br>&#125; <span class="hljs-comment">// automatic destruction and deallocation for w and w.data</span><br></code></pre></td></tr></table></figure>
+<p>请尽可能使用智能指针管理堆内存（确实如此，如果没有追求极致效率的需求，使用智能指针是最方便且安全的）。 如果必须 <strong><code>new</code></strong> 显式使用和 <strong><code>delete</code></strong> 运算符，请遵循 RAII 原则。 有关详细信息，请参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/object-lifetime-and-resource-management-modern-cpp?view=msvc-170">对象生存期和资源管理 (RAII)</a>。</p>
+<h2 id="std-string-和-std-string-view"><a href="#std-string-和-std-string-view" class="headerlink" title="std::string 和 std::string_view"></a>std::string 和 std::string_view</h2><p><small>std::string and std::string_view</small><br>C风格字符串是错误产生的另一个重要来源。通过使用<code>std::string</code> 和 <code>std::wstring</code>，您可以排除几乎所有和C风格字符串有联系的错误。此外，你还可以通过其成员方法获得更多字符串操作上的便利，例如搜索，追加，前缀等。两者都针对速度进行了高度优化<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="但实际上std::string 在某些方面使用性能并不优越，比如复制字符串。这里可参阅《C++性能优化指南》">[4]</span></a></sup>。将字符串传递给只需要只读访问权限的函数时，在 C++17 中，您可以使用 std::string_view 以获得更大的性能优势。</p>
+<h2 id="std-vector向量和其他标准库容器"><a href="#std-vector向量和其他标准库容器" class="headerlink" title="std::vector向量和其他标准库容器"></a>std::vector向量和其他标准库容器</h2><p><small>std::string and other Standard Library containers</small><br>标准库容器都遵循 RAII 原则。 它们为安全遍历元素提供迭代器。 此外，它们对性能进行了高度优化，并且已充分测试正确性。 通过使用这些容器，可以消除自定义数据结构中可能引入的 bug 或低效问题。 使用 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/standard-library/vector-class?view=msvc-170"><code>vector</code></a> 替代原始数组，来作为 C++ 中的序列容器。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C++">vector&lt;string&gt; apples;<br>apples.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;Granny Smith&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>使用 map（而不是 unordered_map），作为默认关联容器。 对于退化和多案例，使用 set、multimap 和 multiset。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++">map&lt;string, string&gt; apple_color;<br><span class="hljs-comment">// ...</span><br>apple_color[<span class="hljs-string">&quot;Granny Smith&quot;</span>] = <span class="hljs-string">&quot;Green&quot;</span>;<br></code></pre></td></tr></table></figure>
+<p>需要进行性能优化时，请考虑以下用法：</p>
+<ul>
+<li>例如当重要的数据被嵌入时，将std::array类型作为类成员。</li>
+<li>使用无序的关联容器，例如 unordered_map。 它们的每个元素的开销较低，并且具有固定时间查找功能，但正确高效地使用它们的难度更高。</li>
+<li>使用std::vector时需要排序。有关详细信息，请参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/standard-library/algorithms?view=msvc-170">算法</a>。<br>不要使用 C 风格的数组。对于需要直接访问数据的旧 API，请使用访问器方法，例如 <code>f(vec.data(), vec.size());</code> 有关容器的更多信息，请参阅 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/standard-library/stl-containers?view=msvc-170">C++ 标准库容器</a>。</li>
+</ul>
+<h2 id="标准库算法"><a href="#标准库算法" class="headerlink" title="标准库算法"></a>标准库算法</h2><p>在假设需要为程序编写自定义算法之前，请首先查阅C++ 标准库中的算法。 标准库包含许多常见操作（如搜索、排序、筛选和随机化）的算法分类，且这些分类的算法库还在不断增加。 譬如&lt;math&gt;中的内容涵盖的很广泛。 自 C++17 起，变提供了许多算法的并行版本。<br>这里列举以下内容，比较重要。</p>
+<ul>
+<li><code>for_each</code>：默认遍历算法（基于范围的 for 循环）。</li>
+<li><code>transform</code>：用于容器元素的非就地修改<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="`std::stransform` 不保证按顺序适用unary_op或binary_op若要按顺序将函数应用于序列或应用修改序列元素的函数(在指定的范围内应用于给定的操作，并将结果存储在指定的另一个范围内)。">[5]</span></a></sup>。</li>
+<li><code>find_if</code>：默认搜索算法。</li>
+<li><code>sort</code>,<code>lower_bound</code>：排序、在一个范围内找到搜索元素的下标。以及其他排序和搜索算法。</li>
+</ul>
+<p>如果要写一个比较函数，可以使用lambda表达式以及’&lt;’符号</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">auto</span> comp = [](<span class="hljs-type">const</span> widget&amp; w1, <span class="hljs-type">const</span> widget&amp; w2)<br>     &#123; <span class="hljs-keyword">return</span> w1.<span class="hljs-built_in">weight</span>() &lt; w2.<span class="hljs-built_in">weight</span>(); &#125;<br><br><span class="hljs-built_in">sort</span>( v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>(), comp );<br><br><span class="hljs-keyword">auto</span> i = <span class="hljs-built_in">lower_bound</span>( v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>(), widget&#123;<span class="hljs-number">0</span>&#125;, comp );<br></code></pre></td></tr></table></figure>
+
+<h2 id="使用auto关键字代替显示类型名称"><a href="#使用auto关键字代替显示类型名称" class="headerlink" title="使用auto关键字代替显示类型名称"></a>使用auto关键字代替显示类型名称</h2><p><small>auto instread of explicit type names</small><br>C++11引入了auto关键字，以便在变量、函数和模板的声明。auto关键字会指示编译器推导对象的类型，这样您即可无需显示键入。当对象是嵌套模板时，使用auto进行声明尤其有用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C++">map&lt;<span class="hljs-type">int</span>,list&lt;string&gt;&gt;::iterator i = m.<span class="hljs-built_in">begin</span>(); <span class="hljs-comment">// C-style</span><br><span class="hljs-keyword">auto</span> i = m.<span class="hljs-built_in">begin</span>(); <span class="hljs-comment">// modern C++</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="基于范围的for循环"><a href="#基于范围的for循环" class="headerlink" title="基于范围的for循环"></a>基于范围的for循环</h2><p><small>Range-based for loops</small><br>对数组和容器的C风格迭代容易出现索引错误，且重复的键入过程单调乏味。要消除这些错误并使您的代码更具可读性，请使用基于范围的 for 循环以及标准库容器和原始数组。有关详细信息，请参阅请参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/range-based-for-statement-cpp?view=msvc-170">基于范围的</a> (<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/range-based-for-statement-cpp?view=msvc-170)%E8%AF%AD%E5%8F%A5%E3%80%82">https://docs.microsoft.com/zh-cn/cpp/cpp/range-based-for-statement-cpp?view=msvc-170)语句。</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    std::vector&lt;<span class="hljs-type">int</span>&gt; v &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;<br><br>    <span class="hljs-comment">// C-style</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; v.<span class="hljs-built_in">size</span>(); ++i)&#123;<br>        std::cout &lt;&lt; v[i];<br>    &#125;<br><br>    <span class="hljs-comment">// Modern C++:</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span>&amp; num : v)&#123;<br>        std::cout &lt;&lt; num;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>译注：<br>使用for_each虽然可以极大的提高for效率，但是如果在处理极大数据时或极长文本时请谨慎使用。因为其会将内容复制一份进行遍历。</p>
+<h2 id="用-constexpr-表达式替代宏"><a href="#用-constexpr-表达式替代宏" class="headerlink" title="用 constexpr 表达式替代宏"></a>用 <code>constexpr</code> 表达式替代宏</h2><p>C 和 C++ 中的宏是在编译前由预处理器处理的一种标记。在编译代码之前，编译器会将使用宏定义的地方替换成宏所定义的值。C 样式编程通常使用宏来定义编译时常量值。 但宏容易出错且难以调试。 在现代 C++ 中，应优先使用 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/constexpr-cpp?view=msvc-170"><code>constexpr</code></a> 变量定义编译时常量：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">define</span> SIZE 10 <span class="hljs-comment">// C-style</span></span><br><span class="hljs-keyword">constexpr</span> <span class="hljs-type">int</span> size = <span class="hljs-number">10</span>; <span class="hljs-comment">// modern C++</span><br><span class="hljs-keyword">constexpr</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> number = <span class="hljs-number">114514</span>;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="统一初始化"><a href="#统一初始化" class="headerlink" title="统一初始化"></a>统一初始化</h2><p>在现代 C++ 中，可以使用任何类型的括号初始化。 在初始化数组、矢量或其他容器时，这种初始化形式会非常方便。在下面的这个例子中声明了一个类S，三个均为std::vetor(向量)类型的变量v1,v1,v3并用不同方式进行初始化。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">S</span><br>&#123;<br>    std::string name;<br>    <span class="hljs-type">float</span> num;<br>    <span class="hljs-built_in">S</span>(std::string s, <span class="hljs-type">float</span> f) : <span class="hljs-built_in">name</span>(s), <span class="hljs-built_in">num</span>(f) &#123;&#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// C-style initialization</span><br>    std::vector&lt;S&gt; v;<br>    <span class="hljs-function">S <span class="hljs-title">s1</span><span class="hljs-params">(<span class="hljs-string">&quot;Norah&quot;</span>, <span class="hljs-number">2.7</span>)</span></span>;<br>    <span class="hljs-function">S <span class="hljs-title">s2</span><span class="hljs-params">(<span class="hljs-string">&quot;Frank&quot;</span>, <span class="hljs-number">3.5</span>)</span></span>;<br>    <span class="hljs-function">S <span class="hljs-title">s3</span><span class="hljs-params">(<span class="hljs-string">&quot;Jeri&quot;</span>, <span class="hljs-number">85.9</span>)</span></span>;<br><br>    v.<span class="hljs-built_in">push_back</span>(s1);<br>    v.<span class="hljs-built_in">push_back</span>(s2);<br>    v.<span class="hljs-built_in">push_back</span>(s3);<br><br>    <span class="hljs-comment">// Modern C++:</span><br>    std::vector&lt;S&gt; v2 &#123;s1, s2, s3&#125;;<br><br>    <span class="hljs-comment">// or...</span><br>    std::vector&lt;S&gt; v3&#123; &#123;<span class="hljs-string">&quot;Norah&quot;</span>, <span class="hljs-number">2.7</span>&#125;, &#123;<span class="hljs-string">&quot;Frank&quot;</span>, <span class="hljs-number">3.5</span>&#125;, &#123;<span class="hljs-string">&quot;Jeri&quot;</span>, <span class="hljs-number">85.9</span>&#125; &#125;;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>若要了解详细信息，请参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/initializing-classes-and-structs-without-constructors-cpp?view=msvc-170">括号初始化</a>。</p>
+<h2 id="移动语义"><a href="#移动语义" class="headerlink" title="移动语义"></a>移动语义</h2><p>现代 C++ 提供了移动语义，此功能可以避免进行不必要的内存复制。 在此语言的早期版本中，在某些情况下无法避免复制。 移动操作会将资源的所有权从一个对象转移到下一个对象，而不必再进行复制。 一些类拥有堆内存、文件句柄等资源。 实现资源所属的类时，可以定义此类的移动构造函数和移动赋值运算符。 在解析重载期间，如果不需要进行复制，编译器会选择这些特殊成员。 如果定义了移动构造函数，则标准库容器类型会在对象中调用此函数。 有关详细信息，请参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/move-constructors-and-move-assignment-operators-cpp?view=msvc-170">移动构造函数和移动赋值运算符 (C++)</a>。</p>
+<h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><p>在使用C语法编程中，一个函数可以通过返回函数指针的方式传递给另一个函数，这不方便位于和理解。它们引用的函数可能在源代码的其他地方定义，而不是从调用它的位置定义的。而且他们不是类型安全的。现代C++提供了对函数对象、类的运算符重写，从而使它们可以像函数一样进行调用。创建函数对象的最简便方法是使用内联 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/lambda-expressions-in-cpp?view=msvc-170">lambda 表达式</a>。 下面的示例演示如何使用 lambda 表达式传递函数对象，然后由 <code>for_each</code> 函数在vector的每个元素中调用此函数对象：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs C++">std::vector&lt;<span class="hljs-type">int</span>&gt; v &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;<br>    <span class="hljs-type">int</span> x = <span class="hljs-number">2</span>;<br>    <span class="hljs-type">int</span> y = <span class="hljs-number">4</span>;<br>    <span class="hljs-keyword">auto</span> result = <span class="hljs-built_in">find_if</span>(<span class="hljs-built_in">begin</span>(v), <span class="hljs-built_in">end</span>(v), [=](<span class="hljs-type">int</span> i) &#123; <br>		    <span class="hljs-keyword">return</span> i &gt; x &amp;&amp; i &lt; y; <br>	    &#125;<br>    );<br></code></pre></td></tr></table></figure>
+<p>Lambda表达式的形式为<code>[]()&#123;&#125;</code>，这里的是<code>[=](int i) &#123; return i &gt; x &amp;&amp; i &lt; y; &#125;</code>。此函数有一个int类型的形参，并返回一个bool类型的值，指示该参数是否大于 <code>x</code> 且小于 <code>y</code>。这里使用的x,y是lambda之前声明的两个变量。行为上看似是[&#x3D;]接受了上文的变量，实际上是lambda接受了值的副本。有关更详细的内容请看相关专题。</p>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p><small>Exceptions</small><br>现代 c + + 强调异常，而不是错误代码，作为报告和处理错误条件的最佳方式。 有关详细信息，请参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/errors-and-exception-handling-modern-cpp?view=msvc-170">现代 C++ 处理异常和错误的最佳做法</a>。</p>
+<h2 id="std-atomic"><a href="#std-atomic" class="headerlink" title="std::atomic"></a>std::atomic</h2><p>对线程间通信机制使用 C++ 标准库 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/standard-library/atomic-structure?view=msvc-170"><code>std::atomic</code></a> 结构和相关类型。</p>
+<h2 id="std-variant-C-17"><a href="#std-variant-C-17" class="headerlink" title="std::variant(C++17)"></a>std::variant(C++17)</h2><p>在以C风格编程程序时通过使用联合体（共用体）使不同类型的成员占据同一个内存位置而达到节约内存的目的。但这并不是安全的，并容易导致编译错误。 C++17 引入了更加安全可靠的 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/standard-library/variant-class?view=msvc-170"><code>std::variant</code></a> 类，来作为联合体（共用体）的替代项。可以使用 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/standard-library/variant-functions?view=msvc-170#visit"><code>std::visit</code></a> 函数以类型安全的方式访问 <code>variant</code> 类型的成员。</p>
+<hr>
+<p><strong>译者有话说</strong><br>本页的上述的示例代码为微软参考手册的简单案例，本人会在下方附上个人理解的完整代码。此部分代码也可以移步至<a target="_blank" rel="noopener" href="https://github.com/CvRain/oh-modern-cpp">CvRain&#x2F;oh-modern-cpp: Code example of Microsoft modern C + + vs2022 translation (github.com)</a>进行阅览，请原谅本人代码水平不精，谢谢。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;memory&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Student</span>() = <span class="hljs-keyword">delete</span>;<br>    <span class="hljs-built_in">Student</span>(<span class="hljs-type">const</span> std::string &amp;name, <span class="hljs-type">const</span> std::string &amp;id)<br>        : <span class="hljs-built_in">stu_name</span>(name), <span class="hljs-built_in">stu_id</span>(id)&#123;<br>    &#125;<br>    <span class="hljs-function">std::string <span class="hljs-title">GetName</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> stu_name;<br>    &#125;<br>    <span class="hljs-function">std::string <span class="hljs-title">GetId</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> stu_id;<br>    &#125;<br>    <span class="hljs-function">std::string <span class="hljs-title">GetCollege</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> stu_college;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SetCollage</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string college)</span> </span>&#123;<br>        stu_college = college;<br>    &#125;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">const</span> std::string stu_name;<br>    <span class="hljs-type">const</span> std::string stu_id;<br>    std::string stu_college&#123;&#125;;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">auto</span> student = std::<span class="hljs-built_in">make_unique</span>&lt;Student&gt;(<span class="hljs-string">&quot;田所浩二&quot;</span>, <span class="hljs-string">&quot;114514&quot;</span>);<br>    std::cout &lt;&lt; student-&gt;<span class="hljs-built_in">GetId</span>() &lt;&lt; std::endl;<br>    std::cout &lt;&lt; (*student).<span class="hljs-built_in">GetName</span>() &lt;&lt; std::endl;<br>    <span class="hljs-keyword">auto</span> ptr_stu = student.<span class="hljs-built_in">get</span>(); <span class="hljs-comment">// if smart pointer is released, this raw pointer will be null</span><br>    ptr_stu-&gt;<span class="hljs-built_in">SetCollage</span>(<span class="hljs-string">&quot;computr network&quot;</span>);<br>    std::cout &lt;&lt; ptr_stu-&gt;<span class="hljs-built_in">GetCollege</span>() &lt;&lt; std::endl;<br><br>    <span class="hljs-keyword">auto</span> share_stu = std::<span class="hljs-built_in">make_shared</span>&lt;Student&gt;(<span class="hljs-string">&quot;114&quot;</span>, <span class="hljs-string">&quot;1919810&quot;</span>);<br>    <span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">share_stu_1</span><span class="hljs-params">(share_stu)</span></span>;<br>    share_stu_1-&gt;<span class="hljs-built_in">SetCollage</span>(<span class="hljs-string">&quot;communication engineering&quot;</span>);<br>    std::cout &lt;&lt; share_stu-&gt;<span class="hljs-built_in">GetCollege</span>() &lt;&lt; std::endl;<br>&#125;<br><br>  <br><br><span class="hljs-comment">// make_unique (C++14) creates a unique poniter that manages a new object</span><br><span class="hljs-comment">// make_unique_for_overwrite (C++20)</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>及用数组存储的字符串，以 <code>\0</code>结束。例<code>const char *str = &quot;Hello World\0&quot;;</code>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>RAII，Resouce Acquisition Is Initialization:资源获取即初始化
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span>智能指针说白了就是一个模板类来控制一个原始指针的内存操作。此部分可以翻阅其他书籍。
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span>但实际上std::string 在某些方面使用性能并不优越，比如复制字符串。这里可参阅《C++性能优化指南》
+<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><code>std::stransform</code> 不保证按顺序适用unary_op或binary_op若要按顺序将函数应用于序列或应用修改序列元素的函数(在指定的范围内应用于给定的操作，并将结果存储在指定的另一个范围内)。
+<a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Modern-cpp/" class="print-no-link">#Modern-cpp</a>
+      
+        <a href="/tags/Cpp/" class="print-no-link">#Cpp</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>ModernC++/欢迎回到C++ 现代C++</div>
+      <div>http://cvrain.cloudvl.cn/2022/08/08/Cpp/Welcome back to C++/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>ClaudeRainer</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/10/Cpp/Lexical-conventions/" title="ModernC++/词法约定">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ModernC++/词法约定</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/07/Cpp/C++%20Language%20Reference/" title="ModernC++/C++语言参考">
+                        <span class="hidden-mobile">ModernC++/C++语言参考</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
