@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>Slint C++  环境配置</title>
+    <link href="/2023/12/09/Slint/slint-hello/"/>
+    <url>/2023/12/09/Slint/slint-hello/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Slint-C-环境配置"><a href="#Slint-C-环境配置" class="headerlink" title="Slint C++ 环境配置"></a>Slint C++ 环境配置</h1><p><code>Slint</code> 支持使用<code>C++</code>,<code>Rust</code>,<code>JavaScript</code>进行开发。使用C++进行开发需要准备如下环境：</p><ul><li>C++ &gt;&#x3D; 20</li><li>CMake &gt;&#x3D; 3.21</li><li>Ninja<br>实际上Slint的实现库使用的语言是Rust， 简单的可以理解在C++中使用Slint时，会将Rust代码编译成为C++可以调用的库。<code>.slint</code>文件也会编译成为C++头文件以供调用。来看一下原文：<blockquote><p>我们还没有提供Slint的二进制文件，所以我们将使用CMake集成，它将自动从源代码构建工具和库。由于它是用Rust编程语言实现的，这意味着您还需要安装Rust编译器（1.70或更新版本）。您可以按照Rust网站上的说明轻松安装Rust编译器。我们将使用cmake的内置FetchContent模块来获取Slint的源代码。</p></blockquote></li></ul><p>上一个初始使用到的<code>CMakeLists.txt</code>文件，一定要记得安装Rust并且还拥有git</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs CMake"><span class="hljs-comment"># CMakeLists.txt</span><br><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.21</span>)<br><span class="hljs-keyword">project</span>(memory LANGUAGES CXX)<br><br><span class="hljs-keyword">include</span>(FetchContent)<br>FetchContent_Declare(<br>    Slint<br>    GIT_REPOSITORY https://github.com/slint-ui/slint.git<br>    <span class="hljs-comment"># `release/1` will auto-upgrade to the latest Slint &gt;= 1.0.0 and &lt; 2.0.0</span><br>    <span class="hljs-comment"># `release/1.0` will auto-upgrade to the latest Slint &gt;= 1.0.0 and &lt; 1.1.0</span><br>    GIT_TAG release/<span class="hljs-number">1</span><br>    SOURCE_SUBDIR api/cpp<br>)<br>FetchContent_MakeAvailable(Slint)<br><br><span class="hljs-keyword">add_executable</span>(memory_game main.cpp)<br><span class="hljs-keyword">target_link_libraries</span>(memory_game PRIVATE Slint::Slint)<br>slint_target_sources(memory_game memory.slint)<br><span class="hljs-comment"># On Windows, copy the Slint DLL next to the application binary so that it&#x27;s found.</span><br><span class="hljs-keyword">if</span> (WIN32)<br>    <span class="hljs-keyword">add_custom_command</span>(<span class="hljs-keyword">TARGET</span> memory_game POST_BUILD <span class="hljs-keyword">COMMAND</span> <span class="hljs-variable">$&#123;CMAKE_COMMAND&#125;</span> -E copy $&lt;TARGET_RUNTIME_DLLS:memory_game&gt; $&lt;TARGET_FILE_DIR:memory_game&gt; COMMAND_EXPAND_LISTS)<br><span class="hljs-keyword">endif</span>()<br></code></pre></td></tr></table></figure><p>在第一次配置CMake的时候会自动下载并编译Slint的Rust库。可以在cmake build 文件夹中看到:<br><img src="/img/slint-hello/img01.png" alt="img01"><br>熟悉CMake的人应该对此很熟悉。我们看到这个CMakeLists.txt引用了一个main.cpp，我们稍后会添加它，它还有一行slint_target_sources（memory_game memory.slint），这是一个slint函数，用于将memory.slinnt文件添加到目标。然后，我们必须在同一目录中创建memory.slint文件。现在让我们用一个你好的世界来填充它：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Slint">// memory.slint<br>export component MainWindow inherits Window &#123;<br>    Text &#123;<br>        text: &quot;hello world&quot;;<br>        color: green;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>这是一个名为MainWindow的组件，它继承自Window组件。下面是代码的逐行解释：</p><ol><li><code>export component MainWindow inherits Window &#123;</code>：这行代码定义了一个名为MainWindow的组件，它继承自Window组件。Slint是一种JavaScript静态代码检查工具，它可以帮助你发现代码中的错误和问题。</li><li><code>Text &#123;</code>：这行代码定义了一个名为Text的子组件。子组件通常包含在父组件中使用的UI元素。</li><li><code>text: &quot;hello world&quot;</code>：这行代码定义了Text组件的text属性，其值为”hello world”。</li><li><code>color: green</code>：这行代码定义了Text组件的color属性，其值为”green”。</li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Cpp</tag>
+      
+      <tag>Slint</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Java初步了解一下数组</title>
     <link href="/2023/12/07/Java/java-learn-array/"/>
     <url>/2023/12/07/Java/java-learn-array/</url>
