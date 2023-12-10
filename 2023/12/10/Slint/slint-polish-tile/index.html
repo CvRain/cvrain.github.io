@@ -16,29 +16,27 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="Slint C++ 环境配置准备部分Slint 支持使用C++,Rust,JavaScript进行开发。使用C++进行开发需要准备如下环境：  C++ &gt;&#x3D; 20 CMake &gt;&#x3D; 3.21 Ninja实际上Slint的实现库使用的语言是Rust， 简单的可以理解在C++中使用Slint时，会将Rust代码编译成为C++可以调用的库。.slint文件也会编译成为C+">
+    <meta name="description" content="Slint C++ 图片开幕动画按照小游戏的设定，一开始图片是被挡住的，当鼠标点击了所在图片之后，图片就被掀开。现在我们需要做一个类似开幕的效果，他的实现方式也不是很困难：给这个矩形上面附加两个1&#x2F;2大小的矩形，再叠加一个透明矩形用来接受鼠标事件，当点击之后左边的矩形往左走，右边的矩形往右走，为他们两个顺便加上过度动画效果。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Slint C++  环境配置">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/12/09/Slint/slint-hello/index.html">
+<meta property="og:title" content="Slint C++  开幕动画">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2023/12/10/Slint/slint-polish-tile/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="Slint C++ 环境配置准备部分Slint 支持使用C++,Rust,JavaScript进行开发。使用C++进行开发需要准备如下环境：  C++ &gt;&#x3D; 20 CMake &gt;&#x3D; 3.21 Ninja实际上Slint的实现库使用的语言是Rust， 简单的可以理解在C++中使用Slint时，会将Rust代码编译成为C++可以调用的库。.slint文件也会编译成为C+">
+<meta property="og:description" content="Slint C++ 图片开幕动画按照小游戏的设定，一开始图片是被挡住的，当鼠标点击了所在图片之后，图片就被掀开。现在我们需要做一个类似开幕的效果，他的实现方式也不是很困难：给这个矩形上面附加两个1&#x2F;2大小的矩形，再叠加一个透明矩形用来接受鼠标事件，当点击之后左边的矩形往左走，右边的矩形往右走，为他们两个顺便加上过度动画效果。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://cvrain.cloudvl.cn/img/slint-hello/img01.png">
-<meta property="og:image" content="http://cvrain.cloudvl.cn/img/slint-hello/img02.png">
-<meta property="og:image" content="http://cvrain.cloudvl.cn/img/slint-hello/img03.png">
-<meta property="article:published_time" content="2023-12-09T09:53:52.000Z">
-<meta property="article:modified_time" content="2023-12-10T01:33:09.741Z">
+<meta property="og:image" content="http://cvrain.cloudvl.cn/img/slint-polish-tile/img01.png">
+<meta property="article:published_time" content="2023-12-10T02:20:26.000Z">
+<meta property="article:modified_time" content="2023-12-10T02:50:57.696Z">
 <meta property="article:author" content="ClaudeRainer">
 <meta property="article:tag" content="Cpp">
 <meta property="article:tag" content="Slint">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://cvrain.cloudvl.cn/img/slint-hello/img01.png">
+<meta name="twitter:image" content="http://cvrain.cloudvl.cn/img/slint-polish-tile/img01.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Slint C++  环境配置 - cvrain-以空间追逐时间</title>
+  <title>Slint C++  开幕动画 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Slint C++  环境配置"></span>
+            <span id="subtitle" data-typed-text="Slint C++  开幕动画"></span>
           
         </div>
 
@@ -215,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-09 17:53" pubdate>
-          2023年12月9日 下午
+        <time datetime="2023-12-10 10:20" pubdate>
+          2023年12月10日 上午
         </time>
       </span>
     
@@ -227,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          786 字
+          718 字
         
       </span>
     
@@ -238,7 +236,7 @@
         
         
         
-          7 分钟
+          6 分钟
         
       </span>
     
@@ -283,45 +281,50 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Slint C++  环境配置</h1>
+            <h1 id="seo-header">Slint C++  开幕动画</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Slint-C-环境配置"><a href="#Slint-C-环境配置" class="headerlink" title="Slint C++ 环境配置"></a>Slint C++ 环境配置</h1><h2 id="准备部分"><a href="#准备部分" class="headerlink" title="准备部分"></a>准备部分</h2><p><code>Slint</code> 支持使用<code>C++</code>,<code>Rust</code>,<code>JavaScript</code>进行开发。使用C++进行开发需要准备如下环境：</p>
-<ul>
-<li>C++ &gt;&#x3D; 20</li>
-<li>CMake &gt;&#x3D; 3.21</li>
-<li>Ninja<br>实际上Slint的实现库使用的语言是Rust， 简单的可以理解在C++中使用Slint时，会将Rust代码编译成为C++可以调用的库。<code>.slint</code>文件也会编译成为C++头文件以供调用。来看一下原文：<blockquote>
-<p>我们还没有提供Slint的二进制文件，所以我们将使用CMake集成，它将自动从源代码构建工具和库。由于它是用Rust编程语言实现的，这意味着您还需要安装Rust编译器（1.70或更新版本）。您可以按照Rust网站上的说明轻松安装Rust编译器。我们将使用cmake的内置FetchContent模块来获取Slint的源代码。</p>
-</blockquote>
+                <h1 id="Slint-C-图片开幕动画"><a href="#Slint-C-图片开幕动画" class="headerlink" title="Slint C++ 图片开幕动画"></a>Slint C++ 图片开幕动画</h1><p>按照小游戏的设定，一开始图片是被挡住的，当鼠标点击了所在图片之后，图片就被掀开。现在我们需要做一个类似开幕的效果，他的实现方式也不是很困难：给这个矩形上面附加两个1&#x2F;2大小的矩形，再叠加一个透明矩形用来接受鼠标事件，当点击之后左边的矩形往左走，右边的矩形往右走，为他们两个顺便加上过度动画效果。</p>
+<span id="more"></span>
+
+<h2 id="动画设计"><a href="#动画设计" class="headerlink" title="动画设计"></a>动画设计</h2><ul>
+<li>左幕布<ul>
+<li>高度设置为磁贴块的大小</li>
+<li>宽度设置为磁贴块的一半大小</li>
+<li>位置设置在磁贴块的左边</li>
+<li>当点击之后宽度逐渐到0,到0后设置为不可见</li>
+</ul>
+</li>
+<li>右幕布<ul>
+<li>高度设置为磁贴块的大小</li>
+<li>宽度设置为磁贴块的一半大小</li>
+<li>位置设置在磁贴块的右边</li>
+<li>当点击之后宽度逐渐到0,到0后设置为不可见</li>
+</ul>
 </li>
 </ul>
-<p>上一个初始使用到的<code>CMakeLists.txt</code>文件，一定要记得安装Rust并且还拥有git</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs CMake"><span class="hljs-comment"># CMakeLists.txt</span><br><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.21</span>)<br><span class="hljs-keyword">project</span>(memory LANGUAGES CXX)<br><br><span class="hljs-keyword">include</span>(FetchContent)<br>FetchContent_Declare(<br>    Slint<br>    GIT_REPOSITORY https://github.com/slint-ui/slint.git<br>    <span class="hljs-comment"># `release/1` will auto-upgrade to the latest Slint &gt;= 1.0.0 and &lt; 2.0.0</span><br>    <span class="hljs-comment"># `release/1.0` will auto-upgrade to the latest Slint &gt;= 1.0.0 and &lt; 1.1.0</span><br>    GIT_TAG release/<span class="hljs-number">1</span><br>    SOURCE_SUBDIR api/cpp<br>)<br>FetchContent_MakeAvailable(Slint)<br><br><span class="hljs-keyword">add_executable</span>(memory_game main.cpp)<br><span class="hljs-keyword">target_link_libraries</span>(memory_game PRIVATE Slint::Slint)<br>slint_target_sources(memory_game memory.slint)<br><span class="hljs-comment"># On Windows, copy the Slint DLL next to the application binary so that it&#x27;s found.</span><br><span class="hljs-keyword">if</span> (WIN32)<br>    <span class="hljs-keyword">add_custom_command</span>(<span class="hljs-keyword">TARGET</span> memory_game POST_BUILD <span class="hljs-keyword">COMMAND</span> <span class="hljs-variable">$&#123;CMAKE_COMMAND&#125;</span> -E copy $&lt;TARGET_RUNTIME_DLLS:memory_game&gt; $&lt;TARGET_FILE_DIR:memory_game&gt; COMMAND_EXPAND_LISTS)<br><span class="hljs-keyword">endif</span>()<br></code></pre></td></tr></table></figure>
+<h2 id="添加一块幕布"><a href="#添加一块幕布" class="headerlink" title="添加一块幕布"></a>添加一块幕布</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs Slint">component MemoryTile inherits Rectangle&#123;<br>    width: 64px;<br>    height: 64px;<br>    background: gray;<br><br>    Image &#123;<br>        width: parent.width;<br>        height: parent.height;<br>        source: @image-url(&quot;icons/bus.png&quot;);<br>    &#125;<br><br>    // 左幕布<br>    Rectangle &#123;<br>        width: parent.width / 2;<br>        height: parent.height;<br>        x: 0px;<br>        background: darkgray;<br>    &#125;<br>&#125;<br>export component MainWindow inherits Window &#123;<br>    MemoryTile &#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>添加一块的效果<br><img src="/img/slint-polish-tile/img01.png" srcset="/img/loading.gif" lazyload alt="添加一块的效果"></p>
+<h2 id="添加两块幕布"><a href="#添加两块幕布" class="headerlink" title="添加两块幕布"></a>添加两块幕布</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs Slint">component MemoryTile inherits Rectangle&#123;<br>    width: 64px;<br>    height: 64px;<br>    background: gray;<br><br>    Image &#123;<br>        width: parent.width;<br>        height: parent.height;<br>        source: @image-url(&quot;icons/bus.png&quot;);<br>    &#125;<br><br>    // 左幕布<br>    Rectangle &#123;<br>        width: parent.width / 2;<br>        height: parent.height;<br>        x: 0px;<br>        background: darkgray;<br>    &#125;<br><br>    // 右幕布<br>    Rectangle &#123;<br>        width: parent.width / 2;<br>        height: parent.height;<br>        x: parent.width / 2;<br>        background: darkgray;<br>    &#125;<br>&#125;<br>export component MainWindow inherits Window &#123;<br>    MemoryTile &#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>在第一次配置CMake的时候会自动下载并编译Slint的Rust库。可以在cmake build 文件夹中看到:<br><img src="/img/slint-hello/img01.png" srcset="/img/loading.gif" lazyload alt="img01"></p>
-<p>在加载CMakeLists.txt中前几次可能出现加载失败的情况，在信息中可以找到下面几行：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-selector-attr">[cmake]</span> 正克隆到 <span class="hljs-string">&#x27;slint-src&#x27;</span>...<br><span class="hljs-selector-attr">[cmake]</span> 致命错误：在 <span class="hljs-string">&#x27;/mnt/Workspace/CLang/Slint/HelloWorld/build/_deps/slint-src&#x27;</span> 检测到可疑的仓库所有权<br><span class="hljs-selector-attr">[cmake]</span> 要为本仓库创建特例，请运行：<br><span class="hljs-selector-attr">[cmake]</span> <br><span class="hljs-selector-attr">[cmake]</span> 	git config <span class="hljs-attr">--global</span> <span class="hljs-attr">--add</span> safe<span class="hljs-selector-class">.directory</span> /mnt/Workspace/CLang/Slint/HelloWorld/build/_deps/slint-<span class="hljs-attribute">src</span><br><span class="hljs-selector-attr">[cmake]</span> CMake Error at slint-subbuild/slint-populate-prefix/tmp/slint-populate-gitclone<span class="hljs-selector-class">.cmake</span>:<span class="hljs-number">49</span> (message):<br><span class="hljs-selector-attr">[cmake]</span>   Failed to checkout tag: <span class="hljs-string">&#x27;release/1&#x27;</span><br></code></pre></td></tr></table></figure>
-<p>然后我们从善如流，将这条指令敲一下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Bash">git config --global --add safe.directory /mnt/Workspace/CLang/Slint/HelloWorld/build/_deps/slint-src<br><br>git config --global --add safe.directory /mnt/Workspace/CLang/Slint/HelloWorld/build/_deps/corrosion-src<br></code></pre></td></tr></table></figure>
-<p>然后就可以喝杯<code>java</code>等待一下了</p>
-<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><p>熟悉CMake的人应该对此很熟悉。我们看到这个CMakeLists.txt引用了一个main.cpp，我们稍后会添加它，它还有一行slint_target_sources（memory_game memory.slint），这是一个slint函数，用于将memory.slinnt文件添加到目标。然后，我们必须在同一目录中创建memory.slint文件。现在让我们用一个你好的世界来填充它：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Slint">// memory.slint<br>export component MainWindow inherits Window &#123;<br>    Text &#123;<br>        text: &quot;hello world&quot;;<br>        color: green;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>这是一个名为MainWindow的组件，它继承自Window组件。下面是代码的逐行解释：</p>
+<h2 id="最终代码"><a href="#最终代码" class="headerlink" title="最终代码"></a>最终代码</h2><p>定义了一个名为<code>MemoryTile</code>的组件，以及一个名为<code>MainWindow</code>的窗口组件。<code>MemoryTile</code>组件继承自<code>Rectangle</code>，具有以下属性和回调函数：</p>
 <ol>
-<li><code>export component MainWindow inherits Window &#123;</code>：这行代码定义了一个名为MainWindow的组件，它继承自Window组件。Slint是一种JavaScript静态代码检查工具，它可以帮助你发现代码中的错误和问题。</li>
-<li><code>Text &#123;</code>：这行代码定义了一个名为Text的子组件。子组件通常包含在父组件中使用的UI元素。</li>
-<li><code>text: &quot;hello world&quot;</code>：这行代码定义了Text组件的text属性，其值为”hello world”。</li>
-<li><code>color: green</code>：这行代码定义了Text组件的color属性，其值为”green”。</li>
+<li><code>callback clicked</code>：定义了一个名为<code>clicked</code>的回调函数。</li>
+<li><code>in property &lt;bool&gt; open_curtain</code>：定义了一个名为<code>open_curtain</code>的属性，类型为布尔值，表示幕布的打开状态。</li>
+<li><code>in property &lt;bool&gt; solved</code>：定义了一个名为<code>solved</code>的属性，类型为布尔值，表示组件的状态。</li>
+<li><code>in property &lt;image&gt; icon</code>：定义了一个名为<code>icon</code>的属性，类型为图像，表示组件的图标。</li>
 </ol>
-<p>这个看上去有一种QML的味道，但是实际上又不太一样，不过QML也是通过编译成为头文件提供给C++使用的，所以猜猜接下来需要配置什么？</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// main.cpp</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;memory.h&quot;</span> <span class="hljs-comment">// generated header from memory.slint</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">auto</span> main_window = MainWindow::<span class="hljs-built_in">create</span>();<br>    main_window-&gt;<span class="hljs-built_in">run</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>组件的宽度和高度分别为64像素，背景颜色根据<code>solved</code>属性的值来决定，如果是<code>solved</code>则为深灰色，否则为灰色。</p>
+<p>接下来，代码定义了一个名为<code>animate</code>的动画属性，用于改变组件的背景颜色。动画的持续时间为800毫秒，使用<code>ease-in</code>ease-in&#96; easing函数。</p>
+<p>然后，代码定义了一个名为<code>Image</code>的子组件，其宽度、高度和源图像都来自父组件的<code>icon</code>属性。</p>
+<p>接下来，代码定义了两个名为<code>Rectangle</code>的子组件，分别表示左幕布和右幕布。左幕布的宽度根据<code>open_curtain</code>属性的值来决定，如果是<code>open_curtain</code>则为0像素，否则为父组件宽度的一半。背景颜色为深灰色。当<code>open_curtain</code>属性改变时，宽度会通过动画进行更新。</p>
+<p>右幕布的宽度、高度和背景颜色与左幕布相同。此外，当<code>open_curtain</code>属性改变时，还会通过动画更新位置和宽度。</p>
+<p>最后，代码定义了一个名为<code>TouchArea</code>的子组件，当用户点击时，会调用父组件的<code>clicked</code>回调函数。</p>
+<p>最后，代码导出了<code>MainWindow</code>组件，并在其中定义了一个<code>MemoryTile</code>组件，其<code>icon</code>属性为<code>icons/bus.png</code>，当点击时会改变<code>open_curtain</code>属性的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs Slint">component MemoryTile inherits Rectangle&#123;<br>    callback clicked;<br>    in property &lt;bool&gt; open_curtain;<br>    in property &lt;bool&gt; solved;<br>    in property &lt;image&gt; icon;<br><br>    width: 64px;<br>    height: 64px;<br>    background: solved? darkgrey : grey;<br><br>    animate background &#123;<br>         duration: 800ms;<br>    &#125;<br><br>    Image &#123;<br>        width: parent.width;<br>        height: parent.height;<br>        source: icon;<br>    &#125;<br><br>    // 左幕布<br>    Rectangle &#123;<br>        width: open_curtain ? 0px : (parent.width / 2);<br>        height: parent.height;<br>        x: 0px;<br>        background: darkgrey;<br>        animate width &#123;<br>             duration: 250ms;<br>             easing: ease-in;<br>        &#125;<br>    &#125;<br><br>    // 右幕布<br>    Rectangle &#123;<br>        width: open_curtain ? 0px : (parent.width / 2);<br>        height: parent.height;<br>        x: open_curtain ? parent.width : (parent.width / 2);<br>        background: darkgrey;<br>        animate width &#123;<br>            duration: 250ms;<br>            easing: ease-in;<br>       &#125;<br>       animate x &#123;<br>            duration: 250ms;<br>            easing: ease-in;<br>       &#125;<br>    &#125;<br><br>    TouchArea &#123;<br>        clicked =&gt; &#123;<br>            root.clicked();<br>        &#125;<br>    &#125;<br>&#125;<br>export component MainWindow inherits Window &#123;<br>    MemoryTile &#123;<br>        icon: @image-url(&quot;icons/bus.png&quot;);<br>        clicked =&gt; &#123;<br>            self.open-curtain = !self.open-curtain;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>nice,就是这样，激动的心颤抖的手，来让我们运行一下，第一次运行可能时间有点久，但都是值得的，可以顺便起来喝口水。</p>
-<p><img src="/img/slint-hello/img02.png" srcset="/img/loading.gif" lazyload alt="最终结果"><br>由于本人写这篇文章的时候使用的桌面环境是 plasma kde - wayland 设置的主题是暗色的所以组件跟随提供主题是黑色的。但是这都不要紧，随后的文章中会介绍怎么做统一的主题风格。</p>
-<p><img src="/img/slint-hello/img03.png" srcset="/img/loading.gif" lazyload alt="白色主题"><br><em>写完这条post之后，感觉还是要交代以下输出来的东西具体长什么样子，于是在次日启动了我的wayfire桌面，这个桌面使用的是亮色主题，所以达到了官方的效果</em></p>
 
                 
               </div>
@@ -348,8 +351,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Slint C++  环境配置</div>
-      <div>http://cvrain.cloudvl.cn/2023/12/09/Slint/slint-hello/</div>
+      <div>Slint C++  开幕动画</div>
+      <div>http://cvrain.cloudvl.cn/2023/12/10/Slint/slint-polish-tile/</div>
     </div>
     <div class="license-meta">
       
@@ -361,7 +364,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月9日</div>
+          <div>2023年12月10日</div>
         </div>
       
       
@@ -393,18 +396,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/10/Slint/slint-rectangle/" title="Slint C++  画一个矩形">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Slint C++  画一个矩形</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/07/Java/java-learn-array/" title="Java初步了解一下数组">
-                        <span class="hidden-mobile">Java初步了解一下数组</span>
+                      <a href="/2023/12/10/Slint/slint-rectangle/" title="Slint C++  画一个矩形">
+                        <span class="hidden-mobile">Slint C++  画一个矩形</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

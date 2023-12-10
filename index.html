@@ -227,6 +227,90 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2023/12/10/Slint/slint-polish-tile/" target="_self">
+          Slint C++  开幕动画
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/10/Slint/slint-polish-tile/" target="_self">
+        <div>
+          Slint C++ 图片开幕动画按照小游戏的设定，一开始图片是被挡住的，当鼠标点击了所在图片之后，图片就被掀开。现在我们需要做一个类似开幕的效果，他的实现方式也不是很困难：给这个矩形上面附加两个1&#x2F;2大小的矩形，再叠加一个透明矩形用来接受鼠标事件，当点击之后左边的矩形往左走，右边的矩形往右走，为他们两个顺便加上过度动画效果。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-10 10:20" pubdate>
+              2023-12-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Cpp/">#Cpp</a>
+            
+              <a href="/tags/Slint/">#Slint</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/10/Slint/slint-rectangle/" target="_self">
+          Slint C++  画一个矩形
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/10/Slint/slint-rectangle/" target="_self">
+        <div>
+          Slint C++ 画一个矩形官方在教程中给的一个案例是记忆磁贴，也就是一组图片里选择两个相同图案的消除。这个是官方给的demo现在我们已经有了一个窗口，接下来就是研究一下怎么画一个矩形然后在里面塞一个图片。 打开熟悉的memory.slint 12345678component MemoryTile inherits Rectangle&#123;    width: 64px;    heig
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-10 09:34" pubdate>
+              2023-12-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Cpp/">#Cpp</a>
+            
+              <a href="/tags/Slint/">#Slint</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/12/09/Slint/slint-hello/" target="_self">
           Slint C++  环境配置
         </a>
@@ -544,86 +628,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Haskell/">#Haskell</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/27/Haskell/haskell-hyper-function/" target="_self">
-          Haskell - 一些高级函数
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/27/Haskell/haskell-hyper-function/" target="_self">
-        <div>
-          Haskell - 一些高级函数在haskell中的函数可以将一个函数作为参数传入，也可以返回一个参数。这样的玩法就非常丰富了。 12applyTwice :: (a -&gt; a) -&gt; a -&gt; aapplyTwice f x = f (f x) 如何使用它 1234main = do    print $ applyTwice (+3) 10    print $ applyT
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-27 20:21" pubdate>
-              2023-11-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Haskell/">#Haskell</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/25/Nim/nim-procedure/" target="_self">
-          Nim-过程(procedure)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/25/Nim/nim-procedure/" target="_self">
-        <div>
-          Nim - procedure要定义示例中的echo和readLine等新命令，需要过程的概念。您可能习惯了它们在其他语言中被称为方法或函数，但是Nim区分了这些概念。在Nim中，新过程是用proc关键字定义的: 其实函数叫做过程这个名字还是很贴切的，我们平时一直区分一个语言是面向过程的还是面向对象的，比如说C语言是一个面向对象的语言。在C语言中内存被分为四大类：全局区、静态区、堆区和栈区。而栈区
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-25 16:37" pubdate>
-              2023-11-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Nim/">#Nim</a>
             
           </div>
         
