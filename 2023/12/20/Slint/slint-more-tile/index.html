@@ -24,7 +24,7 @@
 <meta property="og:description" content="Slint C++ 创建更多的磁贴前一个章节我们完成了一个磁贴的创建，接下来我们需要创建一个网格，在里面创建更多的磁贴来完成游戏的基本布局。当然，我们需要分两步走：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-20T09:07:11.000Z">
-<meta property="article:modified_time" content="2023-12-20T12:26:51.077Z">
+<meta property="article:modified_time" content="2023-12-20T16:34:19.711Z">
 <meta property="article:author" content="ClaudeRainer">
 <meta property="article:tag" content="Cpp">
 <meta property="article:tag" content="Slint">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          825 字
+          824 字
         
       </span>
     
@@ -299,7 +299,7 @@
 <ul>
 <li>image:  图片类型，用来存放图片</li>
 <li>image_visable:  图片是否可见</li>
-<li>sovled：是否被点击触发，（我不是很喜欢这个名字）</li>
+<li>sovled：是否被消除掉，（我不是很喜欢这个名字）</li>
 </ul>
 <h2 id="修改MainWindow组件"><a href="#修改MainWindow组件" class="headerlink" title="修改MainWindow组件"></a>修改MainWindow组件</h2><p>接下来，我们使用以下代码片段替换 memory.slint 文件底部的导出组件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component MainWindow inherits Window &#123;<br>    width: 326px;<br>    height: 326px;<br><br>    in property &lt;[TileData]&gt; memory_tiles: [<br>        &#123; image: @image-url(&quot;icons/at.png&quot;) &#125;,<br>        &#123; image: @image-url(&quot;icons/balance-scale.png&quot;) &#125;,<br>        &#123; image: @image-url(&quot;icons/bicycle.png&quot;) &#125;,<br>        &#123; image: @image-url(&quot;icons/bus.png&quot;) &#125;,<br>        &#123; image: @image-url(&quot;icons/cloud.png&quot;) &#125;,<br>        &#123; image: @image-url(&quot;icons/cogs.png&quot;) &#125;,<br>        &#123; image: @image-url(&quot;icons/motorcycle.png&quot;) &#125;,<br>        &#123; image: @image-url(&quot;icons/video.png&quot;) &#125;,<br>    ];<br>    for tile[i] in memory_tiles : MemoryTile &#123;<br>        x: mod(i, 4) * 74px;<br>        y: floor(i / 4) * 74px;<br>        width: 64px;<br>        height: 64px;<br>        icon: tile.image;<br>        open_curtain: tile.image_visible || tile.solved;<br>        // propagate the solved status from the model to the tile<br>        solved: tile.solved;<br>        clicked =&gt; &#123;<br>            tile.image_visible = !tile.image_visible;<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
