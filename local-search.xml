@@ -4,6 +4,64 @@
   
   
   <entry>
+    <title>post</title>
+    <link href="/2024/01/08/Slint/slint-translations/"/>
+    <url>/2024/01/08/Slint/slint-translations/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>post</title>
+    <link href="/2024/01/08/Slint/slint-purity/"/>
+    <url>/2024/01/08/Slint/slint-purity/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>post</title>
+    <link href="/2024/01/08/Slint/slint-font-handling/"/>
+    <url>/2024/01/08/Slint/slint-font-handling/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Slint 焦点处理</title>
+    <link href="/2024/01/08/Slint/slint-focus-handling/"/>
+    <url>/2024/01/08/Slint/slint-focus-handling/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Slint-焦点处理"><a href="#Slint-焦点处理" class="headerlink" title="Slint 焦点处理"></a>Slint 焦点处理</h1><p>某些元素(如TextInput)不仅接受来自鼠标&#x2F;手指的输入，还接受来自(虚拟)键盘的键事件。为了让控件接收这些事件，它必须具有焦点。这可以通过has-focus (out)属性看到。</p><p>你可以通过调用focus()来手动激活元素的焦点:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Slint">import &#123; Button &#125; from &quot;std-widgets.slint&quot;;<br><br>export component App inherits Window &#123;<br>    VerticalLayout &#123;<br>        alignment: start;<br>        Button &#123;<br>            text: &quot;press me&quot;;<br>            clicked =&gt; &#123; input.focus(); &#125;<br>        &#125;<br>        input := TextInput &#123;<br>            text: &quot;I am a text input field&quot;;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>如果你已经在组件中包装了TextInput，那么你可以使用forward-focus属性来转发这样的焦点激活，以引用应该接收它的元素:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs Slint">import &#123; Button &#125; from &quot;std-widgets.slint&quot;;<br><br>component LabeledInput inherits GridLayout &#123;<br>    forward-focus: input;<br>    Row &#123;<br>        Text &#123;<br>            text: &quot;Input Label:&quot;;<br>        &#125;<br>        input := TextInput &#123;&#125;<br>    &#125;<br>&#125;<br><br>export component App inherits Window &#123;<br>    GridLayout &#123;<br>        Button &#123;<br>            text: &quot;press me&quot;;<br>            clicked =&gt; &#123; label.focus(); &#125;<br>        &#125;<br>        label := LabeledInput &#123;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>如果在窗口上使用forward-focus属性，则指定的元素将在窗口第一次接收焦点时接收焦点-它将成为初始焦点元素。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Slint</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Slint 容器组件</title>
     <link href="/2024/01/08/Slint/slint-container-components/"/>
     <url>/2024/01/08/Slint/slint-container-components/</url>

@@ -16,15 +16,15 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="Slint 容器组件在创建组件时，有时影响子元素在使用时的位置是很有用的。例如，假设有一个组件在用户放置的元素上方绘制一个标签:">
+    <meta name="description" content="Slint 焦点处理某些元素(如TextInput)不仅接受来自鼠标&#x2F;手指的输入，还接受来自(虚拟)键盘的键事件。为了让控件接收这些事件，它必须具有焦点。这可以通过has-focus (out)属性看到。 你可以通过调用focus()来手动激活元素的焦点: 1234567891011121314import &amp;#123; Button &amp;#125; from &quot;std-widg">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Slint 容器组件">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/08/Slint/slint-container-components/index.html">
+<meta property="og:title" content="Slint 焦点处理">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/08/Slint/slint-focus-handling/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="Slint 容器组件在创建组件时，有时影响子元素在使用时的位置是很有用的。例如，假设有一个组件在用户放置的元素上方绘制一个标签:">
+<meta property="og:description" content="Slint 焦点处理某些元素(如TextInput)不仅接受来自鼠标&#x2F;手指的输入，还接受来自(虚拟)键盘的键事件。为了让控件接收这些事件，它必须具有焦点。这可以通过has-focus (out)属性看到。 你可以通过调用focus()来手动激活元素的焦点: 1234567891011121314import &amp;#123; Button &amp;#125; from &quot;std-widg">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-08T13:00:53.000Z">
-<meta property="article:modified_time" content="2024-01-08T14:31:57.846Z">
+<meta property="article:published_time" content="2024-01-08T14:39:12.000Z">
+<meta property="article:modified_time" content="2024-01-08T14:42:34.744Z">
 <meta property="article:author" content="ClaudeRainer">
 <meta property="article:tag" content="Slint">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Slint 容器组件 - cvrain-以空间追逐时间</title>
+  <title>Slint 焦点处理 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Slint 容器组件"></span>
+            <span id="subtitle" data-typed-text="Slint 焦点处理"></span>
           
         </div>
 
@@ -210,7 +210,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-08 21:00" pubdate>
+        <time datetime="2024-01-08 22:39" pubdate>
           2024年1月8日 晚上
         </time>
       </span>
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          341 字
+          163 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          3 分钟
+          2 分钟
         
       </span>
     
@@ -278,26 +278,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Slint 容器组件</h1>
+            <h1 id="seo-header">Slint 焦点处理</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Slint-容器组件"><a href="#Slint-容器组件" class="headerlink" title="Slint 容器组件"></a>Slint 容器组件</h1><p>在创建组件时，有时影响子元素在使用时的位置是很有用的。例如，假设有一个组件在用户放置的元素上方绘制一个标签:</p>
-<span id="more"></span>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component MyApp inherits Window &#123;<br><br>    BoxWithLabel &#123;<br>        Text &#123;<br>            // ...<br>        &#125;<br>    &#125;<br><br>    // ...<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="Slint-焦点处理"><a href="#Slint-焦点处理" class="headerlink" title="Slint 焦点处理"></a>Slint 焦点处理</h1><p>某些元素(如TextInput)不仅接受来自鼠标&#x2F;手指的输入，还接受来自(虚拟)键盘的键事件。为了让控件接收这些事件，它必须具有焦点。这可以通过has-focus (out)属性看到。</p>
+<p>你可以通过调用focus()来手动激活元素的焦点:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Slint">import &#123; Button &#125; from &quot;std-widgets.slint&quot;;<br><br>export component App inherits Window &#123;<br>    VerticalLayout &#123;<br>        alignment: start;<br>        Button &#123;<br>            text: &quot;press me&quot;;<br>            clicked =&gt; &#123; input.focus(); &#125;<br>        &#125;<br>        input := TextInput &#123;<br>            text: &quot;I am a text input field&quot;;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>您可以使用布局实现这样的BoxWithLabel。默认情况下，像Text元素这样的子元素成为BoxWithLabel的直接子元素，但是我们需要它们成为布局的子元素。为此，你可以在组件的元素层次结构中使用@children表达式来改变默认的子节点位置:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs Slint">component BoxWithLabel inherits GridLayout &#123;<br>    Row &#123;<br>        Text &#123; text: &quot;label text here&quot;; &#125;<br>    &#125;<br>    Row &#123;<br>        @children<br>    &#125;<br>&#125;<br><br>export component MyApp inherits Window &#123;<br>    preferred-height: 100px;<br>    BoxWithLabel &#123;<br>        Rectangle &#123; background: blue; &#125;<br>        Rectangle &#123; background: yellow; &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>如果你已经在组件中包装了TextInput，那么你可以使用forward-focus属性来转发这样的焦点激活，以引用应该接收它的元素:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs Slint">import &#123; Button &#125; from &quot;std-widgets.slint&quot;;<br><br>component LabeledInput inherits GridLayout &#123;<br>    forward-focus: input;<br>    Row &#123;<br>        Text &#123;<br>            text: &quot;Input Label:&quot;;<br>        &#125;<br>        input := TextInput &#123;&#125;<br>    &#125;<br>&#125;<br><br>export component App inherits Window &#123;<br>    GridLayout &#123;<br>        Button &#123;<br>            text: &quot;press me&quot;;<br>            clicked =&gt; &#123; label.focus(); &#125;<br>        &#125;<br>        label := LabeledInput &#123;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>上面说的有点弯弯绕了，甚至前五分钟我没有理解这到底在说什么，简单来说。假设一个用户创建了一个组件，但是这个组件实际的工作性质是一个容器，也就是可以嵌入其他组件，那么就在需要嵌入的地方塞一个<code>@children</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs Slint">component GridRectangle &#123;  <br>    GridLayout &#123;  <br>        spacing: 5px;  <br>        Row&#123;  <br>            Rectangle &#123;  <br>                width: 50px;  <br>                height: 50px;  <br>                background: #FFDDDD;  <br>            &#125;  <br>            Rectangle &#123;  <br>                width: 50px;  <br>                height: 50px;  <br>                background: #FFEEDD;  <br>            &#125;  <br>        &#125;  <br>        Row&#123;  <br>            Rectangle &#123;  <br>                width: 50px;  <br>                height: 50px;  <br>                background: #FFEEEE;  <br>                @children  <br>            &#125;  <br>            Rectangle &#123;  <br>                width: 50px;  <br>                height: 50px;  <br>                background: #FFDDEE;  <br>            &#125;  <br>        &#125;  <br>    &#125;  <br>&#125;  <br>  <br>component ColordRectangle &#123;  <br>    Rectangle &#123;  <br>        background: lightpink;  <br>        @children  <br>    &#125;  <br>&#125;  <br>  <br>export component MainWindow inherits Window &#123;  <br>    preferred-width: 640px;  <br>    preferred-height: 480px;  <br>  <br>    max-height: 640px;  <br>    max-width: 480px;  <br>  <br>    ColordRectangle &#123;  <br>        preferred-width: parent.width;  <br>        preferred-height: parent.height;  <br>        GridRectangle &#123;&#125;  <br>    &#125;  <br>  <br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>@children是一个表达式，它允许您在自定义组件中嵌套其他组件。例如，如果您想在BoxWithLabel组件中添加一个标签，您可以将子元素放在BoxWithLabel的布局中，而不是直接作为BoxWithLabel的子元素。这样，您就可以使用@children表达式来控制标签的位置。</p>
-<p><strong><code>@children</code>占位符只能在元素层次结构中出现一次</strong><br>比如上面的例子修改成为这样是不可以的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Slint">component BoxWithLabel inherits GridLayout &#123;<br>    Row &#123;<br>        @children<br>    &#125;<br>    Row &#123;<br>        @children<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
+<p>如果在窗口上使用forward-focus属性，则指定的元素将在窗口第一次接收焦点时接收焦点-它将成为初始焦点元素。</p>
 
                 
               </div>
@@ -322,8 +315,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Slint 容器组件</div>
-      <div>http://cvrain.cloudvl.cn/2024/01/08/Slint/slint-container-components/</div>
+      <div>Slint 焦点处理</div>
+      <div>http://cvrain.cloudvl.cn/2024/01/08/Slint/slint-focus-handling/</div>
     </div>
     <div class="license-meta">
       
@@ -367,9 +360,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/08/Slint/slint-focus-handling/" title="Slint 焦点处理">
+                      <a href="/2024/01/08/Slint/slint-font-handling/" title="post">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Slint 焦点处理</span>
+                        <span class="hidden-mobile">post</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -377,8 +370,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/22/Slint/slint-position-layout/" title="Slint 元素的定位和布局">
-                        <span class="hidden-mobile">Slint 元素的定位和布局</span>
+                      <a href="/2024/01/08/Slint/slint-container-components/" title="Slint 容器组件">
+                        <span class="hidden-mobile">Slint 容器组件</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
