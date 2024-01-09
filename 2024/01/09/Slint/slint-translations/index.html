@@ -16,15 +16,15 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="Slint 焦点处理某些元素(如TextInput)不仅接受来自鼠标&#x2F;手指的输入，还接受来自(虚拟)键盘的键事件。为了让控件接收这些事件，它必须具有焦点。这可以通过has-focus (out)属性看到。 你可以通过调用focus()来手动激活元素的焦点: 1234567891011121314import &amp;#123; Button &amp;#125; from &quot;std-widg">
+    <meta name="description" content="Slint 语言翻译使用Slint自带基本翻译功能可以让你的程序实现切换不同的语言 完成下面几个步骤便可以完成程序的翻译工作：  表明所有对用户可见且需要翻译的字符串并使用@tr()宏进行注释 使用 slint-tr-extractor 工具提取带注释的字符串并生成 .pot 文件。   使用第三方工具将字符串翻译为目标语言，如 .po 文件。   使用 gettext 的 msgfmt 工具将">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Slint 焦点处理">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/08/Slint/slint-focus-handling/index.html">
+<meta property="og:title" content="Slint 语言翻译">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/09/Slint/slint-translations/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="Slint 焦点处理某些元素(如TextInput)不仅接受来自鼠标&#x2F;手指的输入，还接受来自(虚拟)键盘的键事件。为了让控件接收这些事件，它必须具有焦点。这可以通过has-focus (out)属性看到。 你可以通过调用focus()来手动激活元素的焦点: 1234567891011121314import &amp;#123; Button &amp;#125; from &quot;std-widg">
+<meta property="og:description" content="Slint 语言翻译使用Slint自带基本翻译功能可以让你的程序实现切换不同的语言 完成下面几个步骤便可以完成程序的翻译工作：  表明所有对用户可见且需要翻译的字符串并使用@tr()宏进行注释 使用 slint-tr-extractor 工具提取带注释的字符串并生成 .pot 文件。   使用第三方工具将字符串翻译为目标语言，如 .po 文件。   使用 gettext 的 msgfmt 工具将">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-08T14:39:12.000Z">
-<meta property="article:modified_time" content="2024-01-08T14:42:34.744Z">
+<meta property="article:published_time" content="2024-01-09T04:07:45.000Z">
+<meta property="article:modified_time" content="2024-01-09T06:17:49.279Z">
 <meta property="article:author" content="ClaudeRainer">
 <meta property="article:tag" content="Slint">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Slint 焦点处理 - cvrain-以空间追逐时间</title>
+  <title>Slint 语言翻译 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Slint 焦点处理"></span>
+            <span id="subtitle" data-typed-text="Slint 语言翻译"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-08 22:39" pubdate>
-          2024年1月8日 晚上
+        <time datetime="2024-01-09 12:07" pubdate>
+          2024年1月9日 中午
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          163 字
+          1.2k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          2 分钟
+          11 分钟
         
       </span>
     
@@ -278,19 +278,67 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Slint 焦点处理</h1>
+            <h1 id="seo-header">Slint 语言翻译</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Slint-焦点处理"><a href="#Slint-焦点处理" class="headerlink" title="Slint 焦点处理"></a>Slint 焦点处理</h1><p>某些元素(如TextInput)不仅接受来自鼠标&#x2F;手指的输入，还接受来自(虚拟)键盘的键事件。为了让控件接收这些事件，它必须具有焦点。这可以通过has-focus (out)属性看到。</p>
-<p>你可以通过调用focus()来手动激活元素的焦点:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Slint">import &#123; Button &#125; from &quot;std-widgets.slint&quot;;<br><br>export component App inherits Window &#123;<br>    VerticalLayout &#123;<br>        alignment: start;<br>        Button &#123;<br>            text: &quot;press me&quot;;<br>            clicked =&gt; &#123; input.focus(); &#125;<br>        &#125;<br>        input := TextInput &#123;<br>            text: &quot;I am a text input field&quot;;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="Slint-语言翻译"><a href="#Slint-语言翻译" class="headerlink" title="Slint 语言翻译"></a>Slint 语言翻译</h1><p>使用Slint自带基本翻译功能可以让你的程序实现切换不同的语言</p>
+<p>完成下面几个步骤便可以完成程序的翻译工作：</p>
+<ol>
+<li>表明所有对用户可见且需要翻译的字符串并使用<code>@tr()</code>宏进行注释</li>
+<li>使用 <code>slint-tr-extractor</code> 工具提取带注释的字符串并生成 .pot 文件。  </li>
+<li>使用第三方工具将字符串翻译为目标语言，如 .po 文件。  </li>
+<li>使用 gettext 的 msgfmt 工具将 .po 文件转换为运行时可加载的 .mo 文件。  </li>
+<li>根据用户的区域设置，使用 Slint 的 API 在运行时选择并加载 .mo 文件。此时，所有标记为翻译的字符串将自动以目标语言呈现。</li>
+</ol>
+<h1 id="注释可翻译字符串"><a href="#注释可翻译字符串" class="headerlink" title="注释可翻译字符串"></a>注释可翻译字符串</h1><p>在 .slint 文件中使用 @tr 宏来标记要翻译的字符串。该宏将通过替换 {} 占位符来处理翻译和格式设置。<br>第一个参数必须是纯字符串文字，后跟参数(这个写法好像printf)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example &#123;<br>    property &lt;string&gt; name;<br>    Text &#123;<br>        text: @tr(&quot;Hello, &#123;&#125;&quot;, name);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>如果你已经在组件中包装了TextInput，那么你可以使用forward-focus属性来转发这样的焦点激活，以引用应该接收它的元素:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs Slint">import &#123; Button &#125; from &quot;std-widgets.slint&quot;;<br><br>component LabeledInput inherits GridLayout &#123;<br>    forward-focus: input;<br>    Row &#123;<br>        Text &#123;<br>            text: &quot;Input Label:&quot;;<br>        &#125;<br>        input := TextInput &#123;&#125;<br>    &#125;<br>&#125;<br><br>export component App inherits Window &#123;<br>    GridLayout &#123;<br>        Button &#123;<br>            text: &quot;press me&quot;;<br>            clicked =&gt; &#123; label.focus(); &#125;<br>        &#125;<br>        label := LabeledInput &#123;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h2><p><code>@tr </code>宏将标记为翻译的字符串中的每个<code>&#123;&#125;</code>占位符替换为相应的参数。还可以使用 <code>&#123;0&#125;、&#123;1&#125; </code>等对参数重新排序。即使原始字符串没有，翻译人员也可以使用有序占位符。</p>
+<h2 id="复数格式"><a href="#复数格式" class="headerlink" title="复数格式"></a>复数格式</h2><p>当涉及可变数量元素的文本翻译应根据是单个元素还是多个元素而变化时，请使用复数格式。<br>在计算某些东西的个数时，使用<code>count</code>和表达式来表示，用 <code>| </code>形成复数形式和 <code>% </code>符号如下：<br><code>@tr(&quot;I have &#123;n&#125; item&quot; | &quot;I have &#123;n&#125; items&quot; % count)</code>.<br>（也就是说slint会根据数字的单数还是复数来选择使用什么格式的翻译，比如这里就会存在 “I have a&#x2F;one item” 和 “I have two&#x2F;three items”的情况）</p>
+<p>在格式字符串中使用 {n} 来访问 % 之后的表达式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Text &#123;<br>    in property &lt;int&gt; score;<br>    in property &lt;int&gt; name;<br>    text: @tr(&quot;Hello &#123;0&#125;, you have one point&quot; | &quot;Hello &#123;0&#125;, you have &#123;n&#125; point&quot; % score, name);<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>如果在窗口上使用forward-focus属性，则指定的元素将在窗口第一次接收焦点时接收焦点-它将成为初始焦点元素。</p>
+<h2 id="语境"><a href="#语境" class="headerlink" title="语境"></a>语境</h2><p>通过使用 “…” &#x3D;&gt; 语法向 @tr(…) 宏添加语境，消除具有相同源文本但上下文语境含义不同的字符串的翻译歧义。<br>使用上下文为译者提供额外的上下文信息，确保翻译准确且符合当前语境。<br>上下文必须是纯字符串文字，并且在 .pot 文件中显示为 msgctx。如果未指定，上下文默认为周围组件的名称。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component MenuItem &#123;<br>    property &lt;string&gt; name : @tr(&quot;Name&quot; =&gt; &quot;Default Name&quot;); // Default: `MenuItem` will be the context.<br>    property &lt;string&gt; tooltip : @tr(&quot;ToolTip&quot; =&gt; &quot;ToolTip for &#123;&#125;&quot;, name); // Specified: The context will be `ToolTip`.<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="提取可翻译字符串"><a href="#提取可翻译字符串" class="headerlink" title="提取可翻译字符串"></a>提取可翻译字符串</h2><p>使用<code>slint-tr-extractor</code> 工具从<code>.slint</code>文件生成出<code>.pot</code>文件，可以这样运行指令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find -name \*.slint | xargs slint-tr-extractor -o MY_PROJECT.pot<br></code></pre></td></tr></table></figure>
+<p>这将创建一个名为 MY_PROJECT.pot 的文件。将 MY_PROJECT 替换为您的实际项目名称。要了解项目名称如何影响翻译查找，请参阅以下部分。<br><code>.pot</code> files are <a target="_blank" rel="noopener" href="https://www.gnu.org/software/gettext/">Gettext</a> template files.</p>
+<h1 id="翻译字符串"><a href="#翻译字符串" class="headerlink" title="翻译字符串"></a>翻译字符串</h1><p>通过从 .pot 文件创建 .po 文件来开始新翻译。两种文件格式相同。您可以手动复制文件，也可以使用 Gettext 的 msginit 等工具来启动新的 .po 文件。<br>.po 文件将包含目标语言的字符串。<br>.po 和 .pot 文件是纯文本文件，您可以使用文本编辑器进行编辑。我们建议使用专用翻译工具来处理它们，例如：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://poedit.net/">poedit</a></li>
+<li><a target="_blank" rel="noopener" href="https://omegat.org/">OmegaT</a></li>
+<li><a target="_blank" rel="noopener" href="https://userbase.kde.org/Lokalize">Lokalize</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.transifex.com/">Transifex</a> (web interface)</li>
+</ul>
+<h2 id="转换-po文件到-mo文件"><a href="#转换-po文件到-mo文件" class="headerlink" title="转换.po文件到.mo文件"></a>转换<code>.po</code>文件到<code>.mo</code>文件</h2><p>人类可读的 .po 文件需要转换为机器友好的 .mo 文件，这是一种读取效率非常高的二进制表示形式。<br>使用 <a target="_blank" rel="noopener" href="https://www.gnu.org/software/gettext/">Gettext</a>的<code>msgfmt</code> 命令行工具以将<code>.po</code>文件转换到<code>.mo</code>文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">msgfmt translation.po -o translation.mo<br></code></pre></td></tr></table></figure>
+
+<h2 id="在运行时选择并加载-mo文件"><a href="#在运行时选择并加载-mo文件" class="headerlink" title="在运行时选择并加载.mo文件"></a>在运行时选择并加载<code>.mo</code>文件</h2><p>Slint 使用 Gettext 库在运行时加载翻译。 Gettext 将翻译文件生成在以下指定位置下：<br><code>dir_name/locale/LC_MESSAGES/domain_name.mo</code></p>
+<ul>
+<li>dir_name: 你自由原则的根目录文件夹</li>
+<li>locale: 给定目标语言的用户区域设置名称，例如 fr 代表法语，de 代表德语。区域设置通常是使用操作系统设置的环境变量来确定的。</li>
+<li>domain_name: 根据您使用 Slint 的编程语言进行选择。</li>
+</ul>
+<h1 id="在Rust中选择并加载翻译文件"><a href="#在Rust中选择并加载翻译文件" class="headerlink" title="在Rust中选择并加载翻译文件"></a>在Rust中选择并加载翻译文件</h1><p>首先，启用 <code>slint create</code> 的 <code>gettext </code>功能来访问翻译 API 并激活运行时翻译支持。<br>接下来，使用 <code>slint::init_translations！</code>指定 <code>.mo</code> 文件的基本位置。这是上一节方案中的 dir_name。 .mo 文件应位于相应的子目录中，并且它们的文件名 - 域名 - 必须与 Cargo.toml 中的包名称匹配。这通常与crate名称相同。<br>举个🌰:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Rust">slint::init_translations!(<span class="hljs-built_in">concat!</span>(<span class="hljs-built_in">env!</span>(<span class="hljs-string">&quot;CARGO_MANIFEST_DIR&quot;</span>), <span class="hljs-string">&quot;/lang/&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<p>假设您的 Cargo.toml 包含以下行，并且用户的区域设置为 fr：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[package]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">&quot;gallery&quot;</span><br></code></pre></td></tr></table></figure>
+<p>通过这些设置，Slint 将在 lang&#x2F;fr&#x2F;LC_MESSAGES&#x2F;gallery.mo 中查找 gallery.mo。</p>
+<h1 id="在C-中选择并加载翻译文件"><a href="#在C-中选择并加载翻译文件" class="headerlink" title="在C++中选择并加载翻译文件"></a>在C++中选择并加载翻译文件</h1><p>首先，在编译 Slint 时启用 <code>SLINT_FEATURE_GETTEXT</code> cmake 选项，以访问翻译 API 并激活运行时翻译支持。<br>在C++应用中使用CMake，用<code>domain_name</code>作为cmake目标名称</p>
+<p>接下来，使用标准 gettext 库将文本域绑定到路径。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs CMake"><span class="hljs-keyword">find_package</span>(Intl)<br><span class="hljs-keyword">if</span>(Intl_FOUND)<br>    <span class="hljs-keyword">target_compile_definitions</span>(gallery PRIVATE HAVE_GETTEXT SRC_DIR=<span class="hljs-string">&quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;&quot;</span>)<br>    <span class="hljs-keyword">target_link_libraries</span>(gallery PRIVATE Intl::Intl)<br><span class="hljs-keyword">endif</span>()<br></code></pre></td></tr></table></figure>
+<p>(可以通过vcpkg安装第三方库，非常的方便)</p>
+<p>然后可以设置区域设置和文本域</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> HAVE_GETTEXT</span><br><span class="hljs-meta">#    <span class="hljs-keyword">include</span> <span class="hljs-string">&lt;locale&gt;</span></span><br><span class="hljs-meta">#    <span class="hljs-keyword">include</span> <span class="hljs-string">&lt;libintl.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> HAVE_GETTEXT</span><br>    <span class="hljs-built_in">bindtextdomain</span>(<span class="hljs-string">&quot;my_application&quot;</span>, SRC_DIR <span class="hljs-string">&quot;/lang/&quot;</span>);<br>    std::locale::<span class="hljs-built_in">global</span>(std::<span class="hljs-built_in">locale</span>(<span class="hljs-string">&quot;&quot;</span>));<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>   <span class="hljs-comment">//...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>假设您正在使用上述内容，并且用户的区域设置设置为 fr，Slint 将在 lang&#x2F;fr&#x2F;LC_MESSAGES&#x2F;gallery.mo 中查找 gallery.mo。</p>
+<h1 id="使用-slint-viewer-预览翻译"><a href="#使用-slint-viewer-预览翻译" class="headerlink" title="使用 slint-viewer 预览翻译"></a>使用 slint-viewer 预览翻译</h1><p>预览<code> .slint</code> 文件时使用 <code>slint-viewer </code>预览翻译：</p>
+<ol>
+<li>启用<code>gettext</code>功能在编译slint-viewer时</li>
+<li>使用<code>--translation-domain</code>和<code>translation-dir</code>选项加载并展示本地化翻译文件，语言的选择基于当前系统设定的语言。</li>
+</ol>
 
                 
               </div>
@@ -315,8 +363,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Slint 焦点处理</div>
-      <div>http://cvrain.cloudvl.cn/2024/01/08/Slint/slint-focus-handling/</div>
+      <div>Slint 语言翻译</div>
+      <div>http://cvrain.cloudvl.cn/2024/01/09/Slint/slint-translations/</div>
     </div>
     <div class="license-meta">
       
@@ -328,7 +376,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月8日</div>
+          <div>2024年1月9日</div>
         </div>
       
       
@@ -360,18 +408,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/09/Slint/slint-font-handling/" title="Slint 字体处理">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Slint 字体处理</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/08/Slint/slint-container-components/" title="Slint 容器组件">
-                        <span class="hidden-mobile">Slint 容器组件</span>
+                      <a href="/2024/01/09/Slint/slint-purity/" title="Slint 纯度">
+                        <span class="hidden-mobile">Slint 纯度</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

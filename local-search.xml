@@ -4,39 +4,57 @@
   
   
   <entry>
-    <title>post</title>
-    <link href="/2024/01/08/Slint/slint-translations/"/>
-    <url>/2024/01/08/Slint/slint-translations/</url>
+    <title>Slint 语言翻译</title>
+    <link href="/2024/01/09/Slint/slint-translations/"/>
+    <url>/2024/01/09/Slint/slint-translations/</url>
     
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>post</title>
-    <link href="/2024/01/08/Slint/slint-purity/"/>
-    <url>/2024/01/08/Slint/slint-purity/</url>
-    
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="Slint-语言翻译"><a href="#Slint-语言翻译" class="headerlink" title="Slint 语言翻译"></a>Slint 语言翻译</h1><p>使用Slint自带基本翻译功能可以让你的程序实现切换不同的语言</p><p>完成下面几个步骤便可以完成程序的翻译工作：</p><ol><li>表明所有对用户可见且需要翻译的字符串并使用<code>@tr()</code>宏进行注释</li><li>使用 <code>slint-tr-extractor</code> 工具提取带注释的字符串并生成 .pot 文件。  </li><li>使用第三方工具将字符串翻译为目标语言，如 .po 文件。  </li><li>使用 gettext 的 msgfmt 工具将 .po 文件转换为运行时可加载的 .mo 文件。  </li><li>根据用户的区域设置，使用 Slint 的 API 在运行时选择并加载 .mo 文件。此时，所有标记为翻译的字符串将自动以目标语言呈现。</li></ol><h1 id="注释可翻译字符串"><a href="#注释可翻译字符串" class="headerlink" title="注释可翻译字符串"></a>注释可翻译字符串</h1><p>在 .slint 文件中使用 @tr 宏来标记要翻译的字符串。该宏将通过替换 {} 占位符来处理翻译和格式设置。<br>第一个参数必须是纯字符串文字，后跟参数(这个写法好像printf)：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example &#123;<br>    property &lt;string&gt; name;<br>    Text &#123;<br>        text: @tr(&quot;Hello, &#123;&#125;&quot;, name);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h2><p><code>@tr </code>宏将标记为翻译的字符串中的每个<code>&#123;&#125;</code>占位符替换为相应的参数。还可以使用 <code>&#123;0&#125;、&#123;1&#125; </code>等对参数重新排序。即使原始字符串没有，翻译人员也可以使用有序占位符。</p><h2 id="复数格式"><a href="#复数格式" class="headerlink" title="复数格式"></a>复数格式</h2><p>当涉及可变数量元素的文本翻译应根据是单个元素还是多个元素而变化时，请使用复数格式。<br>在计算某些东西的个数时，使用<code>count</code>和表达式来表示，用 <code>| </code>形成复数形式和 <code>% </code>符号如下：<br><code>@tr(&quot;I have &#123;n&#125; item&quot; | &quot;I have &#123;n&#125; items&quot; % count)</code>.<br>（也就是说slint会根据数字的单数还是复数来选择使用什么格式的翻译，比如这里就会存在 “I have a&#x2F;one item” 和 “I have two&#x2F;three items”的情况）</p><p>在格式字符串中使用 {n} 来访问 % 之后的表达式。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Text &#123;<br>    in property &lt;int&gt; score;<br>    in property &lt;int&gt; name;<br>    text: @tr(&quot;Hello &#123;0&#125;, you have one point&quot; | &quot;Hello &#123;0&#125;, you have &#123;n&#125; point&quot; % score, name);<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="语境"><a href="#语境" class="headerlink" title="语境"></a>语境</h2><p>通过使用 “…” &#x3D;&gt; 语法向 @tr(…) 宏添加语境，消除具有相同源文本但上下文语境含义不同的字符串的翻译歧义。<br>使用上下文为译者提供额外的上下文信息，确保翻译准确且符合当前语境。<br>上下文必须是纯字符串文字，并且在 .pot 文件中显示为 msgctx。如果未指定，上下文默认为周围组件的名称。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component MenuItem &#123;<br>    property &lt;string&gt; name : @tr(&quot;Name&quot; =&gt; &quot;Default Name&quot;); // Default: `MenuItem` will be the context.<br>    property &lt;string&gt; tooltip : @tr(&quot;ToolTip&quot; =&gt; &quot;ToolTip for &#123;&#125;&quot;, name); // Specified: The context will be `ToolTip`.<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="提取可翻译字符串"><a href="#提取可翻译字符串" class="headerlink" title="提取可翻译字符串"></a>提取可翻译字符串</h2><p>使用<code>slint-tr-extractor</code> 工具从<code>.slint</code>文件生成出<code>.pot</code>文件，可以这样运行指令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find -name \*.slint | xargs slint-tr-extractor -o MY_PROJECT.pot<br></code></pre></td></tr></table></figure><p>这将创建一个名为 MY_PROJECT.pot 的文件。将 MY_PROJECT 替换为您的实际项目名称。要了解项目名称如何影响翻译查找，请参阅以下部分。<br><code>.pot</code> files are <a href="https://www.gnu.org/software/gettext/">Gettext</a> template files.</p><h1 id="翻译字符串"><a href="#翻译字符串" class="headerlink" title="翻译字符串"></a>翻译字符串</h1><p>通过从 .pot 文件创建 .po 文件来开始新翻译。两种文件格式相同。您可以手动复制文件，也可以使用 Gettext 的 msginit 等工具来启动新的 .po 文件。<br>.po 文件将包含目标语言的字符串。<br>.po 和 .pot 文件是纯文本文件，您可以使用文本编辑器进行编辑。我们建议使用专用翻译工具来处理它们，例如：</p><ul><li><a href="https://poedit.net/">poedit</a></li><li><a href="https://omegat.org/">OmegaT</a></li><li><a href="https://userbase.kde.org/Lokalize">Lokalize</a></li><li><a href="https://www.transifex.com/">Transifex</a> (web interface)</li></ul><h2 id="转换-po文件到-mo文件"><a href="#转换-po文件到-mo文件" class="headerlink" title="转换.po文件到.mo文件"></a>转换<code>.po</code>文件到<code>.mo</code>文件</h2><p>人类可读的 .po 文件需要转换为机器友好的 .mo 文件，这是一种读取效率非常高的二进制表示形式。<br>使用 <a href="https://www.gnu.org/software/gettext/">Gettext</a>的<code>msgfmt</code> 命令行工具以将<code>.po</code>文件转换到<code>.mo</code>文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">msgfmt translation.po -o translation.mo<br></code></pre></td></tr></table></figure><h2 id="在运行时选择并加载-mo文件"><a href="#在运行时选择并加载-mo文件" class="headerlink" title="在运行时选择并加载.mo文件"></a>在运行时选择并加载<code>.mo</code>文件</h2><p>Slint 使用 Gettext 库在运行时加载翻译。 Gettext 将翻译文件生成在以下指定位置下：<br><code>dir_name/locale/LC_MESSAGES/domain_name.mo</code></p><ul><li>dir_name: 你自由原则的根目录文件夹</li><li>locale: 给定目标语言的用户区域设置名称，例如 fr 代表法语，de 代表德语。区域设置通常是使用操作系统设置的环境变量来确定的。</li><li>domain_name: 根据您使用 Slint 的编程语言进行选择。</li></ul><h1 id="在Rust中选择并加载翻译文件"><a href="#在Rust中选择并加载翻译文件" class="headerlink" title="在Rust中选择并加载翻译文件"></a>在Rust中选择并加载翻译文件</h1><p>首先，启用 <code>slint create</code> 的 <code>gettext </code>功能来访问翻译 API 并激活运行时翻译支持。<br>接下来，使用 <code>slint::init_translations！</code>指定 <code>.mo</code> 文件的基本位置。这是上一节方案中的 dir_name。 .mo 文件应位于相应的子目录中，并且它们的文件名 - 域名 - 必须与 Cargo.toml 中的包名称匹配。这通常与crate名称相同。<br>举个🌰:</p><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Rust">slint::init_translations!(<span class="hljs-built_in">concat!</span>(<span class="hljs-built_in">env!</span>(<span class="hljs-string">&quot;CARGO_MANIFEST_DIR&quot;</span>), <span class="hljs-string">&quot;/lang/&quot;</span>));<br></code></pre></td></tr></table></figure><p>假设您的 Cargo.toml 包含以下行，并且用户的区域设置为 fr：</p><figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[package]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">&quot;gallery&quot;</span><br></code></pre></td></tr></table></figure><p>通过这些设置，Slint 将在 lang&#x2F;fr&#x2F;LC_MESSAGES&#x2F;gallery.mo 中查找 gallery.mo。</p><h1 id="在C-中选择并加载翻译文件"><a href="#在C-中选择并加载翻译文件" class="headerlink" title="在C++中选择并加载翻译文件"></a>在C++中选择并加载翻译文件</h1><p>首先，在编译 Slint 时启用 <code>SLINT_FEATURE_GETTEXT</code> cmake 选项，以访问翻译 API 并激活运行时翻译支持。<br>在C++应用中使用CMake，用<code>domain_name</code>作为cmake目标名称</p><p>接下来，使用标准 gettext 库将文本域绑定到路径。</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs CMake"><span class="hljs-keyword">find_package</span>(Intl)<br><span class="hljs-keyword">if</span>(Intl_FOUND)<br>    <span class="hljs-keyword">target_compile_definitions</span>(gallery PRIVATE HAVE_GETTEXT SRC_DIR=<span class="hljs-string">&quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;&quot;</span>)<br>    <span class="hljs-keyword">target_link_libraries</span>(gallery PRIVATE Intl::Intl)<br><span class="hljs-keyword">endif</span>()<br></code></pre></td></tr></table></figure><p>(可以通过vcpkg安装第三方库，非常的方便)</p><p>然后可以设置区域设置和文本域</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> HAVE_GETTEXT</span><br><span class="hljs-meta">#    <span class="hljs-keyword">include</span> <span class="hljs-string">&lt;locale&gt;</span></span><br><span class="hljs-meta">#    <span class="hljs-keyword">include</span> <span class="hljs-string">&lt;libintl.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> HAVE_GETTEXT</span><br>    <span class="hljs-built_in">bindtextdomain</span>(<span class="hljs-string">&quot;my_application&quot;</span>, SRC_DIR <span class="hljs-string">&quot;/lang/&quot;</span>);<br>    std::locale::<span class="hljs-built_in">global</span>(std::<span class="hljs-built_in">locale</span>(<span class="hljs-string">&quot;&quot;</span>));<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>   <span class="hljs-comment">//...</span><br>&#125;<br></code></pre></td></tr></table></figure><p>假设您正在使用上述内容，并且用户的区域设置设置为 fr，Slint 将在 lang&#x2F;fr&#x2F;LC_MESSAGES&#x2F;gallery.mo 中查找 gallery.mo。</p><h1 id="使用-slint-viewer-预览翻译"><a href="#使用-slint-viewer-预览翻译" class="headerlink" title="使用 slint-viewer 预览翻译"></a>使用 slint-viewer 预览翻译</h1><p>预览<code> .slint</code> 文件时使用 <code>slint-viewer </code>预览翻译：</p><ol><li>启用<code>gettext</code>功能在编译slint-viewer时</li><li>使用<code>--translation-domain</code>和<code>translation-dir</code>选项加载并展示本地化翻译文件，语言的选择基于当前系统设定的语言。</li></ol>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>Slint</tag>
+      
+    </tags>
     
   </entry>
   
   
   
   <entry>
-    <title>post</title>
-    <link href="/2024/01/08/Slint/slint-font-handling/"/>
-    <url>/2024/01/08/Slint/slint-font-handling/</url>
+    <title>Slint 纯度</title>
+    <link href="/2024/01/09/Slint/slint-purity/"/>
+    <url>/2024/01/09/Slint/slint-purity/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="Slint-纯度"><a href="#Slint-纯度" class="headerlink" title="Slint 纯度"></a>Slint 纯度</h1><p><strong>友情提示</strong><br>本章节内容本人做了一定的补充，实际内容和原文有一定区别。原文内容使用引用符号标注。</p><blockquote><p>Slint中的属性是评估是惰性的并且”相对的、被动“的。当某个属性在被读取时，才会评估属性绑定。属性之间的依赖关系是在属性评估过程中自动发现的。该属性存储评估的结果。当属性发生更改时，会通知所有依赖属性，以便下次读取其值时，重新评估其绑定。</p></blockquote><p>这种加载方式和编程时用的懒拷贝技术并不是完全一样的，当存在一个主控件，此组件下面又存在多个小组件，他们的的宽度属性是这样设置的： <code>width : parent.width % 75%</code>。我们可以得知，子组件的宽度属性是父组件的75% 。<br>实际上实现的效果并不是在每一帧的渲染中将父组件的宽度属性乘上75%的值设置给子控件，而是在第一次设置之后，当上级组件发生属性改变之后，再将值传给后依赖此属性的后续组件。</p><blockquote><p>为了让任何相对系统都能正常工作，评估一个属性不应该改变任何可观察的状态，而应该改变属性本身。如果是这样的话，那么这个表达是“纯的”，否则就被认为有副作用。副作用是有问题的，因为并不总是清楚它们何时会发生：懒惰的评估可能会改变它们的顺序，或者影响它们是否会发生。此外，在属性的绑定评估过程中，由于副作用而对属性进行的更改可能会导致意外行为。</p></blockquote><p>如果我们写出类似这样的代码：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs Slint">component A &#123;<br>Rectangle&#123;<br>@children<br>&#125;<br>&#125;<br><br>component MainWindow inherits Window&#123;<br>width: A.width<br>A&#123;<br>width: parent.width<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>实际上这样的代码是无法运行的，仅借此表示一个直观的含义。主窗口的宽度需要组件A的宽度，然而组件A依赖MainWindow的宽度，一旦有一个组件被i修改了，这样就很难评估改变的顺序，这也会导致产生以外的行为。</p><blockquote><p>因此，Slint 中的绑定必须是纯的。 Slint 编译器强制纯上下文中的代码没有副作用。纯上下文包括绑定表达式、纯函数体和纯回调处理程序体。在这种情况下，不允许更改属性或调用非纯回调或函数。<br>使用 pure 关键字注释回调和公共函数，以便可以从属性绑定和其他纯回调和函数访问它们。<br>私有函数的纯度是自动推断的。您可以显式声明私有函数为“pure”，以使编译器强制执行其纯度。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example &#123;<br>    pure callback foo() -&gt; int;<br>    public pure function bar(x: int) -&gt; int<br>    &#123; return x + foo(); &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>Slint</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Slint 字体处理</title>
+    <link href="/2024/01/09/Slint/slint-font-handling/"/>
+    <url>/2024/01/09/Slint/slint-font-handling/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Slint-字体处理"><a href="#Slint-字体处理" class="headerlink" title="Slint 字体处理"></a>Slint 字体处理</h1><p>一些元素诸如<code>Text</code>和<code>TextInput</code> 能够渲染文本以及允许通过不同的属性自定义文本的外观。以 font- 为前缀的属性，例如 font-family、font-size 和 font-weight 会影响用于渲染到屏幕的字体的选择。如果未指定任何这些属性，则应用周围 Window 元素中的 default-font- 值，例如 default-font-family。</p><p>选择用于渲染的字体会自动从系统中获取。还可以在您的设计中包含自定义字体。自定义字体必须是 TrueType 字体 (.ttf)、TrueType 字体集合 (.ttc) 或 OpenType 字体 (.otf)。您可以使用导入语句选择自定义字体：在 .slint 文件中导入“.&#x2F;my_custom_font.ttf”。这指示 Slint 编译器包含字体并使字体系列全局可与 font-family 属性一起使用。</p><p>简单来说，Slint支持自定义字体，而且方法并不复杂。甚至只需要两个步骤就可以了</p><ol><li><code>import</code> + 字体文件路径</li><li><code>default-font-family</code> 设置字体样式</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs Slint">import &quot;./NotoSans-Regular.ttf&quot;;<br><br>export component Example inherits Window &#123;<br>    default-font-family: &quot;Noto Sans&quot;;<br><br>    Text &#123;<br>        text: &quot;Hello World&quot;;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Slint</tag>
+      
+    </tags>
     
   </entry>
   
