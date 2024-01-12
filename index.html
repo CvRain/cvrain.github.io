@@ -227,6 +227,86 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/12/Slint/slint-callbacks/" target="_self">
+          Slint 消息回调
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/12/Slint/slint-callbacks/" target="_self">
+        <div>
+          消息回调组件能够定义回调以和外界交流改变的状态信息。回调是通过“调用”它们来调用的，就像调用函数一样。个人的理解，消息回调类似于Qt中常用的信号槽之槽函数。您可以通过使用 &#x3D;&gt; 箭头语法声明处理程序来对回调调用做出反应。内置的 TouchArea 元素声明一个 clicked 回调，当用户触摸该元素覆盖的矩形区域或用鼠标单击该区域时会调用该回调。在下面的示例中，通过声明处理程序并调
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-12 12:09" pubdate>
+              2024-01-12
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Slint/">#Slint</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/12/Slint/slint-functions/" target="_self">
+          Slint 函数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/12/Slint/slint-functions/" target="_self">
+        <div>
+          Slint 函数在slint中定义一个函数需要使用到function关键字 函数可以在括号中添加参数，参数需要遵循函数名:类型的格式。这些参数可以通过函数体内的名称来引用。 函数也可以返回一个值，返回的类型需要使用-&gt;符号在函数中标明。function 函数名称(参数1: 类型) -&gt; 返回类型return 关键字在函数体内使用以返回声明类型的表达式。如果函数没有显式返回值，则默认返回
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-12 10:30" pubdate>
+              2024-01-12
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Slint/">#Slint</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/01/11/Slint/slint-expressions/" target="_self">
           Slint 表达式
         </a>
@@ -532,88 +612,6 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Slint/">#Slint</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/22/Slint/slint-position-layout/" target="_self">
-          Slint 元素的定位和布局
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/22/Slint/slint-position-layout/" target="_self">
-        <div>
-          Slint 元素的定位和布局所有视觉元素都显示在一个窗口中。 x 和 y 属性存储元素相对于其父元素的坐标。 Slint 通过将父元素的位置添加到元素的位置来确定元素的绝对位置。如果父元素存在了一个坐标，那么子类就会从进行坐标的累加计算，直到顶级元素。width和height会存储元素的宽度和高度（很容易理解不是） 您可以通过两种方式放置元素来创建整个图形用户界面：  通过x,y,width,he
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-22 18:14" pubdate>
-              2023-12-22
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Slint/">#Slint</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/21/Slint/slint-game-logic/" target="_self">
-          Slint C++  实现最后的逻辑
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/21/Slint/slint-game-logic/" target="_self">
-        <div>
-          实现最后的逻辑我们也将用 C++ 实现游戏规则。 Slint 的总体理念是，仅用 .slint 语言实现用户界面，并用您最喜欢的编程语言实现业务逻辑。游戏规则应强制规定最多有两块牌的窗帘打开。如果图块匹配，那么我们认为它们已解决并且它们保持打开状态。否则，我们会等待一段时间，以便玩家可以记住图标的位置，然后再次关闭它们。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-21 14:26" pubdate>
-              2023-12-21
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Cpp/">#Cpp</a>
             
               <a href="/tags/Slint/">#Slint</a>
             

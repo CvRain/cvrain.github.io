@@ -16,15 +16,15 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="Slint 属性所有元素均有属性。内置元素具有常见特性，如颜色或尺寸特性。你可以为它们设定一个值或者一个完整的表达式。 123456export component Example inherits Window &amp;#123;    &#x2F;&#x2F; 简单表达式：以分号结尾    width: 42px;    &#x2F;&#x2F; 或者用一个代码块包裹，这样就没有分号了    height: &amp;#123; 42px &amp;#1">
+    <meta name="description" content="消息回调组件能够定义回调以和外界交流改变的状态信息。回调是通过“调用”它们来调用的，就像调用函数一样。个人的理解，消息回调类似于Qt中常用的信号槽之槽函数。您可以通过使用 &#x3D;&gt; 箭头语法声明处理程序来对回调调用做出反应。内置的 TouchArea 元素声明一个 clicked 回调，当用户触摸该元素覆盖的矩形区域或用鼠标单击该区域时会调用该回调。在下面的示例中，通过声明处理程序并调">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Slint 属性">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/11/Slint/slint-properties/index.html">
+<meta property="og:title" content="Slint 消息回调">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/12/Slint/slint-callbacks/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="Slint 属性所有元素均有属性。内置元素具有常见特性，如颜色或尺寸特性。你可以为它们设定一个值或者一个完整的表达式。 123456export component Example inherits Window &amp;#123;    &#x2F;&#x2F; 简单表达式：以分号结尾    width: 42px;    &#x2F;&#x2F; 或者用一个代码块包裹，这样就没有分号了    height: &amp;#123; 42px &amp;#1">
+<meta property="og:description" content="消息回调组件能够定义回调以和外界交流改变的状态信息。回调是通过“调用”它们来调用的，就像调用函数一样。个人的理解，消息回调类似于Qt中常用的信号槽之槽函数。您可以通过使用 &#x3D;&gt; 箭头语法声明处理程序来对回调调用做出反应。内置的 TouchArea 元素声明一个 clicked 回调，当用户触摸该元素覆盖的矩形区域或用鼠标单击该区域时会调用该回调。在下面的示例中，通过声明处理程序并调">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-11T01:57:49.000Z">
-<meta property="article:modified_time" content="2024-01-12T03:13:06.449Z">
+<meta property="article:published_time" content="2024-01-12T04:09:49.000Z">
+<meta property="article:modified_time" content="2024-01-12T04:14:35.717Z">
 <meta property="article:author" content="ClaudeRainer">
 <meta property="article:tag" content="Slint">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Slint 属性 - cvrain-以空间追逐时间</title>
+  <title>Slint 消息回调 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Slint 属性"></span>
+            <span id="subtitle" data-typed-text="Slint 消息回调"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-11 09:57" pubdate>
-          2024年1月11日 上午
+        <time datetime="2024-01-12 12:09" pubdate>
+          2024年1月12日 中午
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          892 字
+          222 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          8 分钟
+          2 分钟
         
       </span>
     
@@ -278,47 +278,23 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Slint 属性</h1>
+            <h1 id="seo-header">Slint 消息回调</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Slint-属性"><a href="#Slint-属性" class="headerlink" title="Slint 属性"></a>Slint 属性</h1><p>所有元素均有属性。内置元素具有常见特性，如颜色或尺寸特性。你可以为它们设定一个值或者一个完整的表达式。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Window &#123;<br>    // 简单表达式：以分号结尾<br>    width: 42px;<br>    // 或者用一个代码块包裹，这样就没有分号了<br>    height: &#123; 42px &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><em><strong>（一股浓郁的Rust语法味道扑面而来）</strong></em></p>
-<p>属性的默认值一般是属性的类型的默认值，比如说布尔的默认是<code>false</code>，整数<code>int</code>的默认值是<code>0</code>。</p>
-<p>除了现有属性外，还可以通过指定名称、类型和默认值（可选）来定义额外的属性：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example &#123;<br>    // 定义了一个叫做my-property的int类型的扩展属性<br>    property&lt;int&gt; my-property;<br><br>    // 定义了一个叫做my-second-property的int类型的属性，并设置其默认值为42<br>    property&lt;int&gt; my-second-property: 42;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="消息回调"><a href="#消息回调" class="headerlink" title="消息回调"></a>消息回调</h1><p>组件能够定义回调以和外界交流改变的状态信息。回调是通过“调用”它们来调用的，就像调用函数一样。<br><em><strong>个人的理解，消息回调类似于Qt中常用的信号槽之槽函数。</strong></em><br>您可以通过使用 &#x3D;&gt; 箭头语法声明处理程序来对回调调用做出反应。内置的 TouchArea 元素声明一个 clicked 回调，当用户触摸该元素覆盖的矩形区域或用鼠标单击该区域时会调用该回调。在下面的示例中，通过声明处理程序并调用我们的自定义回调，将该回调的调用转发到另一个自定义回调（hello）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Rectangle &#123;<br>    // declare a callback<br>    callback hello;<br><br>    area := TouchArea &#123;<br>        // sets a handler with `=&gt;`<br>        clicked =&gt; &#123;<br>            // emit the callback<br>            root.hello()<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>用限定符注释额外的属性，指定如何读取和写入属性：</p>
-<ul>
-<li><code>private</code> ：默认为此，属性仅能在当前组件内被访问</li>
-<li><code>in</code>：这个属性能被输入，它可以由该组件的用户设置和修改，例如通过绑定或回调中的赋值。组件可以提供默认绑定，但不能通过赋值覆盖它</li>
-<li><code>out</code>：只能由组件设置的输出属性。对于组件的用户来说，它是只读的。</li>
-<li><code>in-out</code>：任何人都可以对此属性进行读写<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Button &#123;<br>    // 这意味着通过用户设置组件<br>    in property &lt;string&gt; text;<br>    // 表明了该属性将由组件的用户读取。<br>    out property &lt;bool&gt; pressed;<br>    // 此属性意味着用户和组件本身都可以更改。<br>    in-out property &lt;bool&gt; checked;<br><br>    // 此属性是该组件的内部属性。<br>    private property &lt;bool&gt; has-mouse;<br>&#125;<br></code></pre></td></tr></table></figure>
-当使用组件作为元素时，或者通过业务逻辑的语言绑定，可以从外部访问在组件顶层声明的所有非私有属性。</li>
-</ul>
-<h1 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h1><p>当表达式中访问的属性发生更改时，会自动重新评估绑定表达式。</p>
-<p>在以下示例中，当用户按下按钮时，按钮的文本会自动更改。增加计数器属性会自动使绑定到文本的表达式无效并触发重新计算。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Slint">import &#123; Button &#125; from &quot;std-widgets.slint&quot;;<br>export component Example inherits Window &#123;<br>    preferred-width: 50px;<br>    preferred-height: 50px;<br>    Button &#123;<br>        property &lt;int&gt; counter: 3;<br>        clicked =&gt; &#123; self.counter += 3 &#125;<br>        text: self.counter * 2;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>在查询属性时惰性地进行重新计算。</p>
-<p>在内部，在计算绑定时访问的任何属性都要注册依赖项。当属性更改时，会通知依赖项，并将所有依赖绑定标记为脏绑定。***(脏绑定是由于其所依赖的某个属性发生更改而被标记为无效的绑定。当查询属性时，脏绑定将被重新计算)***</p>
-<p>默认情况下，本机代码中的回调不依赖于任何属性，除非它们查询本机代码中的属性。</p>
-<h2 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h2><p>使用&lt;&#x3D;&gt;语法在属性之间创建双向绑定。这些属性将被链接在一起，并且总是包含相同的值。</p>
-<p>&lt;&#x3D;&gt;的右侧必须是对同一类型属性的引用。对于双向绑定，属性类型是可选的，如果没有指定，它将被推断出来。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example  &#123;<br>    in property&lt;brush&gt; rect-color &lt;=&gt; r.background;<br>    // It&#x27;s allowed to omit the type to have it automatically inferred<br>    in property rect-color2 &lt;=&gt; r.background;<br>    r:= Rectangle &#123;<br>        width: parent.width;<br>        height: parent.height;<br>        background: blue;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>可以向回调添加参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Rectangle &#123;<br>    // declares a callback<br>    callback hello(int, string);<br>    hello(aa, bb) =&gt; &#123; /* ... */ &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="相对长度"><a href="#相对长度" class="headerlink" title="相对长度"></a>相对长度</h2><p>有时用相对百分比来表示长度属性之间的关系是很方便的。例如，下面的内部蓝色矩形的大小是外部绿色窗口的一半</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Window &#123;<br>    preferred-width: 100px;<br>    preferred-height: 100px;<br><br>    background: green;<br>    Rectangle &#123;<br>        background: blue;<br>        width: parent.width * 50%;<br>        height: parent.height * 50%;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>这种以百分比表示父元素同名属性的宽度或高度的模式很常见。为了方便起见，这里有一种简写的语法:</p>
-<ul>
-<li>属性是<code>width</code>或者<code>height</code></li>
-<li>绑定的表达式求值是百分比</li>
-</ul>
-<p>如果满足这些条件，那么就没有必要指定parent属性，而是可以简单地使用百分比。前面的例子如下所示:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Window &#123;<br>    preferred-width: 100px;<br>    preferred-height: 100px;<br><br>    background: green;<br>    Rectangle &#123;<br>        background: blue;<br>        width: 50%;<br>        height: 50%;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>回调也可能返回一个值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Rectangle &#123;<br>    // declares a callback with a return value<br>    callback hello(int, int) -&gt; int;<br>    hello(aa, bb) =&gt; &#123; aa + bb &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs Slint">import &#123; LineEdit, Button &#125; from &quot;std-widgets.slint&quot;;  <br>  <br>component InputWithLabel inherits HorizontalLayout&#123;  <br>    in property &lt;string&gt; label_str;  <br>    in-out property &lt;string&gt; intput_src &lt;=&gt;  input.text;  <br>    spacing: 2px;  <br>    Rectangle &#123;  <br>        border-color: grey;  <br>        border-width: 2px;  <br>        border-radius: 5px;  <br>        Text&#123;  <br>            text: label-str;  <br>            font-size: 14px;  <br>        &#125;  <br>    &#125;  <br>    Rectangle &#123;  <br>        border-color: grey;  <br>        border-width: 2px;  <br>        border-radius: 5px;  <br>        input := LineEdit &#123;  <br>            font-size: 14px;  <br>            input-type: number;  <br>        &#125;  <br>  <br>    &#125;  <br>&#125;  <br>  <br>export component MainWindow inherits Window &#123;  <br>    preferred-height: 480px;  <br>    preferred-width: 640px;  <br>          <br>    VerticalLayout &#123;  <br>        spacing: 2px;  <br>        alignment: start;  <br>        input1 := InputWithLabel &#123;  <br>            label-str: &quot;number 1&quot;;  <br>        &#125;  <br>        input2 := InputWithLabel &#123;  <br>            label-str: &quot;number 2&quot;;  <br>        &#125;  <br>  <br>        VerticalLayout &#123;  <br>            Button &#123;  <br>                text: &quot;sum&quot;;  <br>                clicked =&gt; &#123;  <br>                    result.text = add(input1.intput_src.to-float(), input2.intput_src.to-float());  <br>                &#125;  <br>            &#125;  <br>            result := TextInput&#123;  <br>                enabled: false;  <br>            &#125;  <br>        &#125;  <br>    &#125;  <br>  <br>    pure function add(a: int, b: int) -&gt; int &#123;  <br>        return a + b;  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h1><p>可以用与双向绑定类似的方式声明回调别名：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Rectangle &#123;<br>    callback clicked &lt;=&gt; area.clicked;<br>    area := TouchArea &#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -342,8 +318,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Slint 属性</div>
-      <div>http://cvrain.cloudvl.cn/2024/01/11/Slint/slint-properties/</div>
+      <div>Slint 消息回调</div>
+      <div>http://cvrain.cloudvl.cn/2024/01/12/Slint/slint-callbacks/</div>
     </div>
     <div class="license-meta">
       
@@ -355,7 +331,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月11日</div>
+          <div>2024年1月12日</div>
         </div>
       
       
@@ -387,18 +363,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/11/Slint/slint-expressions/" title="Slint 表达式">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Slint 表达式</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/10/Slint/slint-syntax/" title="Slint DSL 类型">
-                        <span class="hidden-mobile">Slint DSL 类型</span>
+                      <a href="/2024/01/12/Slint/slint-functions/" title="Slint 函数">
+                        <span class="hidden-mobile">Slint 函数</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
