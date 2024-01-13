@@ -227,6 +227,126 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/13/Slint/slint-conditional-element/" target="_self">
+          Slint 条件元素
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/13/Slint/slint-conditional-element/" target="_self">
+        <div>
+          Slint 条件元素仅当给定条件为 true 时，if 构造才会实例化元素。语法为 if 条件 : id :&#x3D; Element { … }（这东西让我有一种看rust里 if let的感觉） 1234567export component Example inherits Window &#123;    preferred-width: 50px;    preferred-heigh
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-13 13:43" pubdate>
+              2024-01-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Slint/">#Slint</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/13/Slint/slint-repetition/" target="_self">
+          Slint  重复（repetition）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/13/Slint/slint-repetition/" target="_self">
+        <div>
+          Slint Repetition使用 for in语句可以多次创建同一元素语法看起来长这个样子：&#96;for name[index] in model : id :&#x3D; Element { … } model 能够是以下类型：  一个整数，在这种情况下该元素将重复指定的次数 原生声明的数组类型或模型，在这种情况下，将为数组或模型中的每个元素实例化该元素。该名称可用于在元素内查找，并且将
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-13 12:25" pubdate>
+              2024-01-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Slint/">#Slint</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/13/Slint/slint-statements/" target="_self">
+          Slint 语句（statements）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/13/Slint/slint-statements/" target="_self">
+        <div>
+          Slint Statements在编程中，表达式是值、变量、操作符和函数调用的组合，其计算结果为单个值。例如，’ 2 + 3 ‘是一个求值为’ 5 ‘的表达式。表达式可以用作较大表达式的一部分，也可以用作函数的参数。 另一方面，语句是执行一个操作的完整代码行。语句可以包括表达式，但也可以包括关键字、循环、条件和其他编程结构。例如，’ if (x &gt; 0) {y &#x3D; 1;}是一个检查
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-13 10:36" pubdate>
+              2024-01-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Slint/">#Slint</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/01/12/Slint/slint-callbacks/" target="_self">
           Slint 消息回调
         </a>
@@ -485,126 +605,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2024-01-09 10:11" pubdate>
               2024-01-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Slint/">#Slint</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/09/Slint/slint-font-handling/" target="_self">
-          Slint 字体处理
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/09/Slint/slint-font-handling/" target="_self">
-        <div>
-          Slint 字体处理一些元素诸如Text和TextInput 能够渲染文本以及允许通过不同的属性自定义文本的外观。以 font- 为前缀的属性，例如 font-family、font-size 和 font-weight 会影响用于渲染到屏幕的字体的选择。如果未指定任何这些属性，则应用周围 Window 元素中的 default-font- 值，例如 default-font-family。 选择
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-09 09:54" pubdate>
-              2024-01-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Slint/">#Slint</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/08/Slint/slint-focus-handling/" target="_self">
-          Slint 焦点处理
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/08/Slint/slint-focus-handling/" target="_self">
-        <div>
-          Slint 焦点处理某些元素(如TextInput)不仅接受来自鼠标&#x2F;手指的输入，还接受来自(虚拟)键盘的键事件。为了让控件接收这些事件，它必须具有焦点。这可以通过has-focus (out)属性看到。 你可以通过调用focus()来手动激活元素的焦点: 1234567891011121314import &#123; Button &#125; from &quot;std-widg
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-08 22:39" pubdate>
-              2024-01-08
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Slint/">#Slint</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/08/Slint/slint-container-components/" target="_self">
-          Slint 容器组件
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/08/Slint/slint-container-components/" target="_self">
-        <div>
-          Slint 容器组件在创建组件时，有时影响子元素在使用时的位置是很有用的。例如，假设有一个组件在用户放置的元素上方绘制一个标签:
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-08 21:00" pubdate>
-              2024-01-08
             </time>
           </div>
         

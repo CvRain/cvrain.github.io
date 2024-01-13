@@ -16,15 +16,15 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="消息回调组件能够定义回调以和外界交流改变的状态信息。回调是通过“调用”它们来调用的，就像调用函数一样。个人的理解，消息回调类似于Qt中常用的信号槽之槽函数。您可以通过使用 &#x3D;&gt; 箭头语法声明处理程序来对回调调用做出反应。内置的 TouchArea 元素声明一个 clicked 回调，当用户触摸该元素覆盖的矩形区域或用鼠标单击该区域时会调用该回调。在下面的示例中，通过声明处理程序并调">
+    <meta name="description" content="Slint Statements在编程中，表达式是值、变量、操作符和函数调用的组合，其计算结果为单个值。例如，’ 2 + 3 ‘是一个求值为’ 5 ‘的表达式。表达式可以用作较大表达式的一部分，也可以用作函数的参数。 另一方面，语句是执行一个操作的完整代码行。语句可以包括表达式，但也可以包括关键字、循环、条件和其他编程结构。例如，’ if (x &gt; 0) {y &#x3D; 1;}是一个检查">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Slint 消息回调">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/12/Slint/slint-callbacks/index.html">
+<meta property="og:title" content="Slint 语句（statements）">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/13/Slint/slint-statements/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="消息回调组件能够定义回调以和外界交流改变的状态信息。回调是通过“调用”它们来调用的，就像调用函数一样。个人的理解，消息回调类似于Qt中常用的信号槽之槽函数。您可以通过使用 &#x3D;&gt; 箭头语法声明处理程序来对回调调用做出反应。内置的 TouchArea 元素声明一个 clicked 回调，当用户触摸该元素覆盖的矩形区域或用鼠标单击该区域时会调用该回调。在下面的示例中，通过声明处理程序并调">
+<meta property="og:description" content="Slint Statements在编程中，表达式是值、变量、操作符和函数调用的组合，其计算结果为单个值。例如，’ 2 + 3 ‘是一个求值为’ 5 ‘的表达式。表达式可以用作较大表达式的一部分，也可以用作函数的参数。 另一方面，语句是执行一个操作的完整代码行。语句可以包括表达式，但也可以包括关键字、循环、条件和其他编程结构。例如，’ if (x &gt; 0) {y &#x3D; 1;}是一个检查">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-12T04:09:49.000Z">
-<meta property="article:modified_time" content="2024-01-12T04:14:35.717Z">
+<meta property="article:published_time" content="2024-01-13T02:36:05.000Z">
+<meta property="article:modified_time" content="2024-01-13T03:31:56.955Z">
 <meta property="article:author" content="ClaudeRainer">
 <meta property="article:tag" content="Slint">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Slint 消息回调 - cvrain-以空间追逐时间</title>
+  <title>Slint 语句（statements） - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Slint 消息回调"></span>
+            <span id="subtitle" data-typed-text="Slint 语句（statements）"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-12 12:09" pubdate>
-          2024年1月12日 中午
+        <time datetime="2024-01-13 10:36" pubdate>
+          2024年1月13日 上午
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          222 字
+          239 字
         
       </span>
     
@@ -278,23 +278,23 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Slint 消息回调</h1>
+            <h1 id="seo-header">Slint 语句（statements）</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="消息回调"><a href="#消息回调" class="headerlink" title="消息回调"></a>消息回调</h1><p>组件能够定义回调以和外界交流改变的状态信息。回调是通过“调用”它们来调用的，就像调用函数一样。<br><em><strong>个人的理解，消息回调类似于Qt中常用的信号槽之槽函数。</strong></em><br>您可以通过使用 &#x3D;&gt; 箭头语法声明处理程序来对回调调用做出反应。内置的 TouchArea 元素声明一个 clicked 回调，当用户触摸该元素覆盖的矩形区域或用鼠标单击该区域时会调用该回调。在下面的示例中，通过声明处理程序并调用我们的自定义回调，将该回调的调用转发到另一个自定义回调（hello）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Rectangle &#123;<br>    // declare a callback<br>    callback hello;<br><br>    area := TouchArea &#123;<br>        // sets a handler with `=&gt;`<br>        clicked =&gt; &#123;<br>            // emit the callback<br>            root.hello()<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="Slint-Statements"><a href="#Slint-Statements" class="headerlink" title="Slint Statements"></a>Slint Statements</h1><p>在编程中，表达式是值、变量、操作符和函数调用的组合，其计算结果为单个值。例如，’ 2 + 3 ‘是一个求值为’ 5 ‘的表达式。表达式可以用作较大表达式的一部分，也可以用作函数的参数。</p>
+<p>另一方面，语句是执行一个操作的完整代码行。语句可以包括表达式，但也可以包括关键字、循环、条件和其他编程结构。例如，’ if (x &gt; 0) {y &#x3D; 1;}是一个检查’ x ‘是否大于’ 0 ‘的语句，如果大于’ 0 ‘，则将’ y ‘设置为’ 1 ‘。</p>
+<p>表达式和语句之间的主要区别在于表达式的计算结果是一个值，而语句执行一个操作。表达式可以用作语句的一部分，但语句不能用作表达式的一部分。</p>
+<hr>
+<p>回调函数能够包含复杂的语句：<br>赋值：<code>clicked =&gt; &#123; some-property = 42; &#125;</code></p>
+<p>自赋值运算：<code>clicked =&gt; &#123; some-property += 42; &#125;</code></p>
+<p>调用一个回调函数：<code>clicked =&gt; &#123; root.some-callback(); &#125;</code></p>
+<p>条件语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs Slint">clicked =&gt; &#123;<br>    if (condition) &#123;<br>        foo = 42;<br>    &#125; else if (other-condition) &#123;<br>        bar = 28;<br>    &#125; else &#123;<br>        foo = 4;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>可以向回调添加参数：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Rectangle &#123;<br>    // declares a callback<br>    callback hello(int, string);<br>    hello(aa, bb) =&gt; &#123; /* ... */ &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>回调也可能返回一个值：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Rectangle &#123;<br>    // declares a callback with a return value<br>    callback hello(int, int) -&gt; int;<br>    hello(aa, bb) =&gt; &#123; aa + bb &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h1><p>可以用与双向绑定类似的方式声明回调别名：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Rectangle &#123;<br>    callback clicked &lt;=&gt; area.clicked;<br>    area := TouchArea &#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
+<p>空表达式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Slint">clicked =&gt; &#123;&#125;<br>clicked =&gt; &#123;;&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -318,8 +318,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Slint 消息回调</div>
-      <div>http://cvrain.cloudvl.cn/2024/01/12/Slint/slint-callbacks/</div>
+      <div>Slint 语句（statements）</div>
+      <div>http://cvrain.cloudvl.cn/2024/01/13/Slint/slint-statements/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +331,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月12日</div>
+          <div>2024年1月13日</div>
         </div>
       
       
@@ -363,9 +363,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/13/Slint/slint-statements/" title="Slint 语句（statements）">
+                      <a href="/2024/01/13/Slint/slint-repetition/" title="Slint  重复（repetition）">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Slint 语句（statements）</span>
+                        <span class="hidden-mobile">Slint  重复（repetition）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -373,8 +373,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/12/Slint/slint-functions/" title="Slint 函数">
-                        <span class="hidden-mobile">Slint 函数</span>
+                      <a href="/2024/01/12/Slint/slint-callbacks/" title="Slint 消息回调">
+                        <span class="hidden-mobile">Slint 消息回调</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

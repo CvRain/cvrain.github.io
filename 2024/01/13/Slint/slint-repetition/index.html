@@ -16,15 +16,15 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="消息回调组件能够定义回调以和外界交流改变的状态信息。回调是通过“调用”它们来调用的，就像调用函数一样。个人的理解，消息回调类似于Qt中常用的信号槽之槽函数。您可以通过使用 &#x3D;&gt; 箭头语法声明处理程序来对回调调用做出反应。内置的 TouchArea 元素声明一个 clicked 回调，当用户触摸该元素覆盖的矩形区域或用鼠标单击该区域时会调用该回调。在下面的示例中，通过声明处理程序并调">
+    <meta name="description" content="Slint Repetition使用 for in语句可以多次创建同一元素语法看起来长这个样子：&#96;for name[index] in model : id :&#x3D; Element { … } model 能够是以下类型：  一个整数，在这种情况下该元素将重复指定的次数 原生声明的数组类型或模型，在这种情况下，将为数组或模型中的每个元素实例化该元素。该名称可用于在元素内查找，并且将">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Slint 消息回调">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/12/Slint/slint-callbacks/index.html">
+<meta property="og:title" content="Slint  重复（repetition）">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/13/Slint/slint-repetition/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="消息回调组件能够定义回调以和外界交流改变的状态信息。回调是通过“调用”它们来调用的，就像调用函数一样。个人的理解，消息回调类似于Qt中常用的信号槽之槽函数。您可以通过使用 &#x3D;&gt; 箭头语法声明处理程序来对回调调用做出反应。内置的 TouchArea 元素声明一个 clicked 回调，当用户触摸该元素覆盖的矩形区域或用鼠标单击该区域时会调用该回调。在下面的示例中，通过声明处理程序并调">
+<meta property="og:description" content="Slint Repetition使用 for in语句可以多次创建同一元素语法看起来长这个样子：&#96;for name[index] in model : id :&#x3D; Element { … } model 能够是以下类型：  一个整数，在这种情况下该元素将重复指定的次数 原生声明的数组类型或模型，在这种情况下，将为数组或模型中的每个元素实例化该元素。该名称可用于在元素内查找，并且将">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-12T04:09:49.000Z">
-<meta property="article:modified_time" content="2024-01-12T04:14:35.717Z">
+<meta property="article:published_time" content="2024-01-13T04:25:35.000Z">
+<meta property="article:modified_time" content="2024-01-13T05:42:59.008Z">
 <meta property="article:author" content="ClaudeRainer">
 <meta property="article:tag" content="Slint">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Slint 消息回调 - cvrain-以空间追逐时间</title>
+  <title>Slint  重复（repetition） - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Slint 消息回调"></span>
+            <span id="subtitle" data-typed-text="Slint  重复（repetition）"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-12 12:09" pubdate>
-          2024年1月12日 中午
+        <time datetime="2024-01-13 12:25" pubdate>
+          2024年1月13日 中午
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          222 字
+          176 字
         
       </span>
     
@@ -278,23 +278,20 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Slint 消息回调</h1>
+            <h1 id="seo-header">Slint  重复（repetition）</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="消息回调"><a href="#消息回调" class="headerlink" title="消息回调"></a>消息回调</h1><p>组件能够定义回调以和外界交流改变的状态信息。回调是通过“调用”它们来调用的，就像调用函数一样。<br><em><strong>个人的理解，消息回调类似于Qt中常用的信号槽之槽函数。</strong></em><br>您可以通过使用 &#x3D;&gt; 箭头语法声明处理程序来对回调调用做出反应。内置的 TouchArea 元素声明一个 clicked 回调，当用户触摸该元素覆盖的矩形区域或用鼠标单击该区域时会调用该回调。在下面的示例中，通过声明处理程序并调用我们的自定义回调，将该回调的调用转发到另一个自定义回调（hello）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Rectangle &#123;<br>    // declare a callback<br>    callback hello;<br><br>    area := TouchArea &#123;<br>        // sets a handler with `=&gt;`<br>        clicked =&gt; &#123;<br>            // emit the callback<br>            root.hello()<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>可以向回调添加参数：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Rectangle &#123;<br>    // declares a callback<br>    callback hello(int, string);<br>    hello(aa, bb) =&gt; &#123; /* ... */ &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>回调也可能返回一个值：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Rectangle &#123;<br>    // declares a callback with a return value<br>    callback hello(int, int) -&gt; int;<br>    hello(aa, bb) =&gt; &#123; aa + bb &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h1><p>可以用与双向绑定类似的方式声明回调别名：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Rectangle &#123;<br>    callback clicked &lt;=&gt; area.clicked;<br>    area := TouchArea &#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
+                <h1 id="Slint-Repetition"><a href="#Slint-Repetition" class="headerlink" title="Slint Repetition"></a>Slint Repetition</h1><p>使用 <code>for in</code>语句可以多次创建同一元素<br>语法看起来长这个样子：&#96;for name[index] in model : id :&#x3D; Element { … }</p>
+<p>model 能够是以下类型：</p>
+<ul>
+<li>一个整数，在这种情况下该元素将重复指定的次数</li>
+<li>原生声明的数组类型或模型，在这种情况下，将为数组或模型中的每个元素实例化该元素。<br>该名称可用于在元素内查找，并且将类似于设置为模型值的伪属性。索引是可选的，将设置为模型中该元素的索引。 id 也是可选的。</li>
+</ul>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Window &#123;<br>    preferred-width: 300px;<br>    preferred-height: 100px;<br>    for my-color[index] in [ #e11, #1a2, #23d ]: Rectangle &#123;<br>        height: 100px;<br>        width: 60px;<br>        x: self.width * index;<br>        background: my-color;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>创建了一个<code>color</code>类型的数组<code>[ #e11, #1a2, #23d ]</code>，对它进行遍历，<code>index</code>的内容就会从0到2, my-color的颜色就会从<code>#e11, #1a2, #23d</code>进行选择。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Window &#123;<br>    preferred-width: 50px;<br>    preferred-height: 50px;<br>    in property &lt;[&#123;foo: string, col: color&#125;]&gt; model: [<br>        &#123;foo: &quot;abc&quot;, col: #f00 &#125;,<br>        &#123;foo: &quot;def&quot;, col: #00f &#125;,<br>    ];<br>    VerticalLayout &#123;<br>        for data in root.model: my-repeated-text := Text &#123;<br>            color: data.col;<br>            text: data.foo;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -318,8 +315,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Slint 消息回调</div>
-      <div>http://cvrain.cloudvl.cn/2024/01/12/Slint/slint-callbacks/</div>
+      <div>Slint  重复（repetition）</div>
+      <div>http://cvrain.cloudvl.cn/2024/01/13/Slint/slint-repetition/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +328,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月12日</div>
+          <div>2024年1月13日</div>
         </div>
       
       
@@ -363,9 +360,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/13/Slint/slint-statements/" title="Slint 语句（statements）">
+                      <a href="/2024/01/13/Slint/slint-conditional-element/" title="Slint 条件元素">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Slint 语句（statements）</span>
+                        <span class="hidden-mobile">Slint 条件元素</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -373,8 +370,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/12/Slint/slint-functions/" title="Slint 函数">
-                        <span class="hidden-mobile">Slint 函数</span>
+                      <a href="/2024/01/13/Slint/slint-statements/" title="Slint 语句（statements）">
+                        <span class="hidden-mobile">Slint 语句（statements）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
