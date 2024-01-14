@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Slint Stats语句</title>
+    <link href="/2024/01/14/Slint/slint-states/"/>
+    <url>/2024/01/14/Slint/slint-states/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Slint-States"><a href="#Slint-States" class="headerlink" title="Slint States"></a>Slint States</h1><p>states 语句允许一次性声明状态并设置多个元素的属性：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Window &#123;<br>    preferred-width: 100px;<br>    preferred-height: 100px;<br>    default-font-size: 24px;<br><br>    label := Text &#123; &#125;<br>    ta := TouchArea &#123;<br>        clicked =&gt; &#123;<br>            active = !active;<br>        &#125;<br>    &#125;<br>    property &lt;bool&gt; active: true;<br>    states [<br>        active when active &amp;&amp; !ta.has-hover: &#123;<br>            label.text: &quot;Active&quot;;<br>            root.background: blue;<br>        &#125;<br>        active-hover when active &amp;&amp; ta.has-hover: &#123;<br>            label.text: &quot;Active\nHover&quot;;<br>            root.background: green;<br>        &#125;<br>        inactive when !active: &#123;<br>            label.text: &quot;Inactive&quot;;<br>            root.background: gray;<br>        &#125;<br>    ]<br>&#125;<br></code></pre></td></tr></table></figure><p>在此示例中，活动和活动悬停状态是根据活动布尔属性的值和 TouchArea 的 has-hover 来定义的。当用户将鼠标悬停在示例上时，它将在蓝色和绿色背景之间切换，并相应地调整文本标签。单击可切换活动属性，从而进入非活动状态。</p><h1 id="Transitions"><a href="#Transitions" class="headerlink" title="Transitions"></a>Transitions</h1><p>转换将动画绑定到状态更改<br>此示例定义了两个转换。首先，out 关键字用于在离开禁用状态时为所有属性设置 800 毫秒的动画。第二个转换使用 in 关键字在转换到按下状态时对背景进行动画处理。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export component Example inherits Window &#123;<br>    preferred-width: 100px;<br>    preferred-height: 100px;<br><br>    text := Text &#123; text: &quot;hello&quot;; &#125;<br>    in-out property&lt;bool&gt; pressed;<br>    in-out property&lt;bool&gt; is-enabled;<br><br>    states [<br>        disabled when !root.is-enabled : &#123;<br>            background: gray; // same as root.background: gray;<br>            text.color: white;<br>            out &#123;<br>                animate * &#123; duration: 800ms; &#125;<br>            &#125;<br>        &#125;<br>        down when pressed : &#123;<br>            background: blue;<br>            in &#123;<br>                animate background &#123; duration: 300ms; &#125;<br>            &#125;<br>        &#125;<br>    ]<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Slint</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Slint 动画效果</title>
     <link href="/2024/01/14/Slint/slint-animations/"/>
     <url>/2024/01/14/Slint/slint-animations/</url>
