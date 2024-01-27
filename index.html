@@ -227,6 +227,86 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/27/Slint/builtin-callbacks/" target="_self">
+          Slint 内置函数-回调
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/27/Slint/builtin-callbacks/" target="_self">
+        <div>
+          内置回调函数init()每一个组件都隐式定义了一个init回调函数。您可以为其分配一个代码块，该代码块将在实例化元素时以及使用其最终绑定的值初始化所有属性后调用。调用顺序是从内到外。以下示例将打印“first”，然后“second”，然后“third”： 1234567891011121314151617181920component MyButton inherits Rectangle &#1
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-27 08:57" pubdate>
+              2024-01-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Slint/">#Slint</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/27/Slint/slint-legacy-syntax/" target="_self">
+          Slint 过时语法
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/27/Slint/slint-legacy-syntax/" target="_self">
+        <div>
+          Slint 过时语法为了维护对早期版本的兼容性，在1.0版本之前定义组件的语法:=目前也是支持的： 123export MyApp := Window &#123;    //...&#125; 此语法更改还会影响属性查找规则和默认元素放置。 在新语法中定义的组件中，只有在组件内声明的属性才在范围内。默认情况下，父元素将其子元素呈现为居中，并将应用所有布局约束。 在使用旧语法定义的组件中，除了组件
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-27 08:40" pubdate>
+              2024-01-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Slint/">#Slint</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/01/15/Slint/slint-modules/" target="_self">
           Slint 模块
         </a>
@@ -525,86 +605,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2024-01-12 12:09" pubdate>
               2024-01-12
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Slint/">#Slint</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/12/Slint/slint-functions/" target="_self">
-          Slint 函数
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/12/Slint/slint-functions/" target="_self">
-        <div>
-          Slint 函数在slint中定义一个函数需要使用到function关键字 函数可以在括号中添加参数，参数需要遵循函数名:类型的格式。这些参数可以通过函数体内的名称来引用。 函数也可以返回一个值，返回的类型需要使用-&gt;符号在函数中标明。function 函数名称(参数1: 类型) -&gt; 返回类型return 关键字在函数体内使用以返回声明类型的表达式。如果函数没有显式返回值，则默认返回
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-12 10:30" pubdate>
-              2024-01-12
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Slint/">#Slint</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/11/Slint/slint-expressions/" target="_self">
-          Slint 表达式
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/11/Slint/slint-expressions/" target="_self">
-        <div>
-          Slint 表达式表达式是在用户界面中声明关系和连接的强大方式。它们通常用于将基本算术与访问其他元素的属性结合起来。当这些属性发生变化时，表达式会自动重新求值，并为与该表达式关联的属性赋一个新值: 12345678export component Example &#123;    // declare a property of type int    in-out property&lt;in
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-11 11:18" pubdate>
-              2024-01-11
             </time>
           </div>
         

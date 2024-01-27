@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>Slint 内置函数-回调</title>
+    <link href="/2024/01/27/Slint/builtin-callbacks/"/>
+    <url>/2024/01/27/Slint/builtin-callbacks/</url>
+    
+    <content type="html"><![CDATA[<h1 id="内置回调函数"><a href="#内置回调函数" class="headerlink" title="内置回调函数"></a>内置回调函数</h1><h1 id="init"><a href="#init" class="headerlink" title="init()"></a><code>init()</code></h1><p>每一个组件都隐式定义了一个<code>init</code>回调函数。您可以为其分配一个代码块，该代码块将在实例化元素时以及使用其最终绑定的值初始化所有属性后调用。调用顺序是从内到外。以下示例将打印“first”，然后“second”，然后“third”：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs Slint">component MyButton inherits Rectangle &#123;<br>    in-out property &lt;string&gt; text: &quot;Initial&quot;;<br>    init =&gt; &#123;<br>        // If `text` is queried here, it will have the value &quot;Hello&quot;.<br>        debug(&quot;first&quot;);<br>    &#125;<br>&#125;<br><br>component MyCheckBox inherits Rectangle &#123;<br>    init =&gt; &#123; debug(&quot;second&quot;); &#125;<br>&#125;<br><br>export component MyWindow inherits Window &#123;<br>    MyButton &#123;<br>        text: &quot;Hello&quot;;<br>        init =&gt; &#123; debug(&quot;third&quot;); &#125;<br>    &#125;<br>    MyCheckBox &#123;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>不要使用回调函数用来初始化组件的属性，因为这违反了描述式语法的规则。避免以这样的方式使用回调，除非真的需要它，例如，为了通知某些本机代码：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Slint">global SystemService  &#123;<br>    // This callback can be implemented in native code using the Slint API<br>    callback ensure_service_running();<br>&#125;<br><br>export component MySystemButton inherits Rectangle &#123;<br>    init =&gt; &#123;<br>        SystemService.ensure_service_running();<br>    &#125;<br>    // ...<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Slint</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Slint 过时语法</title>
+    <link href="/2024/01/27/Slint/slint-legacy-syntax/"/>
+    <url>/2024/01/27/Slint/slint-legacy-syntax/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Slint-过时语法"><a href="#Slint-过时语法" class="headerlink" title="Slint 过时语法"></a>Slint 过时语法</h1><p>为了维护对早期版本的兼容性，在1.0版本之前定义组件的语法<code>:=</code>目前也是支持的：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Slint">export MyApp := Window &#123;<br>    //...<br>&#125;<br></code></pre></td></tr></table></figure><p>此语法更改还会影响属性查找规则和默认元素放置。</p><p>在新语法中定义的组件中，只有在组件内声明的属性才在范围内。默认情况下，父元素将其子元素呈现为居中，并将应用所有布局约束。</p><p>在使用旧语法定义的组件中，除了组件本身内部定义的所有属性之外， <code>self</code> 和 <code>root</code> 的基础的所有属性都在范围内。元素放置在位置 <code>x: 0</code> 和<code> y: 0</code> 处，并且不应用它们的约束。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Slint</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Slint 模块</title>
     <link href="/2024/01/15/Slint/slint-modules/"/>
     <url>/2024/01/15/Slint/slint-modules/</url>

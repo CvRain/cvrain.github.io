@@ -227,6 +227,81 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2023/12/21/Slint/slint-game-logic/" target="_self">
+          Slint C++  实现最后的逻辑
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/21/Slint/slint-game-logic/" target="_self">
+        <div>
+          实现最后的逻辑我们也将用 C++ 实现游戏规则。 Slint 的总体理念是，仅用 .slint 语言实现用户界面，并用您最喜欢的编程语言实现业务逻辑。游戏规则应强制规定最多有两块牌的窗帘打开。如果图块匹配，那么我们认为它们已解决并且它们保持打开状态。否则，我们会等待一段时间，以便玩家可以记住图标的位置，然后再次关闭它们。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-21 14:26" pubdate>
+              2023-12-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Cpp/">#Cpp</a>
+            
+              <a href="/tags/Slint/">#Slint</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/21/Slint/slint-shuffle-tile/" target="_self">
+          Slint C++  生成随机排列的磁贴
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/21/Slint/slint-shuffle-tile/" target="_self">
+        <div>
+          Slint C++ 生成随机排列的磁贴我们要做的就是获取以 .slint 语言声明的图块列表，复制它，然后对其进行打乱。我们将通过 C++ 代码访问 memory_tiles 属性来完成此操作。对于每个顶级属性，都会生成一个 getter 和 setter 函数 - 在我们的例子中为 get_memory_tiles 和 set_memory_tiles。由于 memory_tiles 是 .sl
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-21 00:17" pubdate>
+              2023-12-21
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/12/20/Slint/slint-more-tile/" target="_self">
           Slint C++  创建更多的磁贴
         </a>
@@ -546,88 +621,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Cpp/">#Cpp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/29/Java/java-example-3/" target="_self">
-          Java小实验-封装一个类
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/29/Java/java-example-3/" target="_self">
-        <div>
-          Java小实验封装一个类设计一个基于控制台的购书系统。该系统主要有以下类完成  设计一个图书类(Book)，该类处于shopping.book包中，该类具有以下成员变量和成员方法。  成员变量：图书编号(bookid),图书名称(bookname),图书单价(bookprice),库存数量(bookstorage);其中图书单价和库存数量均被private修饰 成员方法：计算图书折扣率的方法get
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-29 23:38" pubdate>
-              2023-11-29
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/java/">#java</a>
-            
-              <a href="/tags/java-example/">#java-example</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/29/Nim/nim-iterator/" target="_self">
-          nim- 迭代器iterator
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/29/Nim/nim-iterator/" target="_self">
-        <div>
-          Nim - 迭代器 Iterator让我们回到之前的示例代码： 123echo &quot;Counting to ten: &quot;for i in countup(1,10):	echo i  可以编写一个支持此循环的计数过程吗（迭代器计数函数）？咱们试试吧： 12345proc countup(a, b: int): int =  var res = a  while res &lt;=
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-29 18:02" pubdate>
-              2023-11-29
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Nim/">#Nim</a>
             
           </div>
         

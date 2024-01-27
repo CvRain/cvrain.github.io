@@ -227,6 +227,79 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2023/11/21/Haskell/haskell-recursion/" target="_self">
+          Haskell - 递归
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/21/Haskell/haskell-recursion/" target="_self">
+        <div>
+          你好，递归递归是指在定义的应用自身的方式，将白了就是函数会自己调用自己。“从前有座山，山里有座庙，庙里有个老和尚给小和尚讲故事，讲的是什么呢：从前有座山，山里有座庙……”数学定义中存在的递归随处可见，比如斐波那契数列，杨辉三角形等。递归在函数式语言中能够发挥真正的威力，因为在函数式编程中，重要的不是给出求解的步骤，而是定义问题与解的描述。在下文会使用Haskell和C++两种语言进行描述。  求列
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-21 17:23" pubdate>
+              2023-11-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Haskell/">#Haskell</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/21/Haskell/haskell-case/" target="_self">
+          Haskell-case
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/21/Haskell/haskell-case/" target="_self">
+        <div>
+          Haskell - case函数中模板匹配的本质实际上就是case语句的语法糖。case语句在函数式编程中用途往往比命令式要大很多，因为这样可以很流畅的定义出一个没有指令流程的函数，使得函数的定义更加流畅。举一个简单的例子 123firstLetterV1 :: [a] -&gt; afirstLetterV1 [] = error &quot;Null list&quot;firstLetter
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-21 14:36" pubdate>
+              2023-11-21
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/11/21/Haskell/haskell-let/" target="_self">
           Haskell - let
         </a>
@@ -533,86 +606,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2023-11-14 10:32" pubdate>
               2023-11-14
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Haskell/">#Haskell</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/13/Haskell/haskell-type/" target="_self">
-          Haskell中的类型
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/13/Haskell/haskell-type/" target="_self">
-        <div>
-          Haskell中的类型在Haskell中，每个表达式都会在编译时得到明确的类型，从而提高代码的安全性。当然这样就会导致在输入不同的类型进行某些操作时候得到编译捕获错误这自然好过在运行时出现崩溃，然后自己去逐个排查是什么问题。Haskell中一切皆有类型，因此编译器在编译期间可以得到更多的消息来检查错误 在ghci中可以使用:t命令，后接任何合法表达式查阅其类型 123456789101112131
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-13 17:23" pubdate>
-              2023-11-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Haskell/">#Haskell</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/12/Haskell/haskell-tuple/" target="_self">
-          Haskell - 元组
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/12/Haskell/haskell-tuple/" target="_self">
-        <div>
-          简单玩一下元组有意思的是Haskell中的元组，不仅如同Python中一样可以随便放东西，而且可以当作结构体用如果元组有里面只有两个元素，就可以当作键值对用，真不错啊真不错~ 123456789101112131415161718numberAndNumber = (1,3)triples = [(a,b,c) | a &lt;- [1..10], b &lt;- [1..10], c &lt;-
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-12 12:01" pubdate>
-              2023-11-12
             </time>
           </div>
         
