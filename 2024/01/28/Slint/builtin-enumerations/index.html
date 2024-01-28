@@ -16,15 +16,15 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="内置回调函数init()每一个组件都隐式定义了一个init回调函数。您可以为其分配一个代码块，该代码块将在实例化元素时以及使用其最终绑定的值初始化所有属性后调用。调用顺序是从内到外。以下示例将打印“first”，然后“second”，然后“third”： 1234567891011121314151617181920component MyButton inherits Rectangle &amp;#1">
+    <meta name="description" content="Slint 内置枚举元素AccessibleRole 此枚举表述了accessible-role属性中的不同值， 用于描述辅助技术（例如屏幕阅读器）中元素的作用。  none 此元素是不可访问的 button 此元素是一个Button组件其或者行为类似Button checkbox 此元素是一个CheckBox或者其行为类型CheckBox combobox 此元素是一个ComboBox或者其行为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Slint 内置函数-回调">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/27/Slint/builtin-callbacks/index.html">
+<meta property="og:title" content="Slint 内置枚举元素">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/28/Slint/builtin-enumerations/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="内置回调函数init()每一个组件都隐式定义了一个init回调函数。您可以为其分配一个代码块，该代码块将在实例化元素时以及使用其最终绑定的值初始化所有属性后调用。调用顺序是从内到外。以下示例将打印“first”，然后“second”，然后“third”： 1234567891011121314151617181920component MyButton inherits Rectangle &amp;#1">
+<meta property="og:description" content="Slint 内置枚举元素AccessibleRole 此枚举表述了accessible-role属性中的不同值， 用于描述辅助技术（例如屏幕阅读器）中元素的作用。  none 此元素是不可访问的 button 此元素是一个Button组件其或者行为类似Button checkbox 此元素是一个CheckBox或者其行为类型CheckBox combobox 此元素是一个ComboBox或者其行为">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-27T00:57:17.000Z">
-<meta property="article:modified_time" content="2024-01-27T01:02:56.445Z">
+<meta property="article:published_time" content="2024-01-28T12:33:33.000Z">
+<meta property="article:modified_time" content="2024-01-28T14:02:06.608Z">
 <meta property="article:author" content="ClaudeRainer">
 <meta property="article:tag" content="Slint">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Slint 内置函数-回调 - cvrain-以空间追逐时间</title>
+  <title>Slint 内置枚举元素 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Slint 内置函数-回调"></span>
+            <span id="subtitle" data-typed-text="Slint 内置枚举元素"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-27 08:57" pubdate>
-          2024年1月27日 早上
+        <time datetime="2024-01-28 20:33" pubdate>
+          2024年1月28日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          151 字
+          810 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          2 分钟
+          7 分钟
         
       </span>
     
@@ -278,16 +278,70 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Slint 内置函数-回调</h1>
+            <h1 id="seo-header">Slint 内置枚举元素</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="内置回调函数"><a href="#内置回调函数" class="headerlink" title="内置回调函数"></a>内置回调函数</h1><h1 id="init"><a href="#init" class="headerlink" title="init()"></a><code>init()</code></h1><p>每一个组件都隐式定义了一个<code>init</code>回调函数。您可以为其分配一个代码块，该代码块将在实例化元素时以及使用其最终绑定的值初始化所有属性后调用。调用顺序是从内到外。以下示例将打印“first”，然后“second”，然后“third”：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs Slint">component MyButton inherits Rectangle &#123;<br>    in-out property &lt;string&gt; text: &quot;Initial&quot;;<br>    init =&gt; &#123;<br>        // If `text` is queried here, it will have the value &quot;Hello&quot;.<br>        debug(&quot;first&quot;);<br>    &#125;<br>&#125;<br><br>component MyCheckBox inherits Rectangle &#123;<br>    init =&gt; &#123; debug(&quot;second&quot;); &#125;<br>&#125;<br><br>export component MyWindow inherits Window &#123;<br>    MyButton &#123;<br>        text: &quot;Hello&quot;;<br>        init =&gt; &#123; debug(&quot;third&quot;); &#125;<br>    &#125;<br>    MyCheckBox &#123;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>不要使用回调函数用来初始化组件的属性，因为这违反了描述式语法的规则。避免以这样的方式使用回调，除非真的需要它，例如，为了通知某些本机代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Slint">global SystemService  &#123;<br>    // This callback can be implemented in native code using the Slint API<br>    callback ensure_service_running();<br>&#125;<br><br>export component MySystemButton inherits Rectangle &#123;<br>    init =&gt; &#123;<br>        SystemService.ensure_service_running();<br>    &#125;<br>    // ...<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="Slint-内置枚举元素"><a href="#Slint-内置枚举元素" class="headerlink" title="Slint 内置枚举元素"></a>Slint 内置枚举元素</h1><h2 id="AccessibleRole"><a href="#AccessibleRole" class="headerlink" title="AccessibleRole"></a><code>AccessibleRole</code></h2><p> 此枚举表述了<code>accessible-role</code>属性中的不同值， 用于描述辅助技术（例如屏幕阅读器）中元素的作用。</p>
+<ul>
+<li><code>none</code> 此元素是不可访问的</li>
+<li><code>button</code> 此元素是一个<code>Button</code>组件其或者行为类似<code>Button</code></li>
+<li><code>checkbox</code> 此元素是一个<code>CheckBox</code>或者其行为类型<code>CheckBox</code></li>
+<li><code>combobox</code> 此元素是一个<code>ComboBox</code>或者其行为类型<code>ComboBox</code></li>
+<li><code>slider</code> 此元素是一个<code>Slider</code>或者其行为类型<code>Slider</code></li>
+<li><code>spinbox</code> 此元素是一个<code>SpinBox</code>或者其行为类型<code>SpinBox</code></li>
+<li><code>tab</code> 此元素是一个<code>Tab</code>或者其行为类型<code>Tab</code></li>
+<li><code>text</code> 此元素是一个<code>Text</code>或者其行为类型<code>Text</code></li>
+<li><code>progress-indicator</code> 此元素是一个<code>ProcessIndicator</code>或者其行为类型<code>ProcessIndicator</code></li>
+</ul>
+<h2 id="DialogButtonRole"><a href="#DialogButtonRole" class="headerlink" title="DialogButtonRole"></a><code>DialogButtonRole</code></h2><p>此枚举表示<code>dialog-button-role</code>属性的值，该属性可以添加到<code>Dialog</code>的任何元素以将该项目放入按钮行中，其确切位置取决于角色和平台。</p>
+<ul>
+<li><code>none</code> 这个按钮不是用来进入最下面一排的</li>
+<li><code>accept</code> 此规则让主按钮点击后为确认对话框，如“确实”或者”是“</li>
+<li><code>reject</code>  此规则让主按钮点击为拒绝对话框，如“取消”或者”不“</li>
+<li><code>apply</code> “Apply（接受）”按钮的职责</li>
+<li><code>reset</code>“Rest （重置）” 按钮的职责</li>
+<li><code>help</code> “Help（帮助）”按钮的职责</li>
+<li><code>action</code>  执行其他操作的任何其他按钮的的功能。</li>
+</ul>
+<h2 id="EventResult"><a href="#EventResult" class="headerlink" title="EventResult"></a><code>EventResult</code></h2><p>该枚举描述事件处理程序是否拒绝或接受事件。</p>
+<ul>
+<li><code>reject</code>  该事件被此事件处理程序拒绝，然后可能由父项处理</li>
+<li><code>accept</code> 该事件已被接受，不会进一步处理</li>
+</ul>
+<h2 id="FillRule"><a href="#FillRule" class="headerlink" title="FillRule"></a><code>FillRule</code></h2><p>该枚举描述了决定路径所描述的形状内部应该是什么的不同方法。</p>
+<ul>
+<li><strong><code>nonzero</code></strong>: The <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule#nonzero">“nonzero” fill rule as defined in SVG</a>.</li>
+<li><strong><code>evenodd</code></strong>: The <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule#evenodd">“evenodd” fill rule as defined in SVG</a></li>
+</ul>
+<h2 id="ImageFit"><a href="#ImageFit" class="headerlink" title="ImageFit"></a><code>ImageFit</code></h2><p>该枚举定义了图片资源在<code>Image</code>组件中怎样的适配方式</p>
+<ul>
+<li><code>fill</code> 图片的尺寸和缩放根据<code>Image</code>元素的宽度和高度自己适配</li>
+<li><code>contain</code> 源图像被缩放以适应图像元素的尺寸，同时保留纵横比。</li>
+<li><code>cover</code> 源图像被缩放以覆盖图像元素的尺寸，同时保留纵横比。如果源图像的长宽比与元素的长宽比不匹配，则图像将被剪裁以适合。</li>
+</ul>
+<h2 id="ImageRendering"><a href="#ImageRendering" class="headerlink" title="ImageRendering"></a><code>ImageRendering</code></h2><p>该枚举指定如何缩放源图像。</p>
+<ul>
+<li><code>smooth</code> 使用线性插值算法缩放图像。</li>
+<li><code>pixelated</code> 使用最近邻算法缩放图像。</li>
+</ul>
+<h1 id="InputType"><a href="#InputType" class="headerlink" title="InputType"></a><code>InputType</code></h1><p>该枚举用于定义输入字段的类型。</p>
+<ul>
+<li><code>text</code> 默认值。以标准的方式渲染所有的字符</li>
+<li><code>password</code> 默认的将所有的字符均渲染为“*”</li>
+<li><code>number</code> 输入将只能接受并渲染数字字符（0-9）</li>
+<li><code>decimal</code> 如果字符是小数的有效部分，这将接受并呈现字符</li>
+</ul>
+<h2 id="LayoutAlignment"><a href="#LayoutAlignment" class="headerlink" title="LayoutAlignment"></a><code>LayoutAlignment</code></h2><p>枚举类型描述了在<code>HorizontalBox</code>, <code>VerticalBox</code>, <code>HorizontalLayout</code>, <code>VerticalLayout</code>中的布局对其方式</p>
+<ul>
+<li><code>stretch</code> 使用布局中所有元素的最小大小，在所有元素之间基于 <code>*-stretch </code>分配剩余空间。</li>
+<li><code>center</code> 对所有元素使用首选大小，在第一个元素之前和最后一个元素之后均匀分配剩余空间。</li>
+<li><code>start</code> 对所有元素使用首选大小，将剩余空间放在最后一个元素之后。</li>
+<li><code>end</code> 对所有元素使用首选大小，将剩余空间放在第一个元素之前。</li>
+<li><code>space-between</code> 对所有元素使用首选大小，在元素之间均匀分配剩余空间。</li>
+<li><code>space-around</code> 对所有元素使用首选大小，在第一个元素之前、最后一个元素之后以及元素之间均匀分配剩余空间。</li>
+</ul>
 
                 
               </div>
@@ -312,8 +366,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Slint 内置函数-回调</div>
-      <div>http://cvrain.cloudvl.cn/2024/01/27/Slint/builtin-callbacks/</div>
+      <div>Slint 内置枚举元素</div>
+      <div>http://cvrain.cloudvl.cn/2024/01/28/Slint/builtin-enumerations/</div>
     </div>
     <div class="license-meta">
       
@@ -325,7 +379,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月27日</div>
+          <div>2024年1月28日</div>
         </div>
       
       
@@ -357,18 +411,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/27/Slint/builtin-elements/" title="Slint 内置元素">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Slint 内置元素</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/27/Slint/slint-legacy-syntax/" title="Slint 过时语法">
-                        <span class="hidden-mobile">Slint 过时语法</span>
+                      <a href="/2024/01/27/Slint/builtin-elements/" title="Slint 内置元素">
+                        <span class="hidden-mobile">Slint 内置元素</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

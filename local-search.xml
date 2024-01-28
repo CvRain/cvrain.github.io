@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>Slint 内置枚举元素</title>
+    <link href="/2024/01/28/Slint/builtin-enumerations/"/>
+    <url>/2024/01/28/Slint/builtin-enumerations/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Slint-内置枚举元素"><a href="#Slint-内置枚举元素" class="headerlink" title="Slint 内置枚举元素"></a>Slint 内置枚举元素</h1><h2 id="AccessibleRole"><a href="#AccessibleRole" class="headerlink" title="AccessibleRole"></a><code>AccessibleRole</code></h2><p> 此枚举表述了<code>accessible-role</code>属性中的不同值， 用于描述辅助技术（例如屏幕阅读器）中元素的作用。</p><ul><li><code>none</code> 此元素是不可访问的</li><li><code>button</code> 此元素是一个<code>Button</code>组件其或者行为类似<code>Button</code></li><li><code>checkbox</code> 此元素是一个<code>CheckBox</code>或者其行为类型<code>CheckBox</code></li><li><code>combobox</code> 此元素是一个<code>ComboBox</code>或者其行为类型<code>ComboBox</code></li><li><code>slider</code> 此元素是一个<code>Slider</code>或者其行为类型<code>Slider</code></li><li><code>spinbox</code> 此元素是一个<code>SpinBox</code>或者其行为类型<code>SpinBox</code></li><li><code>tab</code> 此元素是一个<code>Tab</code>或者其行为类型<code>Tab</code></li><li><code>text</code> 此元素是一个<code>Text</code>或者其行为类型<code>Text</code></li><li><code>progress-indicator</code> 此元素是一个<code>ProcessIndicator</code>或者其行为类型<code>ProcessIndicator</code></li></ul><h2 id="DialogButtonRole"><a href="#DialogButtonRole" class="headerlink" title="DialogButtonRole"></a><code>DialogButtonRole</code></h2><p>此枚举表示<code>dialog-button-role</code>属性的值，该属性可以添加到<code>Dialog</code>的任何元素以将该项目放入按钮行中，其确切位置取决于角色和平台。</p><ul><li><code>none</code> 这个按钮不是用来进入最下面一排的</li><li><code>accept</code> 此规则让主按钮点击后为确认对话框，如“确实”或者”是“</li><li><code>reject</code>  此规则让主按钮点击为拒绝对话框，如“取消”或者”不“</li><li><code>apply</code> “Apply（接受）”按钮的职责</li><li><code>reset</code>“Rest （重置）” 按钮的职责</li><li><code>help</code> “Help（帮助）”按钮的职责</li><li><code>action</code>  执行其他操作的任何其他按钮的的功能。</li></ul><h2 id="EventResult"><a href="#EventResult" class="headerlink" title="EventResult"></a><code>EventResult</code></h2><p>该枚举描述事件处理程序是否拒绝或接受事件。</p><ul><li><code>reject</code>  该事件被此事件处理程序拒绝，然后可能由父项处理</li><li><code>accept</code> 该事件已被接受，不会进一步处理</li></ul><h2 id="FillRule"><a href="#FillRule" class="headerlink" title="FillRule"></a><code>FillRule</code></h2><p>该枚举描述了决定路径所描述的形状内部应该是什么的不同方法。</p><ul><li><strong><code>nonzero</code></strong>: The <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule#nonzero">“nonzero” fill rule as defined in SVG</a>.</li><li><strong><code>evenodd</code></strong>: The <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule#evenodd">“evenodd” fill rule as defined in SVG</a></li></ul><h2 id="ImageFit"><a href="#ImageFit" class="headerlink" title="ImageFit"></a><code>ImageFit</code></h2><p>该枚举定义了图片资源在<code>Image</code>组件中怎样的适配方式</p><ul><li><code>fill</code> 图片的尺寸和缩放根据<code>Image</code>元素的宽度和高度自己适配</li><li><code>contain</code> 源图像被缩放以适应图像元素的尺寸，同时保留纵横比。</li><li><code>cover</code> 源图像被缩放以覆盖图像元素的尺寸，同时保留纵横比。如果源图像的长宽比与元素的长宽比不匹配，则图像将被剪裁以适合。</li></ul><h2 id="ImageRendering"><a href="#ImageRendering" class="headerlink" title="ImageRendering"></a><code>ImageRendering</code></h2><p>该枚举指定如何缩放源图像。</p><ul><li><code>smooth</code> 使用线性插值算法缩放图像。</li><li><code>pixelated</code> 使用最近邻算法缩放图像。</li></ul><h1 id="InputType"><a href="#InputType" class="headerlink" title="InputType"></a><code>InputType</code></h1><p>该枚举用于定义输入字段的类型。</p><ul><li><code>text</code> 默认值。以标准的方式渲染所有的字符</li><li><code>password</code> 默认的将所有的字符均渲染为“*”</li><li><code>number</code> 输入将只能接受并渲染数字字符（0-9）</li><li><code>decimal</code> 如果字符是小数的有效部分，这将接受并呈现字符</li></ul><h2 id="LayoutAlignment"><a href="#LayoutAlignment" class="headerlink" title="LayoutAlignment"></a><code>LayoutAlignment</code></h2><p>枚举类型描述了在<code>HorizontalBox</code>, <code>VerticalBox</code>, <code>HorizontalLayout</code>, <code>VerticalLayout</code>中的布局对其方式</p><ul><li><code>stretch</code> 使用布局中所有元素的最小大小，在所有元素之间基于 <code>*-stretch </code>分配剩余空间。</li><li><code>center</code> 对所有元素使用首选大小，在第一个元素之前和最后一个元素之后均匀分配剩余空间。</li><li><code>start</code> 对所有元素使用首选大小，将剩余空间放在最后一个元素之后。</li><li><code>end</code> 对所有元素使用首选大小，将剩余空间放在第一个元素之前。</li><li><code>space-between</code> 对所有元素使用首选大小，在元素之间均匀分配剩余空间。</li><li><code>space-around</code> 对所有元素使用首选大小，在第一个元素之前、最后一个元素之后以及元素之间均匀分配剩余空间。</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Slint</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Slint 内置元素</title>
+    <link href="/2024/01/27/Slint/builtin-elements/"/>
+    <url>/2024/01/27/Slint/builtin-elements/</url>
+    
+    <content type="html"><![CDATA[<h1 id="内置元素"><a href="#内置元素" class="headerlink" title="内置元素"></a>内置元素</h1><h2 id="通用属性"><a href="#通用属性" class="headerlink" title="通用属性"></a>通用属性</h2><h3 id="几何坐标"><a href="#几何坐标" class="headerlink" title="几何坐标"></a>几何坐标</h3><p>这些属性对所有可见项目都有效：</p><ul><li><code>width</code> 和 <code>height</code> (length)：元素的尺寸，被设置后可以重写默认的大小</li><li><code>x</code>和<code>y</code>（length）：元素相对于其父级元素的偏移位置</li><li><code>z</code>(float)：允许指定不同的顺序来将项目与其同级项目堆叠。 （默认值：0）</li><li><code>absolute-position</code>(float)：元素在所包含窗口中的位置。</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Slint</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Slint 内置函数-回调</title>
     <link href="/2024/01/27/Slint/builtin-callbacks/"/>
     <url>/2024/01/27/Slint/builtin-callbacks/</url>

@@ -16,15 +16,15 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="内置回调函数init()每一个组件都隐式定义了一个init回调函数。您可以为其分配一个代码块，该代码块将在实例化元素时以及使用其最终绑定的值初始化所有属性后调用。调用顺序是从内到外。以下示例将打印“first”，然后“second”，然后“third”： 1234567891011121314151617181920component MyButton inherits Rectangle &amp;#1">
+    <meta name="description" content="内置元素通用属性几何坐标这些属性对所有可见项目都有效：  width 和 height (length)：元素的尺寸，被设置后可以重写默认的大小 x和y（length）：元素相对于其父级元素的偏移位置 z(float)：允许指定不同的顺序来将项目与其同级项目堆叠。 （默认值：0） absolute-position(float)：元素在所包含窗口中的位置。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Slint 内置函数-回调">
-<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/27/Slint/builtin-callbacks/index.html">
+<meta property="og:title" content="Slint 内置元素">
+<meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/27/Slint/builtin-elements/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="内置回调函数init()每一个组件都隐式定义了一个init回调函数。您可以为其分配一个代码块，该代码块将在实例化元素时以及使用其最终绑定的值初始化所有属性后调用。调用顺序是从内到外。以下示例将打印“first”，然后“second”，然后“third”： 1234567891011121314151617181920component MyButton inherits Rectangle &amp;#1">
+<meta property="og:description" content="内置元素通用属性几何坐标这些属性对所有可见项目都有效：  width 和 height (length)：元素的尺寸，被设置后可以重写默认的大小 x和y（length）：元素相对于其父级元素的偏移位置 z(float)：允许指定不同的顺序来将项目与其同级项目堆叠。 （默认值：0） absolute-position(float)：元素在所包含窗口中的位置。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-27T00:57:17.000Z">
-<meta property="article:modified_time" content="2024-01-27T01:02:56.445Z">
+<meta property="article:published_time" content="2024-01-27T01:06:22.000Z">
+<meta property="article:modified_time" content="2024-01-27T01:16:00.310Z">
 <meta property="article:author" content="ClaudeRainer">
 <meta property="article:tag" content="Slint">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Slint 内置函数-回调 - cvrain-以空间追逐时间</title>
+  <title>Slint 内置元素 - cvrain-以空间追逐时间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Slint 内置函数-回调"></span>
+            <span id="subtitle" data-typed-text="Slint 内置元素"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-27 08:57" pubdate>
-          2024年1月27日 早上
+        <time datetime="2024-01-27 09:06" pubdate>
+          2024年1月27日 上午
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          151 字
+          97 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          2 分钟
+          1 分钟
         
       </span>
     
@@ -278,16 +278,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Slint 内置函数-回调</h1>
+            <h1 id="seo-header">Slint 内置元素</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="内置回调函数"><a href="#内置回调函数" class="headerlink" title="内置回调函数"></a>内置回调函数</h1><h1 id="init"><a href="#init" class="headerlink" title="init()"></a><code>init()</code></h1><p>每一个组件都隐式定义了一个<code>init</code>回调函数。您可以为其分配一个代码块，该代码块将在实例化元素时以及使用其最终绑定的值初始化所有属性后调用。调用顺序是从内到外。以下示例将打印“first”，然后“second”，然后“third”：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs Slint">component MyButton inherits Rectangle &#123;<br>    in-out property &lt;string&gt; text: &quot;Initial&quot;;<br>    init =&gt; &#123;<br>        // If `text` is queried here, it will have the value &quot;Hello&quot;.<br>        debug(&quot;first&quot;);<br>    &#125;<br>&#125;<br><br>component MyCheckBox inherits Rectangle &#123;<br>    init =&gt; &#123; debug(&quot;second&quot;); &#125;<br>&#125;<br><br>export component MyWindow inherits Window &#123;<br>    MyButton &#123;<br>        text: &quot;Hello&quot;;<br>        init =&gt; &#123; debug(&quot;third&quot;); &#125;<br>    &#125;<br>    MyCheckBox &#123;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>不要使用回调函数用来初始化组件的属性，因为这违反了描述式语法的规则。避免以这样的方式使用回调，除非真的需要它，例如，为了通知某些本机代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Slint">global SystemService  &#123;<br>    // This callback can be implemented in native code using the Slint API<br>    callback ensure_service_running();<br>&#125;<br><br>export component MySystemButton inherits Rectangle &#123;<br>    init =&gt; &#123;<br>        SystemService.ensure_service_running();<br>    &#125;<br>    // ...<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="内置元素"><a href="#内置元素" class="headerlink" title="内置元素"></a>内置元素</h1><h2 id="通用属性"><a href="#通用属性" class="headerlink" title="通用属性"></a>通用属性</h2><h3 id="几何坐标"><a href="#几何坐标" class="headerlink" title="几何坐标"></a>几何坐标</h3><p>这些属性对所有可见项目都有效：</p>
+<ul>
+<li><code>width</code> 和 <code>height</code> (length)：元素的尺寸，被设置后可以重写默认的大小</li>
+<li><code>x</code>和<code>y</code>（length）：元素相对于其父级元素的偏移位置</li>
+<li><code>z</code>(float)：允许指定不同的顺序来将项目与其同级项目堆叠。 （默认值：0）</li>
+<li><code>absolute-position</code>(float)：元素在所包含窗口中的位置。</li>
+</ul>
 
                 
               </div>
@@ -312,8 +314,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Slint 内置函数-回调</div>
-      <div>http://cvrain.cloudvl.cn/2024/01/27/Slint/builtin-callbacks/</div>
+      <div>Slint 内置元素</div>
+      <div>http://cvrain.cloudvl.cn/2024/01/27/Slint/builtin-elements/</div>
     </div>
     <div class="license-meta">
       
@@ -357,9 +359,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/27/Slint/builtin-elements/" title="Slint 内置元素">
+                      <a href="/2024/01/28/Slint/builtin-enumerations/" title="Slint 内置枚举元素">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Slint 内置元素</span>
+                        <span class="hidden-mobile">Slint 内置枚举元素</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -367,8 +369,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/27/Slint/slint-legacy-syntax/" title="Slint 过时语法">
-                        <span class="hidden-mobile">Slint 过时语法</span>
+                      <a href="/2024/01/27/Slint/builtin-callbacks/" title="Slint 内置函数-回调">
+                        <span class="hidden-mobile">Slint 内置函数-回调</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
