@@ -16,15 +16,15 @@
   <meta name="author" content="ClaudeRainer">
   <meta name="keywords" content="C,C++,Linux">
   
-    <meta name="description" content="内置元素通用属性几何坐标这些属性对所有可见项目都有效：  width 和 height (length)：元素的尺寸，被设置后可以重写默认的大小 x和y（length）：元素相对于其父级元素的偏移位置 z(float)：允许指定不同的顺序来将项目与其同级项目堆叠。 （默认值：0） absolute-position(float)：元素在所包含窗口中的位置。">
+    <meta name="description" content="内置元素通用属性几何坐标这些属性对所有可见项目都有效：  width 和 height (length)：元素的尺寸，被设置后可以重写默认的大小 x和y（length）：元素相对于其父级元素的偏移位置 z(float)：允许指定不同的顺序来将项目与其同级项目堆叠。 （默认值：0） absolute-position(float)：元素在所包含窗口中的位置。  布局这些属性对所有可见项都有效，并且可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Slint 内置元素">
 <meta property="og:url" content="http://cvrain.cloudvl.cn/2024/01/27/Slint/builtin-elements/index.html">
 <meta property="og:site_name" content="cvrain-以空间追逐时间">
-<meta property="og:description" content="内置元素通用属性几何坐标这些属性对所有可见项目都有效：  width 和 height (length)：元素的尺寸，被设置后可以重写默认的大小 x和y（length）：元素相对于其父级元素的偏移位置 z(float)：允许指定不同的顺序来将项目与其同级项目堆叠。 （默认值：0） absolute-position(float)：元素在所包含窗口中的位置。">
+<meta property="og:description" content="内置元素通用属性几何坐标这些属性对所有可见项目都有效：  width 和 height (length)：元素的尺寸，被设置后可以重写默认的大小 x和y（length）：元素相对于其父级元素的偏移位置 z(float)：允许指定不同的顺序来将项目与其同级项目堆叠。 （默认值：0） absolute-position(float)：元素在所包含窗口中的位置。  布局这些属性对所有可见项都有效，并且可">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-27T01:06:22.000Z">
-<meta property="article:modified_time" content="2024-01-27T01:16:00.310Z">
+<meta property="article:modified_time" content="2024-02-03T10:01:57.207Z">
 <meta property="article:author" content="ClaudeRainer">
 <meta property="article:tag" content="Slint">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          97 字
+          776 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          1 分钟
+          7 分钟
         
       </span>
     
@@ -289,6 +289,34 @@
 <li><code>x</code>和<code>y</code>（length）：元素相对于其父级元素的偏移位置</li>
 <li><code>z</code>(float)：允许指定不同的顺序来将项目与其同级项目堆叠。 （默认值：0）</li>
 <li><code>absolute-position</code>(float)：元素在所包含窗口中的位置。</li>
+</ul>
+<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p>这些属性对所有可见项都有效，并且可用于在布局中使用时指定约束：</p>
+<ul>
+<li><code>col</code>,<code>row </code>,<code>col-span</code> 和 <code>row-span</code> (int)：具体查看 <a target="_blank" rel="noopener" href="https://slint.dev/releases/1.4.1/docs/slint/src/language/builtins/elements#gridlayout">GridLayout</a>。</li>
+<li><code>horizontal-stretch</code> 和 <code>vertical-stretch</code> (in-out float)：指定元素在布局中的拉伸因子。当为0时，这意味着除非所有元素都为0，否则元素不会被拉伸。内置小部件的值为 0 或 1。</li>
+<li><code>max-width</code> 和 <code>max-heigth</code> (in length)：元素尺寸的最大值。</li>
+<li><code>min-width</code> 和 <code>min-height</code> (in length)：元素尺寸的最小值。</li>
+<li><code>preferred-width</code> 和 <code>preferred-height</code> (in length)：元素尺寸的偏好值。</li>
+</ul>
+<h3 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h3><ul>
+<li><code>cache-rendering-hint</code>  (in bool)：当设置为 true 时，这会向渲染器提供提示，将元素和所有子元素的内容缓存到中间缓存层中。对于很少改变的复杂子树，这可能会加快渲染速度，但代价是增加内存消耗。并非所有渲染后端都支持这一点，因此这只是一个提示。(默认为flase)。</li>
+<li><code>dialog-button-role</code> (in enum DialogButtonRole): 指定在对话框中这是一个按钮。</li>
+<li><code>opacity</code> (in float): 在0到1之间的浮点数（或者使用百分比）用来绘制元素以及其子元素的不透明度。0 是完全透明（不可见），1 是完全不透明。不透明度应用于子元素树，就好像它们首先被绘制到中间层中一样，然后使用此不透明度渲染整个层。 （默认值：1）</li>
+<li><code>visable</code> (in bool): 当设置为<code>falase</code>时，此元素还有它的所有子元素均不会被绘制并且针对鼠标输入事件不进行交互（默认值是<code>true</code>）。</li>
+<li>以下示例演示了子级的不透明度（<code>opacity</code>）属性。对红色矩形应用不透明度。由于绿色矩形是红色矩形的子级，因此您可以看到其下方的渐变，但无法透过绿色矩形看到红色矩形。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs slint">export component Example inherits Window &#123;<br>    width: 100px;<br>    height: 100px;<br>    background: @radial-gradient(circle, black, white, black, white);<br>    Rectangle &#123;<br>        opacity: 0.5;<br>        background: red;<br>        border-color: #822;<br>        border-width: 5px;<br>        width: 50px; height: 50px;<br>        x: 10px; y: 10px;<br>        Rectangle &#123;<br>            background: green;<br>            border-color: #050;<br>            border-width: 5px;<br>            width: 50px; height: 50px;<br>            x: 25px; y: 25px;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="可访问性"><a href="#可访问性" class="headerlink" title="可访问性"></a>可访问性</h2><p>使用带有<code>accessible-</code>前缀的属性可以使您的项目与屏幕阅读器、盲文终端和其他软件等软件良好交互，从而使您的应用程序易于访问。</p>
+<ul>
+<li><code>accessible-role</code> （in enum (AccessibleRole)[<a target="_blank" rel="noopener" href="https://slint.dev/releases/1.4.1/docs/slint/src/language/builtins/enums.html#accessiblerole]%EF%BC%89%EF%BC%9A%E5%85%83%E7%B4%A0%E7%9A%84%E4%BD%9C%E7%94%A8%E3%80%82%E4%B8%BA%E4%BA%86%E8%83%BD%E5%A4%9F%E4%BD%BF%E7%94%A8%E4%BB%BB%E4%BD%95%E5%85%B6%E4%BB%96%E5%8F%AF%E8%AE%BF%E9%97%AE%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%8C%E6%AD%A4%E5%B1%9E%E6%80%A7%E6%98%AF%E5%BF%85%E9%9C%80%E7%9A%84%E3%80%82%E5%BA%94%E5%B0%86%E5%85%B6%E8%AE%BE%E7%BD%AE%E4%B8%BA%E6%81%92%E5%AE%9A%E5%80%BC%E3%80%82">https://slint.dev/releases/1.4.1/docs/slint/src/language/builtins/enums.html#accessiblerole]）：元素的作用。为了能够使用任何其他可访问的属性，此属性是必需的。应将其设置为恒定值。</a> （默认值：大多数元素均无默认值，但 Text 元素为文本）</li>
+<li><code>accessible-checkable</code>（in bool）：元素是否可以被选中。</li>
+<li><code>accessible-checked</code>（in bool）：元素是否被选中。这映射到复选框、单选按钮和其他小部件的“checked”状态。</li>
+<li><code>accessible-description</code>（in string）：当前元素的描述。</li>
+<li><code>accessible-has-focus</code>（in bool）：当当前元素当前具有焦点时，设置为true。</li>
+<li><code>accessible-label</code>（in string）：交互式元素的标签。（默认值：对于大多数元素为空，或者对于Text元素为text属性的值）</li>
+<li><code>accessible-value-maximum</code>（in float）：项目的最大值。例如，这被用于微调框。</li>
+<li><code>accessible-value-minimum</code>（in float）：项目的最小值。</li>
+<li><code>accessible-value-step</code>（int float）：当前值可以更改的最小增量或减量。这对应于滑块上的手柄可以拖动的步长。</li>
+<li><code>accessible-value</code>（in string）：项目的当前值。</li>
 </ul>
 
                 
